@@ -1,0 +1,8 @@
+Bu dosya, DC'nin HTML yardım dosyası hakkında genel talimatlar ve kurallar içermektedir.
+==================================================================================
+
+Double Commander yardım sayfasının dışındaki bir yere bağlantı kullanırken, hedefi bu örnekteki gibi hedef="_boşluk" kullanarak yeni bir pencere olarak ayarlayın:
+  <başlık="Double Commander" href="http://doublecmd.sourceforge.net/" hedef="_boşluk">Ana sayfa</a>
+  
+ Kullanıcıyla daha samimi olmak, kendimizi kullanıcıyla aynı seviyeye getirmek için "SİZ" yerine "BİZ" kullanarak konuşalım.
+ Kullanıcı birlikte çalıştığımızı hissedecektir.

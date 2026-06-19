@@ -1,0 +1,555 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Harici arşivleyiciler</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="directoryhotlist.html">Önceki</a> | <a title="Sonraki Sayfa" href="shortcuts.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.4. Harici arşivleyiciler</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#workingcomp">Sıkıştırılmış dosyalarla çalışma</a></dt>
+          <dt>2. <a href="#ressources">Sıkıştırılmış dosyalarla çalışmak için kaynaklar</a></dt>
+          <dt>3. <a href="#withplugin">Eklenti ile çalışma</a></dt>
+          <dt>4. <a href="#archivers">Harici arşivleyicilerle çalışma</a></dt>
+          <dt>5. <a href="#config">Harici arşivleyiciler entegrasyonunu yapılandırma</a></dt>
+          <dd>
+            <dl>
+              <dt>5.1. <a href="#addingnew">Yeni bir harici arşivleyici ekleme</a></dt>
+              <dt>5.2. <a href="#variables">Harici arşivleyici ile arayüz oluşturmak için değişkenler</a></dt>
+              <dt>5.3. <a href="#modifiers">Harici arşivleyici ile değişken değiştiriciler</a></dt>
+              <dt>5.4. <a href="#actionlist">“Listele”eylemini yapılandırma</a></dt>
+              <dt>5.5. <a href="#recuperate">İçerik listesini geri alma</a></dt>
+              <dd>
+                <dl>
+                  <dt>5.5.1. <a href="#delimit">Analiz edilecek alanı sınırlandırma</a></dt>
+                  <dt>5.5.2. <a href="#parsing">İçerik listesini ayrıştırma</a></dt>
+                  <dt>5.5.3. <a href="#standardparsing">Ayrıştırma için standart sözdizimi</a></dt>
+                  <dt>5.5.4. <a href="#standardexample">Standart sözdizimi ile örnek</a></dt>
+                  <dt>5.5.5. <a href="#advancedparsing">Ayrıştırma için gelişmiş sözdizimi</a></dt>
+                  <dt>5.5.6. <a href="#advancedexample">Gelişmiş sözdizimi ile örnek</a></dt>
+                </dl>
+              </dd>
+              <dt>5.6. <a href="#actionextract">'Ayıkla' eylemini yapılandırma</a></dt>
+              <dt>5.7. <a href="#actionadding">“Ekleme”eylemini yapılandırma</a></dt>
+              <dt>5.8. <a href="#actiondelete">“Sil” eylemini yapılandırma</a></dt>
+              <dt>5.9. <a href="#actiontest">“Test et” eylemini yapılandırma</a></dt>
+              <dt>5.10. <a href="#actionextractnpath">“Yol olmadan ayıkla” eylemini yapılandırma</a></dt>
+              <dt>5.11. <a href="#actionselfextract">“Kendiliğinden açılan (SFX) arşiv oluştur” eylemini yapılandırma</a></dt>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+      <div>
+        <h2>1. <a name="workingcomp">Sıkıştırılmış dosyalarla çalışma</a></h2>
+        <p>Doğru şekilde yapılandırıldığında, Double Commander sıkıştırılmış dosyalarla basit klasörlermiş gibi çalışabilir.</p>
+        <p>Örneğin, bir panelde bir zip dosyamız varsa, onu seçip <kbd>GİRİŞ</kbd> tuşuna basabiliriz ve panel, bir dizine geçiş yapmışız gibi zip dosyasının içeriğini gösterecektir.</p>
+        <p>Sıkıştırılmış dosyanın 'içine' girdikten sonra, dosyayı görüntüleme, diğer panele kopyalama gibi bazı temel işlevleri ve buna benzer sınırlı işlevleri gerçekleştirebiliriz.</p>
+        <p>Aşağıdaki görselde, 'Help.rar' adlı sıkıştırılmış dosyayı seçip, bir dizinmiş gibi <kbd>GİRİŞ</kbd> tuşuna bastığımız bir örnek gösterilmektedir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg1.png" width="884" height="476"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>2. <a name="ressources">Sıkıştırılmış dosyalarla çalışmak için kaynaklar</a></h2>
+        <p>Double Commander, sıkıştırılmış dosyaları işlemek için kendi arayüzü üzerinden harici programları kullanabilecek kadar çok yönlüdür.</p>
+        <p>Sıkıştırılmış dosyaları işlemek için iki farklı prensip kullanır:</p>
+        <ul>
+          <li>Eklentiler aracılığıyla</li>
+          <li>Komut satırı üzerinden kontrol edilebilir mevcut harici arşivleyici uygulaması aracılığıyla</li>
+        </ul>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>3. <a name="withplugin">Eklenti ile çalışma</a></h2>
+        <p>Double Commander'ı, sıkıştırılmış bir arşivi işlemeye yardımcı olacak harici "paketleyici eklentisi" dosyalarını kullanacak şekilde yapılandırabiliriz.</p>
+        <p>Kurulumdan itibaren Double Commander, bu .WCX eklenti dosyalarından bazılarını zaten bünyesinde barındırır:</p>
+        <p>Bu satırlar yazıldığı an itibarıyla, kurulumla birlikte gelenler şunlardır:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Yeni bir kurulumdan paketleyici eklentisi (.WCX)</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Eklenti dosya adı</th><th class="categorydesccolumn">Desteklenen arşiv türü</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">deb.wcx</div></td><td class="hintcell">.deb</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">rpm.wcx</div></td><td class="hintcell">.rpm</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">sevenzip.wcx</div></td><td class="hintcell">.7z, .cpio, .arj, .cab, .cramfs, .dmg, .fat, .hfs, .iso, .lha, .lzh, .ntfs, .squashfs, .taz, .vhd, .wim, .xar ve .z</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">unrar.wcx</div></td><td class="hintcell">.rar</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">zip.wcx</div></td><td class="hintcell">.zip, .tar, .bz2, .tbz, .gz, .tbz, .tlz, .xz ve .txz</td></tr>
+        </table>
+        <p><i>Lütfen unutmayın ki bunların çoğu yalnızca içerik ayıklamak içindir. Bu türde bir arşiv oluşturmaya izin vermeyeceklerdir.</i></p>
+        <BR>
+
+        <p>Ayrıca, web'de bunlardan birkaç tane daha vardır. Yalnızca .WCX eklentilerine bakabiliriz.</p>
+        <p>Total Commander ile çalışmak üzere oluşturulan eklentilerin Double Commander ile de temel olarak çalışması gerektiğini de unutmayın.</p>
+        <BR>
+
+        <p>Eklentileri kurmak, kullanımlarını etkinleştirmek veya yapılandırmak için <code>Yapılandırma</code> > <code>Seçenekler</code> > <code>Eklentiler</code> yolunu izlememiz ve ardından buradaki çizimde olduğu gibi WCX sekmesini seçmemiz gerekecektir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg2.png" width="842" height="384"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>4. <a name="archivers">Harici arşivleyicilerle çalışma</a></h2>
+        <p>Bazen, kullanmak istediğimiz dosya arşiv türü için eklenti bulunmaz.</p>
+        <p>Ya da bazen herhangi bir nedenle, sahte muadili olan eklentide bulunmayan bir özellikten veya avantajdan yararlanmak için doğrudan harici bir paketleyici kullanmak isteyebiliriz. </p>
+        <p>Double Commander, harici arşivleyicilerle, Total Commander’ın <a href="http://wcx.sourceforge.net/">MultiArc</a> eklentisine benzer bir çalışma prensibi kullanır.</p>
+        <p>Netleştirmek gerekirse, <b>harici bir arşivleyici kullanmak şöyle özetlenebilir: Aşina olduğumuz arşivleyiciyi; Double Commander üzerinden, arşivleyici çalıştırılabilir dosyasına uygulamaya entegre edilmiş gibi görünmesini sağlamak için ihtiyaç duyacağımız çeşitli parametreleri sağlayarak çalıştırmanın bir yoludur</b>. </p>
+        <p>Bu sayfanın geri kalanı şu konuyla ilgili olacaktır: Double Commander'ı harici arşivleyiciyi istediğimiz her şeyi yapacak şekilde çalıştırmak için nasıl yapılandırabiliriz.</p>
+        <p>.rar arşivlerini işlemek için "rar.exe" kullanmak istediğimizi varsayalım. </p>
+        <p>Tahmin edebileceğimiz gibi, <b>yapılandırmamız gereken temel şeyler, harici arşivleyiciyi şu işlemleri yapmak için nasıl çağıracağımızdır:</b></p>
+        <ul>
+          <li>belirli bir arşiv dosyasının içerik listesini alma</li>
+          <li>ayıklama </li>
+          <li>belirli veya oluşturulacak bir arşiv dosyasına dosya veya dosya listesi ekleme</li>
+          <li>bir arşiv dosyasından dosya veya dosya listesi ayıklama</li>
+        </ul>
+        <BR>
+
+        <p>Bu işlem, aşağıda gösterildiği gibi Yapılandırma Seçenekleri Arşivleyici adımları izlenerek yapılacaktır:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg3.png" width="858" height="585"></p>
+
+        <p>Aşağıdaki bölümlerde, Double Commander'ın harici bir paketleyicinin kullanımını düzgün bir şekilde entegre etmek için bize sunduğu çok yönlü olanakları görelim.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5. <a name="config">Harici arşivleyiciler entegrasyonunu yapılandırma</a></h2>
+        <p>Bir kez başladıktan sonra neyin ne olduğu oldukça açık olacağından burada tüm alanları tek tek açıklamayacağız ancak entegrasyon sürecini bir örnekle detaylı bir şekilde anlatmaya zaman ayıracağız.</p>
+        <p>"rar.exe" harici arşivleyicisinin entegrasyonunu tarif edeceğiz. Baştan sona, adım adım örnek vermekten daha iyisi yoktur.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.1. <a name="addingnew">Yeni bir harici arşivleyici ekleme</a></h2>
+        <p>Alttaki "Ekle" düğmesine tıklıyoruz, ona arşivleyici listesinde görünecek anlamlı bir ad veriyoruz ve ardından yapılandırmaya hazır olacağız.</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg4.png" width="792" height="432"></p>
+        <BR>
+        <p>Sonra, arşivleyici için belirgin bir açıklamayı, arşivleyicinin çalıştırılabilir dosyasının tam konumunu ve ardından ilgili dosya uzantısını, başına nokta koymadan, belirtmemiz gerekir."</p>
+        <p>Birden fazla olasılık varsa, her birinin arasına tek bir virgül koyarak, boşluk bırakmadan ekleyin.</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg5.png" width="700" height="200"></p>       
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.2. <a name="variables">Harici arşivleyici ile arayüz oluşturmak için değişkenler</a></h2>
+        <p>Daha önce de belirtildiği gibi, istediğimizi yapması için harici arşivleyici çalıştırılabilir dosyamızı nasıl çağıracağımızı yapılandırmamız gerekecek.</p>
+        <p>Bunu yapmamıza yardımcı olmak için Double Commander, yapılandırabileceğimiz çeşitli eylemler için yapılandırma dizesini doldurmak üzere bize çok sayıda özel değişken sunar.</p>
+        <p>Aşağıda kullanılabilecek değişkeni ve yerine neyin konulacağını gösteren bir tablo bulunmaktadır:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Komut tanımı</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Değişken ifadesi</th><th class="categorydesccolumn">Ne anlama geliyor</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%P</div></td><td class="hintcell">arşivleme yardımcı programının uzun adı (“Arşivleyici" anahtarında belirtildiği gibi)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%p</div></td><td class="hintcell">arşivleme yardımcı programının kısa adı (“Arşivleyici" anahtarında belirtildiği gibi)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%A</div></td><td class="hintcell">arşiv dosyasının uzun adı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%a</div></td><td class="hintcell">arşiv dosyasının kısa adı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%L</div></td><td class="hintcell">Dosya listesi adı.<BR>Dosya listesi, harici arşivleyicinin işleyeceği dosyaların adlarını içeren dosyadır.<BR>Dosya adları uzun</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%l</div></td><td class="hintcell">Kısa dosya adlarına sahip dosya listesi.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%F</div></td><td class="hintcell">İşlenecek tek bir dosyanın adı.<BR>Arşivleyici, tüm dosya adları tükenene kadar birkaç kez çalıştırılacaktır.<BR>Bu değişken, yalnızca hedef arşivleyici, komut satırında dosya listelerini desteklemiyorsa kullanılmalıdır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%V</div></td><td class="hintcell">Birim boyutu (çok birimli arşiv için).</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%W</div></td><td class="hintcell">Parola.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%E&lt;errorlevel></div></td><td class="hintcell">kabul edilebilir maksimum komut hata düzeyi.<BR>Örneğin, %E2, 0, 1 ve 2 hata düzeylerinin kabul edilebilir olduğunu gösterir.<BR>Bu değişken, komutun herhangi bir yerinde belirtilebilir.<BR>Eğer yoksa, yalnızca 0 hata düzeyi başarılı kabul edilir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%O&lt;modifier> <sup><acronym title="Double Commander 0.9 gerektirir">[*]</acronym></sup></div></td><td class="hintcell">varsayılan olarak, multiarc, arşivleyici çıktısını OEM kodlamasından UTF-8'e dönüştürür.<BR>Kodlamayı geçersiz kılmak için bunu kullanın. Aşağıda olası kodlama değiştiricilerini görebilirsiniz.<BR>Yalnızca "Listele" eylemiyle kullanılabilir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%R </div></td><td class="hintcell">Arşivdeki hedef alt dizin</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">{}</div></td><td class="hintcell">Bir değişken parantez içine alınmışsa, yalnızca bu değişken boş olmayan bir şey içeriyorsa eklenecektir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%S</div></td><td class="hintcell">Yapılandırma penceresinde ayarlanan modlara bağlı olarak MultiArc, kullanıcıya %S yerine aktarılması gereken ek komut satırı parametrelerini soracaktır.</td></tr>
+        </table>
+        <p>Endişelenmeyin, daha iyi anlamanız için ilerleyen kısımlarda örnek vereceğiz.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.3. <a name="modifiers">Harici arşivleyici ile değişken değiştiriciler</a></h2>
+        <p>Bu değiştiriciler, değişkenlerden hemen sonra boşluksuz belirtilebilir.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Değişken değiştiriciler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Değiştirici harfi</th><th class="categorydesccolumn">Ne anlama geliyor</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">F</div></td><td class="hintcell">dosya listesine yalnızca (%L ve %l değişkenleriyle kullanılabilen) dosyaları dahil et </td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">Q</div></td><td class="hintcell">boşluklu adları tırnak içine al;</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">q</div></td><td class="hintcell">tüm adları tırnak içine al;</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">W</div></td><td class="hintcell">yol olmadan yalnızca adı kullan</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">P</div></td><td class="hintcell">ad olmadan yalnızca yolu kullan</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">A</div></td><td class="hintcell">(%L ve %O değişkenleriyle kullanılabilen) ANSI kodlaması kullan</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">U</div></td><td class="hintcell">(%L ve %O değişkenleriyle kullanılabilen) UTF-8 kodlaması kullan</td></tr>
+        </table>
+        <p>Tekrardan söyleyelim; endişelenmeyin, ilerleyen kısımlarda örnek vereceğiz.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.4. <a name="actionlist">“Listele” eylemini yapılandırma</a></h2>
+        <p>Double Commander'ın sıkıştırılmış arşiv dosyasıyla sanki dosyalar içeren bir dizinmiş gibi çalışmasını istiyorsak, arşivin içerdiği dosya listesini alabilmemiz gerekir.</p>
+        <p>Bu noktada, sıkıştırmayı açmamıza gerek yok. İşlem sadece içeriğin listesini çıkarmaktan ibarettir, böylece Double Commander içeriği bize gösterebilir.  </p>
+        <p>“rar.exe” örneğimizde, belgelerine baktığımızda, konsol uygulaması “rar.exe”'nin zip içindeki dosya listesini vermesini sağlayan “v” komutunun bulunduğunu görürüz:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg6.png" width="570" height="140"></p>
+        <BR>
+        <p>Dolayısıyla uygulamanın kullanımına göre, rar arşivinin içindekilerin listesini almak için, “rar.exe”'yi “v” komutu parametreleri ve ardından arşiv adıyla çağırmamız gerekir. </p>
+        <p>Önce bunu e:\Temp\just.rar gibi bir dosyanın içeriğini göstermeyi deneyerek kendimiz test edelim.</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg7.png" width="814" height="645"></p>
+        <BR>
+        <p>Şimdi yapmamız gereken şey, Double Commander'a sıkıştırılmış arşivin içeriğini almak için “rar.exe”'yi nasıl çağıracağını söylemek üzere “listele”yi yapılandırmaktır. </p>
+        <p>Bunu yapmak için, az önce yaptığımızı bu sefer daha önce bahsedilen değişken ve değişken değiştiriciyi kullanarak yeniden yazacağız.</p>
+        <p>Görünümü şu şekildedir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg8.png" width="126" height="42"></p>
+        <p>Önceden belirttiğimiz Değişken ve Değişken Değiştiriciyi kullanarak <code>%P v %AQA</code> yazmıştık.</p>
+        <ul>
+          <li><code>%P</code> önceden yazdığımız yürütülebilir dosyamızla yani “E:\Program Files\WinRAR\Rar.exe” ile değiştirilecek.</li>
+          <li><code>v</code> olduğu gibi kalacak; bu, dosya listesini görüntülemek amacıyla "rar.exe" harici arşivleyiciye verilen "v" komutudur.</li>
+          <li>Arşivin adı olan {%A}'ya, adda boşluk varsa Double Commander'ın adı tırnak içine alması için {Q} ekleyeceğiz; ardından adda ANSI kodlaması isteyen bir <code>A</code> ekleyeceğiz.</li>
+        </ul>
+        <p>Tüm bunlar, harici arşivleyiciyi uygun parametrelerle çağırmak içindir.</p>
+        <p>Bu özellik, <a href="cmds.html#cm_OpenArchive">cm_OpenArchive</a> dahili komutunu kullandığımızda kullanılacaktır.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5. <a name="recuperate">İçerik listesini alma</a></h2>
+        <p>Şimdiye kadar yaptıklarımız, arşivleyicinin arşiv dosyalarının içindeki dosya listesini çıktı olarak vermesini sağlayacaktır.</p>
+        <p>Fakat her şey burada bitmiyor. Bizim bu çıktı verisini alıp panelimizde görüntülememiz gerekiyor.</p>
+        <p>Bu nedenle, arşivleyici komutunun çıktı olarak üreteceği o çıktı tablosunu Double Commander'ın yorumlaması gerekmektedir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5.1. <a name="delimit">Analiz edilecek alanı sınırlandırma</a></h2>
+        <p>Önceki ekran görüntüsünde gördüğümüz gibi, "rar.exe"nin içerikle ilgili çıktısı sadece ham veri değildir.</p>
+        <p>Yalnızca asıl dosya listesini tutabilmek için etrafımızdaki bazı gereksiz bilgileri elemememiz gerekiyor.</p>
+        <p>Neyse ki, Double Commander'da bir sihirli dizgi yapılandırabiliriz. Böylelikle, DC sonraki satırları ayrıştırmaya başlamadan önce o dizgiyi görmeyi bekleyecektir.</p>
+        <p>Ayrıca, sihirli dizgiyi ayrıştırmayı durdurmak için de yapılandırabiliriz.</p>
+        <p>Öncesinde ve sonrasında kesikli çizgiler olduğu için, bu iki parametreyi kesikli çizgilerle ayarlamak oldukça kolaydır:</p>
+        <p>Bir harici arşivleyicinin ek satır olmadan doğrudan ham veri çıktısı vermesi durumunda, iki alanı boş bırakmanız yeterlidir.</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg9.png" width="370" height="78"></p>
+        <p>Şapka işareti, sihirli dizginin kesinlikle satırın başında, başka hiçbir şey olmadan başlaması gerektiğini belirtmek için oradadır.</p>
+        <p>Satırın başında başladığından emin olmak mümkün olmasaydı, örneğin harici arşivleyici satıra tarih ve saatle, ardından sabit bir dizgiyle başlasaydı, sihirli dizgiyi sabit dizgi olarak ayarlardık ancak DC'ye aranacak dizginin herhangi bir yerde olabileceğini bildiren şapka işaretini dizgiye eklemezdik.</p>
+        <p>"Listeleme bitişi" dizgisi bir dosya adıyla karıştırılırsa arşivin içeriğinin işlenmesi henüz bitmemişken durabilir.</p>
+        <p>Bu yüzden, mümkün olduğunda, dizginin satırın başında başlaması gerektiğini belirtmek iyidir.</p>
+        <p>Ayrıca, sabit olma koşuluyla, eğer "Listeleme bitişi" dizgisini mümkün olduğunca uzun tutmanın bir yolu varsa buna başvurmak, ileride herhangi bir karışıklık olmayacağından emin olmak için daha iyi ve güvenlidir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5.2. <a name="parsing">İçerik listesini ayrıştırma</a></h2>
+        <p>DC artık arşiv dosyasının dosya listesini almak için hangi veriyi ayrıştırması gerektiğini net olarak biliyor.</p>
+        <p>O "rar" çıktısını ayrıştırıp dosya listesini almak için uygulamaya bir rutin kodlamak kolay olurdu.</p>
+        <p>Ancak Double Commander bunu yapmıyor.</p>
+        <p>Bunun yerine, bize tablonun nasıl ayrıştırılacağını kendimiz yapılandırma fırsatı sunarak son derece çok yönlü bir araç olmaktadır!</p>
+        <p>Hiçbir şey yapmamaktan biraz daha karmaşık olabilir ama diğer yandan, Double Commander, geliştiricilerinin bile haberdar olmadığı harici arşivleyicileri kullanabilme imkanı sunarak bize maksimum esneklik sağlar!</p>
+        <p>Arşivleyicinin bize verdiği çıktı tablosunu ayrıştırmamıza yardımcı olması için, çeşitli ifadelere harfler atadık.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5.3. <a name="standardparsing">Ayrıştırma için standart sözdizimi</a></h2>
+        <p>Aşağıdaki tabloda, harici arşivleyicinin oluşturduğu içerik listesini ayrıştırmada kullanılan "Standart Sözdizimi” verilmiştir.</p>
+        <p>Bir sonraki örnekte göreceğimiz gibi, "standart Sözdizimi", "gelişmiş sözdizimi" ile kıyaslandığında doğrudan yerine koyma temeline daha yakındır. <p>.
+        <p>"Gelişmiş sözdizimi" ile kıyaslandığında sonuçları daha hızlı ayrıştırdığı için olabildiğince standart sözdizimini kullanmaya çalışacağız.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Standart Sözdizimi Ayrıştırması</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">n</div></td><td class="hintcell">dosya adı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">z</div></td><td class="hintcell">sıkıştırılmamış boyut</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">c</div></td><td class="hintcell">dosya açıklaması</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">p</div></td><td class="hintcell">sıkıştırılmış boyut</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">d</div></td><td class="hintcell">gün</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">t</div></td><td class="hintcell">ay</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">TTT</div></td><td class="hintcell">üç harfli ay adı (Oca, Şub, Mar, ...)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">y</div></td><td class="hintcell">yıl</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">h</div></td><td class="hintcell">saat</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">H</div></td><td class="hintcell">saat değiştirici harf (ö.ö. - öğleden önce, ö.s. - öğleden sonra)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">m</div></td><td class="hintcell">dakika</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">s</div></td><td class="hintcell">saniye</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">a</div></td><td class="hintcell">öznitelikler</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">e</div></td><td class="hintcell">dosya uzantısı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">?</div></td><td class="hintcell">bir simgeyi atla</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">*</div></td><td class="hintcell">ilk boşluğa veya satır sonuna kadar atla</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">+</div></td><td class="hintcell">Satır sonundaki ad alanı için: satır sonuna kadar tüm karakterleri kullanın</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5.4. <a name="standardexample">Standart sözdizimi ile örnek</a></h2>
+        <p>Buradaki asıl nokta, Double Commander'ı harici arşivleyici için yapılandıracak olan "Listeleme biçimi" dizesini yazmak üzere önceki tablodaki mevcut ifadeleri kullanmaktır; böylece DC dizin ve dosya adları, dosya boyutu, öznitelikler, dosya tarihleri gibi arşiv içeriklerine ulaşabilir.</p>
+        <p>Bu satırı oluşturmaya yardımcı olmak için ilk adımımız, örneğin Not Defteri'ne daha önce manuel olarak oluşturduğumuz bir dosya için bir metin satırı yazmak ve altına önceki tablodan uygun ifadeyi eklemek olacaktır.</p>
+        <p>İşte bunun bir örneği:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg10.png" width="840" height="180"></p>
+        <p>Gördüğünüz gibi, harici arşivleyicimizin bize sunduğu arşiv içeriği çıktısına her bir alanın bulunduğu tam konuma karşılık gelen ayrıştırma ifadesi harfini yazdık:</p>
+        <ul>
+          <li>Dosya özniteliklerinin bulunduğu yer için bir dizi "a"</li>
+          <li>Dosyaların sıkıştırılmamış boyutunun bulunduğu yer için bir dizi "z"</li>
+          <li>Dosyaların tarih ve saati için tarih ve saat harfleri</li>
+          <li>Gerçek dosya adlarının bulunduğu yer için fazlasıyla yeterli olacak bir dizi "n"</li>
+        </ul>
+        <p>Bu şekilde yapılandırıldığında, önceki "just.rar" arşivimizi bir panele seçersek, bir dizine giriyormuş gibi girmek için <kbd>GİRİŞ</kbd> tuşuna basınca yaptığımızın ana hatlarıyla işe yaradığını gösteren dosya içeriğini görürüz (son dosyayı göz ardı edersek...):</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg11.png" width="740" height="570"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5.5. <a name="advancedparsing">Ayrıştırma için gelişmiş sözdizimi</a></h2>
+        <p>Aşağıdaki tablo, harici arşivleyicinin bize oluşturduğu içerik listesini ayrıştırmak için "Gelişmiş Sözdizimi" sunar.</p>
+        <p>Bu sözdiziminin içeriğinin işlenmesi önceki tablodakilere göre biraz daha uzun sürecektir.</p>
+        <p>Bu nedenle, bunları yalnızca bir önceki yöntemle sorunlu bir durumu çözmek mümkün olmadığında kullanın.</p>
+        <p>Kullanım örneği bir sonraki bölümde yer alacaktır.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Gelişmiş Sözdizimi Ayrıştırması</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">+</div></td><td class="hintcell">Ad alanı satır sonunda değilse; bir sonraki boşluğa kadar tüm karakterleri kullanın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">+</div></td><td class="hintcell">Herhangi bir sayısal alandan sonra; ilk sayısal olmayan karaktere kadar tüm rakamları kullanın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">n+</div></td><td class="hintcell">Dosya adı için satır sonuna kadar tüm karakterleri kullanın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">z+</div></td><td class="hintcell">Sıkıştırılmamış boyut için: ilk sayısal olmayan karaktere kadar tüm rakamları kullanın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">p+</div></td><td class="hintcell">Boyut sıkıştırılmış ise ilk sayısal olmayan karaktere kadar tüm rakamları kullanın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">$</div></td><td class="hintcell">Bir sonraki karaktere veya satır sonuna kadar tüm boşlukları/sekme duraklarını atlayın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">\</div></td><td class="hintcell">Veri bir sonraki satırda devam ediyor (en fazla 2 satır desteklenir).</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">x</div></td><td class="hintcell">Tam olarak 1 boşluk bırakın. Bu konumda farklı bir karakter varsa, tüm satırı yok sayın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">z=1024</div></td><td class="hintcell">Sıkıştırılmamış boyut verilen değerle çarpıldı (burada: 1024)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">p=1024</div></td><td class="hintcell">Sıkıştırılmış boyut, verilen değerle çarpıldı (burada: 1024)</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.5.6. <a name="advancedexample">Gelişmiş sözdizimi ile örnek</a></h2>
+        <p>"Standart sözdizimi" ile verilen örnek iyi bir başlangıç noktasıydı, ancak mükemmel değildi.</p>
+        <p>Yine de doğru çalışmayacağı bazı durumlar olabilir.</p>
+        <p>Çok büyük dosyalarda, dosya boyutu beklenenden daha büyük olacağından ilk listeleme denememiz başarısız olacaktır.</p>
+        <p>Şu dosyaya bakalım: <code>007 Skyfall.TS</code>.</p>
+        <p>Görüntülemede doğru bilgiler olmadığını görebiliriz. Karşılaştıralım:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg12.png" width="782" height="135"></p>
+        <p>Dosya adı, dosya boyutu, tarih vb. açısından yanlış olduğunu görüyoruz.</p>
+        <p>Bu sorunlu durumu çözmek için "gelişmiş sözdizimi" öğelerini kullanalım.</p>		
+        <p>Çıktı alanları her zaman tam olarak aynı genişlikte olmasa bile gelişmiş sözdiziminin çalışmasını sağlamak için şunları kullanabiliriz:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg13.png" width="270" height="46"></p>
+        <p>Kavramak biraz daha çaba gerektirse de, açıklaması oldukça kolay olduğundan işimiz bittiğinde oluşturmanın o kadar da karmaşık olmadığını göreceğiz.</p>
+        <p>Aşağıda her bir küçük bloğun ayrıştırılmasını görselleştirmemize yardımcı olacak renkli bir açıklama yer almaktadır:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg14.png" width="756" height="510"></p>
+        <p>Gördüğünüz "listeleme biçimi" dizesini kullanarak testimizi tekrar yaptığımızda çok büyük bir dosya için bile doğru sonuca ulaşırız:<p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg15.png" width="742" height="576"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.6. <a name="actionextract">"Ayıkla" eylemini yapılandırma</a></h2>
+        <p>Daha önce belirtilen değişkenler ve değişken değiştiriciler kullanılarak, seçilen arşivden bir dosyayı veya tüm dosyaları "ayıklamak" amacıyla harici arşivleyicinin nasıl çağrılacağı bu satırda yapılandırılır.</p>
+        <p>"rar.exe" örneğimize geri dönersek, dokümantasyonundan bir dosyayı veya bir dosya grubunu ayıklamak istediğimizi belirtmek için "x" komutunu kullandığımızı biliyoruz.</p>
+        <p>"rar.exe" ile, parametre içinde ayıklanacak dosyaların bir listesini de sunabiliriz.</p>
+        <p>Bu nedenle, Double Commander'ın bize sunduğu <code>%L</code> değişkeninden yararlanacağız. Bu değişken, etkin etkin panelden ayıklanması istenen seçili her bir dosyanın adını içeren bir metin dosyası oluşturacak; parametre olarak bu tek liste dosyasını ileteceğiz.</p>
+        <p>Bu örnekte, ayıklama işlemini gerçekleştirmek için "rar.exe" ile yapılandırılacak satırı inceleyebilirsiniz:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg16.png" width="152" height="42"></p>
+        <p>Bu örneğin açıklaması şu şekildedir:</p>
+        <ul>
+          <li><B>%P</B> - Yerine yapılandırılan harici arşivleyici çalıştırılabilir dosyası konur.</li>
+          <li><B>x</B> - "rar.exe" dosyasının ayıklama komutudur.</li>
+          <li><B>-y</B> - "rar.exe" dosyasının, tüm sorgulara "Evet" yanıtı verilmesini sağlayan parametresidir; böylece mevcut dosyanın üzerine yazılması kabul edilir.</li>
+          <li><B>%AQA</B> - Arşivin dosya adıdır. "Q", adın içinde boşluk olması durumunda Double Commander'ın bu adı tırnak içine alacağını belirtir. "A" adın içinde ANSI kodlaması kullanılmasını sağlar.</li>
+          <li><B>@</B> - “rar.exe” dosyasına, ayıklanacak ögeler için bir dosya listesi sunulacağını belirten semboldür.</li>
+          <li><B>%LQA</B> - Harici arşivleyici tarafından işlenecek dosya adları listesinin dosya adıdır.</li>
+        </ul>
+        <p>Böylece bu komut; tüm içerik, tek bir dosya veya benzeri ayıklanmak üzere bir arşiv seçildiğinde çağrılacaktır.</p>
+        <p>İlk başta fark etmeyebilirsiniz; ancak bir arşive sanki bir dizinmiş gibi girdiğinizde ve arşiv içindeki bir dosyanın içeriğini görüntülemek için "F3" tuşuna bastığınızda, bu "Ayıkla" eylemi arka planda gerçekleştirilir. Seçili dosya, bu şablon kullanılarak geçici bir konuma ayıklanır ve F3 tuşuyla çağrılan görüntüleyicide inceleyeceğiniz dosya da bu geçici dosya olacaktır.</p>
+        <p>Bu özellik, <a href="cmds.html#cm_ExtractFiles">cm_ExtractFiles</a> dahili komutu kullanıldığında devreye girer.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.7. <a name="actionadding">"Ekleme" eyleminin yapılandırılması</a></h2>
+        <p>Daha önce belirtilen aynı <a href="#variables">değişkenler</a> ve <a href="#modifiers">değişken değiştiriciler</a> kullanılarak, bir dosyayı veya tüm dosyaları seçilen arşive "sıkıştırmak" amacıyla harici arşivleyicinin nasıl çağırılacağı bu satırda yapılandırılır.</p>
+        <p>"rar.exe" üzerindeki örneğe devam edildiğinde, bir arşiv oluşturulacağını veya mevcut bir arşive bir dosya ya da dosya grubu eklenmek istendiğini belirtmek için "a" komutunun kullanıldığı, program dokümantasyonunda belirtilmektedir.</p>
+        <p>“rar.exe” ile, parametre içinde eklenecek dosyaların listesi de sunulabilir.</p>
+        <p>Böylece, Double Commander uygulamasının sunduğu <code>%L</code> değişkeninden yararlanabilirsiniz. Bu değişken, etkin panelden arşive eklenmek üzere seçilen tüm dosyaları içeren bir metin dosyası oluşturur ve parametre olarak aktarılacak tek liste dosyası bu olur.</p>
+        <p>Bu örnekte, arşiv oluşturma veya ekleme işlemi için "rar.exe" ile yapılandırılacak satırı inceleyebilirsiniz:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg17.png" width="146" height="44"></p>
+        <p>Bu örneğin açıklaması şu şekildedir:</p>
+        <ul>
+          <li><B>%P</B> - Yerine yapılandırılan harici arşivleyici çalıştırılabilir dosyası konur.</li>
+          <li><B>a</B> - "rar.exe" için bir arşiv oluşturma veya mevcut birine ekleme komutu</li>
+          <li><B>-y</B> - Rahatsız edilmemek için "rar.exe" dosyasının tüm sorguları "Evet" olarak kabul etmesini sağlayan bir parametredir.</li>
+          <li><B>%AQA</B> - Arşivin dosya adıdır. "Q", adın içinde boşluk olması durumunda Double Commander'ın bu adı tırnak içine alacağını belirtir. "A" adın içinde ANSI kodlaması kullanılmasını sağlar.</li>
+          <li><B>@</B> - “rar.exe” dosyasına, sıkıştırılacak ögeler için bir dosya listesi sunulacağını belirten semboldür.</li>
+          <li><B>%LQA</B> - Harici arşivleyici tarafından işlenecek dosya adları listesinin dosya adıdır.</li>
+        </ul>
+        <p>Böylece bu komut; bir dosya veya dosya grubu seçip "rar" harici arşivleyicisini kullanarak sıkıştırmak istediğinizde çağrılır.</p>
+        <p>Bu özellik, <a href="cmds.html#cm_PackFiles">cm_PackFiles</a> dahili komutu kullanıldığında devreye girer.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.8. <a name="actiondelete">"Sil" eyleminin yapılandırılması</a></h2>
+        <p>Bazı sıkıştırılmış dosya biçimleri, doğrudan sıkıştırılmış dosya içindeki bir dosyanın silinebilmesini destekler.</p>
+        <p>Bu özellik destekleniyorsa, harici arşivleyicinin bu işlemi gerçekleştirmek üzere nasıl çağrılacağını belirtmek için Double Commander uygulamasını yapılandırabilirsiniz.</p>
+        <p>Bu komutun kullanılacağı tipik durum; bir arşive girdiğinizde, arşiv içinden bir dosya seçtiğinizde ve bu dosyayı silmek için tıkladığınızda ortaya çıkar.</p>
+        <p>Bu “Silme Eylemi” yapılandırılırsa, eylem için bu ayar kullanılır.</p>
+        <p>Bu eylemin, harici arşiv yapılandırmasının ikinci sekmesinde yer aldığını lütfen unutmayınız.</p>
+        <p>“rar.exe” dosyası üzerindeki örneğe devam edildiğinde, bu eylem şu şekilde yapılandırılabilir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg18.png" width="318" height="84"></p>
+        <p>Bu örneğin açıklaması şu şekildedir:</p>
+        <ul>
+          <li><B>%P</B> - Yerine yapılandırılan harici arşivleyici çalıştırılabilir dosyası konur.</li>
+          <li><B>d</B> - “rar.exe” dosyasının arşiv içindeki bir bir kaydı silme komutudur.</li>
+          <li><B>-y</B> - Rahatsız edilmemek için "rar.exe" dosyasının tüm sorguları "Evet" olarak kabul etmesini sağlayan bir parametredir.</li>
+          <li><B>%AQA</B> - Arşivin dosya adıdır. "Q", adın içinde boşluk olması durumunda Double Commander'ın bu adı tırnak içine alacağını belirtir. "A" adın içinde ANSI kodlaması kullanılmasını sağlar.</li>
+          <li><B>@</B> - “rar.exe” dosyasına, silinecek dosyalar için bir dosya listesi sunulacağını belirten semboldür (evet, aynı anda birden fazla dosya silinebilir).</li>
+          <li><B>%LQA</B> - Harici arşivleyici tarafından işlenecek dosya adları listesinin dosya adıdır.</li>
+        </ul>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.9. <a name="actiontest">“Test” eyleminin yapılandırılması</a></h2>
+        <p>Bazı arşivleyiciler; arşivlenmiş bir dosyanın bütünlüğünü doğrulamak, dosya içinde hata bulunmadığından ve hiçbir yapının bozulmadığından emin olmak için kullanılır.</p>
+        <p>Bu özellik destekleniyorsa, harici arşivleyicinin bu işlemi gerçekleştirmek üzere nasıl çağrılacağını belirtmek için Double Commander uygulamasını yapılandırabilirsiniz.</p>
+        <p>“rar.exe” dosyası üzerindeki örneğe devam edildiğinde, bu eylem şu şekilde yapılandırılabilir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg19.png" width="288" height="32"></p>
+        <p>Bu örneğin açıklaması şu şekildedir:</p>
+        <ul>
+          <li><B>%P</B> - Yerine yapılandırılan harici arşivleyici çalıştırılabilir dosyası konur.</li>
+          <li><B>t</B> - “rar.exe” dosyasının bir arşivi doğrulama komutudur.</li>
+          <li><B>-y</B> - Rahatsız edilmemek için "rar.exe" dosyasının tüm sorguları "Evet" olarak kabul etmesini sağlayan bir parametredir.</li>
+          <li><B>%AQA</B> - Arşivin dosya adıdır. "Q", adın içinde boşluk olması durumunda Double Commander'ın bu adı tırnak içine alacağını belirtir. "A" adın içinde ANSI kodlaması kullanılmasını sağlar.</li>
+        </ul>
+        <p>Bu özellik, <a href="cmds.html#cm_TestArchive">cm_TestArchive</a> dahili komutu kullanıldığında devreye girer.</p>
+        <p>Herhangi bir hata bulunmaması durumunda test etme penceresi kapatılır. Bir hata oluşması durumunda aşağıdaki gibi bir mesaj görüntülenir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg20.png" width="526" height="188"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.10. <a name="actionextractnpath">"Yol olmadan ayıkla" eyleminin yapılandırılması</a></h2>
+        <p>Varsayılan olarak, bir arşivi ayıklamak üzere <a href="cmds.html#cm_ExtractFiles">cm_ExtractFiles</a> dahili komutu çağrıldığında; arşiv içindeki dosyalar belirli bir dizin yapısına sahipse arşivleyici, dosyalar ayıklanırken aynı yapıyı yeniden oluşturur.</p>
+        <p>Ancak bu durum arşivleyici tarafından desteklendiğinde, dizin yapısını yeniden oluşturmadan tüm dosyaların aynı konuma ayıklanması bazen daha uygun olabilir.</p>
+        <p>"Yol olmadan ayıkla" eylemi, yapılandırıldığı durumlarda tam olarak bu işlev için kullanılır.</p>
+        <p>Örneğin "rar.exe" dosyası kullanıldığında, bu eylemi gerçekleştirecek komut şu şekildedir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg24.png" width="376" height="28"></p>
+        <p>Bu örneğin açıklaması şu şekildedir:</p>
+        <ul>
+          <li><B>%P</B> - Yerine yapılandırılan harici arşivleyici çalıştırılabilir dosyası konur.</li>
+          <li><B>e</B> - Dizin yapısını yeniden oluşturmadan bir arşivden ayıklama işlemi gerçekleştiren "rar.exe" dosyasının komutudur.</li>
+          <li><B>-y</B> - Rahatsız edilmemek için "rar.exe" dosyasının tüm sorguları "Evet" olarak kabul etmesini sağlayan bir parametredir.</li>
+          <li><B>%AQA</B> - Arşivin dosya adıdır. "Q", adın içinde boşluk olması durumunda Double Commander'ın bu adı tırnak içine alacağını belirtir. "A" adın içinde ANSI kodlaması kullanılmasını sağlar.</li>
+          <li><B>%LQA</B> - Harici arşivleyici tarafından işlenecek dosya adları listesinin dosya adıdır.</li>
+        </ul>
+        <p>Bunun etkisi, bir arşivi ayıklamak istediğinizde açılan iletişim kutusunda görülür:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg23.png" width="550" height="280"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5.11. <a name="actionselfextract">"Kendiliğinden Açılan (SFX) Arşiv Oluştur" eyleminin yapılandırılması</a></h2>
+        <p>Bazı arşivleyiciler, "kendiliğinden açılan" sıkıştırılmış dosyalar oluşturabilmektedir.</p>
+        <p>Bu işlem sonucunda, çalıştırıldığında sıkıştırılmış içeriği ayıklayan bir yürütülebilir dosya elde edilir.</p>
+        <p>Bu özellik, sıkıştırılmış dosya içeriğine ihtiyaç duyacak kişilerin bu içeriği çıkarırken sorun yaşamayacağından emin olmak istendiğinde büyük kolaylık sağlar. Herhangi bir kurulum yapılmasına gerek kalmadan yalnızca ilgili dosyanın yürütülmesiyle sıkıştırılmamış dosyalar elde edilir.</p>
+        <p>Bu eylem genel olarak "Ekleme" eylemine benzer şekilde yapılandırılır. Bu doğrultuda yalnızca, kendiliğinden açılan (SFX) bir çıktı istendiğini belirten bir parametre eklemesi yapılır.</p>
+        <p>Bu durum, "rar.exe" dosyası üzerindeki örnek için de geçerlidir. Bu eylem şu şekilde yapılandırılabilir:</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg21.png" width="330" height="28"></p>
+        <p>Bu örneğin açıklaması şu şekildedir:</p>
+        <ul>
+          <li><B>%P</B> - Yerine yapılandırılan harici arşivleyici çalıştırılabilir dosyası konur.</li>
+          <li><B>a</B> - "rar.exe" için bir arşiv oluşturma veya mevcut birine ekleme komutu</li>
+          <li><B>-y</B> - Rahatsız edilmemek için "rar.exe" dosyasının tüm sorguları "Evet" olarak kabul etmesini sağlayan bir parametredir.</li>
+          <li><B>-sfx</B> - "rar.exe" dosyası kullanıldığında, sonuçta elde edilen çıktının kendiliğinden açılan bir yürütülebilir dosya olmasının istendiğini belirten bir parametredir.</li>
+          <li><B>%AQA</B> - Arşivin dosya adıdır. "Q", adın içinde boşluk olması durumunda Double Commander'ın bu adı tırnak içine alacağını belirtir. "A" adın içinde ANSI kodlaması kullanılmasını sağlar.</li>
+          <li><B>@</B> - “rar.exe” dosyasına, sıkıştırılacak ögeler için bir dosya listesi sunulacağını belirten semboldür.</li>
+          <li><B>%LQA</B> - Harici arşivleyici tarafından işlenecek dosya adları listesinin dosya adıdır.</li>
+        </ul>
+        <p>Kendiliğinden açılan (SFX) bir arşiv oluşturmak için<a href="cmds.html#cm_PackFiles">cm_PackFiles</a>dahili komutunu kullanmak gibi sıkıştırılmış dosya oluştururken izlenen adımların her zamankiyle aynı olduğunu lütfen unutmayın. Ancak ekranda açılan iletişim kutusunda "Kendiliğinden Açılan (SFX) Arşiv Oluştur" seçeneği işaretlenmelidir.</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/archiveimg22.png" width="548" height="300"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+      </div>
+    </div>    
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="directoryhotlist.html">Önceki</a> | <a title="Sonraki Sayfa" href="shortcuts.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Translational" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

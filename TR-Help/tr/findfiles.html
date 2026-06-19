@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>Double Commander - Dosyaları Bul</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="help.html">Önceki</a> | <a title="Sonraki Sayfa" href="directoryhotlist.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.2. Dosyaları Bul</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#attributes">Belirli özniteliklere sahip dosyaları arama</a></dt>
+          <dt>2. <a href="#advpattrn">Gelişmiş desenler</a></dt>
+          <dt>3. <a href="#examples">Örnekler</a></dt>
+        </dl>
+      </div>
+
+      <div>
+        <h2><a name="attributes">1. Belirli özniteliklere sahip dosyaları arama.</a></h2>
+        <p>Belirli öznitelikleri aramak için, hangi özniteliklerin aranacağını ve bunların etkinleştirilip devre dışı bırakılması gerektiğini belirten bir dize deseni girmeniz gerekir.</p>
+        <p>Tek bir öznitelik şu biçimde temsil edilir:</p>
+        <p><code>&lt;öznitelik>+</code> veya <code>&lt;öznitelik>-</code></p>
+
+        <p>Artı işareti, dosyanın o özniteliğe sahip olması gerektiğini, eksi işareti ise dosyanın o özniteliğe sahip olmaması gerektiğini belirtir.</p>
+
+        <p>Çeşitli <tt>&lt;öznitelik></tt> tanımlayıcıları şunlardır:</p>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">WINDOWS İçerisindeki öznitelikler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Öznitelik harfi</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">r</div></td><td class="hintcell">Salt okunur</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">a</div></td><td class="hintcell">Arşiv</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">h</div></td><td class="hintcell">Gizli</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">s</div></td><td class="hintcell">Sistem</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">d</div></td><td class="hintcell">Dizin</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">l</div></td><td class="hintcell">Sembolik bağlantı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">t</div></td><td class="hintcell">Geçici</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">p</div></td><td class="hintcell">Seyrek</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">c</div></td><td class="hintcell">Sıkıştırılmış</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">e</div></td><td class="hintcell">Şifrelenmiş</td></tr>
+        </table>
+        <BR>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">UNIX/LINUX İçerisindeki Öznitelikler (İzinler)</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İzin harfleri</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">ur</div></td><td class="hintcell">Kullanıcı okuma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">uw</div></td><td class="hintcell">Kullanıcı yazma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">ux</div></td><td class="hintcell">Kullanıcı çalıştırma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">gr</div></td><td class="hintcell">Grup okuma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">gw</div></td><td class="hintcell">Grup yazma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">gx</div></td><td class="hintcell">Grup çalıştırma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">or</div></td><td class="hintcell">Diğerleri okuma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">ow</div></td><td class="hintcell">Diğerleri yazma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">ox</div></td><td class="hintcell">Diğerleri çalıştırma</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">us</div></td><td class="hintcell">Kullanıcı kimliği ayarla (SUID)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">gs</div></td><td class="hintcell">Grup kimliği ayarla (SGID)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">sb</div></td><td class="hintcell">Sabit bit</td></tr>
+        </table>
+        <BR>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">UNIX/LINUX İçerisindeki öznitelikler (Dosya Türleri)</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Dosya Türleri Harfleri</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">b</div></td><td class="hintcell">Blok</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">c</div></td><td class="hintcell">Karakter</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">d</div></td><td class="hintcell">Dizin</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">f</div></td><td class="hintcell">FIFO</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">l</div></td><td class="hintcell">Sembolik bağlantı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">r</div></td><td class="hintcell">Normal</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">s</div></td><td class="hintcell">Soket</td></tr>
+        </table>
+        <BR>
+
+        <p>Unix/Linux sistemlerinde izinlerin sekizlik gösterimini de kullanabilirsiniz. Örneğin 0750, ur, uw, ux, gr ve gx'in birleşimiyle aynıdır.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div> 
+        <h2>2. <a name="advpattrn">Gelişmiş desenler</a></h2>
+        <p>Birkaç öznitelik VE ilişkisiyle birleştirilebilir.</p>
+        <p>Sadece bir deseni diğerinin ardından belirtin.</p>
+        <p>Örneğin: <tt>r+s+h+</tt>, salt okunur, gizli ve sistem öznitelikleri ayarlanmış dosyalarla eşleştirir.</p>
+
+        <p>Bu tür VE öznitelik grupları, bir VEYA ilişkisiyle birleştirilebilir.</p>
+        <p>Bu, "|" karakteri (dikey çubuk) kullanılarak yapılır. Örneğin: <tt>r+|s+h+</tt>, aşağıdaki özelliklerden birine sahip dosyalarla eşleştirir:</p>
+        <ul>
+          <li>salt okunur özniteliği ayarlanmış</li>
+          <li>hem gizli hem de sistem öznitelikleri ayarlanmış.</li>
+        </ul>
+
+        <p>Dizinin başında belirtilen "!" karakterini kullanarak VE dizilerinin tersini almak mümkündür.</p>
+        <p>Örneğin: <tt>!r+s+h+</tt>, salt okunur, gizli ve sistem öznitelikleri ayarlanmış olmayan dosyalarla eşleştirir.</p>
+        <p>Eşleşen dosya, bu özniteliklerden hiçbirine, birine veya daha fazlasına sahip olabilir, ancak hepsine sahip olamaz.</p>
+        <p>Tersini alma yalnızca VE dizileri için geçerlidir, bu nedenle <tt>!r+|!s+h+</tt> deseni, aşağıdaki özelliklerden birine sahip dosyalarla eşleştirir:</p>
+        <ul>
+          <li>salt okunur özniteliği ayarlanmamış (r- ile aynı)</li>
+          <li>hem gizli hem de sistem öznitelikleri ayarlanmamış.</li>
+        </ul>
+
+        <p>Dizileri ayırmak için parantez kullanamazsınız.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>3. <a name="examples">Örnekler</a></h2>
+        <BR>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Windows İçerisinde Örnek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Örnek Harfler</th><th class="categorydesccolumn">Nasıl Yorumlanır</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">a+s-h-</div></td><td class="hintcell">Arşiv özniteliği ayarlanmış ve sistem ya da gizli öznitelikleri ayarlanmamış dosyaları eşleştirir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">e+|c+</div></td><td class="hintcell">Sıkıştırılmış veya şifrelenmiş olan dosyaları eşleştirir (bunlar NTFS öznitelikleridir).</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">d-</div></td><td class="hintcell">Dosyaları eşleştirir ancak dizinleri eşleştirme.</td></tr>
+        </table>
+        <BR>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Unix/Linux' İçerisinde Örnek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Örnek Harfler</th><th class="categorydesccolumn">Nasıl Yorumlanır</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">uw+|gw+|ow+</div></td><td class="hintcell">Kullanıcı, grup veya başkaları tarafından yazılabilir olan dosyaları eşleştirir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">222+</div></td><td class="hintcell">Kullanıcı, grup ve başkaları tarafından yazılabilir olan dosyaları eşleştirir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">d+ox+</div></td><td class="hintcell">Herkes tarafından erişilebilir olan dizinleri eşleştirir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">!700+</div></td><td class="hintcell">Kullanıcıya tam olarak erişilebilir olmayan dosyaları eşleştirir.</td></tr>
+        </table>
+        <BR>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+      </div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="help.html">Önceki</a> | <a title="Sonraki Sayfa" href="directoryhotlist.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

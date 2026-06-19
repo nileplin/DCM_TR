@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Parametrelerdeki Değişkenler</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander " href="http://doublecmd.sourceforge.net/" target="_blank"> Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="toolbar.html">Önceki</a> | <a title="Sonraki Sayfa" href="cmds.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.7. Parametrelerdeki Değişkenler</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#quickpres">Hızlı sunum</a></dt>
+          <dt>2. <a href="#basicvar">Temel parametre değişkenleri</a></dt>
+          <dt>3. <a href="#basicsuffix">Temel son ek değişkeni</a></dt>
+          <dt>4. <a href="#numsuffix">Numaralı son ek</a></dt>
+          <dt>5. <a href="#prefixpostfix">Her dosya için ön ek ve son ek belirleme</a></dt>
+          <dt>6. <a href="#pathpanel">Panel yolu</a></dt>
+          <dt>7. <a href="#quotation">Sonuçta tırnak işareti</a></dt>
+          <dt>8. <a href="#trailingdelim">Sondaki yol sınırlaması</a></dt>
+          <dt>9. <a href="#listoffiles">Dosya listesi</a></dt>
+          <dt>10. <a href="#suffixforlist">Dosya listesi için son ek</a></dt>
+          <dt>11. <a href="#combsuffixlist">Dosya listesi için son ek kombinasyonları</a></dt>
+          <dt>12. <a href="#executeterm">Terminalde çalıştır</a></dt>
+          <dt>13. <a href="#interaction">Etkileşim</a></dt>
+          <dt>14. <a href="#miscellaneous">Çeşitli değişkenler</a></dt>
+          <dt>15. <a href="#summaryall">Tüm değişkenlerin özet tablosu</a></dt>
+        </dl>
+      </div>
+
+      <div>
+        <h2>1. <a name="quickpres">Hızlı sunum</a></h2>
+        <P>Değişken, <a href="toolbar.html">araç çubuğu düğmelerini</a> yapılandırırken veya <a href="help.html#5_2_fileAssoc">dosya ilişkilendirme</a> eylemini ayarlarken bize yardımcı olacaktır.</p>
+        <P>Bunları temel olarak, geçerli seçili dosya(lar)a, bulunduğumuz dizine ve panellerde görüntülediğimiz bağlamla ilgili diğer şeylere göre bir komuta parametre sağlamanın zamanı geldiğinde kullanırız.</p>
+        <P>İşte kolay bir örnek. Kişi, Irfanview'i parametre olarak <code>%p</code> değişkeniyle başlatmak için bir düğme yapılandırdı.</p>
+        <P>Kişi o düğmeye tıkladığında, etkin paneldeki geçerli seçili dosya ile <code>%p</code> değişkeni yerine konularak Irfanview başlatılacaktır.</p>
+        <P>Bu sayfada açıklanan <B>değişkenler</B> işte bu anlama gelir.</p>
+        <p>Göreceğiniz gibi, çoğu yüzde işareti <code>%</code> ile başlar.</p>
+        <p class="image"><img title="Değişken örneği" alt="Değişken örneği" src="images/imgDC/variablesample.png" width="616" height="200"></p>	
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>2. <a name="basicvar">Temel parametre değişkenleri</a></h2>
+        <p>Bunlar, kullanılabilecek ve geçerli seçimle ilgili olan temel değişkenlerdir.</p>
+        <p>Varsayılan olarak, tüm sonuç değerleri tırnak içine alınır. Tırnak içine alınmamış hallerine ihtiyacınız varsa, <a href="#quotation">Sonuçta tırnak kullanımı</a> bölümüne bakın.</p>
+        <p><I>Her biri için, örnek C:\Users\UserName\Desktop\comment.png dosyasına işaret ettiğimiz varsayılarak verilmiştir.</I></p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Temel Değişkenler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Değişkenler</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%p</div></td>
+            <td class="hintcell">Tam dosya adı, yol+dosya adı<BR><code>Örnek: %p = "C:\Users\UserName\Desktop\comment.png"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%f</div></td>
+            <td class="hintcell">Sadece dosya adı, uzantı dahil<BR><code>Örnek: %f = "comment.png"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%d</div></td>
+            <td class="hintcell">Sadece yol, sondaki yol ayırıcısı hariç<BR><code>Örnek: %d = "C:\Users\UserName\Desktop"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%o</div></td>
+            <td class="hintcell">Uzantısız dosya adı<BR><code>Örnek: %o = "comment"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%e</div></td>
+            <td class="hintcell">Sadece uzantı, noktasız<BR><code>%e = "png"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%v</div></td>
+            <td class="hintcell">Geçerli etkin dizine göre göreli dosya adı<BR>Örneğin, <a href="cmds.html#cm_flatview">cm_FlatView</a> dahili komutunu çağırdıysanız bu geçerlidir.<BR><code>"C:\Users\UserName" dizininden bir düz görünüm yaptıysak, %v "Masaüstü\comment.png" olarak sonuçlanacaktır.</code></td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>3. <a name="basicsuffix">Temel son ek değişkeni</a></h2>
+        <p>Yukarıda belirtilen değişken harfini takiben, kullanmak istediğimiz şeye hassasiyet katmak için öncekine başka bir harf ekleyebiliriz.</p>
+        <p><I>Her biri için örnek şu varsayımla verilmiştir:<BR>Sol panelde "C:\LeftFolder\File.lft" dosyasını işaret ediyoruz.<BR>Sağ panelde "C:\RightFolder\File.rgh" dosyasını işaret ediyoruz.<BR>Geçerli etkin panel sağdaki paneldir.</i></p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Temel son ek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Son ek</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">s</div></td>
+            <td class="hintcell">Kaynak veya etkin panel (sol veya sağ olması fark etmeksizin)<BR><code>Örnek: %ps = "C:\RightFolder\File.rgh"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">t</div></td>
+            <td class="hintcell">Hedef veya etkin olmayan panel (sol veya sağ olması fark etmeksizin)<BR><code>Örnek: %pt = "C:\LeftFolder\File.lft"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">l</div></td>
+            <td class="hintcell">Sol panel<BR><code>Örnek: %pl = "C:\LeftFolder\File.lft"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">r</div></td>
+            <td class="hintcell">Sağ Panel<BR><code>Örnek: %pr = "C:\RightFolder\File.rgh".</code></td>
+          </tr>
+          <tr>
+            <td class="varcell">
+              <div class="firstcolumnaleft">p</div></td>
+            <td class="hintcell">Her iki panel, önce aktif olan, sonra bir boşluk, sonra pasif olan ikinci<BR><code>Örnek: %pp = "C:\RightFolder\File.rgh" "C:\LeftFolder\File.lft".</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">b</div></td>
+            <td class="hintcell">Her iki panel, önce sol panel, sonra bir boşluk, sonra sağ panel<BR><code>Örnek: %pb = "C:\LeftFolder\File.lft" "C:\RightFolder\File.rgh".</code></td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>4. <a name="numsuffix">Numaralı son ek</a></h2>
+        <p>Şu anda birçok dosya seçiliyse, hangisini kullanmak istediğimizi belirtmek için önceki bahsedilene bir son ek ekleyebiliriz.</p>
+        <p><I>Tablonun her bir ögesi için, kaynak panelin "C:\temp\" konumunu gösterdiğini ve "FileA.txt", "FileB.txt" gibi, "FileZ.txt"'ye kadar adlandırılmış yirmi altı dosya seçtiğimizi varsayıyoruz.</I></p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Numaralı son ek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Son ek</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">1</div></td>
+            <td class="hintcell">İlk seçili dosya<BR><code>Örnek: %ps1 = "C:\temp\FileA.txt".</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">2</div></td>
+            <td class="hintcell">İkinci seçili dosya<BR><code>Örnek: %ps2 = "C:\temp\FileB.txt".</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">3</div></td>
+            <td class="hintcell">Üçüncü seçili dosya<BR><code>Örnek: %ps3 = "C:\temp\FileC.txt".</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">21</div></td>
+            <td class="hintcell">Yirmi birinci seçili dosya<BR><code>Örnek: %ps21 = "C:\temp\FileU.txt".</code></td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>5. <a name="prefixpostfix">Her dosya için ön ek ve son ek belirleme</a></h2>
+        <p>Bazen bir çalıştırılabilir dosyaya parametreler aktarırken, dosya adlarının öncesine bir şeyler eklememiz gerekir.</p>
+        <p>Bazı diğer zamanlarda ise dosya adlarının hemen öncesine ve hemen sonrasına bir şeyler eklemek isteriz.</p>
+        <p>Lütfen aşağıdakilerin seçili her bir öge için geçerli olacağını unutmayın.</p>
+        <p><I>Tablodaki her bir öge için, şu anda "C:\Windows\Fonts" dizininde olduğumuzu ve "courrier.ttf", "fixedsys.ttf" ve "terminal.ttf" adlı üç dosyanın seçili olduğunu varsayıyoruz.</I></p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Ön Ek ve Son Ek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ön Ek ve Son Ek</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{}</div></td>
+            <td class="hintcell">Tek bir küme parantezi seti, parantezler arasındaki metnin seçili her bir ögenin önüne eklenmesiyle sonuçlanır.<BR><code>Örnek: %fs{+} = "+courrier.ttf" "+fixedsys.ttf" "+terminal.ttf"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{}{}</div></td>
+            <td class="hintcell">İki küme parantezi seti, parantezler arasındaki metnin seçili her bir öögein sırasıyla önüne ve arkasına yerleştirilmesiyle sonuçlanır.<BR><code>Örnek: %fs{[}{]} = "[courrier.ttf]" "[fixedsys.ttf]" "[terminal.ttf]"</code></td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>6. <a name="pathpanel">Panel yolu</a></h2>
+        <p>Daha önce, panel içindeki mevcut seçili ögelerle ilgili değişkenleri belirtmiştik.</p>
+        <p>Ancak bir panelin dizin adına atıfta bulunmak istediğimizi belirtmek için <code>%D</code> değişkenini de kullanabiliriz.</p>
+        <p>Hangi panele atıfta bulunmak istediğimizi belirtmek için bu değişkene yukarıda belirtilen aynı <a href="#basicsuffix">son ek harfini</a> ekleyebiliriz.</p>
+        <p><I>Her biri için örnek şu varsayımla verilmiştir:<BR>Sol panelde "C:\Reference" dizinindeyiz.<BR>Sağ panelde "E:\Work" dizinini işaret ediyoruz.<BR>Geçerli etkin panel sağdaki paneldir.</i></p>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Panel yolu</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Değişken</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%D</div></td>
+            <td class="hintcell">Tek başına, son ek olmadan, mevcut etkin panelin yolunu döndürür.<BR><code>Örnek: "E:\Work"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%Ds</div></td>
+            <td class="hintcell">Mevcut aktif veya kaynak panelin dizini (sol veya sağda olmasının önemi yok)<BR><code>Örnek: "E:\Work"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%Dt</div></td>
+            <td class="hintcell">Pasif veya hedef panelin dizini (sol veya sağda olmasının önemi yok)<BR><code>Örnek: "C:\Reference"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%Dl</div></td>
+            <td class="hintcell">Sol panelin dizini<BR><code>Örnek: "C:\Reference"</code></td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%Dr</div></td>
+            <td class="hintcell">Sağ panelin dizini<BR><code>Örnek: "E:\Work"</code></td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>7. <a name="quotation">Sonuçta tırnak işareti</a></h2>
+        <p>Daha önce gördüğünüz gibi, tarihi ve eski nedenlerden dolayı DC, sonucu tırnak içinde döndürecektir.</p>
+        <p>Bu, dosya adında boşluklar olduğunda, dosya adını parametre olarak geçirmek istediğimizde ve her şeyin çalışmasını istediğimizde başlangıçta faydalıydı.</p>
+        <p>Ancak yeni değişkenler eklendikçe, tırnaksız bir sonuç almanın bir yoluna ihtiyacımız olduğu açıkça görüldü. Temel bir örnek genellikle, bir kaynak dosya adını, ancak uzantısız sadece dosya adını, satırda kendimiz belirleyeceğimiz yeni bir özel uzantıyla birleştirmek istediğimiz zamandır.</p>
+        <p>Bu nedenle, aynı şeyi tırnaksız döndürecek yeni değişkenler eklemek yerine, aynı anlama gelen aynı değişkenleri kullanmaya devam edebiliriz, ancak DC'ye bundan sonra, değerlendirdiğimiz satırın sonuna kadar, sonucu tırnak içine almamasını belirtmek için parametre satırında önceden %"0 gibi bir şey ayarlamamız yeterlidir.</p>
+        <p>Temel olarak şunlara sahip olacağız:</p>
+        <dl>
+          <dt><code>%"0</code> : bu konumdan itibaren, ortaya çıkan dosya adı tırnaksız olacaktır</dt>
+          <dt><code>%"1</code> : bu konumdan itibaren, ortaya çıkan dosya adı tırnak içinde olacaktır</dt>
+          <dt><code>%" </code> : varsayılanı geri yüklemek için de kabul edilir, yani sonucun tırnak içinde olmasıdır.</dt>
+        </dl>
+
+        <p>Aşağıdaki tablo, adı "Client List.mdb" olan bir dosya seçtiğimiz durumda ve tırnaklı/tırnaksız dizelerin çeşitli kombinasyonlarının sonucunu bize bir örnek olarak sunmaktadır.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Tırnak İşareti Kullanımı Örnekleri</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%o.zip</div></td>
+            <td class="hintcell">"Client List".zip </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%"0%o.zip</div></td>
+            <td class="hintcell">Client List.zip </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%"0"%o.zip"</div></td>
+            <td class="hintcell">"Client List.zip"</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%"0"%o.zip" %"1%f</div></td>
+            <td class="hintcell">"Client List.zip" "Client List.mdb"</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>8. <a name="trailingdelim">Sondaki yol sınırlaması</a></h2>
+        <p>Daha önce gördüğünüz gibi, tarihi ve eski nedenlerden dolayı, DC bir yol döndürdüğünde, sondaki yol sınırlayıcısı olmadan olacaktır.</p>
+        <p>Bu, satırda takip eden yol değişkeninin sondaki yol sınırlayıcısı ile mi yoksa sınırlayıcı olmadan mı olacağını belirleyecek bir değişken kullanılarak değiştirilebilir:</p>
+        <p>Temel olarak şunlara sahibiz:</p>
+        <dl>
+          <dt><code>%/0</code>: dönen yol sondaki sınırlayıcı olmadan olacaktır.</dt>
+          <dt><code>%/1</code>: dönen yol sondaki sınırlayıcı ile olacaktır.</dt>
+          <dt><code>%/ </code> : ayrıca kabul edilir, varsayılan olarak dönen yol sondaki sınırlayıcı olmadan olacaktır.</dt>
+        </dl>
+
+        <p>Aşağıdaki tablo, "C:\Users\UserName\Desktop" dizinini seçtiğimizde ve sondaki yol değişkeninin çeşitli kombinasyonlarının sonucunu gösteren bir örnek sunmaktadır:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Sondaki Yol Değişkeni Örnekleri</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%D</div></td>
+            <td class="hintcell">"C:\Users\UserName\Desktop"</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%/0%D</div></td>
+            <td class="hintcell">"C:\Users\UserName\Desktop"</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%/1%D"</div></td>
+            <td class="hintcell">"C:\Users\UserName\Desktop\"</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%/%D</div></td>
+            <td class="hintcell">"C:\Users\UserName\Desktop"</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>9. <a name="listoffiles">Dosya listesi</a></h2>
+        <p>Bazı uygulamalar, tek bir dosya adını parametre olarak kabul eder ve bu dosyanın, dosya adlarının bir listesini içeren bir metin dosyası olduğunu varsayar.</p>
+        <p>DC, belirtilen tüm seçili klasörlerin listesini içeren geçici bir metin dosyası oluşturacak değişkenler sunar ve geçici olarak oluşturulan dosyanın adı değişkene yerine konulur.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dosya listesi değişkeni</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%L</div></td>
+            <td class="hintcell">Seçili klasörlerin dosya listesinin, tam dosya adını (yol + dosya adı) içeren dosya adı.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%F</div></td>
+            <td class="hintcell">Seçili klasörlerin dosya listesinin sadece dosya adını içeren dosya adı.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%R</div></td>
+            <td class="hintcell">Seçili klasörlerin dosya listesinin sadece göreli yol adını içeren dosya adı.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>10. <a name="suffixforlist">Dosya listesi için son ek</a></h2>
+        <p>Varsayılan olarak, dosya listesindeki yukarıda belirtilen dosya adları tırnak içine alınmamıştır. Ancak, gerekirse bunu değiştirmek için ekleyebileceğiniz bir son ek bulunmaktadır.</p>
+        <p>Ayrıca, bu dosya listesinin UTF8 veya UTF16 olarak kodlanmasını isteyip istemediğinizi belirtmek için son ekler de bulunmaktadır.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dosya listesi değişkenine son ek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Q</div></td>
+            <td class="hintcell">Listedeki dosya adları tırnak içine alınacaktır.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">U</div></td>
+            <td class="hintcell">Liste UTF8 biçiminde kodlanacaktır.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">W</div></td>
+            <td class="hintcell">Liste UTF16 biçiminde kodlanacaktır.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>11. <a name="combsuffixlist">Dosya listesi için son ek kombinasyonları</a></h2>
+        <p>Dosya listesinin hangi panelden istendiğini belirtmek için, daha önce belirtilen aynı son ek harfini kullanarak başka bir son ek de ekleyebilirsiniz.</p>
+        <p>İşte mümkün olanlara örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dosya listesi değişkeni için son ek kombinasyonu</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%LQt</div></td>
+            <td class="hintcell">Hedef panelden seçili dosyalarla, tırnak içine alınmış tam dosya adları </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%FUs</div></td>
+            <td class="hintcell">Kaynak panelden seçili dosyalarla, UTF8 biçiminde sadece dosya adları</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%RQW</div></td>
+            <td class="hintcell">Göreli yolla, tırnak içine alınmış, UTF16 biçiminde dosya adları, kaynak için dosyalar (varsayılan)</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>12. <a name="executeterm">Terminalde Çalıştır</a></h2>
+        <p>Yapılandırdığınız komut satırının terminalde çalıştırılması gerekip gerekmediğini bir parametrede belirtebilirsiniz.</p>
+        <p>Bunu yapmak için <code>%t</code> değişkenini kullanacaksınız.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Terminalde Çalıştır</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%t0</div></td>
+            <td class="hintcell">Terminalde çalıştır ve sonunda kapatılmasını iste</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%t1</div></td>
+            <td class="hintcell">Terminalde çalıştır ve sonunda açık kal</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>13. <a name="interaction">Etkileşim</a></h2>
+        <p>İleti göstermek ve anında, önerilen bir varsayılan değerle parametre sağlamanızı istemek için kullanışlı iki değişken şunlardır:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Etkileşim</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%[gösterilecek ileti]</div></td>
+            <td class="hintcell">Köşeli parantezler arasında belirtilen metinle bir ileti kutusu gösterir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%[message;default_val]</div></td>
+            <td class="hintcell">Kullanıcıdan, varsayılan değeriyle bir değer girmesini ister.</td>
+          </tr>
+        </table>
+        <p>Etkileşim örneği:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Etkileşim örnekleri</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%[ThisFile.ext dosyasının kapalı olduğundan emin olun!]</div></td>
+            <td class="hintcell">Eylemi çalıştırmadan önce "ThisFile.ext dosyasının kapalı olduğundan emin olun!" iletisini gösterir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%[Görüntü dönüştürme için GENİŞLİK değeri girin;1024]</div></td>
+            <td class="hintcell">Kullanıcıdan "Görüntü dönüştürme için GENİŞLİK değeri girin" metnini göstererek bir değer girmesini ister ve varsayılan olarak önerilen değer 1024'tür ancak kullanıcı başka bir şey yazabilir. Kullanıcının yazdığı şeyin sonucu, "%[query;default]" ifadesinin yazıldığı konumda komut satırına yerine konulacaktır.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>14. <a name="miscellaneous">Çeşitli değişkenler</a></h2>
+        <p>Bu son bölümde, henüz sunulmamış değişkenleri gösteriyoruz.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Çeşitli değişkenler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%%</div></td>
+            <td class="hintcell">Yalnızca tek bir % işaretiyle yerine konulur.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%#</div></td>
+            <td class="hintcell">Bu konumdan itibaren, # işareti % olarak ele alınacaktır.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">#%</div></td>
+            <td class="hintcell">Daha önce belirtilen durumdan itibaren, % işaretinin değişken ön eki olarak ele alınmasını sağlayacaktır.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">%?</div></td>
+            <td class="hintcell">Çalıştırılacak komut satırını gösterir.</td>
+          </tr>
+        </table>
+        <p><code>%%</code>'nin faydası, parametrelerinizde bir % işareti olması gerektiğinde, ancak örneğin bir harf tarafından takip edileceği ve geçerli bir değişkene dönüşeceği için başka bir şeyle değiştirilmesini istemediğiniz durumlarda ortaya çıkar.</p>
+        <p><code>%?</code> değişkeni, örneğin yeni bir araç butonu yapılandırırken ve yerine konulacak parametrenin ne olacağından emin olmak istediğinizde özellikle faydalıdır.</p>
+        <p><code>%?</code> ile DC, bir şeyi başlatmak için kullanılacak gerçek komutu ve parametreyi görmenizi sağlar.</p>
+        <p>Dahası, bir şeyi başlatırken son dakikada bir değişiklik bile yapabilirsiniz.</p>
+        <p>Bu, bir eylem hedeflediğiniz uygulamaya iletilecek parametrelerden emin olmadığınızda özellikle faydalıdır.</p>
+        <p>Bazen yüzde işareti ile değişkenin bir harfinin birleşimi, sistem değişkeni ile çakışabilir.</p>
+        <p>Örneğin, <code>%os%ot</code> yazarak bunun sadece etkin ve etkin olmayan panellerin dosya uzantılarının birleştirme işlemi ile değiştirileceğini düşünürseniz, Windows altında çalışmayabileceğini keşfetmek sizi şaşırtabilir.</p>
+        <p><code>%os%</code> dizisi, <code>%os%</code> işletim sistemi adını temsil eden bir sistem değişkeni olduğu için genellikle işletim sistemi adı ile değiştirilir.</p>
+        <p>İşte bu noktada <code>%#</code> faydalıdır.</p>
+        <p>Böyle bir örnekte <code>%##os#ot</code> yazarsınız.</p>
+        <p><code>%#</code>, DC'ye bundan böyle <code>#</code>'nin artık yüzde işaretinin eşdeğeri olduğunu ve bu sayede olası sistem değişkenleri ile çakışmayacağını bildirir.</p>
+        <p>Buna nadiren ihtiyaç duyulur ancak gerektiğinde var olduğunu bilmek sizi mutlu edecektir!</p>
+        <p>Ardından, gerekirse, <code>#%</code>, <code>%</code>'yi değişken için gerçek yüzde işareti olacak şekilde geri yükleyecektir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>15. <a name="summaryall">Tüm değişkenlerin özet tablosu</a></h2>
+        <p>Bu bölümde yeni bir şey yok, ancak desteklenen tüm değişkenlerin ve anlamlarının bir özetini TEK bir tabloya bir araya getirelim.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Çeşitli değişkenler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%p</div></td><td class="hintcell">tam dosya adı, yolu dahil</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%f</div></td><td class="hintcell">sadece dosya adı, uzantısı ile birlikte</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%d</div></td><td class="hintcell">sadece yol</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%o</div></td><td class="hintcell">Uzantısı olmadan dosya adı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%e</div></td><td class="hintcell">Nokta olmadan dosya uzantısı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%v</div></td><td class="hintcell">Geçerli etkin dizine göre göreli dosya adı</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">s</div></td><td class="hintcell">Kaynak veya etkin panel için son ek (örnek: %ps)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">t</div></td><td class="hintcell">Hedef veya etkin olmayan panel için son ek (örnek: %pt)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">l</div></td><td class="hintcell">Sol panel için son ek (örnek: %pl)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">r</div></td><td class="hintcell">Sağ panel için son ek (örnek: %pr)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">p</div></td><td class="hintcell">Her iki panel için son ek, önce etkin, sonra etkin olmayan (örnek: %pp)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">b</div></td><td class="hintcell">Her iki panel için son ek, önce sol, sonra sağ (örnek: %pb)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">1</div></td><td class="hintcell">İlk seçili dosya (örnek: %ps1)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">2</div></td><td class="hintcell">İkinci seçili dosya (varsa) (örnek: %ps2)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">3</div></td><td class="hintcell">Üçüncü seçili dosya (varsa) (örnek: %ps3)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">21</div></td><td class="hintcell">Yirmi birinci seçili dosya (varsa) (örnek: %ps21)</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">{ön ek}</div></td><td class="hintcell">{} bir kez belirtildiğinde, dosya adından önce eklenecek ön eki ayarlar. (örn: %f{+})</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">{ön ek}{son ek}</div></td><td class="hintcell">{} iki kez belirtildiğinde, dosya adından önce ve sonra ön eki ve son eki ayarlar. (örn: %f{[}{]})</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%D</div></td><td class="hintcell">Varsayılan, etkin (kaynak) panelin yolu</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%Ds</div></td><td class="hintcell">Özellikle, etkin (kaynak) panelin yolu</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%Dt</div></td><td class="hintcell">Etkin olmayan (hedef) panelin yolu</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%Dl</div></td><td class="hintcell">Sol panelin yolu, hangisi etkin olursa olsun</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%Dr</div></td><td class="hintcell">Sağ panelin yolu, hangisi etkin olursa olsun</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%"0</div></td><td class="hintcell">Bu noktadan itibaren, sonuç dosya adı tırnaksız olacaktır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%"1</div></td><td class="hintcell">Bu noktadan itibaren, sonuç dosya adı tırnaklı olacaktır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%"</div></td><td class="hintcell">Ayrıca kabul edilir, sonuç dosya adının ters tırnaklı olması</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%/0</div></td><td class="hintcell">Varsayılan, dönen yol sondaki sınırlayıcı olmadan olacaktır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%/1</div></td><td class="hintcell">Dönen yol sondaki sınırlayıcı ile olacaktır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%/</div></td><td class="hintcell">Ayrıca kabul edilir, varsayılan olarak dönen yol sondaki sınırlayıcı olmadan olacaktır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%L</div></td><td class="hintcell">Seçili klasörlerin dosya listesinin dosya adı, sadece tam dosya adı (yol + dosya adı) ile</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%F</div></td><td class="hintcell">Seçili klasörlerin dosya listesinin dosya adı, sadece dosya adı ile</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%R</div></td><td class="hintcell">Seçili klasörlerin dosya listesinin dosya adı, sadece göreli yol adları ile</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">Q</div></td><td class="hintcell">%L, %F veya %R için tırnaklı dosya adları isteme son eki</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">U</div></td><td class="hintcell">%L, %F veya %R için UTF8 dosya biçimi isteme son eki</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">W</div></td><td class="hintcell">%L, %F veya %R için UTF16 dosya biçimi isteme son eki</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%t0</div></td><td class="hintcell">Terminalde çalıştır ve sonunda kapatılmasını iste</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%t1</div></td><td class="hintcell">Terminalde çalıştır ve sonunda açık kal</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%[gösterilecek ileti]</div></td><td class="hintcell">Parantez içinde belirtilen metinle bir ileti kutusu gösterecektir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%[message;default_val]</div></td><td class="hintcell">Kullanıcıya, önerilen değeriyle birlikte bir değer girmesini soracaktır.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%%</div></td><td class="hintcell">Sadece tek bir % işaretiyle değiştirilecektir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%?</div></td><td class="hintcell">Çalıştırılmak üzere olan komut satırını gösterecektir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">%#</div></td><td class="hintcell">Bu konumdan itibaren, # işareti % olarak kabul edilecektir.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">#%</div></td><td class="hintcell">Daha önce belirtilen durumdan itibaren, % işaretinin değişken ön eki olarak kabul edilmesini sağlayacaktır.</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <p><small>Orijinal olarak Rustem (dok_rust@bk.ru) tarafından oluşturuldu</small></p>
+        <BR>
+      </div>
+    </div>	
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="toolbar.html">Önceki</a> | <a title="Sonraki Sayfa" href="cmds.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>doublecmd.ini dosyasındaki ayarlar</title>
+  <link rel="STYLESHEET" type="text/css" href="doublecmd.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+  <div class="CHAPTER">
+	<h1><tt>doublecmd.ini</tt> dosyasındaki ayarlar</h1>
+	
+	<p><tt>doublecmd.ini</tt> dosyasındaki ayarların çoğu, DC'nin yapılandırma seçenekleri bölümünde değiştirilebilir. Manuel düzenleme genellikle gerekli değildir.</p>
+	
+	<div class="SECT1">
+	  <table border="0" frame="void" width="100%" class="CALSTABLE">
+		<col width="25%"/> <col width="25%"/>
+		<thead>
+		  <tr>
+			<th>[Yapılandırma]</th>
+			<th>Genel ayarlar</th>
+		  </tr>
+		</thead>
+		
+		<tbody>
+		  <tr>
+			<td><tt><span class="brown">CaseSensitiveSort</span>=0</tt></td>
+			<td>0: Büyük/küçük harf duyarlı sıralama KAPALI<br/>1: Büyük/küçük harf duyarlı sıralama AÇIK</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">CopyBlockSize</span>=64</tt></td>
+			<td>Kopyalama için blok boyutunu ayarlar (kilobayt cinsinden=1024 bayt). Varsayılan değer 64 KB'tır (=65536 bayt).</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">CustomDriveIcons</span>=0</tt></td>
+			<td>Sistem simgeleri yerine (<tt>%commander_path%\pixmaps\XxX\devices\</tt> konumundan) özel sürücü simgeleri kullan (yalnızca Windows için).<br/>0: Sistem simgelerini kullan<br/>1: Özel simgeleri kullan</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">DirTabLimit</span>=32</tt></td>
+			<td>Bir dizin sekmesinde gösterilen maksimum karakter sayısı</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">DriveBlackList</span></tt></td>
+			<td>Sürücü çubuğunda/menüsünde gösterilmeyecek sürücülerin listesi (; - ayırıcı)</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">UseExtEdit</span>=0</tt></td>
+			<td>0: Dahili düzenleyiciyi kullan<br/>1: Harici düzenleyiciyi kullan (<a href="#ext_edit">ExtEdit</a> öğesine bakın)</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">UseExtView</span>=0</tt></td>
+			<td>0: Dahili görüntüleyiciyi kullan<br/>1: Harici görüntüleyiciyi kullan (bakınız. <a href="#ext_view">ExtView<a>)</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">UseExtDiff</span>=0</tt></td>
+			<td>0: Dahili dosya farkını kullan<br/>1: Harici dosya farkını kullan (<a href="#ext_diff">ExtDiff</a> öğesine bakın)</td>
+		  </tr>
+		  <tr>
+			<td><a name="ext_edit"><tt><span class="brown">ExtEdit</span></tt></a></td>
+			<td><kbd>F4</kbd> için harici düzenleyici</td>
+		  </tr>
+		  <tr>
+			<td><a name="ext_view"><tt><span class="brown">ExtView</span></tt></a></td>
+			<td><kbd>F3</kbd> için harici görüntüleyici</td>
+		  </tr>
+		  <tr>
+			<td><a name="ext_diff"><tt><span class="brown">ExtDiff</span></tt></a></td>
+			<td>Harici dosya farkı</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Font.Name</span>=default</tt></td>
+			<td>Dosya panelleri için yazı tipi</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Font.Size</span>=10</tt></td>
+			<td>Dosya panelleri için yazı tipi boyutu</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Font.Style</span></tt></td>
+			<td>Dosya panelleri için yazı tipi stili</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Maximized</span>=0</tt></td>
+			<td>Pencere durumu<br/>0: normal,<br/>1: maksimum boyut </td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">MouseSelectionEnabled</span>=1</tt></td>
+			<td>Fare seçimini etkinleştir<br/>0: hayır<br/>1: evet</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">QuickSearchMatchBeginning</span>=1</tt></td>
+			<td>0: "double" gibi bir arama dizesi "*double" olarak okunacaktır<br/>1: Tam eşleşme: "cmd" yazmak "cmd.ini" dosyasını bulur, ancak "doublecmd.ini" dosyasını bulmaz</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">QuickSearchMatchEnding</span>=1</tt></td>
+			<td>0: Nokta yazmak *. olarak okunur, "double.i" ayrıca "doublecmd.ini" dosyasını da bulur<br/>1: Tam eşleşme: "double.i" yazmak sadece "double.ini" dosyasını bulur, ancak "doublecmd.ini" dosyasını bulmaz</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">ScrollMode</span>=0</tt></td>
+			<td>Fare tekerleği kaydırma modu<br/>0: İmleç hareketiyle satır satır<br/>1: Satır satır<br/>2: Sayfa sayfa</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">ShowIcons</span>=1</tt></td>
+			<td>Dosya panelinde simgeleri göster</br>0: hayır<br/>1: evet</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">ShowSystemFiles</span>=0</tt></td>
+			<td>Sistem dosyalarını göster<br/>0: hayır<br/>1: evet</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">UseIniInProgramDir</span>=0</tt></td>
+			<td>DC yapılandırma dosyalarının konumu<br/>0: Kullanıcı ana dizininden yapılandırma dosyalarını kullan<br/>1: Program dizininden yapılandırma dosyalarını kullan</td>
+		  </tr>
+		
+		<thead>
+		  <tr>
+			<th>[Colors]</th>
+			<th>Renk ayarları</th>
+		  </tr>
+		</thead>
+		
+		<thead>
+		  <tr>
+			<th>[PackerPlugins]</th>
+			<th>Yüklü WCX eklentilerinin listesi</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td><tt><span class="brown">bz2</span>=0,%commander_path%\plugins\unbz2.wcx</tt></td>
+			<td>bz2-arşivleri için eklenti. Eklenti yeteneklerinin toplamı — 0</td>
+		  </tr>
+		</tbody>
+		
+		<thead>
+		  <tr>
+			<th>[Content Plugins]</th>
+			<th>Yüklü WDX eklentilerinin listesi ve ayarları</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td><tt><span class="brown">PluginCount</span>=2</tt></td>
+			<td>Yüklü WDX eklentisi sayısı</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Plugin1Name</span>=rpm_wdx</tt></td>
+			<td>İlk yüklenen WDX eklentileri adı</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Plugin1Detect</span>=EXT="RPM"</tt></td>
+			<td>İlk eklenti için ilişkili RPM uzantısı</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">Plugin1Path</span></tt></td>
+			<td>İlk eklenti yolu</td>
+		  </tr>
+		</tbody>
+		
+		<thead>
+		  <tr>
+			<th>[ColumnsSet]</th>
+			<th>Mevcut sütun kümelerinin listesi</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td><tt><span class="brown">Sütun kümesi sayısı</span>=2</tt></td>
+			<td>Sütun kümesi sayısı</td>
+		  </tr>
+		  <tr>
+			<td><tt><span class="brown">ColumnsSet1Name</span>=Default</tt></td>
+			<td>İlk sütun kümesi — Varsayılan</td>
+		  </tr>
+		</tbody>
+		
+		<thead>
+		  <tr>
+			<th>[lefttabs]</th>
+			<th>Sol panel için sekme listesi</th>
+		  </tr>
+		</thead>
+		
+		<thead>
+		  <tr>
+			<th>[righttabs]</th>
+			<th>Sağ panel için sekme listesi</th>
+		  </tr>
+		</thead>
+		
+		</tbody>
+	  </table>
+	</div>
+	
+  </div>
+	<div class="SECT1">
+	  <p class="NAVBACK"><a href="index.html">Ana sayfa</a></p>
+	</div>
+  
+</body>
+
+</html>

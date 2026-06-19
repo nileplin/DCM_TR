@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>doublecmd.ext dosya yapısı</title>
+  <link rel="STYLESHEET" type="text/css" href="doublecmd.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+  <div class="CHAPTER">
+	<h1><tt>doublecmd.ext</tt> dosya yapısı</h1>
+	
+	<div class="SECT1">
+	  <p>Double Commander'ın uzantı dosyası, Midnight Commander'ın 3.0 uzantı dosyasını temel almıştır.</p>
+	  <p># ile başlayan tüm satırlar veya boş satırlar yok sayılır. Dosya için tüm eylemler, dosya bağlam açılır menüsünün "Eylemler" alt menüsünde gösterilir.</p>
+	  <p>Dosya biçimi:</p>
+	  <pre class="CODE">
+	[uzantı1|uzantı2|...|uzantıX]
+	Ad=Kategori adı
+	Simge=Simge yolu
+	eylem1=komut1
+	eylem2=komut2
+	eylemX=komutX</pre>
+	  <p>Burada:</p>
+	  <p><span class="bold">[uzantı]</span> veya <span class="bold">[uzantı1|uzantı2 ...]</span> : Uzantı listesi (Büyük/küçük harfe duyarsız. Düzenli ifadeler yok.) Ayrıca "varsayılan" anahtar kelimesini uzantı olarak kullanabilirsiniz. Bu durumda aranan dosya türü için hiçbir komut bulunamazsa bu bölümdeki komut kullanılacaktır.</p>
+	 <p><span class="bold">Ad</span> : Kategorinin adı (Dosya ilişkilendirme yöneticisinde gösterilir)</p>
+	 <p><span class="bold">Simge</span> : Dosya panelinde bu dosya türü için görüntülenecek simgenin yolu</p>
+	 <p>Eylem olabilir:</p>
+	 <ul>
+	  <li><p>Aç : <kbd>Enter</kbd> tuş vuruşu veya fare çift tıklama ile kullanılır.</p></li>
+	  <li><p>Görüntüle :<kbd>F3</kbd>tuşuna basılarak  kullanılır.</p></li>
+	  <li><p>Düzenle :<kbd>F4</kbd>tuşuna basılarak kullanılır.</p></li>
+	 </ul>
+	 <p>Diğer eylemler, dosya bağlam açılır menüsünün "Eylemler" alt menüsünde görüntülenecektir.</p>
+	</div>
+	<p>Komut, basit bir makro değişimi içeren herhangi bir tek satırlık kabuk komutudur.</p>
+	<p>Makrolar (büyük/küçük harf duyarlı) şunlardır:</p>
+	<ul>
+	  <li><p><tt>{!VFS}</tt> : Arşivler için sanal dosya sistemi kullanılır.</p></li>
+	  <li><p><tt>{!EDITOR}</tt> : Düzenleyiciyi çağırır. Dahili veya harici yapılandırmaya bağlıdır.</p></li>
+	  <li><p><tt>{!VIEWER}</tt> : Görüntüleyiciyi çağırır. Dahili veya harici yapılandırmaya bağlıdır.</p></li>
+	  <li><p><tt>{!SHELL}</tt> : Programı çalıştırmak için sistem kabuğunu kullanır. Yapılandırmada ayarlanır.</p></li>
+	  <li><p><tt>&lt;?command?></tt> : 'Komut'u sistem kabuğunda çalıştırır ve çıktıyı bir sonraki komuta besler.</p></li>
+	  <li><p><tt>%f</tt> : Dosya adı</p></li>
+	  <li><p><tt>%d</tt> : Dizin</p></li>
+	  <li><p><tt>%p</tt>  : Yol (dizin+dosya adı)</p></li>
+	</ul>
+  </div>
+	<div class="SECT1">
+	  <p class="NAVBACK"><a href="index.html">Ana sayfa</a></p>
+	</div>
+</body>
+
+</html>

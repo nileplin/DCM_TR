@@ -1,0 +1,2841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Dahili Komutlar</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="variables.html">Önceki</a> | <a title="Sonraki Sayfa" href="regexp.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.8. Dahili Komutlar</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt class="bold"><a name="TOC">İçerik</a></dt>
+          <dt>1. <a href="#commandcategory">Komut Kategorileri Tablosu</a></dt>
+          <dt>2. <a href="#commanddescription">Tüm komutların kategoriye göre açıklaması</a></dt>
+          <dd>
+            <dl>
+              <dt>2.1. <a href="#catactivepanel">Etkin Panel</a></dt>
+              <dt>2.2. <a href="#catleftpanel">Sol Panel</a></dt>
+              <dt>2.3. <a href="#catrightpanel">Sağ Panel</a></dt>
+              <dt>2.4. <a href="#catfileoperations">Dosya İşlemleri</a></dt>
+              <dt>2.5. <a href="#catconfiguration">Yapılandırma</a></dt>
+              <dt>2.6. <a href="#catnetwork">Ağ</a></dt>
+              <dt>2.7. <a href="#catmiscellaneous">Çeşitli</a></dt>
+              <dt>2.8. <a href="#catmark">İşaretle</a></dt>
+              <dt>2.9. <a href="#catclipboard">Pano</a></dt>
+              <dt>2.10. <a href="#catnavigation">Gezinme</a></dt>
+              <dt>2.11. <a href="#cathelp">Yardım</a></dt>
+              <dt>2.12. <a href="#catwindow">Pencere</a></dt>
+              <dt>2.13. <a href="#catcommandline">Komut satırı</a></dt>
+              <dt>2.14. <a href="#cattools">Araçlar</a></dt>
+              <dt>2.15. <a href="#catview">Görünüm</a></dt>
+              <dt>2.16. <a href="#cattabs">Sekmeler</a></dt>
+              <dt>2.17. <a href="#catlogs">Günlükler</a></dt>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+      <div>
+        <h2><a name="commandcategory">1. Komut Kategorileri Tablosu</a></h2>
+      </div>
+
+      <div>
+        <p>Dahili komutlar kategorilere göre gruplandırılabilir, işte şunlar:</p>
+        <table>
+          <tr class="rowcategorytable"><th colspan="2">Komut Kategorileri Tablosu</th></tr>	  
+          <tr class="rowcategorysubtitle"><th class="categorynamecolumn">Kategori</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catactivepanel">Etkin Panel</a></div></td>
+            <td class="categorydesc">Bu komutlar, <B>mevcut seçili panele</B> (sol veya sağ) uygulanır.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catleftpanel">Sol Panel</a></div></td>
+            <td class="categorydesc">Bu komutlar, hangisi seçili olursa olsun <B>sol panele</B> uygulanır.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catrightpanel">Sağ Panel</a></div></td>
+            <td class="categorydesc">Bu komutlar, hangisi seçili olursa olsun <B>sağ panele</B> uygulanır.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catfileoperations">Dosya İşlemleri</a></div></td>
+            <td class="categorydesc">Bu komutlar, mevcut seçili paneldeki mevcut seçili ögeye uygulanır.<br>Görüntüleme, kopyalama, taşıma, yeniden adlandırma, silme, sıkıştırma, ayıklama, bölme vb. işlemleri içerir.<br>Bunlar, dosyalarınız üzerinde <B>doğrudan etkisi olabilecek</B> komutlardır.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catconfiguration">Yapılandırma</a></div></td>
+            <td class="categorydesc">Double Commander'ın seçeneklerine ve yapılandırmalarına erişim sağlar.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catnetwork">Ağ</a></div></td>
+            <td class="categorydesc">Bilgisayar ağıyla doğrudan ilgilidir.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catmiscellaneous">Çeşitli</a></div></td>
+            <td class="categorydesc">Hangi kategoriye yerleştireceğimizi bilemediğimiz komutları içeren kaçınılmaz kategori!<br>Bu kategoriye çok fazla komut yerleştirmemeye özen gösterilmiştir.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catmark">İşaretle</a></div></td>
+            <td class="categorydesc">Dosya işlemlerinin yapılacağı ögeleri seçer.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catclipboard">Pano</a></div></td>
+            <td class="categorydesc">Sistem panosu ile seçili ögeler arasındaki etkileşim.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catnavigation">Gezinme</a></div></td>
+            <td class="categorydesc">Konumlarına göre farklı ögelere erişmek için bir klasörden diğerine geçmek için kullanılır.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#cathelp">Yardım</a></div></td>
+            <td class="categorydesc">Double Commander'ın entegre yardım dosyalarına erişim sağlar.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catwindow">Pencere</a></div></td>
+            <td class="categorydesc">Double Commander penceresi, görünümü ve diğer bilgisayar uygulamaları gibi davranışlarıyla ilgili komutlar.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catcommandline">Komut satırı</a></div></td>
+            <td class="categorydesc">Geçmiş komutları görüntülemek ve yenilerini çağırmaya yardımcı olmak için komut satırı ile etkileşim kurmayı sağlar.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#cattools">Araçlar</a></div></td>
+            <td class="categorydesc">Tek tıklamadan fazlasını gerektiren eylemler içindir. Bu eylemler genellikle Double Commander'ın daha karmaşık işler yapması için başka bir pencere gösterecektir.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catview">Görünüm</a></div></td>
+            <td class="categorydesc">Veri dosyaları, sistem dosyaları vb. görünürlüğü ve görünümüyle ilgili komutlar.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#cattabs">Sekmeler</a></div></td>
+            <td class="categorydesc">Yeni sekmeler oluşturarak, dizinden dizine gezinerek vb. sekmelerle etkileşim kurmayı sağlar.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catlogs">Günlükler</a></div></td>
+            <td class="categorydesc">DC günlük dosyalarıyla ilgili eylemler.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="commanddescription">2. Her kategoriye göre tüm komutların açıklaması</a></h2>
+        <p>İşte tüm dahili komutların kısa bir açıklaması.</p>
+        <p>Her biri için şunları yapacağız:</p>
+        <ul>
+          <li>Komut adını listele</li>
+          <li>Simgesini görüntüle</li>
+          <li>Uygulanabilirse, varsayılan klavye kısayolu</li>
+          <li>Hızlı bir açıklaması</li>
+          <li>Uygulanabilirse, olası parametrelerinin hızlı açıklaması</li>
+        </ul>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catactivepanel">2.1. Etkin Panel</a></h2>
+        <p>Bu komutlar, <B>mevcut seçili panele</B> (sol veya sağ) uygulanır.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Etkin Panel"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_BriefView" alt="cm_BriefView" src="../../pixmaps/dctheme/32x32/actions/cm_briefview.png">
+              <div class="cmdname"><a name="cm_BriefView">cm_BriefView</a></div></td>
+            <td class="cmdhintcell">Yalnızca ögelerin adı.<BR>Mümkünse, birden fazla sütun.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ColumnsView" alt="cm_ColumnsView" src="../../pixmaps/dctheme/32x32/actions/cm_columnsview.png">
+              <div class="cmdname"><a name="cm_ColumnsView"><B>cm_ColumnsView</B></a></div></td>
+            <td class="cmdhintcell">Satır başına bir öge, varsayılan veya kullanıcı tanımlı sütunlarla.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">sütun kümesi</td>
+                  <td class="innerdescvaluecell"><I>sütun kümesi adı</I></td>
+                  <td class="innerdescdesccell">Kullanıcı tanımlı sütun kümesini göster<sup><acronym title="Double Commander 0.9 gerektirir">[*]</acronym></sup></td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Varsayılan sütun kümesini göster</td>
+                </tr>
+              </table>
+            Ana yardım dosyasındaki <a href="help.html#5_1_15_colonki">sütun bölümüne</a> bakın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ThumbnailsView" alt="cm_ThumbnailsView" src="../../pixmaps/dctheme/32x32/actions/cm_thumbnailsview.png">
+              <div class="cmdname"><a name="cm_ThumbnailsView"><B>cm_ThumbnailsView</B></a></div></td>
+            <td class="cmdhintcell">Ögeler küçük resimler olarak gösterilir.<BR>Mümkünse, birden fazla sütunda.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_FlatView" alt="cm_FlatView" src="../../pixmaps/dctheme/32x32/actions/cm_flatview.png">
+              <div class="cmdname"><a name="cm_FlatView">cm_FlatView</a></div></td>
+            <td class="cmdhintcell">Etkin panelin tüm dizinlerini tarar ve tüm içeriği tek bir panelde gösterir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_QuickView" alt="cm_QuickView" src="../../pixmaps/dctheme/32x32/actions/cm_quickview.png">
+              <div class="cmdname"><a name="cm_QuickView"><B>cm_QuickView</B></a></div></td>
+            <td class="cmdhintcell">Seçili ögenin içeriği karşı panelde gösterilir.<BR>Sonraki ögelere ilerledikçe, görüntülenen içerik güncellenir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SortByName" alt="cm_SortByName" src="../../pixmaps/dctheme/32x32/actions/cm_sortbyname.png">
+              <div class="cmdname"><a name="cm_SortByName"><B>cm_SortByName</B></a></div>
+              <div class="shrtctkey">Ctrl+F3</div></td>
+            <td class="cmdhintcell">Etkin paneldeki ögeleri <a href="help.html#cm_SortByName">ada</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SortByExt" alt="cm_SortByExt" src="../../pixmaps/dctheme/32x32/actions/cm_sortbyext.png">
+              <div class="cmdname"><a name="cm_SortByExt"><B>cm_SortByExt</B></a></div>
+              <div class="shrtctkey">Ctrl+F4</div></td>
+            <td class="cmdhintcell">Etkin paneldeki ögeleri <a href="help.html#cm_SortByExt">uzantıya</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SortBySize" alt="cm_SortBySize" src="../../pixmaps/dctheme/32x32/actions/cm_sortbysize.png">
+              <div class="cmdname"><a name="cm_SortBySize"><B>cm_SortBySize</B></a></div>
+              <div class="shrtctkey">Ctrl+F6</div></td>
+            <td class="cmdhintcell">Etkin paneldeki ögeleri <a href="help.html#cm_SortBySize">dosya boyutuna</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SortByDate" alt="cm_SortByDate" src="../../pixmaps/dctheme/32x32/actions/cm_sortbydate.png">
+              <div class="cmdname"><a name="cm_SortByDate"><B>cm_SortByDate</B></a></div>
+              <div class="shrtctkey">Ctrl+F5</div></td>
+            <td class="cmdhintcell">Etkin paneldeki ögeleri <a href="help.html#cm_SortByDate">tarihe</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SortByAttr" alt="cm_SortByAttr" src="../../pixmaps/dctheme/32x32/actions/cm_sortbyattr.png">
+              <div class="cmdname"><a name="cm_SortByAttr"><B>cm_SortByAttr</B></a></div>
+            <td class="cmdhintcell">Etkin paneldeki ögeleri <a href="help.html#cm_SortByAttr">özniteliklere</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ReverseOrder" alt="cm_ReverseOrder" src="../../pixmaps/dctheme/32x32/actions/cm_reverseorder.png">
+              <div class="cmdname"><a name="cm_ReverseOrder"><B>cm_ReverseOrder</B></a></div>
+            <td class="cmdhintcell">Etkin panelde görüntülenen ögelerin sıralamasını <a href="help.html#cm_ReverseOrder">tersine çevir</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SrcOpenDrives" alt="cm_SrcOpenDrives" src="../../pixmaps/dctheme/32x32/actions/cm_srcopendrives.png">
+              <div class="cmdname"><a name="cm_SrcOpenDrives"><B>cm_SrcOpenDrives</B></a></div>
+            <td class="cmdhintcell">Etkin panel için sürücü listesini aç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_UniversalSingleDirectSort" alt="cm_UniversalSingleDirectSort" src="../../pixmaps/dctheme/32x32/actions/cm_universalsingledirectsort.png">
+              <div class="cmdname"><a name="cm_UniversalSingleDirectSort"><B>cm_UniversalSingleDirectSort</B></a></div></td>
+            <td class="cmdhintcell">Belirtilen panelin belirtilen sırasına göre belirtilen sütunu sıralar.<br>Olası parametre değerleri için aşağıdaki tabloya bakın.<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">panel</td>
+                  <td class="innerdescvaluecell">etkin</td>
+                  <td class="innerdescdesccell">Etkin panel üzerinde işlem yapar</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin olmayan</td>
+                  <td class="innerdescdesccell">Etkin olmayan panel üzerinde işlem yapar</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sol</td>
+                  <td class="innerdescdesccell">Sol panel üzerinde işlem yapar</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sağ</td>
+                  <td class="innerdescdesccell">Sağ panel üzerinde işlem yapar</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Etkin panel üzerinde işlem yapar</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">sütun</td>
+                  <td class="innerdescvaluecell">ad</td>
+                  <td class="innerdescdesccell">Sıralanan sütunlar "ad-uzantı" olur</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">uzantı</td>
+                  <td class="innerdescdesccell">Sıralanan sütun "uzantı" olur</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">boyut</td>
+                  <td class="innerdescdesccell">Sıralanan sütun "boyut" olur</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">tarih/saat</td>
+                  <td class="innerdescdesccell">Sıralanan sütun "Tarih/Saat" olacaktır</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Sıralanan sütun "Ad" olacaktır</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">Sıralama</td>
+                  <td class="innerdescvaluecell">Artan</td>
+                  <td class="innerdescdesccell">Artan sıralama ile sıralayacaktır</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Azalan</td>
+                  <td class="innerdescdesccell">Azalan sıralama ile sıralayacaktır</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Azalan sıralama ile sıralayacaktır</td>
+                </tr>
+                <tr>
+                  <td colspan="3">Not: Bu üç parametreden herhangi biri tanımlanmamış veya yanlış tanımlanmışsa; bu parametreler için varsayılan değerler şunlar olacaktır: panel=aktif, sütun=ad ve sıralama=artan.</td>
+                </tr>
+              </table>
+              Örnek:<br>"cm_UniversalSingleDirectSort: panel=active, column=size, order=descending"<br>Bu, aktif paneldeki öğeyi boyuta göre sütunlara sıralayacaktır (önce daha büyük dosyalar).
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CountDirContent" alt="cm_CountDirContent" src="../../pixmaps/dctheme/32x32/actions/cm_countdircontent.png">
+              <div class="cmdname"><a name="cm_CountDirContent">cm_CountDirContent</a></div></td>
+            <td class="cmdhintcell">Mevcut seçili panelde bulunan her bir dizinin içeriğinin toplam boyutunu hesapla.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catleftpanel">2.2. Sol Panel</a></h2>
+        <P>Bu komutlar, hangisi seçili olursa olsun <B>sol panele</B> uygulanır.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Sol Panel"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftBriefView" alt="cm_LeftBriefView" src="../../pixmaps/dctheme/32x32/actions/cm_leftbriefview.png">
+              <div class="cmdname"><a name="cm_LeftBriefView">cm_LeftBriefView</a></div>
+            <td class="cmdhintcell">Sol panelde, yalnızca öğelerin adı.<BR>Mümkünse, birden fazla sütun.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftColumnsView" alt="cm_LeftColumnsView" src="../../pixmaps/dctheme/32x32/actions/cm_leftcolumnsview.png">
+              <div class="cmdname"><a name="cm_LeftColumnsView">cm_LeftColumnsView</a></div>
+            <td class="cmdhintcell">Sol panelde, varsayılan veya kullanıcı tanımlı sütunlarla satır başına bir öğe.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">columnset</td>
+                  <td class="innerdescvaluecell"><I>sütun kümesi adı</I></td>
+                  <td class="innerdescdesccell">Kullanıcı tanımlı sütun kümesini göster<sup><acronym title="Double Commander 0.9 gerektirir">[*]</acronym></sup></td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">varsayılan sütun kümesini göster</td>
+                </tr>
+              </table>
+              Ana yardım dosyasındaki <a href="help.html#5_1_15_colonki">sütun bölümüne</a> bakın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftThumbView" alt="cm_LeftThumbView" src="../../pixmaps/dctheme/32x32/actions/cm_leftthumbview.png">
+              <div class="cmdname"><a name="cm_LeftThumbView">cm_LeftThumbView</a></div>
+            <td class="cmdhintcell">Sol panelde, öğeler küçük resimler olarak gösterilir.<BR>Mümkünse, birden fazla sütun.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftFlatView" alt="cm_LeftFlatView" src="../../pixmaps/dctheme/32x32/actions/cm_leftflatview.png">
+              <div class="cmdname"><a name="cm_LeftFlatView">cm_LeftFlatView</a></div>
+            <td class="cmdhintcell">Tüm içeriği bu tek panelde göstermek için sol paneldeki tüm dizinler taranacak.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftSortByName" alt="cm_LeftSortByName" src="../../pixmaps/dctheme/32x32/actions/cm_leftsortbyname.png">
+              <div class="cmdname"><a name="cm_LeftSortByName">cm_LeftSortByName</a></div>
+            <td class="cmdhintcell">Sol paneldeki öğeleri <a href="help.html#cm_SortByName">ada</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftSortByExt" alt="cm_LeftSortByExt" src="../../pixmaps/dctheme/32x32/actions/cm_leftsortbyext.png">
+              <div class="cmdname"><a name="cm_LeftSortByExt">cm_LeftSortByExt</a></div>
+            <td class="cmdhintcell">Sol paneldeki öğeleri <a href="help.html#cm_SortByExt">uzantıya</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftSortBySize" alt="cm_LeftSortBySize" src="../../pixmaps/dctheme/32x32/actions/cm_leftsortbysize.png">
+              <div class="cmdname"><a name="cm_LeftSortBySize">cm_LeftSortBySize</a></div>
+            <td class="cmdhintcell">Sol paneldeki öğeleri <a href="help.html#cm_SortBySize">boyuta</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftSortByDate" alt="cm_LeftSortByDate" src="../../pixmaps/dctheme/32x32/actions/cm_leftsortbydate.png">
+              <div class="cmdname"><a name="cm_LeftSortByDate">cm_LeftSortByDate</a></div>
+            <td class="cmdhintcell">Sol paneldeki öğeleri <a href="help.html#cm_SortByDate">tarihe</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftSortByAttr" alt="cm_LeftSortByAttr" src="../../pixmaps/dctheme/32x32/actions/cm_leftsortbyattr.png">
+              <div class="cmdname"><a name="cm_LeftSortByAttr">cm_LeftSortByAttr</a></div>
+            <td class="cmdhintcell">Sol paneldeki öğeleri <a href="help.html#cm_SortByAttr">özniteliklere</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftReverseOrder" alt="cm_LeftReverseOrder" src="../../pixmaps/dctheme/32x32/actions/cm_leftreverseorder.png">
+              <div class="cmdname"><a name="cm_LeftReverseOrder">cm_LeftReverseOrder</a></div>
+            <td class="cmdhintcell">Sol paneldeki öğeleri <a href="help.html#cm_ReverseOrder">ters sırala</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftOpenDrives" alt="cm_LeftOpenDrives" src="../../pixmaps/dctheme/32x32/actions/cm_leftopendrives.png">
+              <div class="cmdname"><a name="cm_LeftOpenDrives">cm_LeftOpenDrives</a></div>
+              <div class="shrtctkey">Alt+F1</div></td>
+            <td class="cmdhintcell">Sol panel için <a href="help.html#cm_LeftOpenDrives">sürücü listesini</a> aç.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="catrightpanel">2.3 Sağ Panel</a></h2>
+        <P>Bu komutlar, hangisi seçili olursa olsun <B>sağ panele</B> uygulanır.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori: Sağ Panel</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightBriefView" alt="cm_RightBriefView" src="../../pixmaps/dctheme/32x32/actions/cm_rightbriefview.png">
+              <div class="cmdname"><a name="cm_RightBriefView">cm_RightBriefView</a></div>
+            <td class="cmdhintcell">Sağ panelde, yalnızca öğelerin adı.<BR>Mümkünse, birden fazla sütun.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightColumnsView" alt="cm_RightColumnsView" src="../../pixmaps/dctheme/32x32/actions/cm_rightcolumnsview.png">
+              <div class="cmdname"><a name="cm_RightColumnsView">cm_RightColumnsView</a></div>
+            <td class="cmdhintcell">Sağ panelde, varsayılan veya kullanıcı tanımlı sütunlarla satır başına bir öğe.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">columnset</td>
+                  <td class="innerdescvaluecell"><I>sütun kümesi adı</I></td>
+                  <td class="innerdescdesccell">Kullanıcı tanımlı sütun kümesini göster<sup><acronym title="Double Commander 0.9 gerektirir">[*]</acronym></sup></td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">varsayılan sütun kümesini göster</td>
+                </tr>
+              </table>
+              Ana yardım dosyasındaki <a href="help.html#5_1_15_colonki">sütun bölümüne</a> bakın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightThumbView" alt="cm_RightThumbView" src="../../pixmaps/dctheme/32x32/actions/cm_rightthumbview.png">
+              <div class="cmdname"><a name="cm_RightThumbView">cm_RightThumbView</a></div>
+            <td class="cmdhintcell">Sağ panelde öğeler küçük resimler olarak gösterilir.<BR>Mümkünse, birden fazla sütun.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightFlatView" alt="cm_RightFlatView" src="../../pixmaps/dctheme/32x32/actions/cm_rightflatview.png">
+              <div class="cmdname"><a name="cm_RightFlatView">cm_RightFlatView</a></div>
+            <td class="cmdhintcell">Tüm içeriği bu tek panelde göstermek için sağ paneldeki tüm dizinler taranacak.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightSortByName" alt="cm_RightSortByName" src="../../pixmaps/dctheme/32x32/actions/cm_rightsortbyname.png">
+              <div class="cmdname"><a name="cm_RightSortByName">cm_RightSortByName</a></div>
+            <td class="cmdhintcell">Sağ paneldeki öğeleri <a href="help.html#cm_SortByName">ada</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightSortByExt" alt="cm_RightSortByExt" src="../../pixmaps/dctheme/32x32/actions/cm_rightsortbyext.png">
+              <div class="cmdname"><a name="cm_RightSortByExt">cm_RightSortByExt</a></div>
+            <td class="cmdhintcell">Sağ paneldeki öğeleri <a href="help.html#cm_SortByExt">uzantıya</a> göre sıralayın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightSortBySize" alt="cm_RightSortBySize" src="../../pixmaps/dctheme/32x32/actions/cm_rightsortbysize.png">
+              <div class="cmdname"><a name="cm_RightSortBySize">cm_RightSortBySize</a></div>
+            <td class="cmdhintcell">Sağ paneldeki öğeleri <a href="help.html#cm_SortBySize">boyuta</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightSortByDate" alt="cm_RightSortByDate" src="../../pixmaps/dctheme/32x32/actions/cm_rightsortbydate.png">
+              <div class="cmdname"><a name="cm_RightSortByDate">cm_RightSortByDate</a></div>
+            <td class="cmdhintcell">Sağ paneldeki öğeleri <a href="help.html#cm_SortByDate">tarihe</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightSortByAttr" alt="cm_RightSortByAttr" src="../../pixmaps/dctheme/32x32/actions/cm_rightsortbyattr.png">
+              <div class="cmdname"><a name="cm_RightSortByAttr">cm_RightSortByAttr</a></div>
+            <td class="cmdhintcell">Sağ paneldeki öğeleri <a href="help.html#cm_SortByAttr">özniteliklere</a> göre sırala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightReverseOrder" alt="cm_RightReverseOrder" src="../../pixmaps/dctheme/32x32/actions/cm_rightreverseorder.png">
+              <div class="cmdname"><a name="cm_RightReverseOrder">cm_RightReverseOrder</a></div>
+            <td class="cmdhintcell">Sağ paneldeki öğeleri <a href="help.html#cm_ReverseOrder">ters sırala</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightOpenDrives" alt="cm_RightOpenDrives" src="../../pixmaps/dctheme/32x32/actions/cm_rightopendrives.png">
+              <div class="cmdname"><a name="cm_RightOpenDrives">cm_RightOpenDrives</a></div>
+              <div class="shrtctkey">Alt+F2</div></td>
+            <td class="cmdhintcell">Sağ panel için <a href="help.html#cm_RightOpenDrives">sürücü listesini</a> aç.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="catfileoperations">2.4 Dosya İşlemleri</a></h2>
+        <P>Bu komutlar, mevcut seçili paneldeki mevcut seçili öğeye uygulanır.<br>Görüntüleme, kopyalama, taşıma, yeniden adlandırma, silme, sıkıştırma, ayıklama, bölme vb. işlemleri içerir.<br>Bunlar muhtemelen <B>dosyalarınızla doğrudan etkisi olan</B> komutlardır.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Dosya İşlemleri"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_View" alt="cm_View" src="../../pixmaps/dctheme/32x32/actions/cm_view.png">
+              <div class="cmdname"><a name="cm_View">cm_View</a></div>
+              <div class="shrtctkey">F3</div></td>
+            <td class="cmdhintcell">Dosyayı <a href="help.html#5_1_3_instruments">görüntüleyici</a> programında aç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Edit" alt="cm_Edit" src="../../pixmaps/dctheme/32x32/actions/cm_edit.png">
+              <div class="cmdname"><a name="cm_Edit">cm_Edit</a></div>
+              <div class="shrtctkey">F4</div></td>
+            <td class="cmdhintcell">Dosyayı dahili düzenleyicide aç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_EditNew" alt="cm_EditNew" src="../../pixmaps/dctheme/32x32/actions/cm_editnew.png">
+              <div class="cmdname"><a name="cm_EditNew">cm_EditNew</a></div>
+              <div class="shrtctkey">Shift+F4</div></td>
+            <td class="cmdhintcell">Yeni bir dosya oluşturun ve düzenleyicide açın (<a href="help.html#5_1_3_instruments">yapılandırmaya bakın</a>).</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Copy" alt="cm_Copy" src="../../pixmaps/dctheme/32x32/actions/cm_copy.png">
+              <div class="cmdname"><a name="cm_Copy">cm_Copy</a></div>
+              <div class="shrtctkey">F5</div></td>
+            <td class="cmdhintcell">Öğeleri kaynaktan hedefe kopyala.<br>
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">confirmation</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">onay iletişim kutusu gösterilir (varsayılan)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">onay iletişim kutusu gösterilmez</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">queueid</td>
+                  <td class="innerdescvaluecell"><i>&lt;queue identifier></i></td>
+                  <td class="innerdescdesccell">varsayılan olarak kopyalama işlemini belirli bir kuyruğa yerleştirir, yalnızca onay iletişim kutusu gösterilmezse çalışır, 0 değeri bağımsız bir işlem olacağı anlamına gelir (kuyruğa alınmaz)</td>
+                </tr>
+              </table>
+              <br>
+              Örnek: "cm_Copy confirmation=1" ayarı, dosya işlemleri kopyalama işlemleri onay ayarı nasıl olursa olsun, kullanıcıdan kopyalamayı onaylamasını ister.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyNoAsk" alt="cm_CopyNoAsk" src="../../pixmaps/dctheme/32x32/actions/cm_copynoask.png">
+              <div class="cmdname"><a name="cm_CopyNoAsk">cm_CopyNoAsk</a></div></td>
+            <td class="cmdhintcell">Öğeleri kaynaktan hedefe onay istemeden kopyala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopySamePanel" alt="cm_CopySamePanel" src="../../pixmaps/dctheme/32x32/actions/cm_copysamepanel.png">
+              <div class="cmdname"><a name="cm_CopySamePanel">cm_CopySamePanel</a></div>
+              <div class="shrtctkey">Shift+F5</div></td>
+            <td class="cmdhintcell">Öğeleri aynı dizine kopyala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Rename" alt="cm_Rename" src="../../pixmaps/dctheme/32x32/actions/cm_rename.png">
+              <div class="cmdname"><a name="cm_Rename">cm_Rename</a></div>
+              <div class="shrtctkey">F6</div></td>
+            <td class="cmdhintcell">Öğeleri yeniden adlandır veya taşı.<br>
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">confirmation</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">onay iletişim kutusu gösterilir (varsayılan)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">onay iletişim kutusu gösterilmez</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">queueid</td>
+                  <td class="innerdescvaluecell"><i>&lt;queue identifier></i></td>
+                  <td class="innerdescdesccell">varsayılan olarak taşıma işlemini belirli bir kuyruğa yerleştirir, yalnızca onay iletişim kutusu gösterilmezse çalışır, 0 değeri bağımsız bir işlem olacağı anlamına gelir (kuyruğa alınmaz)</td>
+                </tr>
+              </table>
+              <br>
+              Örnek: "cm_Rename confirmation=1" ayarı, dosya işlemleri taşıma onay ayarı ne olursa olsun, kullanıcıdan yeniden adlandırma/taşıma işlemini onaylamasını isteyecektir.
+            </td>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RenameNoAsk" alt="cm_RenameNoAsk" src="../../pixmaps/dctheme/32x32/actions/cm_renamenoask.png">
+              <div class="cmdname"><a name="cm_RenameNoAsk">cm_RenameNoAsk</a></div></td>
+            <td class="cmdhintcell">Öğeleri onay istemeden yeniden adlandırın veya taşıyın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RenameOnly" alt="cm_RenameOnly" src="../../pixmaps/dctheme/32x32/actions/cm_renameonly.png">
+              <div class="cmdname"><a name="cm_RenameOnly">cm_RenameOnly</a></div>
+              <div class="shrtctkey">Shift+F6, F2</div></td>
+            <td class="cmdhintcell">Aynı dizindeki dosyaları yeniden adlandırın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MakeDir" alt="cm_MakeDir" src="../../pixmaps/dctheme/32x32/actions/cm_makedir.png">
+              <div class="cmdname"><a name="cm_MakeDir">cm_MakeDir</a></div>
+              <div class="shrtctkey">F7</div></td>
+            <td class="cmdhintcell">Yeni bir dizin oluşturun.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Delete" alt="cm_Delete" src="../../pixmaps/dctheme/32x32/actions/cm_delete.png">
+              <div class="cmdname"><a name="cm_Delete">cm_Delete</a></div>
+              <div class="shrtctkey">F8</div></td>
+            <td class="cmdhintcell">Seçili öğeyi çöp kutusuna taşıyın veya kalıcı olarak silin.<br>
+              Çöp kutusuna taşıma işlemi tüm platformlarda kullanılamayabilir.<br>
+              Çöp kutusuna taşırken veya kalıcı olarak silerken farklı bir onay mesajı verilir.<br>  
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">confirmation</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">onay iletişim kutusu gösterilir (varsayılan)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">onay iletişim kutusu gösterilmez (dikkatli olun!)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="4">trashcan</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">çöp kutusuna taşı</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/false/off/no</td>
+                  <td class="innerdescdesccell">Kalıcı Olarak Sil</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Ayar</td>
+                  <td class="innerdescdesccell">(varsayılan) <a href="help.html#5_1_10_fileOper">Dosya İşlemleri</a> içindeki genel ayara göre hareket eder; eğer bu ayar etkinse çöp kutusuna taşır, aksi takdirde kalıcı olarak siler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">reversesetting</td>
+                  <td class="innerdescdesccell">Ayarın tersi şekilde hareket eder.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Wipe" alt="cm_Wipe" src="../../pixmaps/dctheme/32x32/actions/cm_wipe.png">
+              <div class="cmdname"><a name="cm_Wipe">cm_Wipe</a></div>
+              <div class="shrtctkey">Alt+Del</div></td>
+            <td class="cmdhintcell">Dosyayı <a href="help.html#cm_Wipe">Güvenli Sil</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_PackFiles" alt="cm_PackFiles" src="../../pixmaps/dctheme/32x32/actions/cm_packfiles.png">
+              <div class="cmdname"><a name="cm_PackFiles">cm_PackFiles</a></div>
+              <div class="shrtctkey">Alt+F5</div></td>
+            <td class="cmdhintcell">Ögeleri <a href="help.html#cm_PackFiles"> sıkıştırır </a> ve arşivler.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">PackHere</td>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Sıkıştırılmış dosya etkin panel dizininde olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Sıkıştırılmış dosya etkin olmayan panel dizininde olacak.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_TestArchive" alt="cm_TestArchive" src="../../pixmaps/dctheme/32x32/actions/cm_testarchive.png">
+              <div class="cmdname"><a name="cm_TestArchive">cm_TestArchive</a></div></td>
+            <td class="cmdhintcell">Seçilen arşiv dosyasının içeriğinin bütünlüğünü doğrulayın.<br>
+              Eğer arşiv içeriği bozuksa hata iletisi bildirilecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_OpenArchive" alt="cm_OpenArchive" src="../../pixmaps/dctheme/32x32/actions/cm_openarchive.png">
+              <div class="cmdname"><a name="cm_OpenArchive">cm_OpenArchive</a></div>
+              <div class="shrtctkey">Ctrl+PgDown</div></td>
+            <td class="cmdhintcell">Bir dosyayı arşiv olarak açmayı deneyin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ExtractFiles" alt="cm_ExtractFiles" src="../../pixmaps/dctheme/32x32/actions/cm_extractfiles.png">
+              <div class="cmdname"><a name="cm_ExtractFiles">cm_ExtractFiles</a></div>
+              <div class="shrtctkey">Alt+F9</div></td>
+            <td class="cmdhintcell">Seçili bir veya daha fazla arşivi <a href="help.html#cm_ExtractFiles"> ayıkla.</a>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">ExtractHere</td>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Ayıklanan ögeler etkin panel dizininde bulunacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Ayıklanan ögeler etkin olmayan panel dizininde bulunacak.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_OpenVirtualFileSystemList" alt="cm_OpenVirtualFileSystemList" src="../../pixmaps/dctheme/32x32/actions/cm_openvirtualfilesystemlist.png">
+              <div class="cmdname"><a name="cm_OpenVirtualFileSystemList">cm_OpenVirtualFileSystemList</a></div></td>
+            <td class="cmdhintcell">WFX Eklentisine göre açılır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_FileProperties" alt="cm_FileProperties" src="../../pixmaps/dctheme/32x32/actions/cm_fileproperties.png">
+              <div class="cmdname"><a name="cm_FileProperties">cm_FileProperties</a></div>
+              <div class="shrtctkey">Alt+Enter</div></td>
+            <td class="cmdhintcell">Öge <a href="help.html#cm_FileProperties">özelliklerini</a> (boyut, veri, öznitelikler vb.) gösterir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetFileProperties" alt="cm_SetFileProperties" src="../../pixmaps/dctheme/32x32/actions/cm_setfileproperties.png">
+              <div class="cmdname"><a name="cm_SetFileProperties">cm_SetFileProperties</a></div></td>
+            <td class="cmdhintcell">Dosya oluşturma, değiştirme ve son erişim tarihi, izinleri vb. ayarları düzenleyin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_EditComment" alt="cm_EditComment" src="../../pixmaps/dctheme/32x32/actions/cm_editcomment.png">
+              <div class="cmdname"><a name="cm_EditComment">cm_EditComment</a></div>
+              <div class="shrtctkey">Ctrl+Z</div></td>
+            <td class="cmdhintcell">Dosya/dizin için <a href="help.html#cm_EditComment">açıklama</a> oluşturur veya düzenler.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ContextMenu" alt="cm_ContextMenu" src="../../pixmaps/dctheme/32x32/actions/cm_contextmenu.png">
+              <div class="cmdname"><a name="cm_ContextMenu">cm_ContextMenu</a></div>
+            <td class="cmdhintcell">Dosyalar ve dizinler için <a href="help.html#cm_ContextMenu">bağlam menüsünü</a> gösterir.<br>        
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">justactionmenu</td>
+                  <td class="innerdescvaluecell">0/false/off/no</td>
+                  <td class="innerdescdesccell">Menü, varsayılan sistem bağlam menüsünü VE Double Commander'da tanımlanan dosya uzantılarıyla ilişkilendirilmiş eylemleri içerecektir (varsayılan).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">Menü, yalnızca Double Commander'da tanımlanan dosya uzantılarıyla ilişkilendirilmiş eylemleri içerecektir (varsayılan sistem bağlam menüsü görüntülenmeyecektir).</td>
+                </tr>
+              </table>	  
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Open" alt="cm_Open" src="../../pixmaps/dctheme/32x32/actions/cm_open.png">
+              <div class="cmdname"><a name="cm_Open">cm_Open</a></div>
+              <div class="shrtctkey">Enter</div></td>
+            <td class="cmdhintcell">İmleç altındaki bir dosyayı veya programı açar.<BR>Dosya ilişkilendirme yapılandırmasına göre ilişkilendirilmiş uygulama kullanılabilir, vb.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ShellExecute" alt="cm_ShellExecute" src="../../pixmaps/dctheme/32x32/actions/cm_shellexecute.png">
+              <div class="cmdname"><a name="cm_ShellExecute">cm_ShellExecute</a></div></td>
+            <td class="cmdhintcell">Bilgisayarın ilişkilendirilmiş programını mevcut seçili öge için çalıştıracaktır.<BR>Çağrı için tek bir parametre de sağlanabilir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SymLink" alt="cm_SymLink" src="../../pixmaps/dctheme/32x32/actions/cm_symlink.png">
+              <div class="cmdname"><a name="cm_SymLink">cm_SymLink</a></div>
+            <td class="cmdhintcell">Dosya/dizin için <a href="help.html#cm_SymLink">sembolik bağlantı</a> oluşturur.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_HardLink" alt="cm_HardLink" src="../../pixmaps/dctheme/32x32/actions/cm_hardlink.png">
+              <div class="cmdname"><a name="cm_HardLink">cm_HardLink</a></div>
+            <td class="cmdhintcell"><a href="help.html#cm_HardLink">Sabit bağ</a> oluşturur.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_FileSpliter" alt="cm_FileSpliter" src="../../pixmaps/dctheme/32x32/actions/cm_filespliter.png">
+              <div class="cmdname"><a name="cm_FileSpliter">cm_FileSpliter</a></div>
+            <td class="cmdhintcell"><a href="help.html#cm_FileSpliter">Dosyaları Böl</a> iletişim kutusu.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_FileLinker" alt="cm_FileLinker" src="../../pixmaps/dctheme/32x32/actions/cm_filelinker.png">
+              <div class="cmdname"><a name="cm_FileLinker">cm_FileLinker</a></div>
+            <td class="cmdhintcell">Birden çok bölünmüş dosyayı tek bir dosya oluşturmak üzere <a href="help.html#cm_FileLinker">birleştirir</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CheckSumCalc" alt="cm_CheckSumCalc" src="../../pixmaps/dctheme/32x32/actions/cm_checksumcalc.png">
+              <div class="cmdname"><a name="cm_CheckSumCalc">cm_CheckSumCalc</a></div>
+            <td class="cmdhintcell">Dosya <a href="help.html#012_controlnaya_summa">sağlama toplamını</a> (MD5, SHA1, vb.) hesaplar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CheckSumVerify" alt="cm_CheckSumVerify" src="../../pixmaps/dctheme/32x32/actions/cm_checksumverify.png">
+              <div class="cmdname"><a name="cm_CheckSumVerify">cm_CheckSumVerify</a></div>
+            <td class="cmdhintcell">MD5, SHA1 vb. sağlama toplamını doğrula.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catconfiguration">2.5 Yapılandırma</a></h2>
+        <P>Double Commander'ın seçeneklerine ve yapılandırmalarına erişin.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Yapılandırma"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Options" alt="cm_Options" src="../../pixmaps/dctheme/32x32/actions/cm_options.png">
+              <div class="cmdname"><a name="cm_Options">cm_Options</a></div>
+            <td class="cmdhintcell"><a href="help.html#cm_Options">Yapılandırma</a> iletişim kutusunu açın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigToolbars" alt="cm_ConfigToolbars" src="../../pixmaps/dctheme/32x32/actions/cm_configtoolbars.png">
+              <div class="cmdname"><a name="cm_ConfigToolbars">cm_ConfigToolbars</a></div></td>
+            <td class="cmdhintcell">Araç çubuğunun yapılandırmasına erişin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigDirHotList" alt="cm_ConfigDirHotList" src="../../pixmaps/dctheme/32x32/actions/cm_configdirhotlist.png">
+              <div class="cmdname"><a name="cm_ConfigDirHotList">cm_ConfigDirHotList</a></div></td>
+            <td class="cmdhintcell">Sık Kullanılan Dizinler yapılandırmasına erişin.<BR><BR>
+              "cm_WorkWithDirectoryHotlist" komutuna şu parametrelerle eşdeğerdir:<BR>
+              action=config source=%Ds</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_WorkWithDirectoryHotlist" alt="cm_WorkWithDirectoryHotlist" src="../../pixmaps/dctheme/32x32/actions/cm_workwithdirectoryhotlist.png">
+              <div class="cmdname"><a name="cm_WorkWithDirectoryHotlist">cm_WorkWithDirectoryHotlist</a></div></td>
+            <td class="cmdhintcell">"Sık Kullanılan Dizinler" yapılandırma penceresine erişin.<br>Bu parametrelerle, Sık Kullanılan Dizinlerle ilgili hangi eylemlerin yapılacağını kontrol edebilirsiniz.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="8">action</td>
+                  <td class="innerdescvaluecell">add</td>
+                  <td class="innerdescdesccell">Bir öge ekle (hedef, yapılandırmadaki seçeneğe bağlı olarak eklenecektir).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">addsrconly</td>
+                  <td class="innerdescdesccell">Sadece kaynak içeren bir giriş ekleyecek.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">addboth</td>
+                  <td class="innerdescdesccell">Bir giriş ve hedef ekleyecek.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">config</td>
+                  <td class="innerdescdesccell">Bir girişi yapılandır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">show</td>
+                  <td class="innerdescdesccell">Sadece yapılandırma penceresini göster.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">addsel</td>
+                  <td class="innerdescdesccell">Mevcut seçili dizin(ler)i ekle.<br>(Diğer parametreler göz ardı edilir.)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">directconfig</td>
+                  <td class="innerdescdesccell">Belirtilen "n. sıradaki" girişi yapılandır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">"add" ile aynı.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">source</td>
+                  <td class="innerdescvaluecell">source_path</td>
+                  <td class="innerdescdesccell">"source" (kaynak) olarak eklenecek/yapılandırılacak dizin.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">(hiçbir şey)</td>
+                  <td class="innerdescdesccell">Etkin panelin içinde olduğu dizin.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">target</td>
+                  <td class="innerdescvaluecell">target_path</td>
+                  <td class="innerdescdesccell">"target" (hedef) olarak eklenecek/yapılandırılacak dizin.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Etkin olmayan panelin içinde olduğu dizin.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">index</td>
+                  <td class="innerdescvaluecell">0-999</td>
+                  <td class="innerdescdesccell">“action=directconfig” ise, Sık Kullanılan Dizinlerde "n. sıradaki" girdi.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Sıfırıncı dizin girdisi kullanılacaktır.</td>
+                </tr>
+              </table>
+              Örnek:<br>"cm_WorkWithDirectoryHotlist action=addboth"<br>Bu, etkin ve etkin olmayan çerçevenin geçerli dizinlerini sırasıyla kaynak ve hedef olarak Sık Kullanılan Dizinlere ekleyecektir.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_FileAssoc" alt="cm_FileAssoc" src="../../pixmaps/dctheme/32x32/actions/cm_fileassoc.png">
+              <div class="cmdname"><a name="cm_FileAssoc">cm_FileAssoc</a></div>
+            <td class="cmdhintcell">Dosya ilişkilendirmeleri <a href="help.html#cm_FileAssoc">yapılandırmasını</a> aç</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigFolderTabs" alt="cm_ConfigFolderTabs" src="../../pixmaps/dctheme/32x32/actions/cm_configfoldertabs.png">
+              <div class="cmdname"><a name="cm_ConfigFolderTabs">cm_ConfigFolderTabs</a></div></td>
+            <td class="cmdhintcell">Klasör sekmeleriyle ilgili ayarların yapılandırmasına erişin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigFavoriteTabs" alt="cm_ConfigFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_configfavoritetabs.png">
+              <div class="cmdname"><a name="cm_ConfigFavoriteTabs">cm_ConfigFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Favori Sekmelerin yapılandırmasına erişin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigTreeViewMenus" alt="cm_ConfigTreeViewMenus" src="../../pixmaps/dctheme/32x32/actions/cm_configtreeviewmenus.png">
+              <div class="cmdname"><a name="cm_ConfigTreeViewMenus">cm_ConfigTreeViewMenus</a></div></td>
+            <td class="cmdhintcell">Ağaç Görünümü Menülerinin yapılandırmasına erişin. Varsayılan olarak hangi komut için ağaç görünümü menü stilini kullanmak istediğimizi buradan yapılandırabiliriz.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigTreeViewMenusColors" alt="cm_ConfigTreeViewMenusColors" src="../../pixmaps/dctheme/32x32/actions/cm_configtreeviewmenuscolors.png">
+              <div class="longcmdname"><a name="cm_ConfigTreeViewMenusColors">cm_ConfigTreeViewMenusColors</a></div></td>
+            <td class="cmdhintcell">Ağaç Görünümü Menüsü bölüm arayüzünde kullanılan rengin yapılandırmasına erişin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigHotKeys" alt="cm_ConfigHotKeys" src="../../pixmaps/dctheme/32x32/actions/cm_confighotkeys.png">
+              <div class="cmdname"><a name="cm_ConfigHotKeys">cm_ConfigHotKeys</a></div></td>
+            <td class="cmdhintcell">Kısayol tuşlarının yapılandırmasına erişin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigSearches" alt="cm_ConfigSearches" src="../../pixmaps/dctheme/32x32/actions/cm_configsearches.png">
+              <div class="cmdname"><a name="cm_ConfigSearches">cm_ConfigSearches</a></div></td>
+            <td class="cmdhintcell">Dosya aramasıyla ilgili genel seçeneklerin yapılandırmasına erişin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ConfigSaveSettings" alt="cm_ConfigSaveSettings" src="../../pixmaps/dctheme/32x32/actions/cm_configsavesettings.png">
+              <div class="cmdname"><a name="cm_FileAssoc">cm_ConfigSaveSettings</a></div>
+            <td class="cmdhintcell">Tüm mevcut ayarları ve geçmişi, uygulamayı kapatıp geri yüklediğiniz zamanki gibi kaydedecektir.<br><I>Bu, uzun bir oturum boyunca Double Commander’ı kullandıysanız ve sistem çökerse mevcut bağlamı kaydetmek, Double Commander’ı yeniden başlattığınızda mevcut geçmişi kaybetmek istemiyorsanız faydalı olabilir</I>.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catnetwork">2.6 Ağ</a></h2>
+        <P>Doğrudan bilgisayar ağıyla ilgili.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Ağ"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_NetworkConnect" alt="cm_NetworkConnect" src="../../pixmaps/dctheme/32x32/actions/cm_networkconnect.png">
+              <div class="cmdname"><a name="cm_NetworkConnect">cm_NetworkConnect</a></div></td>
+            <td class="cmdhintcell">Şimdilik bir şey yok, ancak gelecekte ağ ile ilgili işlerde kullanılabilir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_NetworkDisconnect" alt="cm_NetworkDisconnect" src="../../pixmaps/dctheme/32x32/actions/cm_networkdisconnect.png">
+              <div class="cmdname"><a name="cm_NetworkDisconnect">cm_NetworkDisconnect</a></div></td>
+            <td class="cmdhintcell">Şimdilik bir şey yok, ancak gelecekte ağ ile ilgili işlerde kullanılabilir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catmiscellaneous">2.7 Çeşitli</a></h2>
+        <P>Hangi kategoriye yerleştireceğimizi bilemediğimiz komutların olduğu kaçınılmaz kategori!<br>Bu kategoriye çok fazla komut yerleştirmemeye özen gösterildi.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Çeşitli"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CalculateSpace" alt="cm_CalculateSpace" src="../../pixmaps/dctheme/32x32/actions/cm_calculatespace.png">
+              <div class="cmdname"><a name="cm_CalculateSpace">cm_CalculateSpace</a></div>
+              <div class="shrtctkey">Ctrl+L</div></td>
+            <td class="cmdhintcell">Etkin paneldeki seçili klasörlerin <a href="help.html#cm_CalculateSpace">dolu</a> alanını hesapla.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RunTerm" alt="cm_RunTerm" src="../../pixmaps/dctheme/32x32/actions/cm_runterm.png">
+              <div class="cmdname"><a name="cm_RunTerm">cm_RunTerm</a></div>
+              <div class="shrtctkey">F9</div></td>
+            <td class="cmdhintcell">Bir <a href="help.html#cm_RunTerm">terminal</a> başlatır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ExecuteScript" alt="cm_ExecuteScript" src="../../pixmaps/dctheme/32x32/actions/cm_executescript.png">
+              <div class="cmdname"><a name="cm_ExecuteScript">cm_ExecuteScript</a></div>
+            </td>
+            <td class="cmdhintcell">Lua betik dosyasını çalıştırın (Lua .DLL kurulu olmasını gerektirir), <a href="lua.html">ayrıca</a> bakınız.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell"><i>{first}</i></td>
+                  <td class="innerdescvaluecell">dosya adı</td>
+                  <td class="innerdescdesccell">Lua betik dosyası yolu</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>{param1}</i></td>
+                  <td class="innerdescvaluecell">Komut Satırı Parametresi #1</td>
+                  <td class="innerdescdesccell" rowspan="3">Lua betiğine komut satırı parametreleri olarak geçirildi.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>{param2}</i></td>
+                  <td class="innerdescvaluecell">Komut Satırı Parametresi #2</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>{paramX}</i></td>
+                  <td class="innerdescvaluecell">Komut Satırı Parametresi #X</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catmark">2.8 İşaretle</a></h2>
+        <P>Dosya işlemlerinin yapılacağı klasörleri seçin.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "İşaretle"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkPlus" alt="cm_MarkPlus" src="../../pixmaps/dctheme/32x32/actions/cm_markplus.png">
+              <div class="cmdname"><a name="cm_MarkPlus">cm_MarkPlus</a></div>
+            <td class="cmdhintcell">Aşağıdaki parametrelere göre, etkin paneldeki klasörleri (sağlanan veya sağlanmayan) bir maske kullanarak <a href="help.html#cm_MarkPlus">Seçin</a>.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">Maske</td>
+                  <td class="innerdescvaluecell"><i>&lt;herhangi bir karakter dizisi></i></td>
+                  <td class="innerdescdesccell">Kullanılacak filtre</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Kullanıcıdan filtre yazması istenecek.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">Büyük/küçük harfe duyarlı</td>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Büyük/küçük harf duyarlılığı göz ardı edilerek filtreleme yapılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Büyük/küçük harfe duyarlı filtreleme yapılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Büyük/küçük harf duyarlılığı, mevcut dosya görünümü için son kullanılan olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">Aksanları yoksay</td>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Aksanlı karakterler açısından tam eşleşme değerlendirilerek filtreleme yapılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Klasörler ve maske, aksanları göz ardı edilerek ve bitişik harfler ayrı harflerle değiştirilerek karşılaştırılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Aksanları göz ardı edip etmeme, o dosya görünümü için son belirtildiği gibi olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">Windows yorumlaması</td>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Filtreleme Eski DC gibi yapılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Filtreleme Windows gibi yapılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Eski DC filtrelemesini veya Windows filtrelemesini kullanma, o dosya görünümü için son belirtildiği gibi olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="7">Öznitelik</td>
+                  <td class="innerdescvaluecell">d-</td>
+                  <td class="innerdescdesccell">Filtreleme dizinleri göz ardı edecek ve yalnızca dosyaları alacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">d+</td>
+                  <td class="innerdescdesccell">Filtreleme dosyaları göz ardı edecek ve yalnızca dizinleri alacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">h-</td>
+                  <td class="innerdescdesccell">Filtreleme gizli dosyaları göz ardı edecek (Windows).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">ux+</td>
+                  <td class="innerdescdesccell">Filtreleme yalnızca sahibin yürütülebilir özniteliğine sahip girişleri alacak (Linux).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">uw+|gw+|ow+</td>
+                  <td class="innerdescdesccell">Filtreleme, kullanıcı, grup veya başkaları tarafından yazılabilir olan dosyaları seçecektir (Linux).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"></td>
+                  <td class="innerdescdesccell">Not: Bu, sağda bir değer olmadan "attr=" anlamına gelir. <BR>Yapılandırılmış "Varsayılan Öznitelik Maskesi" ne olursa olsun her şeyi filtrele.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">Filtreleme, "Dosya İşlemleri"ndeki "Dosyaları İşaretleme/İşaretini Kaldırma" bölümünde, "Varsayılan Öznitelik Maskesi" seçeneğinde yapılandırılana göre yapılacaktır.</td>
+                </tr>
+              </table>
+              <B>Not1:</B> Bu nedenle, komut herhangi bir parametre olmadan kullanılırsa, kullanıcıdan filtresini girmesi istenecektir ve diğer seçenekler, her dosya görünümü için mevcut oturumda en son belirtildiği gibi olacaktır.<BR>
+              <B>Not2:</B> Eski DC'nin aksine Windows gibi filtreleme kullanılırken, uzantısı olmayan dosya <i>*.*</i> filtresiyle seçilecektir.<BR>
+              <B>Not3:</B> "maske" parametresini belirtirken, lütfen adının önüne ">" sembolünü getirerek "<I>mask=>Pascal files</I>" gibi önceden tanımlanmış seçim türünü de kullanabileceğinizi unutmayın.<BR>
+              <B>Not4:</B> "<I>ignoreaccents=TRUE</I>" filtreleme parametresi kullanılırken, örneğin "<I>œ</I>" gibi birleşik karakterler "<I>oe</I>" dizisi olarak değerlendirilecektir. Yani örneğin "<I>cœur</I>", "<I>coeur</I>" ile eşleşecektir.<BR>
+              <B>Not5:</B> Örneğin "casesensitive" gibi parametrelerin kullanılması, kullanıcıya en son sorulduğunda kullanılan varsayılan parametrelerin aynısını kullanacak olan parametresiz "cm_MarkPlus" komutunun sonraki kullanımını etkilemeyecektir.<BR>
+              <B>Not6:</B> "attr" olası parametre değerleriyle ilgili olarak, "Dosyaları Bul" yardım dosyasındaki "<a href="findfiles.html#attributes">Özel özniteliklere sahip dosyaları arama</a>" bölümüne bakın. Özniteliklerle ilgili filtreyi belirtme şekli aynıdır.<BR>
+              <B>Örnek1:</B> "cm_MarkPlus mask=*.pas;*.dfm;*.dpr;*.inc casesensitive=false" Bu, verilen filtre maskesiyle (temelde yaygın Delphi kaynak dosyası uzantılarıdır) eşleşen tüm dosyaları seçecek ve harflerin büyük/küçük harf duyarlılığını göz ardı edecektir.<BR>
+              <B>Örnek2:</B> "cm_MarkPlus mask=*ecole*.docx ignoreaccents=true" Bu, verilen filtre maskesiyle (temelde içinde "ecole" kelimesi geçen Microsoft Word belgesidir) eşleşen tüm dosyaları seçecek ve aksanları göz ardı edecektir. Bu, aksanlar göz ardı edildiği için içinde "école" ve "ecole" olan dosyaları seçecektir.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkMinus" alt="cm_MarkMinus" src="../../pixmaps/dctheme/32x32/actions/cm_markminus.png">
+              <div class="cmdname"><a name="cm_MarkMinus">cm_MarkMinus</a></div></td>
+            <td class="cmdhintcell"> Etkin paneldeki maskeyle (sağlanmış olsun veya olmasın)<a href="#cm_MarkPlus">cm_MarkPlus</a> komutuyla aynı parametrelere göre eşleşen klasörlerin <a href="help.html#cm_MarkMinus">seçimini kaldır</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkMarkAll" alt="cm_MarkMarkAll" src="../../pixmaps/dctheme/32x32/actions/cm_markmarkall.png">
+              <div class="cmdname"><a name="cm_MarkMarkAll">cm_MarkMarkAll</a></div>
+              <div class="shrtctkey">Ctrl+A</div></td>
+            <td class="cmdhintcell">Temelde, etkin paneldeki <a href="help.html#cm_MarkMarkAll">tüm</a> girişleri aşağıdaki öznitelik filtresine göre seçecektir.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="7">Öznitelik</td>
+                  <td class="innerdescvaluecell">d-</td>
+                  <td class="innerdescdesccell">Dizin olmayan tüm girdileri filtrele</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">d+</td>
+                  <td class="innerdescdesccell">Dizin olan tüm girdileri filtrele</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">h-</td>
+                  <td class="innerdescdesccell">Gizli özniteliği olmayan tüm girdileri filtrele</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">ux+</td>
+                  <td class="innerdescdesccell">Sahip yürütülebilir özniteliğine sahip tüm girdileri filtrele (Linux)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">uw+|gw+|ow+</td>
+                  <td class="innerdescdesccell">Kullanıcı, grup veya başkası tarafından yazılabilir olan tüm girdileri filtrele (Linux)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"></td>
+                  <td class="innerdescdesccell">Not: Bu, sağda bir değer olmadan "attr=" anlamına gelir. <BR>Yapılandırılmış "Varsayılan Öznitelik Maskesi" ne olursa olsun her şeyi filtrele.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><i>(yok)</i></td>
+                  <td class="innerdescdesccell">"Dosya görünümleri" bölümünde, "Girdileri İşaretleme/İşaretlemeyi Kaldırma" kısmındaki "Kullanılacak varsayılan öznitelik maskesi değeri" seçeneğinde yapılandırılanlarla eşleşen her şeyi seçecektir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkUnmarkAll" alt="cm_MarkUnmarkAll" src="../../pixmaps/dctheme/32x32/actions/cm_markunmarkall.png">
+              <div class="cmdname"><a name="cm_MarkUnmarkAll">cm_MarkUnmarkAll</a></div>
+              <div class="shrtctkey">F1</div></td>
+            <td class="cmdhintcell">Etkin paneldeki <a href="help.html#cm_MarkUnmarkAll">tüm</a> girdilerin işaretini, <a href="#cm_MarkMarkAll">cm_MarkMarkAll</a> komutunun tablosunda açıklanan aynı filtreye göre kaldıracaktır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkInvert" alt="cm_MarkInvert" src="../../pixmaps/dctheme/32x32/actions/cm_markinvert.png">
+              <div class="cmdname"><a name="cm_MarkInvert">cm_MarkInvert</a></div>
+            <td class="cmdhintcell"><a href="#cm_MarkMarkAll">cm_MarkMarkAll</a> tablosunda açıklanan aynı filtreyle eşleşen tüm girdilerin seçili durumunu <a href="help.html#cm_MarkInvert">Tersine Çevir</a>ecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkCurrentPath" alt="cm_MarkCurrentPath" src="../../pixmaps/dctheme/32x32/actions/cm_markcurrentpath.png">
+              <div class="cmdname"><a name="cm_MarkCurrentPath">cm_MarkCurrentPath</a></div></td>
+            <td class="cmdhintcell">Etkin paneldeki imleç altındaki öge ile aynı yola sahip dosyaları <a href="help.html#mnu_select">İşaretle</a>.<BR>
+              <B>Not:</B> İlk bakışta işe yaramaz gibi görünebilir ancak en az iki durumda kullanılabilir:<br>
+              <div style="margin: 0 0 0 15;">
+                Bir paneli çeşitli dizin seviyelerinden gelen arama sonuçlarıyla doldurduktan sonra<br>
+                "cm_FlatView" dahili komutunu açtıktan sonra.
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_UnmarkCurrentPath" alt="cm_UnmarkCurrentPath" src="../../pixmaps/dctheme/32x32/actions/cm_unmarkcurrentpath.png">
+              <div class="cmdname"><a name="cm_UnmarkCurrentPath">cm_UnmarkCurrentPath</a></div></td>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile aynı yola sahip dosyaların <a href="help.html#mnu_select">işaretini kaldır</a>.<BR>
+              Bu komutun olası faydaları için "<a href="#cm_MarkCurrentPath">cm_MarkCurrentPath</a>" komutunun notuna bakın.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkCurrentName" alt="cm_MarkCurrentName" src="../../pixmaps/dctheme/32x32/actions/cm_markcurrentname.png">
+              <div class="cmdname"><a name="cm_MarkCurrentName">cm_MarkCurrentName</a></div></td>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile uzantıyı yok sayarak aynı dosya adına sahip dosyaları <a href="help.html#mnu_select">işaretle</a>.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_UnmarkCurrentName" alt="cm_UnmarkCurrentName" src="../../pixmaps/dctheme/32x32/actions/cm_unmarkcurrentname.png">
+              <div class="cmdname"><a name="cm_UnmarkCurrentName">cm_UnmarkCurrentName</a></div></td>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile uzantıyı yok sayarak aynı dosya adına sahip dosyaların <a href="help.html#mnu_select">işaretini kaldır</a>.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkCurrentExtension" alt="cm_MarkCurrentExtension" src="../../pixmaps/dctheme/32x32/actions/cm_markcurrentextension.png">
+              <div class="cmdname"><a name="cm_MarkCurrentExtension">cm_MarkCurrentExtension</a></div>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile aynı uzantıya sahip dosyaları <a href="help.html#mnu_select">işaretle</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_UnmarkCurrentExtension" alt="cm_UnmarkCurrentExtension" src="../../pixmaps/dctheme/32x32/actions/cm_unmarkcurrentextension.png">
+              <div class="cmdname"><a name="cm_UnmarkCurrentExtension">cm_UnmarkCurrentExtension</a></div>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile aynı uzantıya sahip dosyaların <a href="help.html#mnu_select">işaretini kaldır</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MarkCurrentNameExt" alt="cm_MarkCurrentNameExt" src="../../pixmaps/dctheme/32x32/actions/cm_markcurrentnameext.png">
+              <div class="cmdname"><a name="cm_MarkCurrentNameExt">cm_MarkCurrentNameExt</a></div></td>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile aynı dosya adına ve uzantıya sahip dosyaları <a href="help.html#mnu_select">işaretle</a>.<BR>
+              Bu komutun olası faydaları için "<a href="#cm_MarkCurrentPath">cm_MarkCurrentPath</a>" komutunun notuna bakın.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_UnmarkCurrentNameExt" alt="cm_UnmarkCurrentNameExt" src="../../pixmaps/dctheme/32x32/actions/cm_unmarkcurrentnameext.png">
+              <div class="cmdname"><a name="cm_UnmarkCurrentNameExt">cm_UnmarkCurrentNameExt</a></div></td>
+            <td class="cmdhintcell">Etkin panelde imleç altındaki öge ile aynı dosya adına ve uzantıya sahip dosyaların <a href="help.html#mnu_select">işaretini kaldır</a>.<BR>
+              Bu komutun olası faydaları için "<a href="#cm_MarkCurrentPath">cm_MarkCurrentPath</a>" komutunun notuna bakın.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CompareDirectories" alt="cm_CompareDirectories" src="../../pixmaps/dctheme/32x32/actions/cm_comparedirectories.png">
+              <div class="cmdname"><a name="cm_CompareDirectories">cm_CompareDirectories</a></div></td>
+            <td class="cmdhintcell">Karşı panelde bulunmayan, etkin ve etkin olmayan panellerde bulunmayan dosyaları seçecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SaveSelection" alt="cm_SaveSelection" src="../../pixmaps/dctheme/32x32/actions/cm_saveselection.png">
+              <div class="cmdname"><a name="cm_SaveSelection">cm_SaveSelection</a></div></td>
+            <td class="cmdhintcell"><a href="#cm_RestoreSelection">cm_RestoreSelection</a> ile birlikte kullanılır.<br>"cm_SaveSelection" komutu, geçerli seçili ögeleri dahili belleğe kaydedecektir.<br>Daha sonra, "<a href="#cm_RestoreSelection">cm_RestoreSelection</a>" komutu, daha önce seçilmiş ögelerin aynılarını tekrar seçmek için kullanılabilir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RestoreSelection" alt="cm_RestoreSelection" src="../../pixmaps/dctheme/32x32/actions/cm_restoreselection.png">
+              <div class="cmdname"><a name="cm_RestoreSelection">cm_RestoreSelection</a></div></td>
+            <td class="cmdhintcell">Önceki "<a href="#cm_SaveSelection">cm_SaveSelection</a>" komutuna bakın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SaveSelectionToFile" alt="cm_SaveSelectionToFile" src="../../pixmaps/dctheme/32x32/actions/cm_saveselectiontofile.png">
+              <div class="cmdname"><a name="cm_SaveSelectionToFile">cm_SaveSelectionToFile</a></div></td>
+            <td class="cmdhintcell">Geçerli seçimi bir dosyaya kaydedin<BR>
+              Çıktı dosya adını ilk parametrede belirleyebilirsiniz.<BR>
+              Parametre sağlanmazsa Double Commander kullanıcıdan bir parametre girmesini isteyecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LoadSelectionFromFile" alt="cm_LoadSelectionFromFile" src="../../pixmaps/dctheme/32x32/actions/cm_loadselectionfromfile.png">
+              <div class="cmdname"><a name="cm_LoadSelectionFromFile">cm_LoadSelectionFromFile</a></div></td>
+            <td class="cmdhintcell">Sağlanan dosyanın içeriğini okuyacak ve dosyadan okunan ögeleri seçecektir.<br>
+              Bu dosya, dahili komutun ilk parametresi olarak sağlanabilir.<br>
+              Dosya sağlanmazsa uygulama bir dosya girilmesini isteyecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LoadSelectionFromClip" alt="cm_LoadSelectionFromClip" src="../../pixmaps/dctheme/32x32/actions/cm_loadselectionfromclip.png">
+              <div class="cmdname"><a name="cm_LoadSelectionFromClip">cm_LoadSelectionFromClip</a></div></td>
+            <td class="cmdhintcell">Etkin paneldeki ögeyi panonun içeriğine göre seçecektir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catclipboard">2.9 Pano</a></h2>
+        <P>Sistemin panosu ve seçili ögeler arasındaki etkileşimle ilgili eylemler.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">"Pano" Kategorisi</th></tr>
+          <tr class="rowsubtitle"><th width="30%">Komut adı</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CutToClipboard" alt="cm_CutToClipboard" src="../../pixmaps/dctheme/32x32/actions/cm_cuttoclipboard.png">
+              <div class="cmdname"><a name="cm_CutToClipboard">cm_CutToClipboard</a></div>
+              <div class="shrtctkey">Ctrl+X</div></td>
+            <td class="cmdhintcell">Seçili metni, dosyayı veya dizini panoya kesin.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyToClipboard" alt="cm_CopyToClipboard" src="../../pixmaps/dctheme/32x32/actions/cm_copytoclipboard.png">
+              <div class="cmdname"><a name="cm_CopyToClipboard">cm_CopyToClipboard</a></div>
+              <div class="shrtctkey">Ctrl+C</div></td>
+            <td class="cmdhintcell">Seçili metni, dosyayı veya dizini panoya kopyala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_PasteFromClipboard" alt="cm_PasteFromClipboard" src="../../pixmaps/dctheme/32x32/actions/cm_pastefromclipboard.png">
+              <div class="cmdname"><a name="cm_PasteFromClipboard">cm_PasteFromClipboard.</a></div>
+              <div class="shrtctkey">Ctrl+V</div></td>
+            <td class="cmdhintcell">Veriyi panodan yapıştır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyNamesToClip" alt="cm_CopyNamesToClip" src="../../pixmaps/dctheme/32x32/actions/cm_copynamestoclip.png">
+              <div class="cmdname"><a name="cm_CopyNamesToClip">cm_CopyNamesToClip</a></div>
+              <div class="shrtctkey">Ctrl+Alt+X</div></td>
+            <td class="cmdhintcell">öge <a href="help.html#cm_CopyNamesToClip">adlarını</a> panoya kopyala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyFullNamesToClip" alt="cm_CopyFullNamesToClip" src="../../pixmaps/dctheme/32x32/actions/cm_copyfullnamestoclip.png">
+              <div class="cmdname"><a name="cm_CopyFullNamesToClip">cm_CopyFullNamesToClip</a></div>
+              <div class="shrtctkey">Ctrl+Alt+C</div></td>
+            <td class="cmdhintcell">öge <a href="help.html#cm_CopyFullNamesToClip">tam adlarını</a> panoya kopyala.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyPathOfFilesToClip" alt="cm_CopyPathOfFilesToClip" src="../../pixmaps/dctheme/32x32/actions/cm_copypathoffilestoclip.png">
+              <div class="cmdname"><a name="cm_CopyPathOfFilesToClip">cm_CopyPathOfFilesToClip</a></div></td>
+            <td class="cmdhintcell">Geçerli seçili ögelerin tam yolu sondaki dizin ayırıcısı dahil kopyalanacaktır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyPathNoSepOfFilesToClip" alt="cm_CopyPathNoSepOfFilesToClip" src="../../pixmaps/dctheme/32x32/actions/cm_copypathnosepoffilestoclip.png">
+              <div class="longcmdname"><a name="cm_CopyPathNoSepOfFilesToClip">cm_CopyPathNoSepOfFilesToClip</a></div></td>
+            <td class="cmdhintcell">Geçerli seçili ögelerin tam yolu sondaki dizin ayırıcısı hariç kopyalanacaktır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyFileDetailsToClip" alt="cm_CopyFileDetailsToClip" src="../../pixmaps/dctheme/32x32/actions/cm_copyfiledetailstoclip.png">
+              <div class="cmdname"><a name="cm_CopyFileDetailsToClip">cm_CopyFileDetailsToClip</a></div></td>
+            <td class="cmdhintcell">Seçili ögelerin dosya bilgileri panoya kopyalanacaktır.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catnavigation">2.10 Gezinme</a></h2>
+        <P>Bir klasörden diğerine giderek konumlarına göre çeşitli ögelere erişme.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">"Gezinme" Kategorisi</th></tr>
+          <tr class="rowsubtitle"><th width="30%">Komut adı</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_DirHistory" alt="cm_DirHistory" src="../../pixmaps/dctheme/32x32/actions/cm_dirhistory.png">
+              <div class="cmdname"><a name="cm_DirHistory">cm_DirHistory</a></div>
+              <div class="shrtctkey">Ctrl+H</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_DirHistory">Dizin Geçmişi</a> menüsünü aç.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">menütipi</td>
+                  <td class="innerdescvaluecell">açılır</td>
+                  <td class="innerdescdesccell">Geçmişteki dizinler açılır menüde görüntülenecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">ağaç görünümü</td>
+                  <td class="innerdescdesccell">Geçmişteki dizinler ağaç görünümü menüsünde görüntülenecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Açılır menü aracılığıyla gerçekleştiği varsayılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">konum</td>
+                  <td class="innerdescvaluecell">panel</td>
+                  <td class="innerdescdesccell">Menü, etkin panelin sol üst köşesinde gösterilecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">imleç</td>
+                  <td class="innerdescdesccell">Menü, mevcut fare imleci konumunda gösterilecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Etkin panelin sol üst köşesinde olduğu varsayılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Açılır menü etkin panelin sol üst köşesinde gösterilir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_DirHotList" alt="cm_DirHotList" src="../../pixmaps/dctheme/32x32/actions/cm_dirhotlist.png">
+              <div class="cmdname"><a name="cm_DirHotList">cm_DirHotList</a></div>
+              <div class="shrtctkey">Ctrl+D</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_DirHotList">Sık Kullanılan</a> Dizinler<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">menütipi</td>
+                  <td class="innerdescvaluecell">açılır</td>
+                  <td class="innerdescdesccell">Sık kullanılan dizinler açılır menüde gösterilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">ağaç görünümü</td>
+                  <td class="innerdescdesccell">Sık kullanılan dizinler ağaç görünümü menüsünde gösterilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Açılır menü aracılığıyla gerçekleştiği varsayılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">konum</td>
+                  <td class="innerdescvaluecell">panel</td>
+                  <td class="innerdescdesccell">Menü, etkin panelin sol üst köşesinde gösterilecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">imleç</td>
+                  <td class="innerdescdesccell">Menü, mevcut fare imleci konumunda gösterilecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Etkin panelin sol üst köşesinde olduğu varsayılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Açılır menü etkin panelin sol üst köşesinde gösterilir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ChangeDirToParent" alt="cm_ChangeDirToParent" src="../../pixmaps/dctheme/32x32/actions/cm_changedirtoparent.png">
+              <div class="cmdname"><a name="cm_ChangeDirToParent">cm_ChangeDirToParent</a></div></td>
+            <td class="cmdhintcell">Mevcut dizinin üst dizinine gider.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ChangeDirToHome" alt="cm_ChangeDirToHome" src="../../pixmaps/dctheme/32x32/actions/cm_changedirtohome.png">
+              <div class="cmdname"><a name="cm_ChangeDirToHome">cm_ChangeDirToHome</a></div></td>
+            <td class="cmdhintcell">Kullanıcının ana dizinine gider.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ChangeDirToRoot" alt="cm_ChangeDirToRoot" src="../../pixmaps/dctheme/32x32/actions/cm_changedirtoroot.png">
+              <div class="cmdname"><a name="cm_ChangeDirToRoot">cm_ChangeDirToRoot</a></div>
+            <td class="cmdhintcell">Kök dizine gider (GNU/Linux'ta "/").</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_TargetEqualSource" alt="cm_TargetEqualSource" src="../../pixmaps/dctheme/32x32/actions/cm_targetequalsource.png">
+              <div class="cmdname"><a name="cm_TargetEqualSource">cm_TargetEqualSource</a></div>
+              <div class="shrtctkey">Alt+Z</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_TargetEqualSource">Aynı</a> dizini karşı panelde gösterir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_TransferLeft" alt="cm_TransferLeft" src="../../pixmaps/dctheme/32x32/actions/cm_transferleft.png">
+              <div class="cmdname"><a name="cm_TransferLeft">cm_TransferLeft</a></div>
+              <div class="shrtctkey">Ctrl+Left</div></td>
+            <td class="cmdhintcell">Sol panelde imleç altındaki dizini açar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_TransferRight" alt="cm_TransferRight" src="../../pixmaps/dctheme/32x32/actions/cm_transferright.png">
+              <div class="cmdname"><a name="cm_TransferRight">cm_TransferRight</a></div>
+              <div class="shrtctkey">Ctrl+Right</div></td>
+            <td class="cmdhintcell">Sağ panelde imleç altındaki dizini açar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LeftEqualRight" alt="cm_LeftEqualRight" src="../../pixmaps/dctheme/32x32/actions/cm_leftequalright.png">
+              <div class="cmdname"><a name="cm_LeftEqualRight">cm_LeftEqualRight</a></div>
+              <div class="shrtctkey">Alt+Z</div></td>
+            <td class="cmdhintcell">Sağ paneldeki dizini sol panelde gösterir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RightEqualLeft" alt="cm_RightEqualLeft" src="../../pixmaps/dctheme/32x32/actions/cm_rightequalleft.png">
+              <div class="cmdname"><a name="cm_RightEqualLeft">cm_RightEqualLeft</a></div></td>
+            <td class="cmdhintcell">Sol paneldeki dizini sağ panelde gösterir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Exchange" alt="cm_Exchange" src="../../pixmaps/dctheme/32x32/actions/cm_exchange.png">
+              <div class="cmdname"><a name="cm_Exchange">cm_Exchange</a></div>
+              <div class="shrtctkey">Ctrl+U</div></td>
+            <td class="cmdhintcell">Dosya panellerini <a href="help.html#cm_Exchange">değiştirir</a> </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_QuickSearch" alt="cm_QuickSearch" src="../../pixmaps/dctheme/32x32/actions/cm_quicksearch.png">
+              <div class="cmdname"><a name="cm_QuickSearch">cm_QuickSearch</a></div>
+              <div class="shrtctkey">Ctrl+S</div></td>
+            <td class="cmdhintcell">Dizinde <a href="help.html#5_1_14_bystrPoisk">Hızlı Arama</a> yapar.<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Arama</td>
+                  <td class="innerdescvaluecell">açık/kapalı/döngü</td>
+                  <td class="innerdescdesccell">Alttaki hızlı arama çerçevesinin durumunu belirler:<BR>          
+                    - "açık" olduğunda, belirtilen arama parametreleri uygulanır ve hızlı arama çerçevesi altta gösterilir.<BR>
+                    - "kapalı" olduğunda, hızlı arama kaldırılır ve arama çerçevesi gizlenir.<BR>
+                    -”Döngü" olduğunda, bir sonraki eşleşen öğeye gitme komutunu art arda birçok kez çağırmak için kullanılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Yön</td>
+                  <td class="innerdescvaluecell">ilk/son/sonraki</td>
+                  <td class="innerdescdesccell">Arama kriterlerine uyan dosya için hızlı aramanın yönünü belirler:<BR>          
+                    -İlk" olduğunda, en üstten bulunan ilk dosyaya.<BR>
+                    -Son" olduğunda, son dosyaya.<BR>
+                    -Sonraki" olduğunda, arama anındaki mevcut dosyadan sonraki dosyaya. Mevcut seçili dosyadan sonra başka dosya bulunamazsa, önceki dosyaya geri dönmek için bir döngü yapabileceğini lütfen unutmayın.<BR>
+                    *Not: Bu seçenek, "search=cycle" olduğunda ilgisizdir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Baştan Eşleştir</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell"><i>Baştan eşleştir</i> seçeneğini ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Sondan Eşleştir</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell"><i>Sondan eşleştir</i> seçeneğini ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Büyük/Küçük Harf Duyarlılığı</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell">Büyük/küçük harf duyarlılığını ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Dosyalar</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell">Dosyaları filtrelemeyi ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Dizinler</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell">Dizinleri filtrelemeyi ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2">Dosyalar ve Dizinler</td>
+                  <td class="innerdescdesccell">Yalnızca dosyaları, yalnızca dizinleri veya her ikisini filtreleme arasında geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Metin</td>
+                  <td class="innerdescvaluecell"><i>&lt;Herhangi Bir Karakter Dizisi></i></td>
+                  <td class="innerdescdesccell"><i>Herhangi bir karakter dizisini</i> yeni aranan karakter dizisi olarak ayarlar.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_QuickFilter" alt="cm_QuickFilter" src="../../pixmaps/dctheme/32x32/actions/cm_quickfilter.png">
+              <div class="cmdname"><a name="cm_QuickFilter">cm_QuickFilter</a></div>
+              <div class="shrtctkey">Ctrl+F</div></td>
+            <td class="cmdhintcell">Dosya listesini yalnızca istenen dosyaları/dizinleri gösterecek şekilde filtrelemeyi sağlar.<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">filtre</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell"><p>- “açık” olduğunda, belirtilen filtre uygulanır ve yapılandırılabilir filtre çerçevesi altta gösterilir
+                    <p>- “kapalı” olduğunda, filtreleme kaldırılır ve filtre çerçevesi gizlenir
+                    <p>- “geçiş” olduğunda, önceki iki durum arasında geçiş yapar</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Baştan Eşleştir</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell"><i>Baştan eşleştir</i> seçeneğini ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Sondan Eşleştir</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell"><i>Sondan eşleştir</i> seçeneğini ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Büyük/Küçük Harf Duyarlılığı</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell">Büyük/küçük harf duyarlılığını ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Dosyalar</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell">Dosyaları filtrelemeyi ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Dizinler</td>
+                  <td class="innerdescvaluecell">açık/kapalı/geçiş yap</td>
+                  <td class="innerdescdesccell">Dizinleri filtrelemeyi ayarlar veya geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2">Dosyalar ve Dizinler</td>
+                  <td class="innerdescdesccell">Yalnızca dosyaları, yalnızca dizinleri veya her ikisini filtreleme arasında geçiş yapar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">Metin</td>
+                  <td class="innerdescvaluecell"><i>&lt;Herhangi Bir Karakter Dizisi></i></td>
+                  <td class="innerdescdesccell"><i>Herhangi Bir Karakter Dizisi</i> yeni filtre olarak ayarlar.</td>
+                </tr>
+              </table>
+              <br>
+              Örneğin, aşağıdaki parametrelerle bir araç butonunu ayarlamak, butona her basıldığında yalnızca "txt" dosyasını gösterip göstermeyeceğini belirleyen bir filtrenin uygulanmasını açıp kapatmayı sağlayacaktır:<br>
+              <div style="margin: 0 0 0 15;">
+                text=txt<br>
+                filter=toggle<br>
+                files=yes<br>
+                directories=yes<br>
+                matchbeginning=no<br>
+                matchending=yes
+              </div>
+              <p>Hiçbir parametre belirtilmediğinde, filtrenin etkinleştirildiği varsayılacaktır VE diğer seçenekler, metin kutusunda odaklanmaya hazır metin <b>hariç</b> önceki filtreyle aynı olacaktır; bu, istediğiniz metni yazarak filtreyi ayarlamanıza olanak tanır.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_EditPath" alt="cm_EditPath" src="../../pixmaps/dctheme/32x32/actions/cm_editpath.png">
+              <div class="cmdname"><a name="cm_EditPath">cm_EditPath</a></div></td>
+            <td class="cmdhintcell">Kullanıcı, seçili panelde görmek istediği dizini doğrudan yazabilir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ChangeDir" alt="cm_ChangeDir" src="../../pixmaps/dctheme/32x32/actions/cm_changedir.png">
+              <div class="cmdname"><a name="cm_ChangeDir">cm_ChangeDir</a></div></td>
+            <td class="cmdhintcell">Etkin/etkin olmayan/sol/sağ paneli belirtilen dizin(ler)e geçirir.<br>
+              Birden fazla parametre belirleyebileceğinizi göz önünde bulundurun, bu nedenle tek bir komutla hem kaynak hem de hedef yolu ayarlayabilirsiniz.<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">activepath</td>
+                  <td class="innerdescvaluecell"><I>specified_path</I></td>
+                  <td class="innerdescdesccell">etkin paneli <I>specified_path</I> yoluna geçirecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">inactivepath</td>
+                  <td class="innerdescvaluecell"><I>specified_path</I></td>
+                  <td class="innerdescdesccell">etkin olmayan paneli <I>specified_path</I> yoluna geçirecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">leftpath</td>
+                  <td class="innerdescvaluecell"><I>specified_path</I></td>
+                  <td class="innerdescdesccell">sol paneli <I>specified_path</I> yoluna geçirecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">rightpath</td>
+                  <td class="innerdescvaluecell"><I>specified_path</I></td>
+                  <td class="innerdescdesccell">sağ paneli <I>specified_path</I> yoluna geçirecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="3">Geriye dönük uyumluluk için, yalnızca tek bir yolu tek bir parametre olarak da sağlayabilirsiniz ve DC etkin paneli o yola geçirecektir.</td>
+                </tr>
+              </table>
+              <br>
+              Örnekler:<br>
+              <I>cm_ChangeDir activepath=%DESKTOP% inactivepath=E:\Medias\Paul Houde</I><br>
+              Bu, etkin panelin %DESKTOP% dizininin içeriğini göstermesini sağlayacak ve etkin olmayan panelde "Paul Houde" dizininin içeriğini göreceksiniz.<br><br>
+              <I>cm_ChangeDir leftpath=C:\Working rightpath=E:\Euler</I><br>
+              Geçerli etkin panel nerede olursa olsun, sol panel "Working" klasörünün içeriğini gösterecek ve sağ panel "Euler" klasörünün içeriğini gösterecektir.<br><br>
+              <I>cm_ChangeDir \\TERA-06\OPENSHARE1\MEDIAS\PICTURES\2015</I><br>
+              Bu, DC'nin eski çalışma şeklidir, etkin panel, belirtilen ağ yolunun içeriğini göstermek üzere değişecektir.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_GoToFirstFile" alt="cm_GoToFirstFile" src="../../pixmaps/dctheme/32x32/actions/cm_gotofirstfile.png">
+              <div class="cmdname"><a name="cm_GoToFirstFile">cm_GoToFirstFile</a></div></td>
+            <td class="cmdhintcell">Etkin panelin geçerli seçimi ilk ögeye.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_GoToLastFile" alt="cm_GoToLastFile" src="../../pixmaps/dctheme/32x32/actions/cm_gotolastfile.png">
+              <div class="cmdname"><a name="cm_GoToLastFile">cm_GoToLastFile</a></div></td>
+            <td class="cmdhintcell">Etkin panelin geçerli seçimi son ögeye.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ViewHistory" alt="cm_ViewHistory" src="../../pixmaps/dctheme/32x32/actions/cm_viewhistory.png">
+              <div class="cmdname"><a name="cm_ViewHistory">cm_ViewHistory</a></div></td>
+            <td class="cmdhintcell">Son ziyaret edilen dizinler, imleç konumunda açılacaktır.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">menutype</td>
+                  <td class="innerdescvaluecell">popup</td>
+                  <td class="innerdescdesccell">Geçmişteki dizinler bir açılır menüde görüntülenecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">treeview</td>
+                  <td class="innerdescdesccell"> Geçmişteki dizinler bir ağaç görünümü menüsünde görüntülenecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Varsayılanın bir açılır menü aracılığıyla olduğu varsayılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">Konum</td>
+                  <td class="innerdescvaluecell">Panel</td>
+                  <td class="innerdescdesccell">Menü, etkin panelin sol üst köşesinden gösterilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">İmleç</td>
+                  <td class="innerdescdesccell">Menü, mevcut fare imleci konumunda gösterilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Varsayılan olarak fare imleci konumundan kabul edilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbiri, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Açılır menü, mevcut fare imleci konumunda gösterilir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ViewHistoryNext" alt="cm_ViewHistoryNext" src="../../pixmaps/dctheme/32x32/actions/cm_viewhistorynext.png">
+              <div class="cmdname"><a name="cm_ViewHistoryNext">cm_ViewHistoryNext</a></div></td>
+            <td class="cmdhintcell">Ziyaret edilen son dizinler listesine göre, etkin paneli mevcut olandan önce ziyaret edilen bir sonraki dizine ayarlar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ViewHistoryPrev" alt="cm_ViewHistoryPrev" src="../../pixmaps/dctheme/32x32/actions/cm_viewhistoryprev.png">
+              <div class="cmdname"><a name="cm_ViewHistoryPrev">cm_ViewHistoryPrev</a></div></td>
+            <td class="cmdhintcell">Ziyaret edilen son dizinler listesine göre, etkin paneli mevcut olandan önce ziyaret edilen en son dizine ayarlar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_" alt="cm_FocusSwap" src="../../pixmaps/dctheme/32x32/actions/cm_focusswap.png">
+              <div class="cmdname"><a name="cm_FocusSwap">cm_FocusSwap</a></div></td>
+            <td class="cmdhintcell">Sol ve sağ panel arasında odağı değiştir.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">Taraf</td>
+                  <td class="innerdescvaluecell">Sol</td>
+                  <td class="innerdescdesccell">Odağı sol panele ayarlar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sağ</td>
+                  <td class="innerdescdesccell">Odağı sağ panele ayarlar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbiri, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Odağı mevcut seçili panelin karşı paneline ayarlar.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="cathelp">2.11 Yardım</a></h2>
+        <P>Double Commander'ın entegre yardım dosyalarına erişmeyi sağlar.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Yardım"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_HelpIndex" alt="cm_HelpIndex" src="../../pixmaps/dctheme/32x32/actions/cm_helpindex.png">
+              <div class="cmdname"><a name="cm_HelpIndex">cm_HelpIndex</a></div>
+            <td class="cmdhintcell">Double Commander <a href="index.html">yardım</a> dizin sayfasını aç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Keyboard" alt="cm_Keyboard" src="../../pixmaps/dctheme/32x32/actions/cm_keyboard.png">
+              <div class="cmdname"><a name="cm_Keyboard">cm_Keyboard</a></div>
+            <td class="cmdhintcell">Klavye <a href="shortcuts.html">kısayolları</a> yardım sayfasını aç.<br><B>Not</B>: Bu pasif bir HTML dosyası olacaktır. Bu nedenle, klavye kısayolunu varsayılan olandan değiştirirseniz, pasif HTML yardım dosyasının uygulamanın şu anda kullandığı gerçek kısayolu göstermeyeceğini lütfen unutmayın.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_VisitHomePage" alt="cm_VisitHomePage" src="../../pixmaps/dctheme/32x32/actions/cm_visithomepage.png">
+              <div class="cmdname"><a name="cm_VisitHomePage">cm_VisitHomePage</a></div>
+            <td class="cmdhintcell">Double Commander'ın ana sayfasına gider.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_About" alt="cm_About" src="../../pixmaps/dctheme/32x32/actions/cm_about.png">
+              <div class="cmdname"><a name="cm_About">cm_About</a></div>
+              <div class="shrtctkey">F1</div></td>
+            <td class="cmdhintcell">Programın "Hakkında" bilgisini göster.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catwindow">2.12 Pencere</a></h2>
+        <P>Double Commander penceresi, görünümü ve davranışı ile ilgili komutlar, diğer bilgisayar uygulamalarında olduğu gibi.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Pencere"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_HorizontalFilePanels" alt="cm_HorizontalFilePanels" src="../../pixmaps/dctheme/32x32/actions/cm_horizontalfilepanels.png">
+              <div class="cmdname"><a name="cm_HorizontalFilePanels">cm_HorizontalFilePanels</a></div></td>
+            <td class="cmdhintcell">Panellerin düzenini, sol/sağda dikey olarak düzenlenmiş iki panel arasında VEYA üst/altta yatay olarak düzenlenmiş iki panel arasında ayarlar.<br>
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">mod</td>
+                  <td class="innerdescvaluecell"><I>(boş)</I>/<br>eski</td>
+                  <td class="innerdescdesccell">dikey/yatay arasında geçiş yap</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">dikey</td>
+                  <td class="innerdescdesccell">dikey paneller (varsayılan)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">yatay</td>
+                  <td class="innerdescdesccell">yatay paneller</td>
+                </tr>
+              </table>
+              <br>
+              Örnek: "cm_HorizontalFilePanels mode=horizontal" iki paneli yatay konumda, biri diğerinin üzerinde olmaya zorlayacaktır.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_PanelsSplitterPerPos" alt="cm_PanelsSplitterPerPos" src="../../pixmaps/dctheme/32x32/actions/cm_panelssplitterperpos.png">
+              <div class="cmdname"><a name="cm_PanelsSplitterPerPos">cm_PanelsSplitterPerPos</a></div>
+            <td class="cmdhintcell">Panellerin genişliğini ayarlayın, örn. %50 — eşit boyut<br>
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell">splitpct</td>
+                  <td class="innerdescvaluecell">0-100</td>
+                  <td class="innerdescdesccell">Sol panele atanacak tüm genişliğin yüzdesi<br>(veya yatay mod etkinse üst panel)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbiri, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Yüzde %50-%50 olarak ayarlandı</td>
+                </tr>
+              </table>
+              <br>
+              Örnek: "cm_PanelsSplitterPerPos splitpct=80", dikey panellerle, sol panel genişliğini mevcut alanın %80'ine ayarlayacaktır.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ShowMainMenu" alt="cm_ShowMainMenu" src="../../pixmaps/dctheme/32x32/actions/cm_showmainmenu.png">
+              <div class="cmdname"><a name="cm_ShowMainMenu">cm_ShowMainMenu</a></div></td>
+            <td class="cmdhintcell">Ana çubuk menüsünün görünüp görünmediğini belirleyin.<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">Menü</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Ana menü görüntüleniyor.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Ana menü <B>görüntülenmiyor</B></td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">treeview</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">İstek üzerine, ana menü ögesi ağaç görünümü menüsü şeklinde gösterilecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Geçersiz, basitçe yok sayılacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbiri, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Ana menünün görünürlüğünü değiştir</td>
+                </tr>
+              </table>
+              <br>
+              Örnek: "cm_ShowMainMenu menu=off", ana menüyü gizleyecektir.
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ShowButtonMenu" alt="cm_ShowButtonMenu" src="../../pixmaps/dctheme/32x32/actions/cm_showbuttonmenu.png">
+              <div class="cmdname"><a name="cm_ShowButtonMenu">cm_ShowButtonMenu</a></div>
+            <td class="cmdhintcell">Araç çubuğunu görüp görmediğimizi belirleyin.<br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">Araç çubuğu</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Araç çubuğu görüntüleniyor.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Araç çubuğu <B>görüntülenmiyor</B></td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">treeview</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">İstek üzerine, araç çubuğu menü ögesi ağaç görünümü menüsü şeklinde gösterilecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Geçersiz, basitçe yok sayılacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbiri, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Araç çubuğunun görünürlüğünü değiştir</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_OperationsViewer" alt="cm_OperationsViewer" src="../../pixmaps/dctheme/32x32/actions/cm_operationsviewer.png">
+              <div class="cmdname"><a name="cm_OperationsViewer">cm_OperationsViewer</a></div></td>
+            <td class="cmdhintcell">Varsa, şu anda devam eden dosya işlemleri sürecini içeren bir pencere gösterir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_OpenBar" alt="cm_OpenBar" src="../../pixmaps/dctheme/32x32/actions/cm_openbar.png">
+              <div class="cmdname"><a name="cm_OpenBar">cm_OpenBar</a></div></td>
+            <td class="cmdhintcell">Eski komut artık uygulanmıyor.<br>Araç çubuğunun yapılandırması tek, basit, çok yönlü ve özel bir yapılandırma penceresi aracılığıyla yapıldığından, bunun yerine <a href="#cm_ConfigToolbars">cm_ConfigToolbars</a> komutuna başvurmak isteyebilirsiniz.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Minimize" alt="cm_Minimize" src="../../pixmaps/dctheme/32x32/actions/cm_minimize.png">
+              <div class="cmdname"><a name="cm_Minimize">cm_Minimize</a></div></td>
+            <td class="cmdhintcell">Double Commander penceresini simge durumuna küçültür.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Exit" alt="cm_Exit" src="../../pixmaps/dctheme/32x32/actions/cm_exit.png">
+              <div class="cmdname"><a name="cm_Exit">cm_Exit</a></div>
+              <div class="shrtctkey">Alt+X</div></td>
+            <td class="cmdhintcell">Double Commander'ı kapatır.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catcommandline">2.13 Komut Satırı</a></h2>
+        <P>Geçmiş komutları görüntülemek ve yenilerini çağırmaya yardımcı olmak için komut satırı ile etkileşim kurun.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Komut Satırı"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_FocusCmdLine" alt="cm_FocusCmdLine" src="../../pixmaps/dctheme/32x32/actions/cm_focuscmdline.png">
+              <div class="cmdname"><a name="cm_FocusCmdLine">cm_FocusCmdLine</a></div>
+              <div class="shrtctkey">Shift+F2</div></td>
+            <td class="cmdhintcell">Odağı komut satırına değiştirir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ShowCmdLineHistory" alt="cm_ShowCmdLineHistory" src="../../pixmaps/dctheme/32x32/actions/cm_showcmdlinehistory.png">
+              <div class="cmdname"><a name="cm_ShowCmdLineHistory">cm_ShowCmdLineHistory</a></div>
+              <div class="shrtctkey">Ctrl+7</div></td>
+            <td class="cmdhintcell"><a href="help.html#iface_path">komut satırında</a> kullanılan tüm komutların geçmişini gösterir.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">menutype</td>
+                  <td class="innerdescvaluecell">Kombo Kutu</td>
+                  <td class="innerdescdesccell">Komut satırı kombo kutusu genişletilecek, böylece komut satırı geçmişinden bir komut seçebilirsiniz.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">treeview</td>
+                  <td class="innerdescdesccell">Komut satırı kombo kutusunun üzerinde bir ağaç görünümü menüsü açılacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Varsayılanın kombo kutu aracılığıyla olduğu varsayılır.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ToggleFullscreenConsole" alt="cm_ToggleFullscreenConsole" src="../../pixmaps/dctheme/32x32/actions/cm_togglefullscreenconsole.png">
+              <div class="cmdname"><a name="cm_ToggleFullscreenConsole">cm_ToggleFullscreenConsole</a></div>
+              <div class="shrtctkey">Ctrl+O</div></td>
+            <td class="cmdhintcell">Konsol penceresi tam ekran moduna geçiş yapar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CmdLineNext" alt="cm_CmdLineNext" src="../../pixmaps/dctheme/32x32/actions/cm_cmdlinenext.png">
+              <div class="cmdname"><a name="cm_CmdLineNext">cm_CmdLineNext</a></div></td>
+            <td class="cmdhintcell">Varsa, geçerli komuttan bir önceki komut satırında etkinleşir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CmdLinePrev" alt="cm_CmdLinePrev" src="../../pixmaps/dctheme/32x32/actions/cm_cmdlineprev.png">
+              <div class="cmdname"><a name="cm_CmdLinePrev">cm_CmdLinePrev</a></div></td>
+            <td class="cmdhintcell">Varsa, geçerli komuttan bir sonraki komut satırında etkinleşir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_AddPathToCmdLine" alt="cm_AddPathToCmdLine" src="../../pixmaps/dctheme/32x32/actions/cm_addpathtocmdline.png">
+              <div class="cmdname"><a name="cm_AddPathToCmdLine">cm_AddPathToCmdLine</a></div>
+              <div class="shrtctkey">Ctrl+P</div>
+            </td>
+            <td class="cmdhintcell">Geçerli yolu komut satırına yerleştir.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">Mod</td>
+                  <td class="innerdescvaluecell">Akıllı Tırnak</td>
+                  <td class="innerdescdesccell">Eklenen metni yalnızca gerektiğinde (örneğin içinde boşluk varsa) tırnak içine alır, boşluk yoksa olduğu gibi bırakır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Zorunlu Tırnak</td>
+                  <td class="innerdescdesccell">Eklenecek metni sistematik olarak tırnak içine alır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Asla Tırnak Kullanma</td>
+                  <td class="innerdescdesccell">Sistematik olarak eklenen metni asla alıntılamaz.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">İstem</td>
+                  <td class="innerdescdesccell">Kullanıcıya eklediği metni alıntılamak isteyip istemediğini sorar, varsayılan seçim "mode=smartquote" olarak ayarlanmıştır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Varsayılanın "mode=smartquote" olduğu varsayılır.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_AddFilenameToCmdLine" alt="cm_AddFilenameToCmdLine" src="../../pixmaps/dctheme/32x32/actions/cm_addfilenametocmdline.png">
+              <div class="cmdname"><a name="cm_AddFilenameToCmdLine">cm_AddFilenameToCmdLine</a></div></td>
+            <td class="cmdhintcell">Geçerli seçili ögenin dosya adını komut satırına yerleştirir.<BR><B>Not:</B> Komut, <a href="#cm_AddPathToCmdLine">cm_AddPathToCmdLine</a> ile aynı parametreleri de kabul eder.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_AddPathAndFilenameToCmdLine" alt="cm_AddPathAndFilenameToCmdLine" src="../../pixmaps/dctheme/32x32/actions/cm_addpathandfilenametocmdline.png">
+              <div class="longcmdname"><a name="cm_AddPathAndFilenameToCmdLine">cm_AddPathAndFilenameToCmdLine</a></div></td>
+            <td class="cmdhintcell">Seçili ögenin geçerli yolunu ve dosya adını komut satırına yerleştirir.<BR><B>Not:</B> Komut, <a href="#cm_AddPathToCmdLine">cm_AddPathToCmdLine</a> ile aynı parametreleri de kabul eder.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="cattools">2.14 Araçlar</a></h2>
+        <P>Tek tıklamadan fazlasını gerektiren eylemler için.<BR>Bu eylemler genellikle Double Commander'ın daha karmaşık işler yapması için başka bir pencere gösterir.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Araçlar"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_MultiRename" alt="cm_MultiRename" src="../../pixmaps/dctheme/32x32/actions/cm_multirename.png">
+              <div class="cmdname"><a name="cm_MultiRename">cm_MultiRename</a></div>
+              <div class="shrtctkey">Ctrl+M</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_MultiRename">Çoklu yeniden adlandırma</a> aracı iletişim kutusunu aç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Search" alt="cm_Search" src="../../pixmaps/dctheme/32x32/actions/cm_search.png">
+              <div class="cmdname"><a name="cm_Search">cm_Search</a></div>
+              <div class="shrtctkey">Alt+F7</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_Search">Arama</a> iletişim kutusunu aç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="Yeni Arama" alt="Yeni Arama" src="../../pixmaps/dctheme/32x32/actions/cm_addnewsearch.png">
+              <div class="cmdname"><a name="cm_AddNewSearch">cm_AddNewSearch</a></div>
+              <div class="shrtctkey">Shift+Ctrl+F7</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_Search">Arama</a> iletişim penceresinin yeni bir örneğini oluşturur ve açar. Bu komutla bir arama yapmak, oturumda daha önce yapılan aramaları korur. Ayrıca, uzun bir arama devam ederken başka bir şey aramak için yeni bir arama örneği başlatmaya olanak tanır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="Aramaları Görüntüle" alt="Aramaları Görüntüle" src="../../pixmaps/dctheme/32x32/actions/cm_viewsearches.png">
+              <div class="cmdname"><a name="cm_ViewSearches">Aramaları Görüntüle</a></div></td>
+            <td class="cmdhintcell"><a href="#cm_AddNewSearch">cm_AddNewSearch</a> komutuyla birden fazla arama başlattıysanız, bu komut aramaların özetini görüntülemenizi ve aralarında geçiş yapmanızı sağlar.
+</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_DeleteSearches" alt="cm_DeleteSearches" src="../../pixmaps/dctheme/32x32/actions/cm_deletesearches.png">
+              <div class="cmdname"><a name="cm_DeleteSearches">cm_DeleteSearches</a></div></td>
+            <td class="cmdhintcell"><a href="#cm_AddNewSearch">cm_AddNewSearch</a>komutuyla birden fazla arama başlattıysanız, bu komut tümünü tek seferde kapatmanızı ve bellekten kaldırmanızı sağlar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SyncDirs" alt="cm_SyncDirs" src="../../pixmaps/dctheme/32x32/actions/cm_syncdirs.png">
+              <div class="cmdname"><a name="cm_SyncDirs">cm_SyncDirs</a></div></td>
+            <td class="cmdhintcell">Sol ve sağ panel klasörlerini tarayarak içerik farklarını tespit etmek ve klasörleri eşitlemek için dizin eşitleme aracını çalıştırır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CompareContents" alt="cm_CompareContents" src="../../pixmaps/dctheme/32x32/actions/cm_comparecontents.png">
+              <div class="cmdname"><a name="cm_CompareContents">cm_CompareContents</a></div>
+            <td class="cmdhintcell"><a href="help.html#cm_CompareContents">İçeriğe göre karşılaştırma</a> iletişim kutusunu aç</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_DebugShowCommandParameters" alt="cm_DebugShowCommandParameters" src="../../pixmaps/dctheme/32x32/actions/cm_debugshowcommandparameters.png">
+              <div class="longcmdname"><a name="cm_DebugShowCommandParameters">cm_DebugShowCommandParameters</a></div></td>
+            <td class="cmdhintcell">Parametre olarak geçirilen bilgilerle basitçe bir mesaj gösterir.<br>Bu, bir komuta geçirdiğiniz parametreyi doğrulamak için yardımcı olabilir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_DoAnyCmCommand" alt="cm_DoAnyCmCommand" src="../../pixmaps/dctheme/32x32/actions/cm_doanycmcommand.png">
+              <div class="cmdname"><a name="cm_DoAnyCmCommand">cm_DoAnyCmCommand</a></div></td>
+            <td class="cmdhintcell">Kullanıcının olası dahili komutlardan herhangi birini seçip çalıştırabileceği bir dahili komut seçici penceresi gösterir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catview">2.15 Görüntüle</a></h2>
+        <P>Sistem dosyaları vb. dosyaların görünürlüğüyle ilgili komutlar.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Görüntüle"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_Refresh" alt="cm_Refresh" src="../../pixmaps/dctheme/32x32/actions/cm_refresh.png">
+              <div class="cmdname"><a name="cm_Refresh">cm_Refresh</a></div>
+              <div class="shrtctkey">Ctrl+R</div></td>
+            <td class="cmdhintcell">Panelleri <a href="help.html#cm_Refresh">Yenile</a>.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ShowSysFiles" alt="cm_ShowSysFiles" src="../../pixmaps/dctheme/32x32/actions/cm_showsysfiles.png">
+              <div class="cmdname"><a name="cm_ShowSysFiles">cm_ShowSysFiles</a></div>
+            <td class="cmdhintcell">Gizli ve sistem <a href="help.html#cm_ShowSysFiles">dosyalarını</a> göster.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SwitchIgnoreList" alt="cm_SwitchIgnoreList" src="../../pixmaps/dctheme/32x32/actions/cm_switchignorelist.png">
+              <div class="cmdname"><a name="cm_SwitchIgnoreList">cm_SwitchIgnoreList</a></div></td>
+            <td class="cmdhintcell">Parametreye göre "Listeyi Yoksay" özelliğini etkinleştirin veya devre dışı bırakın.<br>
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">Menü</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">Listeyi yoksay etkin.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/false/off/no</td>
+                  <td class="innerdescdesccell">Listeyi yoksay etkin <B>değil</B>.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Yoksayma listesi durumunu değiştir</td>
+                </tr>
+              </table>
+              <br>
+              Örnek: "cm_SwitchIgnoreList ignorelist=on", yoksayma listesini etkinleştirir; böylece listedeki dosya/klasörler panellerde gösterilmez.
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="cattabs">2.16 Sekmeler</a></h2>
+        <P>Yeni sekmeler oluşturarak, aralarında gezinerek vb. sekmelerle etkileşim kurun.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Sekmeler"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_NewTab" alt="cm_NewTab" src="../../pixmaps/dctheme/32x32/actions/cm_newtab.png">
+              <div class="cmdname"><a name="cm_NewTab">cm_NewTab</a></div>
+              <div class="shrtctkey">Ctrl+T</div></td>
+            <td class="cmdhintcell">Açık dizin için <a href="help.html#cm_NewTab">yeni sekme</a> oluştur.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_OpenDirInNewTab" alt="cm_OpenDirInNewTab" src="../../pixmaps/dctheme/32x32/actions/cm_opendirinnewtab.png">
+              <div class="cmdname"><a name="cm_OpenDirInNewTab">cm_OpenDirInNewTab</a></div>
+            <td class="cmdhintcell">Dizini <a href="help.html#cm_OpenDirInNewTab">yeni sekmede</a> aç ancak bu sekmeye geçiş yapma</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_NextTab" alt="cm_NextTab" src="../../pixmaps/dctheme/32x32/actions/cm_nexttab.png">
+              <div class="cmdname"><a name="cm_NextTab">cm_NextTab</a></div>
+              <div class="shrtctkey">Ctrl+Tab</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_NextTab">Sonraki sekmeye</a> geç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_PrevTab" alt="cm_PrevTab" src="../../pixmaps/dctheme/32x32/actions/cm_prevtab.png">
+              <div class="cmdname"><a name="cm_PrevTab">cm_PrevTab</a></div>
+              <div class="shrtctkey">Shift+Ctrl+Tab</div></td>
+            <td class="cmdhintcell"><a href="help.html#cm_PrevTab">Önceki sekmeye</a> geç.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_RenameTab" alt="cm_RenameTab" src="../../pixmaps/dctheme/32x32/actions/cm_renametab.png">
+              <div class="cmdname"><a name="cm_RenameTab">cm_RenameTab</a></div></td>
+            <td class="cmdhintcell">Kullanıcıdan etkin panelin geçerli sekmesini yeniden adlandırmasını ister.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CloseTab" alt="cm_CloseTab" src="../../pixmaps/dctheme/32x32/actions/cm_closetab.png">
+              <div class="cmdname"><a name="cm_CloseTab">cm_CloseTab</a></div></td>
+            <td class="cmdhintcell">Etkin panelin geçerli sekmesini kapat.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CloseAllTabs" alt="cm_CloseAllTabs" src="../../pixmaps/dctheme/32x32/actions/cm_closealltabs.png">
+              <div class="cmdname"><a name="cm_CloseAllTabs">cm_CloseAllTabs</a></div></td>
+            <td class="cmdhintcell">Panel(ler)in tüm sekmelerini, etkin olan hariç, aşağıdaki parametrelere göre kapat:
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">taraf</td>
+                  <td class="innerdescvaluecell">sol</td>
+                  <td class="innerdescdesccell">Eylem <B>sol paneldeki</B> sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sağ</td>
+                  <td class="innerdescdesccell">Eylem <B>sağ paneldeki</B> sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin</td>
+                  <td class="innerdescdesccell">Eylem, <B>etkin paneldeki</B> sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin olmayan</td>
+                  <td class="innerdescdesccell">Eylem, <B>etkin olmayan paneldeki</B> sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Her ikisi</td>
+                  <td class="innerdescdesccell">Eylem, <B>her iki paneldeki</B> sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">dolocked</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">Eylem, <B>kilitli sekmeleri</B> de kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/false/off/no</td>
+                  <td class="innerdescdesccell"><B>Kilitli sekmeleri</B> yoksay</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">confirmlocked</td>
+                  <td class="innerdescvaluecell">1/true/on/yes</td>
+                  <td class="innerdescdesccell">"dolocked” değeri true ise, 'Kilitli sekmeleri kapatmayı onayla' seçeneğinden bağımsız olarak kullanıcının kilitli sekmeleri kapatmayı onaylaması gerekir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/false/off/no</td>
+                  <td class="innerdescdesccell">“dolocked” değeri true ise, 'Kilitli sekmeleri kapatmayı onayla' seçeneğinden bağımsız olarak kilitli sekmeleri onay istemeden kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(belirtilmemiş)</I></td>
+                  <td class="innerdescdesccell">"dolocked" doğruysa, kilitli sekmeleri kapatma onayı için kullanıcıya, yapılandırılmış "Kilitli Sekmeleri Kapatmayı Onayla" seçeneğine göre sorulur veya sorulmaz.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Etkin panelde, etkin sekme hariç kilitli olmayan tüm sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="3">Geriye dönük uyumluluk için, komutun uygulanacağı paneli belirtmek amacıyla parametre olarak doğrudan 'SolSekme' ve 'Sağsekme' gibi tek bir kelime de kullanabilirsiniz.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CloseDuplicateTabs" alt="cm_CloseDuplicateTabs" src="../../pixmaps/dctheme/32x32/actions/cm_closeduplicatetabs.png">
+              <div class="cmdname"><a name="cm_CloseDuplicateTabs">cm_CloseDuplicateTabs</a></div></td>
+            <td class="cmdhintcell">Eylem sonunda her dizin için yalnızca bir sekme kalması adına aynı dizinleri gösteren sekmeleri kapatın.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">Taraf</td>
+                  <td class="innerdescvaluecell">Sol</td>
+                  <td class="innerdescdesccell">Eylem, <B>sol paneldeki</B> yinelenen sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sağ</td>
+                  <td class="innerdescdesccell">Eylem, <B>sağ paneldeki</B> yinelenen sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin</td>
+                  <td class="innerdescdesccell">Eylem, <B>etkin paneldeki</B> yinelenen sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin olmayan</td>
+                  <td class="innerdescdesccell">Eylem, <B>etkin olmayan paneldeki</B> yinelenen sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Her İkisi</td>
+                  <td class="innerdescdesccell">Eylem, <B>her iki paneldeki</B> yinelenen sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">dolocked</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Eylem, ayrıca yinelenen <B>kilitli sekmeleri</B> kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Yinelenen <B>kilitli sekmeleri</B> yok say</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">confirmlocked</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">"dolocked" doğruysa, kullanıcı "Kilitli Sekmeleri Kapatmayı Onayla" yapılandırılmış seçeneği ne olursa olsun yinelenen kilitli sekmeleri kapatmayı onaylamalıdır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">"dolocked" doğruysa, "Kilitli Sekmeleri Kapatmayı Onayla" yapılandırılmış seçeneği ne olursa olsun onay istemeden yinelenen kilitli sekmeleri kapatır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(belirtilmemiş)</I></td>
+                  <td class="innerdescdesccell">"dolocked" doğruysa, "Kilitli Sekmeleri Kapatmayı Onayla" yapılandırılmış seçeneğine göre kullanıcının yinelenen kilitli sekmeleri kapatmayı onaylaması istenir veya istenmez.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Etkin paneldeki yinelenen kilitli olmayan tüm sekmeleri kapat.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_CopyAllTabsToOpposite" alt="cm_CopyAllTabsToOpposite" src="../../pixmaps/dctheme/32x32/actions/cm_copyalltabstoopposite.png">
+              <div class="cmdname"><a name="cm_CopyAllTabsToOpposite">cm_CopyAllTabsToOpposite</a></div></td>
+            <td class="cmdhintcell">Belirtilen taraftaki tüm sekmeler, karşı tarafa da eklenecektir. Varsayılan olarak, parametre olmadan etkin panelden etkin olmayan panele sekme kopyalar.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">Taraf</td>
+                  <td class="innerdescvaluecell">Sol</td>
+                  <td class="innerdescdesccell">Sekmeleri <B>sol panelden</B> sağ panele kopyalayacak</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sağ</td>
+                  <td class="innerdescdesccell">Sekmeleri <B>sağ panelden</B> sol panele kopyalayacak</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin</td>
+                  <td class="innerdescdesccell">Sekmeleri <B>etkin panelden</B> etkin olmayan panele kopyalayacak</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin olmayan</td>
+                  <td class="innerdescdesccell">Sekmeleri <B>etkin olmayan panelden</B> etkin panele kopyalayacak</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Her İkisi</td>
+                  <td class="innerdescdesccell">Sekmeleri <B>her iki panelden</B> karşıt panellere kopyalayacak</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Sekmeleri <B>etkin panelden</B> etkin olmayan panele kopyalayacak</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LoadTabs" alt="cm_LoadTabs" src="../../pixmaps/dctheme/32x32/actions/cm_loadtabs.png">
+              <div class="cmdname"><a name="cm_LoadTabs">cm_LoadTabs</a></div></td>
+            <td class="cmdhintcell">Panele uygulamak üzere sekme adlarını ve ilişkili dizinlerini içermesi beklenen bir dosya açın.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">dosya adı</td>
+                  <td class="innerdescvaluecell"><I>dosyaadı.tab</I></td>
+                  <td class="innerdescdesccell">Sekmeleri yüklemek için kullanılan dosya.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(belirtilmemiş)</I></td>
+                  <td class="innerdescdesccell">Kullanıcıdan sekmelerin hangi .tab dosyasından yükleneceğini belirtmesini istemek için bir dosya istemi görüntülenecek.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="6">loadleftto</td>
+                  <td class="innerdescvaluecell">Sol</td>
+                  <td class="innerdescdesccell">.tab dosyasında sol panele kaydedilen sekmeler <B>sol</B> panelde olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sağ</td>
+                  <td class="innerdescdesccell">.tab dosyasında sol panele kaydedilen sekmeler <B>sağ</B> panelde olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin</td>
+                  <td class="innerdescdesccell">.tab dosyasında sol panele kaydedilen sekmeler <B>etkin</B> panelde olacak.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin olmayan</td>
+                  <td class="innerdescdesccell">.tab dosyasında sol panele kaydedilen sekmeler <B>etkin olmayan</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Her İkisi</td>
+                  <td class="innerdescdesccell">.tab dosyasında sol panele kaydedilen sekmeler <B>her iki</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">hiçbiri</td>
+                  <td class="innerdescdesccell">.tab dosyasında sol panele kaydedilen sekmeler <B>yok sayılacaktır</B>.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="6">loadrightto</td>
+                  <td class="innerdescvaluecell">Sol</td>
+                  <td class="innerdescdesccell">.tab dosyasında sağ panele kaydedilen sekmeler <B>sol</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sağ</td>
+                  <td class="innerdescdesccell">.tab dosyasında sağ panele kaydedilen sekmeler <B>sağ</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin</td>
+                  <td class="innerdescdesccell">.tab dosyasında sağ panele kaydedilen sekmeler <B>etkin</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin olmayan</td>
+                  <td class="innerdescdesccell">.tab dosyasında sağ panele kaydedilen sekmeler <B>etkin olmayan</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Her İkisi</td>
+                  <td class="innerdescdesccell">.tab dosyasında sağ panele kaydedilen sekmeler <B>her iki</B> panelde olacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">hiçbiri</td>
+                  <td class="innerdescdesccell">.tab dosyasında sağ panele kaydedilen sekmeler <B>yok sayılacaktır</B>.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="6">keep</td>
+                  <td class="innerdescvaluecell">Sol</td>
+                  <td class="innerdescdesccell"><B>sol</B> paneldeki sekmeler korunacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sağ</td>
+                  <td class="innerdescdesccell"><B>sağ</B> paneldeki sekmeler korunacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin</td>
+                  <td class="innerdescdesccell"><B>etkin</B> paneldeki sekmeler korunacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Etkin olmayan</td>
+                  <td class="innerdescdesccell"><B>etkin olmayan</B> paneldeki sekmeler korunacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Her İkisi</td>
+                  <td class="innerdescdesccell"><B>her iki</B> paneldeki sekmeler korunacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">hiçbiri</td>
+                  <td class="innerdescdesccell">Mevcut sekmelerin <B>hiçbiri</B> korunmayacaktır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="3">Geriye dönük uyumluluk için, tek parametre olarak yalnızca tek bir dosya adı da sağlayabilirsiniz ve DC, o .tab dosyasını 'olduğu gibi' yükleyecektir, böylece sol ve sağ sekmeler sırasıyla sol ve sağ panele geri yüklenecektir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SaveTabs" alt="cm_SaveTabs" src="../../pixmaps/dctheme/32x32/actions/cm_savetabs.png">
+              <div class="cmdname"><a name="cm_SaveTabs">cm_SaveTabs</a></div></td>
+            <td class="cmdhintcell">Mevcut sekme adlarını ve ilişkili dizinlerini, hem sol hem de sağ için, daha önce açıklanan komutla daha sonra geri yüklenecek şekilde bir .tab dosyasına kaydedecektir.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">dosya adı</td>
+                  <td class="innerdescvaluecell"><I>dosyaadı.tab</I></td>
+                  <td class="innerdescdesccell">Sekmeleri kaydetmek için kullanılan dosya</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(belirtilmemiş)</I></td>
+                  <td class="innerdescdesccell">Kullanıcıya sekmelerin hangi .tab dosyasına kaydedileceğini belirtmesi için bir dosya isteği belirecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="2">savedirhistory</td>
+                  <td class="innerdescvaluecell">1/doğru/açık/evet</td>
+                  <td class="innerdescdesccell">Her sekme için son dizinlerin geçmişini de kaydedecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0/yanlış/kapalı/hayır</td>
+                  <td class="innerdescdesccell">Son dizinlerin geçmişi kaydedilmeyecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="3">Geriye dönük uyumluluk için, tek parametre olarak yalnızca tek bir dosya adı da sağlayabilirsiniz ve DC, o .tab dosyasına kaydedecektir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetTabOptionNormal" alt="cm_SetTabOptionNormal" src="../../pixmaps/dctheme/32x32/actions/cm_settaboptionnormal.png">
+              <div class="cmdname"><a name="cm_SetTabOptionNormal">cm_SetTabOptionNormal</a></div></td>
+            <td class="cmdhintcell">Mevcut sekme durumu normale ayarlanır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetTabOptionPathLocked" alt="cm_SetTabOptionPathLocked" src="../../pixmaps/dctheme/32x32/actions/cm_settaboptionpathlocked.png">
+              <div class="cmdname"><a name="cm_SetTabOptionPathLocked">cm_SetTabOptionPathLocked</a></div></td>
+            <td class="cmdhintcell">Mevcut sekme 'kilitli' olarak ayarlanır, kullanıcı dizin değiştiremez.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetTabOptionPathResets" alt="cm_SetTabOptionPathResets" src="../../pixmaps/dctheme/32x32/actions/cm_settaboptionpathresets.png">
+              <div class="cmdname"><a name="cm_SetTabOptionPathResets">cm_SetTabOptionPathResets</a></div></td>
+            <td class="cmdhintcell">Mevcut sekme 'dizin değişikliğine izin verilerek kilitli' olarak ayarlanır, kullanıcı panel içinde dizin değiştirebilir, ancak kullanıcı sekme değiştirip o sekmeye geri dönerse, 'dizin değişikliğine izin verilerek kilitli' olduğu orijinal dizine geri dönecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetTabOptionDirsInNewTab" alt="cm_SetTabOptionDirsInNewTab" src="../../pixmaps/dctheme/32x32/actions/cm_settaboptiondirsinnewtab.png">
+              <div class="longcmdname"><a name="cm_SetTabOptionDirsInNewTab">cm_SetTabOptionDirsInNewTab</a></div></td>
+            <td class="cmdhintcell">Mevcut sekme "yeni sekmede dizin değişimiyle kilitli" olarak ayarlandı. Kullanıcı panel içinde dizini değiştirebilir, ancak yeni bir dizine girdiğinde o dizin yeni bir sekmede açılacaktır.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetAllTabsOptionNormal" alt="cm_SetAllTabsOptionNormal" src="../../pixmaps/dctheme/32x32/actions/cm_setalltabsoptionnormal.png">
+              <div class="cmdname"><a name="cm_SetAllTabsOptionNormal">cm_SetAllTabsOptionNormal</a></div></td>
+            <td class="cmdhintcell">Tüm sekmeler "normal" olarak ayarlandı.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">taraf</td>
+                  <td class="innerdescvaluecell">sol</td>
+                  <td class="innerdescdesccell"><B>sol panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sağ</td>
+                  <td class="innerdescdesccell"><B>sağ panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin</td>
+                  <td class="innerdescdesccell"><B>etkin panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin olmayan</td>
+                  <td class="innerdescdesccell"><B>etkin olmayan panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">her ikisi</td>
+                  <td class="innerdescdesccell"><B>her iki panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">yalnızca etkin panelin sekmelerini etkiler</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetAllTabsOptionPathLocked" alt="cm_SetAllTabsOptionPathLocked" src="../../pixmaps/dctheme/32x32/actions/cm_setalltabsoptionpathlocked.png">
+              <div class="cmdname"><a name="cm_SetAllTabsOptionPathLocked">cm_SetAllTabsOptionPathLocked</a></div></td>
+            <td class="cmdhintcell">Tüm sekmeler "kilitli" olarak ayarlandı, kullanıcı dizini değiştiremez.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">taraf</td>
+                  <td class="innerdescvaluecell">sol</td>
+                  <td class="innerdescdesccell"><B>sol panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sağ</td>
+                  <td class="innerdescdesccell"><B>sağ panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin</td>
+                  <td class="innerdescdesccell"><B>etkin panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin olmayan</td>
+                  <td class="innerdescdesccell"><B>etkin olmayan panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">her ikisi</td>
+                  <td class="innerdescdesccell"><B>her iki panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">yalnızca etkin panelin sekmelerini etkiler</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetAllTabsOptionPathResets" alt="cm_SetAllTabsOptionPathResets" src="../../pixmaps/dctheme/32x32/actions/cm_setalltabsoptionpathresets.png">
+              <div class="cmdname"><a name="cm_SetAllTabsOptionPathResets">cm_SetAllTabsOptionPathResets</a></div></td>
+            <td class="cmdhintcell">Tüm sekmeler "dizin değişikliğine izin verilerek kilitli" olarak ayarlanır. Kullanıcı panel içinde dizin değiştirebilir, ancak sekme değiştirip geri döndüğünde, kilitli olduğu orijinal dizine geri dönecektir.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">taraf</td>
+                  <td class="innerdescvaluecell">sol</td>
+                  <td class="innerdescdesccell"><B>sol panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sağ</td>
+                  <td class="innerdescdesccell"><B>sağ panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin</td>
+                  <td class="innerdescdesccell"><B>etkin panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin olmayan</td>
+                  <td class="innerdescdesccell"><B>etkin olmayan panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">her ikisi</td>
+                  <td class="innerdescdesccell"><B>her iki panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">yalnızca etkin panelin sekmelerini etkiler</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SetAllTabsOptionDirsInNewTab" alt="cm_SetAllTabsOptionDirsInNewTab" src="../../pixmaps/dctheme/32x32/actions/cm_setalltabsoptiondirsinnewtab.png">
+              <div class="cmdname"><a name="cm_SetAllTabsOptionDirsInNewTab">cm_SetAllTabsOptionDirsInNewTab</a></div></td>
+            <td class="cmdhintcell">Tüm sekmeler "yeni sekmede dizin değişimiyle kilitli" olarak ayarlanır. Kullanıcı panel içinde dizin değiştirebilir, ancak yeni bir dizine girdiğinde, o dizin yeni bir sekmede açılacaktır.
+              <br>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="5">taraf</td>
+                  <td class="innerdescvaluecell">sol</td>
+                  <td class="innerdescdesccell"><B>sol panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">sağ</td>
+                  <td class="innerdescdesccell"><B>sağ panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin</td>
+                  <td class="innerdescdesccell"><B>etkin panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">etkin olmayan</td>
+                  <td class="innerdescdesccell"><B>etkin olmayan panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">her ikisi</td>
+                  <td class="innerdescdesccell"><B>her iki panel</B> içindeki sekmeleri etkiler.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">yalnızca etkin panelin sekmelerini etkiler</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_LoadFavoriteTabs" alt="cm_LoadFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_loadfavoritetabs.png">
+              <div class="cmdname"><a name="cm_LoadFavoriteTabs">cm_LoadFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Kullanıcıya, daha önce kaydedilmiş bir sekme düzenini seçmesini isteyen bir açılır pencere gösterilir.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                  <th class="innerdescheader">Açıklama</th>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">menutype</td>
+                  <td class="innerdescvaluecell">popup</td>
+                  <td class="innerdescdesccell">favori sekmeler bir açılır menüde görüntülenecektir</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">ağaç görünümü</td>
+                  <td class="innerdescdesccell">Favori sekmeler bir ağaç görünümü menüsünde görüntülenecektir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Varsayılanın açılır menü aracılığıyla olduğu varsayılır.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" rowspan="3">konum</td>
+                  <td class="innerdescvaluecell">panel</td>
+                  <td class="innerdescdesccell">Menü, etkin panelin sol üst köşesinden gösterilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">imleç</td>
+                  <td class="innerdescdesccell">Menü, mevcut fare imleci konumunda gösterilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell"><I>(hiçbir şey)</I></td>
+                  <td class="innerdescdesccell">Varsayılan, etkin panelin sol üst köşesidir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescparamcell" colspan="2"><I>(hiçbir şey, varsayılan)</I></td>
+                  <td class="innerdescdesccell">Açılır menü etkin panelin sol üst köşesinden gösterilir.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_SaveFavoriteTabs" alt="cm_SaveFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_savefavoritetabs.png">
+              <div class="cmdname"><a name="cm_SaveFavoriteTabs">cm_SaveFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Mevcut açık sekmeleri "Favori Sekmeler" içine kaydeder. Daha sonra kullanıcı istek üzerine bu kaydedilmiş yapılandırmayı "cm_LoadFavoriteTabs" komutunu kullanarak yeniden yükleyebilir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ReloadFavoriteTabs" alt="cm_ReloadFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_reloadfavoritetabs.png">
+              <div class="cmdname"><a name="cm_ReloadFavoriteTabs">cm_ReloadFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Son yüklenen Favori Sekmeler yapılandırmasını yeniden yükler. Her sekmede gezindikten ve ek sekmeler eklendikten vb. sonra, en son yüklenen Favori Sekmeler için belirlenmiş olan ayarı 'olduğu gibi' geri yüklemek istersek, çağrılacak komut budur.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ResaveFavoriteTabs" alt="cm_ResaveFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_resavefavoritetabs.png">
+              <div class="cmdname"><a name="cm_ResaveFavoriteTabs">cm_ResaveFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Mevcut sekmeler yapılandırmasını, son yüklenen Favori Sekmeler ögesinin üzerine yeniden kaydeder. Yapılandırmalarınızdan birinde bir sekmenin eksik olması durumunda kullanışlıdır. Favori Sekmelerinizi yükledikten sonra istediğiniz eksik sekmeyi ekler ve ardından cm_ResaveFavoriteTabs dahili komutunu çağırırsınız.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_PreviousFavoriteTabs" alt="cm_PreviousFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_previousfavoritetabs.png">
+              <div class="cmdname"><a name="cm_PreviousFavoriteTabs">cm_PreviousFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Listede son yüklenen öğeden hemen önceki Favori Sekmeler yapılandırmasını yükler.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_NextFavoriteTabs" alt="cm_NextFavoriteTabs" src="../../pixmaps/dctheme/32x32/actions/cm_nextfavoritetabs.png">
+              <div class="cmdname"><a name="cm_NextFavoriteTabs">cm_NextFavoriteTabs</a></div></td>
+            <td class="cmdhintcell">Listede son yüklenen öğeden hemen sonraki Favori Sekmeler yapılandırmasını yükler.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="catlogs">2.17 Günlükler</a></h2>
+        <P>Double Commander günlük dosyası ile ilgili eylemler.</p>
+        <table class="cmddesc">
+          <tr class="rowcategorytitle"><th colspan="2">Kategori "Günlükler"</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Ad</th><th class="cmdcolumndesc">Açıklama</th></tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ViewLogFile" alt="cm_ViewLogFile" src="../../pixmaps/dctheme/32x32/actions/cm_viewlogfile.png">
+              <div class="cmdname"><a name="cm_ViewLogFile">cm_ViewLogFile</a></div></td>
+            <td class="cmdhintcell">Mevcut işlem günlük dosyasını açar.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ClearLogFile" alt="cm_ClearLogFile" src="../../pixmaps/dctheme/32x32/actions/cm_clearlogfile.png">
+              <div class="cmdname"><a name="cm_ClearLogFile">cm_ClearLogFile</a></div></td>
+            <td class="cmdhintcell">Mevcut işlem günlük dosyası silinecektir.</td>
+          </tr>
+          <tr>
+            <td class="cmdcell"><img class="IntCmdImage" title="cm_ClearLogWindow" alt="cm_ClearLogWindow" src="../../pixmaps/dctheme/32x32/actions/cm_clearlogwindow.png">
+              <div class="cmdname"><a name="cm_ClearLogWindow">cm_ClearLogWindow</a></div></td>
+            <td class="cmdhintcell">Günlük penceresi içeriği temizlenecektir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <BR>
+        <p><small>İlk olarak Rustem (dok_rust@bk.ru) tarafından oluşturuldu.</small></p>
+        <BR>
+      </div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="variables.html">Önceki</a> | <a title="Sonraki Sayfa" href="regexp.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

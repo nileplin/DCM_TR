@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Sık Kullanılan Dizinler</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="findfiles.html">Önceki</a> | <a title="Sonraki Sayfa" href="multiarc.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.3. Sık Kullanılan Dizinler</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#intro">Giriş</a></dt>
+          <dd>
+            <dl>
+              <dt>1.1. <a href="#definition">Tanım</a></dt>
+              <dt>1.2. <a href="#overview">Genel Bakış </a></dt>
+            </dl>
+          </dd>
+
+          <dt>2. <a href="#usage">Sık Kullanılan Dizinlerin Kullanımı</a></dt>
+          <dd>
+            <dl>
+              <dt>2.1. <a href="#access">Sık Kullanılan Dizinlere nasıl erişilir</a></dt>
+              <dt>2.2. <a href="#otheraccess">Sık Kullanılan Dizinlere erişmenin başka bir yolu</a></dt>
+              <dt>2.3. <a href="#configure">Sık Kullanılan Dizinler nasıl yapılandırılır</a></dt>
+              <dt>2.4. <a href="#otherconfigure">Sık Kullanılan Dizinler yapılandırmasına erişmenin diğer yolları</a></dt>
+              <dt>2.5. <a href="#addentry">Sık Kullanılan Dizinlere bir dizin nasıl eklenir</a></dt>
+              <dt>2.6. <a href="#personalize">Sık Kullanılan Dizinlere yeni eklenen bir girdiyi kişiselleştirme</a></dt>
+              <dt>2.7. <a href="#settarget">Hedefi de ayarlama</a></dt>
+              <dt>2.8. <a href="#definesort">Dizin değişikliğinden sonra sıralama düzenini tanımlayın.</a></dt>
+              <dt>2.9. <a href="#helperpath">Yol ve hedef tanımlaması yardımcısı. </a></dt>
+              <dt>2.10. <a href="#changeorder">Girdilerin sırasını değiştirmek</a></dt>
+              <dt>2.11. <a href="#cutandpaste">Sırayı yeniden düzenlemek için "Kes" ve "Yapıştır" kullanmak</a></dt>
+              <dt>2.12. <a href="#organizetree">Girdileri ağaç görünümünde düzenlemek</a></dt>
+              <dt>2.13. <a href="#addseperator">Netliği artırmak için ayırıcılar eklemek</a></dt>
+              <dt>2.14. <a href="#sorting">Girdileri sıralamak</a></dt>
+            </dl>
+          </dd>
+
+          <dt>3. <a href="#expert">Uzman işlevler</a></dt>
+          <dd>
+            <dl>
+              <dt>3.1. <a href="#backup">Sık Kullanılan Dizinleri yedeklemek</a></dt>
+              <dt>3.2. <a href="#restore">Sık Kullanılan Dizinler yedeğini geri yüklemek</a></dt>
+              <dt>3.3. <a href="#exportimportsimple">Sık Kullanılan Dizinleri (veya bir kısmını) dışa/içe aktarmamak</a></dt>
+              <dt>3.4. <a href="#exportimporttc">Total Commander ile dışa/içe aktarmamak</a></dt>
+              <dt>3.5. <a href="#scanpresence">Eksik dizinleri bulmak için Sık Kullanılan Dizinleri taramak</a></dt>
+              <dt>3.6. <a href="#addingmanyatthetime">Sık Kullanılan Dizinler listesine aynı anda birden fazla dizin eklememek</a></dt>
+              <dt>3.7. <a href="#notthetarget">Hedef yapılandırılmış olsa bile etkin olmayan çerçevede geçiş olmaması</a></dt>
+              <dt>3.8. <a href="#directconfig">Açılır menüden bir ögeyi doğrudan yapılandırmak</a></dt>
+              <dt>3.9. <a href="#showpopup">Açılır menüde tam yolu göstermek</a></dt>
+              <dt>3.10. <a href="#smartenv">Sadece dizin gibi görünen ortam değişkenlerini tutmak</a></dt>
+            </dl>
+          </dd>
+
+          <dt>4. <a href="#otherfunctions">Diğer işlevler</a></dt>
+        </dl>
+      </div>
+
+      <div>
+        <h2><a name="intro">1. Giriş</a></h2>
+        <p>Sık Kullanılan Dizinlere Giriş</p>
+      </div>
+
+      <div>
+        <h2><a name="definition">1.1. Tanım</a></h2>
+        <p>Sık Kullanılan Dizinler, en sık kullandığınız dizinlerin kullanışlı bir listesidir.</p>
+        <p>Diskte hiçbir şey oluşturmaz; yalnızca "sık kullanılan" dizinlere hızlıca erişmek için bir kısayol listesidir.</p>
+        <p>Bunları bir dizine atlamak için kullanarak, ağaçta bir daldan diğerine zıplayan bir maymun gibi yorulmazsınız.</p>
+        <p>Ayrıca, unutmak istemediğiniz önemli dizinler için, onlara işaret eden kısayolların bulunduğu bir alana sahip olmak iyidir.</p>
+        <p>Onlara sık sık girmeseniz bile, ihtiyaç duyduğunuzda zaman kazanırsınız, çünkü onları aramak zorunda kalmazsınız.</p>
+
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="overview">1.2. Genel Bakış</a></h2>
+        <p>Ana panelden Sık Kullanılan Dizinleri açılır menü olarak görebilirsiniz.</p>
+        <p>Ögelerden birini seçtikten sonra,sizi hemen ilgili, tanımlanmış dizine götürecektir.</p>
+        <p>O hedefe ulaşmak için klasör klasör göz atmanız gerekmeyecek.</p>
+        <p class="figure"><img class="largeimage" title="Genel Bakış" alt="Genel Bakış" src="images/imgDC/dirhot_overview.png" width="798" height="213"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="usage">2. Sık Kullanılan Dizinler Kullanımı</a></h2>
+        <p>Aşağıdakiler, Sık Kullanılanlar Listesi ile ilgili yaygın eylemlerdir.</p>
+      </div>
+
+      <div>
+        <h2><a name="access">2.1. Sık Kullanılan Dizinlere nasıl erişilir</a></h2>
+        <p>
+          Menü çubuğundan "<B>Komutlar</B>" ve ardından "<B>Sık Kullanılan Dizinler</B>" seçeneğini seçersiniz.<BR>
+          Bir açılır menü olarak görünür; burada ögeye tıklayarak belirlediğiniz girdiye karşılık gelen dizine gidersiniz.
+        </p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="otheraccess">2.2. Sık Kullanılan Dizinlere erişmenin başka bir yolu</a></h2>
+        <ul>
+          <li><p>Etkin dosya panelinin sağ üst köşesindeki üzerinde yıldız olan butona tıklayabilirsiniz.</p></li>
+          <li><p>Dahili komut "<B>cm_dirhotlist</B>" ile ilişkili bir araç butonu da ayarlayabilirsiniz.</p></li>
+          <li><p>Etkin çerçevenin başlık çubuğuna çift tıklayarak açılır hale getirebilirsiniz; bu, bu satırların yazarının tercih ettiği yöntemdir.</p></li>
+        </ul>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="configure">2.3. Sık Kullanılan Dizinler nasıl yapılandırılır</a></h2>
+        <p>Menü çubuğundan "<B>Yapılandırma</B>" ve ardından "<B>Sık Kullanılan Dizinler</B>" seçeneğini seçebilirsiniz.</p>
+        <p>Orada gördüğünüz ağaç, ana panelden açılır Sık Kullanılan Dizinler listenizde göreceğiniz şeyle aynı şeyi gösterecektir.</p>
+        <p>Ancak onu bir açılır menü şeklinde görmek yerine, bu yardım belgesinde görebileceğiniz gibi, düzenle, taşı vb. birçok işlevi olan bir ağaç olarak görürsünüz.</p>
+        <p class="figure"><img class="largeimage" title="Yapılandırma" alt="Yapılandırma" src="images/imgDC/dirhot_configure.png" width="884" height="566"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="otherconfigure">2.4. Sık Kullanılan Dizinlerin yapılandırmasına erişmenin diğer yolları</a></h2>
+        <ul>
+          <li><p>Sık Kullanılan Dizinler açılır menüsünün en altında, sizi Sık Kullanılan Dizinleri yapılandırma ekranına götürecek bir menü kısayolu bulunur.</p></li>
+          <li><p>Dahili komut <a href="cmds.html#cm_ConfigDirHotList">cm_ConfigDirHotList</a> ile bir araç butonu ekleyebilirsiniz.</p></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2><a name="addentry">2.5. Sık Kullanılan Dizinlere nasıl dizin eklenir</a></h2>
+        <p>
+          En basit yolu şudur:<BR>
+        </p>
+        <ul>    
+          <li>1. Etkin panelde, eklemek istediğiniz dizine girin.</li>
+          <li>2. Ardından Sık Kullanılan Dizinleri görünür hale getirin (örneğin "<B>Komutlar</B>" menüsüne - <B>Sık Kullanılan Dizinler</B> erişerek).</li>
+          <li>3. Ardından "<B>Dizin ekle: your_dir_name</B>" seçeneğine tıklayın.</li>
+          <li>4. Bunu yaptıktan sonra, dizinin eklendiğini onaylayan Sık Kullanılan Dizinler yapılandırma ekranını size gösterir.</li>
+          <li>5. Hangisi olduğunu görmenizi sağlamak için odak, üzerinde olacaktır.</li>
+        </ul>
+        <p class="figure"><img class="largeimage" title="Öge ekle" alt="Öge ekle" src="images/imgDC/dirhot_addentry.png" width="826" height="396"></p>
+        <p>Daha sonra, Sık Kullanılan Dizinlere bir öge eklemenin çok daha fazla yolu olduğunu göreceğiz.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="personalize">2.6. Sık Kullanılan Dizinlerdeki yeni eklenen ögeyi kişiselleştirin</a></h2>
+        <p>Varsayılan olarak, Sık Kullanılan Dizinlere bir dizin eklerken, öge adı son dizinin adı olacaktır.</p>
+        <p>Ancak isterseniz, onu yeniden adlandırabilirsiniz. Sadece "<B>Ad</B>" alanını seçin ve ardından kolay hatırlanan bir referans adı yazın.</p>
+        <p>Bu örnekte, klasör adı "doc"tur ancak ögeye verilen ad "Documentation"dır.</p>
+        <p>Sık Kullanılan Dizinler açılır menüsünde de bu şekilde görünecektir.</p>
+        <p class="figure"><img class="largeimage" title="Özelleştirme" alt="Özelleştirme" src="images/imgDC/dirhot_personalize.png" width="754" height="437"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="settarget">2.7. Hedefi de ayarlama</a></h2>
+        <p>Yalnızca geçiş yapılacak dizini eklemekle kalmaz, aynı zamanda ana pencerede iken etkin olmayan panelde olacak olan "<B>Hedef dizin</B>"i de seçebilirsiniz.</p>
+        <p>Böylece, zamanla sık tekrarlanan eylemler için, örneğin "A" dizininden "B" dizinine bir şeyler kopyalamanız gerektiğinde, daha önce hangi klasörde olursanız olun, Sık Kullanılan Dizinler menü ögesinden seçmeniz yeterlidir. Bu, her iki tarafı da tanımlanan dizinlere ayarlayarak eylem için hazır hale getirecektir.</p>
+        <p>Sık Kullanılan Dizinler ögesini seçerken hedef dizini tanımlamak için, sadece "<B>Hedef</B>" alanını ayarlayın.</p>
+        <p>Aşağıdaki örnek, burada önerildiği gibi "Dizin A"yı "Dizin B" hedefiyle göstermektedir.</p>
+        <p class="figure"><img class="largeimage" title="Hedefi ayarla" alt="Hedefi ayarla" src="images/imgDC/dirhot_settarget.png" width="860" height="312"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="definesort">2.8. Dizin değişikliğinden sonra sıralama düzenini tanımlayın</a></h2>
+        <p>Bir öge için "<B>Yol</B>" ve "<B>Hedef</B>" alanlarının sonunda bir açılır kutu bulunur.</p>
+        <p>Sık Kullanılan Dizinler ögesini seçerken panelin sıralama düzeninin ne olması gerektiğini önceden belirlemek istediğinizde bu açılır kutuyu kullanın.</p>
+        <p>Yani, onu "<B>Tarih 9-0</B>" olarak ayarlarsanız, Sık Kullanılan Dizinleri kullandığınızda, yalnızca etkin yolu tanımlanan yola taşımakla kalmayacak, aynı zamanda panel daha önce nasıl sıralanmış olursa olsun, onu ters kronolojik sıraya göre sıralayacaktır.</p>
+        <p>Sık Kullanılan Dizinlerden yeni bir yol seçmenin hiçbir şeyi değiştirmesini istemiyorsanız, bu alanı "hiçbiri" olarak bırakın.</p>
+        <p class="figure"><img class="largeimage" title="Dizin sıralamasını tanımla" alt="Dizin sıralamasını tanımla" src="images/imgDC/dirhot_definesort.png" width="440" height="211"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="helperpath">2.9. Yol ve hedef tanımlama yardımcısı</a></h2>
+        <p>Elbette bir mutlak yol ile çalışabilirsiniz ve MEVCUTTA KULLANDIĞINIZ cihazda sorunsuz çalışacaktır.</p>
+        <p>Ancak diyelim ki İsviçre çakısı USB belleğinizde sayısız başka araçla birlikte Double Commander'a sahipsiniz.</p>
+        <p>Taşınabilir kurulumlar için göreli yollara sahip olmak isteyebilirsiniz.</p>
+        <p>Burada demek istediğim, örneğin Double Commander yoluna göre göreli olmasıdır.</p>
+        <p>Yani "<B>E:\PortableApps\Notepad++Portable\Data\Config\</B>" yoluna sahip olabilirsiniz ve sorunsuz çalışır.</p>
+        <p>Ancak onu mevcut "Double Commander" yoluna göre de göreli yapabilir ve "<B>%commander_path%\..\..\Notepad++Portable\Data\Config\</B>" şeklinde kullanabilirsiniz.</p>
+        <p>Ne yazacağınızı (başka bir deyişle kaç tane "..\" kullanacağınızı!) anlamanıza yardımcı olmak için, "<B>yol</B>" ve "<B>hedef</B>" alanının sağ tarafında, yolu istediğiniz gibi düzenlemeniz ve ayarlamanız için çeşitli ilgili küçük araçlar içeren bir açılır menü getiren küçük bir buton bulunur.</p>
+        <p>Ancak bu, o butonun olası kullanımlarından sadece biridir.</p>
+        <p>İşte orada bulacaklarınızın tam bir özeti:</p>
+
+        <ul>
+          <li><B>Double Commander özel yolunu kullan</B> - Doğrudan çalıştırılabilir dosya yoluna, yapılandırma yoluna vb. işaret etmek için.</li>
+          <li><B>Windows özel klasörünü kullan (TC)</B> - Microsoft Windows sürümü için, Windows ile ilgili yola işaret etmeye izin verir, TC değişken adıyla uyumludur.</li>
+          <li><B>Diğer Windows özel klasörünü kullan</B> - Yukarıdakiyle aynı ancak yeni bir tane, TC'de bulunmayan.</li>
+          <li><B>Ortam değişkenini kullan</B> - Elbette bazı değerler orada gerçekten geçerli ve kullanışlı değildir ancak olabilecekler için, onları kullanalım!</li>
+          <li><B>Kısayol dizini yolunu kullan</B> - Bu çok yönlülüktür: Sık Kullanılan Dizinlerden bir Sık Kullanılan Dizinler ekleyebilirsiniz!</li>
+          <li><B>Şuna göre göreli yap...</B> - Yukarıdakilerin her biri için aynı şey ANCAK yolu doğrudan EKLEMEK yerine, mevcut yazılanı seçtiğiniz yola göre  yapacaktır.</li>
+          <li><B>Yolu mutlak yap</B> - Tersini yapmak için: Göreli bir yola sahip olduğunuzda, onu mutlak formuna getirecektir.</li>
+          <li><B>Etkin çerçeveden yol ekle</B> - Eklenecek yol doğrudan ana panelden, etkin çerçeveden olacaktır.</li>
+          <li><B>Etkin olmayan çerçeveden yol ekle</B> - Yukarıda belirtilen işlemin aynısını etkin olmayan çerçeveden yapacaktır.</li>
+          <li><B>Gözat ve seçilen yolu kullan</B> - İstediğiniz dizini kolayca seçebileceğiniz bir dizin tarayıcısı açacaktır.</li>
+        </ul>
+        <p class="figure"><img class="largeimage" title="Yol yardımcısı" alt="Yol yardımcısı" src="images/imgDC/dirhot_helperpath.png" width="560" height="370"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="changeorder">2.10. Dizinlerin sırasını değiştirme</a></h2>
+        <p>Sık Kullanılan Dizinler zamanla uzayabilir ve düzensiz hale gelebilir.</p>
+        <p>Sırayı, seçili dizini daha anlamlı bulduğunuz bir konuma sürükleyip bırakarak yeniden düzenleyebilirsiniz.</p>
+        <p>Klavyede "<B>CTRL</B>" tuşunu kullanarak, aynı anda birden fazla dizin seçebilir ve taşıyabilirsiniz.</p>      
+      </div>
+
+      <div>
+        <h2><a name="cutandpaste">2.11. "Kes" ve "yapıştır" kullanarak sırayı yeniden düzenleme</a></h2>
+        <p>Çok uzun bir dizin listeniz varsa kaynak ve hedef birbirinden uzak olduğu için sürükle ve bırak yöntemi uygun olmayabilir.</p>
+        <p>Bu durumda, taşımak istediğiniz dizini seçebilir, ardından üzerine sağ tıklayıp "<B>Kes</B>" seçeneğini kullanabilirsiniz.</p>
+        <p>Ardından, dizini yerleştirmek istediğiniz hedef konumu görmek için listeyi kaydırıp konumu seçin.</p>
+        <p>Sonra sağ tıklayıp ilk seçtiğiniz dizini yapıştırmak için "<B>Yapıştır</B>" seçeneğini kullanın.</p>
+        <p>Aynı anda birden fazla dizini kesip yapıştırmak için "<B>CTRL</B>" tuşunu kullanabilirsiniz.  </p>
+        <p class="figure"><img class="largeimage" title="Kes ve yapıştır" alt="Kes ve yapıştır" src="images/imgDC/dirhot_cutandpaste.png" width="884" height="263"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="organizetree">2.12. Dizinleri ağaçta düzenleme</a></h2>
+        <p>Siz de bizim gibi bir Sık Kullanılan Dizinler listesi hayranıysanız, tek boyutlu bir Dizin Sık Kullanılanlar Listesi ile yetinmek zorunda değilsiniz.</p>
+        <p>Bu durumda Double Commander imdadınıza yetişir. Sık Kullanılan Dizinler’de alt menüler oluşturabilir ve düzenleyebilirsiniz.</p>
+        <p>Dahası, alt menülerin içinde de başka alt menüler bulundurabilirsiniz.</p>
+        <p>Bu, Sık Kullanılan Dizinler listesini gayet düzenli bir şekilde yapılandırabileceğiniz anlamına gelir.</p>
+        <p>Bir alt menü eklemek için, alt menünün olmasını istediğiniz yere sağ tıklayın ve "<B>Alt menü ekle</B>" seçeneğini kullanın.</p>
+        <p>Bu sayede, içinde "Kısayol dizini adı" adında bir dizin bulunan "Alt menü adı" adında bir alt menü oluşturacaksınız.</p>
+        <p>Aşağıdaki alanlarla alt menüye anlamlı bir ad verebilirsiniz.</p>
+        <p>Buradan yeni dizinler ekleyebilir, diğer ögeleri bu yeni alt menünün içine taşıyabilir vb. işlemler yapabilirsiniz.</p>
+        <p>İşiniz kolaylaştırmak için Sık Kullanılan Dizinler listenizi yeniden düzenlerken bir alt menüyü taşıyabileceğinizi veya kesip yapıştırabileceğinizi lütfen unutmayın.</p>
+        <p class="figure"><img class="largeimage" title="Ağacı düzenle" alt="Ağacı düzenle" src="images/imgDC/dirhot_organizetree.png" width="245" height="250"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="addseperator">2.13. Netliği artırmak için ayırıcı ekleme</a></h2>
+        <p>Birbiri ardına birçok dizine sahip olmak güzeldir ancak kategoriler oluşturmak için bazı ayırıcılar eklemek, listelerinize düzen getirebilir.</p>
+        <p>Bir ayırıcı eklemek için, imleci ayırıcının olmasını istediğiniz yere yerleştirin, sağ tıklayın ve "<B>Ayırıcı ekle</B>" seçeneğini seçin.</p>
+        <p>Sık Kullanılan Dizinler ağacının yapılandırmasında noktalı bir çizgi göreceksiniz. Ancak Sık Kullanılan Dizinler açılır penceresinin ana panelinde bir menü ayırıcısı göreceksiniz.</p>
+        <p class="figure"><img class="largeimage" title="Ayırıcı Ekle" alt="Ayırıcı Ekle" src="images/imgDC/dirhot_addseperator.png" width="759" height="437"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="sorting">2.14. Girdileri Sıralama</a></h2>
+        <p>Yukarıda açıklandığı gibi, sürükle ve bırak ile kes ve yapıştır yöntemlerini kullanarak Sık Kullanılan Dizinler listesi girdilerini istediğiniz gibi yeniden düzenleyebilirsiniz.</p>
+        <p>Ancak alfabetik adlandırma ile çalışmayı tercih ederseniz, dahil edilen sıralama işlevlerini kullanabilirsiniz.</p>
+        <p>Sıralamanın mantığı basit: Geçerli seçimi sıralamak istediğiniz yere yerleştirerek "<B>Sırala...</B>" düğmesine basın. Ardından bir açılır menü açılacak ve istediğiniz sıralama işlevini seçebileceksiniz.</p>
+        <p>Buradaki beş seçenek, bu konuda isteyebileceğiniz her esnekliği size sunar:</p>      
+        <ul>
+          <li><B>Yalnızca tek öge grubu</B> - geçerli seçili ögenin yanındaki alanı sıralar. "Alan" ile kastedilen, iki ayırıcı, bir menünün başlangıcı veya bir menünün sonu arasında yer alan girdilerdir.</li>
+          <li><B>Yalnızca seçili ögelerin geçerli düzeyi</B> - yalnızca geçerli seçimin bulunduğu alanı değil, aynı daldaki kardeş öğeleri de sıralar. Sıralarken girdilerin alanına saygı gösterdiği için bir gruptaki öge koymuş olabileceğiniz bir ayırıcıyı geçmez.</li>
+          <li><B>Seçilen alt menülerin içeriği, alt düzey yok</B> - Seçmiş olabileceğiniz bir alt menünün doğrudan "alt ögelerini" sıralar ancak içindeki olası diğer alt menülere girip onları sıralamaz.</li>
+          <li><B>Seçilen alt menülerin içeriği ve tüm alt düzeyler</B> - Öncekiyle aynıdır ancak bu kez o dalın içindeki tüm alt menüleri de sıralar.</li>
+          <li><B>Her şeyi A'dan Z'ye</B> - Bizim favorimiz. Adından da anlaşılacağı gibi her şeyi sıralar ancak her birinin alanına saygı gösterir, böylece ögeyi bir daldan diğerine taşımaz.</li>
+        </ul>
+        <p>Daha önce belirttiğimiz gibi, hiçbir sıralama bir ögeyi bir ayırıcının üzerine geçirecek şekilde taşımaz.</p>
+        <p>Sıralama yaparken bir ayırıcıyı geçmemenin ne demek olduğunu anlamak için aşağıdaki örneğe bakın.</p>
+        <p>Sıralamadan sonra "Kök" klasörü her zaman diğerlerinin üzerinde kalacaktır *çünkü* orada bir ayırıcı vardır.</p>
+        <p>Ayırıcılar bu bakımdan gerçekten kullanışlıdır.</p>
+        <p>Sadece işleri daha net hale getirmekle kalmaz, sıralama yaparken bir sınırlayıcı olarak da kullanışlıdırlar.</p>
+        <p class="figure"><img class="largeimage" title="Girdileri Sıralama" alt="Girdileri Sıralama" src="images/imgDC/dirhot_sorting.png" width="501" height="301"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="expert">3. "Uzman" işlevler</a></h2>
+        <p>Sık Kullanılan Dizinler listesi ile ilgili daha az sıklıkta kullanılan ancak yine de bilmekte fayda olan eylemler aşağıdadır.</p>
+      </div>
+
+      <div>
+        <h2><a name="backup">3.1. Sık Kullanılan Dizinler Listesini Yedekle</a></h2>
+        <p>Sık Kullanılan Dizinler listesindeki dizin kısayollarının sayısı arttıkça, bu değerli bağlantıları bir kaza durumunda kaybetmemek için "her ihtimale karşı" yedeklemek isteyebilirsiniz.</p>
+        <p>Bunu yapmak için, yapılandırma ekranının sağında "<B>Yedekle</B>" adlı bir düğme bulunur.</p>
+        <p>Üzerine basın ve menüden "<B>Geçerli Sık Kullanılan Dizin listesinin bir yedeğini kaydet</B>" seçeneğini seçin.</p>
+        <p>Ardından, geçerli listeyi Double Commander'ın tanımladığı yapılandırma dizininde bulunan "Yedekleme" klasöründe bir dosyaya kaydeder.</p>
+        <p>Kaydedilen öge sayısı, Sık Kullanılan Dizinler listesinin tarih ve saatini içerecek şekilde oluşan dosya adıyla beraber yazılacaktır.</p>
+        <p>Lütfen dosyanın uzantısının ".hotlist" olduğunu unutmayın.</p>
+        <p class="figure"><img class="largeimage" title="Yedekle (kaydet)" alt="Yedekle (kaydet)" src="images/imgDC/dirhot_backup.png" width="884" height="284"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="restore">3.2. Sık Kullanılan Dizinler Listesinin Yedeğini Geri Yükleme</a></h2>
+        <p>Yukarıdaki gibi, "<B>Yedekle</B>" adlı aynı düğmeye tıklayın.</p>
+        <p>Alt menüde "<B>Sık Kullanılan Dizinler listesinin yedeğini geri yükle</B>" seçeneğini seçin.</p>
+        <p>Görüntülenecek dosya seçici iletişim kutusundan, geri yüklemek istediğiniz yedeği seçin.</p>
+        <p>Bir yedeği geri yüklediğinizde, önce geçerli Sık Kullanılan Dizinler listesini siler ve ardından yedek dosyasındaki ögeleri ekler.</p>
+        <p>Yedek dosyasından yalnızca belirli ögeleri geri yüklemek isterseniz, "<B>İçe aktar</B>" seçeneğini seçip yedek dosyasına işaret edebilirsiniz.</p>
+        <p>Sistem daha sonra yedek dosyasından hangi ögeleri geri yüklemek istediğinizi belirtmenizi isteyecektir.</p>
+        <p class="figure"><img class="largeimage" title="Yedekle (içe aktar)" alt="Yedekle (içe aktar)" src="images/imgDC/dirhot_importbackup.png" width="810" height="314"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="exportimportsimple">3.3. Bir Sık Kullanılan Dizinler Listesini (veya bir kısmını) Dışa/İçe Aktarma</a></h2>
+        <p>Birden fazla bilgisayarınız varsa veya sizinle aynı sunuculara erişen bir iş arkadaşınız varsa, Sık Kullanılan Dizinleri veya bir kısmını dışa aktarmak isteyebilirsiniz; böylece başka bir bilgisayarda aynı dizin kısayollarını tek tek girmek zorunda kalmadan kullanabilirsiniz.</p>
+        <p>Bunu yapmak için, önce "<B>Dışa aktar</B>" seçeneğini ve ardından "<B>Sık Kullanılan Dizinler dosyasına (.hotlist)</B>" seçeneğini seçin.</p>
+        <p>Daha sonra sizden, oluşturmak istediğiniz dışa aktarma dosyasının dosya adını ve dosya konumunu girmeniz istenecektir.</p>
+        <p>Ardından sizden neyi dışa aktarmak istediğinizi seçmeniz istenecektir.</p>
+        <p>Tüm ağacı dışa aktarabilir veya ögeleri tek tek seçebilirsiniz.</p>
+        <p>Tüm bir alt menüyü de, içindeki ögeleri seçmek zorunda kalmadan alt menü adını seçerek seçebilirsiniz.</p>
+        <p>Dışa aktarmak istediğiniz farklı ögeleri seçmek için tıklarken klavyedeki "<B>CTRL</B>" tuşunu kullanın.</p>
+        <BR>    
+        <p>Ardından, diğer bilgisayarda "<B>İçe aktar</B>" düğmesine tıklayacak ve sonra "<B>Sık Kullanılan Dizinler dosyasından (.hotlist)</B>" menü ögesini seçeceksiniz.</p>
+        <p>Dosya seçici iletişim kutusundan içe aktarılacak dosyayı seçin.</p>
+        <p>Dışa aktarmada olduğu gibi, tümünü içe aktarabilirsiniz ancak içe aktarmak istediğiniz belirli ögeleri seçme imkanız da vardır.</p>
+        <p>İçe aktardığınız ögeler, sizinkilerin sonuna eklenecektir.</p>
+      </div>
+
+      <div>
+        <h2><a name="exportimporttc">3.4. Total Commander'a/dan Dışa/İçe Aktarma</a></h2>
+        <p>Double Commander ayrıca Sık Kullanılan Dizinleri Total Commander'ınkinden/e dışa/içe aktarabilir.</p>
+        <p>Total Commander'dan bazı girdileri içe aktarmak istediğinizi varsayalım, yapmanız gerekenler şunlardır:</p>
+        <p>Sık Kullanılan Dizinler yapılandırma ekranından, "<B>İçe Aktar...</B>" düğmesine tıklayın ve Total Commander’ın "<B> ’wincmd.ini’ dosyasından...</B>" seçeneğini seçin.</p>
+        <p>Ardından dosya seçici iletişim kutusundan Total Commander'ınızın "wincmd.ini" dosyasının konumunu seçin.</p>
+        <p>Bu dosyanın nerede olduğunu bilmiyorsanız, Total Commander'da "<B>Yardım</B>" menüsünü seçin ve ardından "<B>Total Commander Hakkında...</B>" seçeneğine tıklayın.</p>
+        <p>.INI dosyasının konumu orada yazılı olacaktır.</p>
+        <p>Ardından Total Commander .ini dosyasından okunan dizin girdilerini içeren bir ağaç görünecektir.</p>
+        <p>Bu ağaçtan TÜM girdileri içe aktarabilir veya dilediğiniz gibi tek tek seçebilirsiniz.</p>
+        <p>Lütfen içe aktarmak istediğiniz farklı girdileri seçmek için tıklarken klavyedeki "<B>CTRL</B>" tuşunu kullanın.</p>
+        <p>İçe aktardığınız girdiler, girdilerinizin sonuna eklenecektir.</p>
+        <p class="figure"><img class="largeimage" title="TC&apos;den İçe Aktar" alt="TC&apos;den İçe Aktar" src="images/imgDC/dirhot_importfromtc.png" width="759" height="591"></p>
+        <p>Ardından, ters işlem olarak, Double Commander Dizin sık kullanılanlar listenizin tamamını veya bir kısmını Total Commander’ın listesine aktarabilirsiniz.</p>
+        <p>Bunu yapmak için "<B>Dışa Aktar...</B>" düğmesine tıklayın ve Total Commander'a yapılabilecek iki dışa aktarma işleminden birini seçin.</p>
+        <p>Ne yaptığınızı biliyor ve Total Commander'ın Dizin sık kullanılanlar listesindeki tüm girdileri değiştirmeyi kabul ediyorsanız, "<B>TC "wincmd.ini" dosyasına (mevcut olanı sil)</B>" seçeneğini seçebilirsiniz.</p>
+        <p>Ve burada da, tümünü dışa aktarmayı veya yalnızca istediklerinizi dışa aktarmayı seçebilirsiniz.</p>
+        <p>Lütfen dışa aktarmak istediğiniz farklı girdileri seçmek için tıklarken klavyedeki "<B>CTRL</B>" tuşunu kullanın.</p>
+        <p>Bunu yaparken Total Commander'ı kapalı tutmanız ve ardından tekrar açıp ne olduğunu görmeniz iyi olabilir.</p>
+        <p>Total Commander, Dizin sık kullanılanlar listenizdeki girdileri Double Commander'ın yaptığı gibi kolayca yapılandırma ve sıralama yolları sunmaz.</p>
+        <p>Bu nedenle Total Commander'ınızın Dizin sık kullanılanlar listesini Double Commander'a aktarabilir, ardından yeniden düzenleyebilir, sıralayabilir, yapılandırabilir vb. ve sonra tekrar Total Commander'a aktarabilirsiniz.</p>
+        <BR>
+        <p><B>*Not: Uygulamanın Total Commander yapılandırma .INI dosyasını bozmayacağından emin olmak için testler yapılmıştır.</b></p>
+        <p><B>Ancak, bazı girdilerin dışa aktarmadan önce yedeklenmesi tavsiye edilir.</B></p>
+        <p><B>Elbette bunu yaparken sizin sorumluluğunuzda olan bir risk alıyorsunuz.</B></p>
+        <p><B>...Double Commander gibi güzel bir programı keşfetme riski.'</B></p>      
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="scanpresence">3.5. Dizin sık kullanılanlar listesini tarayarak eksik dizinleri bulma</a></h2>
+        <p>Zamanla, Dizin sık kullanılanlar listenizde artık mevcut olmayan dizinlere işaret eden girdiler olabilir.</p>
+        <p>Bu girdileri bulmak için Dizin sık kullanılanlar listesi yapılandırma ekranında "<B>Çeşitli</B>" etiketli düğmeye tıklayın.</p>
+        <p>Ardından "<B>Tüm sık kullanılan dizin yollarını tarayarak var olanları doğrulayın</B>" seçeneğini belirleyin.</p>
+        <p>Bu, uygulamanın sizin kısayollarınızın işaret ettiği tüm dizinleri taramasını sağlayacaktır.</p>
+        <p>Eğer bir öge eksikse, ögenin solunda bir eksik simgesi gösterilir.</p>
+        <p>En az bir eksik öge içeren alt menü dalı da bir ögenin eksik olduğunu gösteren özel bir simge gösterir.</p>
+        <p class="figure"><img class="largeimage" title="Gerçekten mevcut olup olmadığını tara" alt="Gerçekten mevcut olup olmadığını tara" src="images/imgDC/dirhot_scanexist.png" width="543" height="502"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+
+        <p>Bu nedenle, artık mevcut olmayan dizinlere işaret eden ögeleri silebilir veya onları tutabilirsiniz.</p>
+        <p>Neden onları tutmalı? Basit. Double Commander'ın USB bellek üzerinden farklı bilgisayarlarda kullanıldığı bir senaryoda, önceki bilgisayarda mevcut olan dizinlerin yeni bilgisayarda mevcut olmaması tamamen normal olabilir.</p>
+        <p>Peki öyleyse, "<B>Tüm sık kullanılan dizin yollarını tarayarak gerçekten mevcut olanları doğrula</B>" işlevi size nasıl yardımcı olacak?</p>
+        <p>Çünkü bu seçenek, bu ögeleri Ana paneldeki Dizin sık kullanılanlar listesi açılır menüsünden de kaldıracaktır.</p>
+        <p>Mevcut olmayan dizinlere işaret eden girdiler gösterilmeyecektir.</p>
+        <p>Dizin sık kullanılanlar listesi dahili listesinden kalıcı olarak silinmeyeceklerdir.</p>
+        <p>Sadece oturum boyunca açılır menüde gösterilmeyeceklerdir.</p>
+        <p>Önceki örneğin sonucuna bakın.</p>
+        <p class="figure"><img class="largeimage" title="Temiz bir açılır menü" alt="Temiz bir açılır menü" src="images/imgDC/dirhot_cleanedmenu.png" width="578" height="515"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="addingmanyatthetime">3.6. Dizin sık kullanılanlar listesine aynı anda birden fazla dizin ekleme</a></h2>
+        <p>Dizin sık kullanılanlar listenizi yeni bir durum için ayarlarken aynı anda birçok dizini Dizin sık kullanılanlar listesine eklemek isteyebilirsiniz.</p>
+        <p>Bunu yapmanın iki yolu vardır.</p>
+        <p><B>İlk yöntem: doğrudan ana çerçeveden seçimle</B></p>
+        <p>Bu kolaydır: eklemek istediğiniz dizinleri seçersiniz, Dizin sık kullanılanlar listesi açılır menüsünü çağırırsınız ve sonunda "<B>x seçili dizini ekle</B>" seçeneğini belirlersiniz.</p>
+        <p>Dizinler yapılandırılmış ekleme konumuna eklenecektir.</p>
+        <p>Eğer "<B>akıllı</B>" yöntemle eklemek üzere yapılandırmışsanız, ne kadar iyi yerleştirildiklerini görmek güzel.</p>
+        <p class="figure"><img class="largeimage" title="Aynı anda birden fazla ekle" alt="Aynı anda birden fazla ekle" src="images/imgDC/dirhot_addmanyatonce.png" width="884" height="443"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+
+        <p><B>İkinci yöntem: ilkine benzer ancak Dizin sık kullanılanlar listesi yapılandırma penceresi ve ana panel aynı anda gösterilerek</B></p>
+        <p>Bu da kolaydır: önce Dizin sık kullanılanlar listesi yapılandırma penceresini açarsınız.</p>
+        <p>Ardından, yeni dizinlerin eklenmesini istediğiniz yere seçiminizi yerleştirirsiniz.</p>
+        <p>Daha sonra "<B>Ekle</B>" veya "<B>Ekle</B>" düğmesine basar ve "<B>Etkin çerçevenin mevcut seçili veya etkin dizinleri</B>" seçeneğine tıklarsınız.</p>
+        <p>Onları eklenmiş ve isteklerinize göre sıralanmaya, yeniden adlandırılmaya ve düzenlenmeye hazır olarak göreceksiniz.</p>
+      </div>
+
+      <div>
+        <h2><a name="directconfig">3.8. Hedef yapılandırılmış olsa bile etkin olmayan çerçevede geçiş yapılamaz</a></h2>
+        <p>Bu neredeyse gizli bir özelliktir.</p>
+        <p><a href="#settarget">Bu sayfanın 2.7. maddesinde belirtildiği gibi</a> Dizin sık kullanılanlar listesi girişini, etkin olmayan çerçevenin dizinini de belirtilen bir hedef dizine geçiş yapacak şekilde yapılandırmış olabilirsiniz.</p>
+        <p>Ancak bazen, hedef klasörün değil, sadece ana etkin çerçevenin değişmesi arzu edilebilir.</p>
+        <p>Bu durumu şu küçük numara ile önleyebilirsiniz: Dizin sık kullanılanlar listesi açılır menüsündeki kısayola tıkladığınızda klavyedeki "<B>CTRL</B>" tuşuna basılı tutun.</p>
+        <p>Kısayola tıkladığınız anda "<B>CTRL</B>" tuşu basılı tutulursa, sadece etkin çerçeve değişir, hedef değişmez.</p>
+      </div>
+
+      <div>
+        <h2><a name="directconfig">3.8. Açılır menüden bir ögeyi doğrudan yapılandırma</a></h2>
+        <p>Bu da neredeyse gizli bir özelliktir.</p>
+        <p>Dizin sık kullanılanlar listesi açılır menüsünde gezinirken, düzeltmek istediğiniz bir yazım hatası veya istediğiniz gibi düzenlenmemiş bir şeyle karşılaşabilirsiniz.</p>
+        <p>Elbette o zaman yapılandırmaya gitmek için aşağıya tıklayabilir, ağaçta nerede olduğunu arayabilir ve ardından düzeltmenizi yapabilirsiniz.</p>
+        <p>Ancak daha iyi, daha hızlı ve daha basit yapmak için küçük bir numara var.</p>
+        <p>Dizin sık kullanılanlar listesi açılır menüsündeyken, doğrudan yapılandırma penceresine gidip zevkinize göre yapılandırmak istediğiniz menü öğesine tıkladığınızda klavyedeki "<B>SHIFT</B>" tuşuna basılı tutun.</p>
+        <p>Kısayola tıkladığınız anda "<B>SHIFT</B>" tuşu basılı tutulursa DC sizi, seçiminizi isteklerinize göre düzenleyebileceğiniz bir yapılandırma ekranına götürecektir.</p>
+        <p>Onu listede aramak zorunda kalmayacaksınız!</p>
+      </div>
+
+      <div>
+        <h2><a name="showpopup">3.9. Açılır menüde tam yolu gösterme</a></h2>
+        <p>Dizin sık kullanılanlar listesi yapılandırma ekranında "<B>Açılır menüde yolu da göster</B>" adlı bir onay kutusu bulunur.</p>
+        <p>Bu seçenek işaretlendiğinde, Double Commander'a kısayolun işaret ettiği tam yolu doğrudan açılır menü girişinde göstermesi talimatını verir.</p>
+        <p>Böylece sadece verdiğiniz kısayol dizini adını değil, aynı zamanda tıkladığınızda atlayacağı tam yolu da göreceksiniz.</p>
+        <p>Bu, ekrana çok fazla metin eklediği için can sıkıcı olabilir ve bunu görmek bizi yorabilir.</p>
+        <p>Ancak bazı durumlarda, özellikle Windows tanımlı dizinler ve dizinleri işaret eden ortam değişkenleri ile ilgili özel dizinlerde.</p>
+        <p>Her birinin nereyi işaret ettiğine dair doğrudan bir genel bakışa sahip olmak güzeldir.</p>
+        <p class="figure"><img class="largeimage" title="Tam yolu göster" alt="Tam yolu göster" src="images/imgDC/dirhot_showfullpath.png" width="650" height="596"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="smartenv">3.10. Sadece bir dizin gibi görünen ortam değişkenlerini tutma</a></h2>
+        <p>Dizin sık kullanılanlar listesi açılır menüsünün "Özel Dizinler" bölümünde, ortam değişkenlerine sahip olabileceğinizi göreceksiniz.</p>
+        <p>Tüm değişkenlerin aslında bir dizin olması gerekmez.</p>
+        <p>Dizin sık kullanılanlar listesi Yapılandırması'nda, "<B>Yalnızca geçerli %env_var% ögesini göster</B>" seçeneğini işaretleyebilirsiniz.</p>
+        <p>Bu seçenek işaretlendiğinde DC, menüden en azından başlangıcı için geçerli bir yola benzeyen ortam değişkenini elemeye çalışacaktır.</p>
+        <p>Gerçek bir ihtiyaç olmadan yavaşlamamak için yolu gerçekten mevcut olup olmadığını araması ve doğrulaması gerekli değildir, ancak bariz ilgisiz olanları hızla eleyecektir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="otherfunctions">4. Diğer işlevler</a></h2>
+        <p>Double Commander Dizin sık kullanılanlar listesi özelliği ile uygulamada mevcut olan ve burada açıklanmayan başka küçük olasılıklar ve işlevler olabilir.</p>
+        <p>Böyle bir yardım dosyasını güncel tutmak zordur (ve bazen gerekli olsa bile can sıkıcıdır).</p>
+        <p>Ancak kesinlikle çoğunu çözeceksiniz ve bu yardım bölümü en azından konunun en önemli noktalarını kapsamaktadır.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+      </div>      
+    </div>  
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="findfiles.html">Önceki</a> | <a title="Sonraki Sayfa" href="multiarc.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Geçiş Sürümü" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Geçerli CSS"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

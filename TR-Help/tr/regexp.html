@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC : Düzenli İfadelerin Sözdizimi</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="cmds.html">Önceki</a> | <a title="Sonraki Sayfa" href="lua.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.9. Düzenli İfadelerin Sözdizimi</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#preface">Giriş</a></dt>
+          <dt>2. <a href="#compare">Basit Eşleşmeler</a></dt>
+          <dt>3. <a href="#esc">Kaçış Dizileri</a></dt>
+          <dt>4. <a href="#symbols">Karakter Sınıfları</a></dt>
+          <dt>5. <a href="#meta">Metakarakterler</a></dt>
+          <dd>
+            <dl>
+              <dt>5.1. <a href="#meta-line">Metakarakterler: Satır Ayırıcılar</a></dt>
+              <dt>5.2. <a href="#meta-std">Metakarakterler: Önceden Tanımlanmış Sınıflar</a></dt>
+              <dt>5.3. <a href="#meta-words">Metakarakterler: Kelime Sınırları</a></dt>
+              <dt>5.4. <a href="#meta-dup">Metakarakterler: Yineleyiciler</a></dt>
+              <dt>5.5. <a href="#meta-vars">Metakarakterler: Alternatifler</a></dt>
+              <dt>5.6. <a href="#meta-sub">Metakarakterler: Alt İfadeler</a></dt>
+              <dt>5.7. <a href="#meta-back">Metakarakterler: Geri Başvurular</a></dt>
+            </dl>
+          </dd>
+          <dt>6. <a href="#modifiers">Değiştiriciler</a></dt>
+          <dt>7. <a href="#perl">Perl Uzantıları</a></dt>
+        </dl>
+      </div>
+
+      <p>Double Commander, Andrey V. Sorokin'in ücretsiz Delphi kütüphanesi <span class="bold">TRegExpr</span> kullanır: <a href="http://www.regexpstudio.com/" target="_blank">http://www.regexpstudio.com/</a>.</p>
+      <p>Açıklamaların çoğu bu kütüphanenin yardım dosyasından alınmıştır.</p>
+
+      <div>
+        <h2>1. <a name="preface">Giriş</a></h2>
+        <p>Düzenli ifadeler aranacak metin kalıplarını belirtmek için yaygın olarak kullanılan bir yöntemdir.</p>
+        <p>Özel <span class="bold">metakarakterler</span>, aradığımız belirli bir dizenin bir satırın başında veya sonunda yer aldığını ya da belirli bir karakterin <span class="bold">n</span> tekrarını içerdiğini belirtmemizi sağlar.<p>
+        <p>Düzenli ifadeler esas olarak profesyoneller için tasarlanmıştır. Ancak ofiste belirli belgeleri bulmak için de faydalı olabilir. Aşağıdaki örneklere bakın.</p>
+        <p>Double Commander, düzenli ifadeleri aşağıdaki işlevlerde destekler:</p>
+        <ul>
+          <li>Komutlar  → Ara (dosya adında)</li>
+          <li>Dahili düzenleyicide</li>
+          <li>Çoklu yeniden adlandırma aracında</li>
+        </ul>
+        <p class="navback"><a href="#topofpage">(Başa Dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>2. <a name="compare">Basit Eşleşmeler</a></h2>
+        <p>Herhangi bir tek karakter aşağıda açıklanan özel bir anlama sahip bir metakarakter olmadığı sürece kendisiyle eşleşir.</p>
+        <p>Bir karakter dizisi, hedef dizideki o karakter dizisiyle eşleşir. Bu nedenle "bluh" kalıbı hedef dizideki "bluh'' ile eşleşir.</p>
+        <p>Normalde metakarakter veya <span class="bold">kaçış dizisi</span> olarak işlev gören karakterlerin önlerine bir ters eğik çizgi "\" ekleyerek 'kaçırılması' yoluyla harfiyen yorumlanmasını sağlayabiliriz. Örneğin metakarakter "^" dizenin başlangıcıyla eşleşir. Ancak "\^" karakter "^" ile eşleşir, "\\" ise "\" ile eşleşir ve bu böyle devam eder.</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Basit Eşleşme Örneği</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foobar</div></td>
+            <td class="hintcell">'foobar' dizisiyle eşleşir</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\^FooBarPtr</div></td>
+            <td class="hintcell">'^FooBarPtr' ile eşleşir</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(Başa Dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3. <a name="esc">Kaçış Dizileri</a></h2>
+        <p>Karakterler, C ve Perl'de kullanılanlara benzer bir kaçış dizileri sözdizimi kullanılarak belirtilebilir. "\n'' yeni bir satırla, "\t'' bir sekme ile eşleşir vb.</p>
+        <p>Daha genel olarak nn'nin onaltılık basamaklardan oluşan bir dize olduğu \xnn, ASCII değeri nn olan karakterle eşleşir.</p>
+        <p>Geniş (Unicode) karakter koduna ihtiyacınız varsa, 'nnnn'nin bir veya daha fazla onaltılık basamak olduğu '\x{nnnn}' kodunu kullanabilirsiniz.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Kaçış Dizileri</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\xnn</div></td>
+            <td class="hintcell">nn onaltılık kodlu karakter</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\x{nnnn}</div></td>
+            <td class="hintcell">nnnn onaltılık kodlu karakter (düz metin için bir bayt, Unicode için iki bayt)</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\t</div></td>
+            <td class="hintcell">Sekme (HT/TAB), \x09 ile aynı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\n</div></td>
+            <td class="hintcell">Yeni satır (YS), \x0a ile aynı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\r</div></td>
+            <td class="hintcell">Satır başı (SB), \x0d ile aynı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\f</div></td>
+            <td class="hintcell">Form besleme (FB), \x0c ile aynı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\a</div></td>
+            <td class="hintcell">Alarm (ALR), \x07 ile aynı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\e</div></td>
+            <td class="hintcell">Kaçış (ESC), \x1b ile aynı</td>
+          </tr>
+        </table>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Kaçış Dizileri Örneği</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foo\x20bar</div></td>
+            <td class="hintcell">'foo bar' ile eşleşir (ortadaki boşluğa dikkat edin).</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\tfoobar</div></td>
+            <td class="hintcell">Sekme ile önceden tanımlanmış 'foobar' ile eşleşir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(Başa Dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>4. <a name="symbols">Karakter Sınıfları</a></h2>
+        <p>Karakter sınıfını köşeli parantez [] içine bir karakter listesi ekleyerek belirleyebilirsiniz. Bu şekilde belirttiğiniz karakter sınıfı, listedeki herhangi bir karakterle eşleşecektir.</p>
+        <p>''['' işaretinden sonraki ilk karakter ''^'' ise sınıf listede <span class="bold">olmayan</span> herhangi bir karakterle eşleşir.</p>
+        <p>Bir liste içinde, ''-'' karakteri bir <span class="bold">aralık</span> belirtmek için kullanılır, böylece a-z, ''a'' ile ''z'' arasındaki tüm karakterleri kapsar.</p>
+        <p>''-'' karakterinin bir sınıfın üyesi olmasını istiyorsanız onu listenin başına veya sonuna koyun ya da bir ters eğik çizgiyle belirtin.</p>
+        <p>']' karakterini kullanmak istiyorsanız, onu listenin başına yerleştirebilir veya bir ters eğik çizgiyle belirtebilirsiniz.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Karakter Sınıfları</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[-az]</div></td>
+            <td class="hintcell">'a', 'z' ve '-' ile eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[az-]</div></td>
+            <td class="hintcell">'a', 'z' ve '-' ile eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[a\-z]</div></td>
+            <td class="hintcell">'a', 'z' ve '-' ile eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[a-z]</div></td>
+            <td class="hintcell">'a' ile 'z' arasındaki yirmi altı küçük karakterin tümüyle eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[\n-\x0D]</div></td>
+            <td class="hintcell">#10, #11, #12, #13'ten herhangi biriyle eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[\d-t]</div></td>
+            <td class="hintcell">Herhangi bir rakam, '-' veya 't' ile eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">[]-a]</div></td>
+            <td class="hintcell">']'..'a' arasındaki herhangi bir karakterle eşleşir.</td>
+          </tr>
+        </table>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Karakter Sınıfları Örneği</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob[aeiou]r</div></td>
+            <td class="hintcell">'foobar', 'foober' vb. dizeleri bulur, ancak 'foobbr', 'foobcr' vb. dizeleri bulmaz.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob[^aeiou]r</div></td>
+            <td class="hintcell">'foobbr', 'foobcr' vb. dizeleri bulur, ancak 'foobar', 'foober' vb. dizeleri bulmaz.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(Başa Dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5. <a name="meta">Metakarakterler</a></h2>
+        <p>Metakarakterler, düzenli ifadelerin özünü oluşturan özel karakterlerdir.</p>
+        <p>Aşağıda açıklanan farklı metakarakter türleri bulunmaktadır.</p>
+        <p class="navback"><a href="#topofpage">(Başa Dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2><a id="meta-line" name="meta-line">5.1. Metakarakterler: Satır Ayırıcılar</a></h2>
+        <p>Bazı ifadeler satır ayrımını tespit etmeye yardımcı olur.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Satır Ayırıcılar</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">^</div></td>
+            <td class="hintcell">Satır başlangıcı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">$</div></td>
+            <td class="hintcell">Satır sonu</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\A</div></td>
+            <td class="hintcell">Metin başlangıcı</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\Z</div></td>
+            <td class="hintcell">Metin sonu</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">.</div></td>
+            <td class="hintcell">Satırdaki herhangi bir karakter</td>
+          </tr>
+        </table>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Satır ayırıcılarla örnek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">^foobar</div></td>
+            <td class="hintcell">'foobar' dizesini yalnızca satırın başındaysa eşleştirir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foobar$</div></td>
+            <td class="hintcell">'foobar' dizesini yalnızca satırın sonundaysa eşleştirir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">^foobar$</div></td>
+            <td class="hintcell">'foobar' dizisiyle yalnızca satırdaki tek dizi ise eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob.r</div></td>
+            <td class="hintcell">'foobar', 'foobbr', 'foob1r' ve benzeri dizilerle eşleşir.</td>
+          </tr>
+        </table>
+
+        <p>"^" metakarakteri varsayılan olarak yalnızca giriş dizisinin/metninin başında eşleşmeyi garanti ederken "$" metakarakteri ise yalnızca sonunda eşleşmeyi garanti eder. Gömülü satır ayırıcılar "^" veya "$" ile eşleşmez.</p>
+        <p>Ancak bir diziyi çok satırlı bir arabellek olarak ele almak isteyebilirsiniz. Bu durumda "^" dizideki herhangi bir satır ayırıcıdan sonra eşleşir ve "$" herhangi bir satır ayırıcıdan önce eşleşir. Bunu <a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_m" target="_blank">değiştirici /m</a> özelliğini açarak yapabilirsiniz.</p>
+        <p>\A ve \Z, "^" ve "$" gibidir; ancak <a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_m" target="_blank">değiştirici /m</a> kullanıldığında birden çok kez eşleşmezler, oysa "^" ve "$" her dahili satır ayırıcıda eşleşir.</p>
+        <p>"." metakarakteri varsayılan olarak herhangi bir karakterle eşleşir, ancak <a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_s" target="_blank">değiştirici /s</a> özelliğini kapatırsanız '.' gömülü satır ayırıcılarla eşleşmez.</p>
+        <p>TRegExpr, satır ayırıcılarla <a href="http://www.unicode.org/" target="_blank">www.unicode.org</a> adresinde <a href="http://www.unicode.org/reports/tr18/" target="_blank">Teknik Standart #18</a> ile önerildiği gibi çalışır:</p>
+        <p>"^" bir giriş dizisinin başındadır. <a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_m" target="_blank">Değiştirici /m</a> açıksa ayrıca \x0D\x0A veya \x0A veya \x0D'nin herhangi bir oluşumundan hemen sonra gelir. (TRegExpr'in <a href="http://regexpstudio.com/en/tregexpr_interface.html#unicode" target="_blank">Unicode sürümünü</a> kullanıyorsanız ayrıca \x2028 veya \x2029 veya \x0B veya \x0C veya \x85). Unutmayın ki \x0D\x0A dizisi içinde boş satır yoktur.</p>
+        <p>"$" bir giriş dizisinin sonundadır. <a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_m" target="_blank">değiştirici /m</a> açıksa ayrıca \x0D\x0A veya \x0A veya \x0D'nin herhangi bir oluşumundan hemen önce gelir (TRegExpr'in <a href="http://regexpstudio.com/en/tregexpr_interface.html#unicode" target="_blank">Unicode sürümünü</a> kullanıyorsanız, ayrıca \x2028 veya \x2029 veya \x0B veya \x0C veya \x85). Unutmayın ki \x0D\x0A dizisi içinde boş satır yoktur.</p>
+        <p>"." herhangi bir karakterle eşleşir.<a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_m" target="_blank">Değiştirici /s</a> özelliğini kapatırsanız "." \x0D\x0A ve \x0A ve \x0D ile eşleşmez (TRegExpr'in <a href="http://regexpstudio.com/en/tregexpr_interface.html#unicode" target="_blank">Unicode sürümünü</a> kullanıyorsanız ayrıca \x2028 ve \x2029 ve \x0B ve \x0C ve \x85).</p>
+        <p>Unutmayın ki "^.*$" (boş satır deseni), \x0D\x0A dizisi içindeki boş diziyi eşleştirmez. Ancak \x0A\x0D dizisi içindeki boş diziyi eşleştirir.</p>
+        <p>Çok satırlı işleme, TRegExpr <a href="http://regexpstudio.com/en/tregexpr_interface.html#line_separators" target="_blank">LineSeparators</a> ve <a href="http://regexpstudio.com/en/tregexpr_interface.html#line_separators" target="_blank">LinePairedSeparator</a> özelliklerinin yardımıyla kendi amacınıza göre kolayca ayarlanabilir. Yalnızca Unix tarzı ayırıcılar \n veya yalnızca DOS/Windows tarzı \r\n kullanabilir veya bunları bir araya getirebilir veya kendi satır ayırıcılarınızı tanımlayabilirsiniz.</p>
+        <p class="navback"><a href="#topofpage">(Başa Dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5.2. <a name="meta-std">Metakarakterler: Önceden Tanımlanmış Sınıflar</a></h2>
+        <p>Bazı ifadeler karakter gruplarını tespit etmeye yardımcı olur.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Önceden Tanımlanmış Sınıflar</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\w</div></td>
+            <td class="hintcell">Alfanümerik karakter ("_", dahil)</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\W</div></td>
+            <td class="hintcell">Alfasayısal olmayan karakter</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\d</div></td>
+            <td class="hintcell">Sayısal karakter</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\D</div></td>
+            <td class="hintcell">Sayısal olmayan</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\s</div></td>
+            <td class="hintcell">Herhangi bir boşluk (aynısı [ \t\n\r\f])</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\S</div></td>
+            <td class="hintcell">Boşluk olmayan</td>
+          </tr>
+        </table>
+        <p>\w, \d ve \s ifadelerini özel <span class="bold">karakter sınıfları</span> içinde kullanabilirsiniz.</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Önceden tanımlanmış sınıflar örneği</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob\dr</div></td>
+            <td class="hintcell">'foob1r', 'foob6r' vb. gibi dizelerle eşleşir ancak 'foobar', 'foobbr' vb. gibi dizelerle eşleşmez</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob[\w\s]r</div></td>
+            <td class="hintcell">'foobar', 'foob r', 'foobbr' vb. gibi dizelerle eşleşir ancak 'foob1r', 'foob=r' vb. gibi dizelerle eşleşmez</td>
+          </tr>
+        </table>
+        <p>TRegExpr, standart \w, \W, \s, \S sınıflarını yeniden tanımlamak için <a href="http://regexpstudio.com/en/tregexpr_interface.html#tregexpr.spacechars" target="_blank">SpaceChars</a> ve <a href="http://regexpstudio.com/en/tregexpr_interface.html#tregexpr.wordchars" target="_blank">WordChars</a> seçeneklerini kullanır.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5.3. <a name="meta-words">Metakarakterler - kelime sınırları</a></h2>
+        <p>Bir kelime sınırı (\b), iki karakter arasında, bir tarafında \w, diğer tarafında \W olan (sırası fark etmeksizin) bir noktadır; dizenin başındaki ve sonundaki hayali karakterler \W ile eşleşen olarak sayılır.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Kelime sınırları</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\b</div></td>
+            <td class="hintcell">Kelime sınırını eşleştir</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">\B</div></td>
+            <td class="hintcell">Kelime sınırı olmayanı eşleştir</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5.4. <a name="meta-dup">Metakarakterler - yineleyiciler</a></h2>
+        <p>Düzenli bir ifadenin herhangi bir öğesini, başka bir metakarakter türü olan yineleyiciler izleyebilir.</p>
+        <p>Bu metakarakterleri kullanarak önceki karakterin, metakarakterin veya alt ifadenin tekrar sayısını belirleyebilirsiniz.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Yineleyiciler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">*</div></td>
+            <td class="hintcell">sıfır veya daha fazla ("açgözlü"), {0,} benzeri</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">+</div></td>
+            <td class="hintcell">bir veya daha fazla ("açgözlü"), {1,} benzeri</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">?</div></td>
+            <td class="hintcell">sıfır veya bir ("açgözlü"), {0,1} benzeri</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{n}</div></td>
+            <td class="hintcell">tam olarak n kez ("açgözlü")</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{n,}</div></td>
+            <td class="hintcell">en az n kez ("açgözlü")</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{n,m}</div></td>
+            <td class="hintcell">en az n, en fazla m kez ("açgözlü")</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">*?</div></td>
+            <td class="hintcell">sıfır veya daha fazla ("açgözlü olmayan"), {0,}? benzeri</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">+?</div></td>
+            <td class="hintcell">bir veya daha fazla ("açgözlü olmayan"), {1,}? benzeri</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">??</div></td>
+            <td class="hintcell">sıfır veya bir ("açgözlü olmayan"), {0,1}? benzeri</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{n}?</div></td>
+            <td class="hintcell">tam olarak n kez ("açgözlü olmayan")</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{n,}?</div></td>
+            <td class="hintcell">en az n kez ("açgözlü olmayan")</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">{n,m}?</div></td>
+            <td class="hintcell">en az n, en fazla m kez ("açgözlü olmayan") </td>
+          </tr>
+        </table>
+        <p>Yani, {n,m} biçimindeki küme parantezleri içindeki rakamlar, öğe n'nin eşleşme sayısının <span class="bold">minimum</span> ve <span class="bold">maksimum</span> m olacağını belirtir.</p>
+        <p>{n} biçimi, {n,n} ile eşdeğerdir ve tam olarak n kez eşleşir.</p>
+        <p>{n,} biçimi, n veya daha fazla kez eşleşir.</p>
+        <p>n veya m'nin boyutunda bir sınır yoktur, ancak büyük sayılar daha fazla bellek tüketir ve yürütmeyi yavaşlatır.</p>
+        <p>Bir küme parantezi başka bir bağlamda oluşursa, düzenli bir karakter olarak kabul edilir.</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Yineleyiciler örneği</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob.*r</div></td>
+            <td class="hintcell">'foobar', 'foobalkjdflkj9r' ve 'foobr' gibi dizelerle eşleşir</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob.+r</div></td>
+            <td class="hintcell">'foobar', 'foobalkjdflkj9r' gibi dizelerle eşleşir ancak 'foobr' ile eşleşmez</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob.?r</div></td>
+            <td class="hintcell">'foobar', 'foobbr' ve 'foobr' gibi dizelerle eşleşir ancak 'foobalkj9r' ile eşleşmez</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">fooba{2}r</div></td>
+            <td class="hintcell">'foobaar' dizesiyle eşleşir</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">fooba{2,}r</div></td>
+            <td class="hintcell">'foobaar', 'foobaaar', 'foobaaaar' vb. dizelerle eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">fooba{2,3}r</div></td>
+            <td class="hintcell">'foobaar' veya 'foobaaar' gibi dizelerle eşleşir ancak 'foobaaaar' ile eşleşmez</td>
+          </tr>
+        </table>
+        <p>"Açgözlülük" hakkında küçük bir açıklama:</p>
+        <p>"Açgözlü" mümkün olduğunca çok, "açgözlü olmayan" ise mümkün olduğunca az alır.</p>
+        <p>Örneğin, 'abbbbc' dizesine uygulanan 'b+' ve 'b*' 'bbbb' döndürür, 'b+?' 'b' döndürür, 'b*?' boş dize döndürür, 'b{2,3}?' 'bb' döndürür, 'b{2,3}' 'bbb' döndürür.</p>
+        <p>Tüm yineleyicileri "açgözlü olmayan" moda geçirebilirsiniz (<a href="http://regexpstudio.com/en/regexp_syntax.html#modifier_g" target="_blank">değiştirici /g</a> bölümüne bakın).</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5.5. <a name="meta-vars">Metakarakterler - alternatifler</a></h2>
+        <p>Bir desen için bir dizi <span class="bold">alternatif</span> belirtebilirsiniz; bunları ayırmak için "|" kullanın, böylece fee|fie|foe, hedef dizedeki "fee", "fie" veya "foe"den herhangi biriyle eşleşir (f(e|i|o)e gibi).</p>
+        <p>İlk alternatif, son desen sınırlayıcıdan ("(", "[", veya desenin başlangıcı) ilk "|" işaretine kadar her şeyi içerir ve son alternatif, son "|" işaretinden bir sonraki desen sınırlayıcıya kadar her şeyi içerir.</p>
+        <p>Bu nedenle, başlangıç ve bitiş noktaları hakkındaki kafa karışıklığını en aza indirmek için alternatifleri parantez içinde belirtmek yaygın bir uygulamadır.</p>
+        <p>Alternatifler soldan sağa denenir, bu nedenle ifadenin tamamının eşleştiği ilk alternatif seçilir.</p>
+        <p>Bu, alternatiflerin her zaman açgözlü olmadığı anlamına gelir.</p>
+        <p>Örneğin: "barefoot" ifadesine karşı "foo|foot" eşleştirilirken, yalnızca "foo" kısmı eşleşecektir, çünkü bu denenen ilk alternatiftir ve hedef dizeyle başarıyla eşleşir. (Bu önemli görünmeyebilir, ancak eşleşen metni parantez kullanarak yakalarken önemlidir.)</p>
+        <p>Ayrıca "|" köşeli parantez içinde bir değişmez olarak yorumlandığını unutmayın, bu yüzden [fee|fie|foe] yazarsanız gerçekte yalnızca [feio|] ile eşleştirirsiniz.</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Alternatiflere örnek</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foo(bar|foo)</div></td>
+            <td class="hintcell">'foobar' veya 'foofoo' dizeleriyle eşleşir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5.6. <a name="meta-sub">Metakarakterler - alt ifadeler</a></h2>
+        <p>Parantezli yapı ( ... ) düzenli ifade alt ifadelerini tanımlamak için de kullanılabilir.</p>
+        <p>Aramadan sonra MatchPos, MatchLen ve <a href="http://regexpstudio.com/en/tregexpr_interface.html#tregexpr.match" target="_blank">Eşleşme</a> özelliklerini kullanarak herhangi bir alt ifadeyi çağırabilirsiniz, ayrıca alt ifadeleri <a href="http://regexpstudio.com/en/tregexpr_interface.html#tregexpr.substitute" target="_blank">Yerine koy</a> kullanarak maske olarak da kullanabilirsiniz.</p>
+        <p>Alt ifadeler, açılış parantezlerinin soldan sağa sırasına göre numaralandırılır.</p>
+        <p>İlk alt ifade '1' numarasına sahiptir (tüm düzenli ifade eşleşmesi '0' numarasına sahiptir - bunu <a href="http://regexpstudio.com/en/tregexpr_interface.html#tregexpr.substitute" target="_blank">Yerine koy</a> içinde '$0' veya '$&amp;' olarak yerine koyabilirsiniz).</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Alt ifadeler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(foobar){8,10}</div></td>
+            <td class="hintcell">'foobar' ifadesinin 8, 9 veya 10 örneğini içeren dizelerle eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">foob([0-9]|a+)r</div></td>
+            <td class="hintcell">'foob0r', 'foob1r', 'foobar', 'foobaar', 'foobaar' vb. ile eşleşir.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>5.7. <a name="meta-back">Metakarakterler - geri başvurular</a></h2>
+        <p>Metakarakterler \1 ila \9 geri başvurular olarak yorumlanır. \&lt;n> daha önce eşleşen #&lt;n> alt ifadesiyle eşleşir.</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Geri başvurulara örnekler</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(.)\1+</div></td>
+            <td class="hintcell">'aaaa' ve 'cc' ile eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(.+)\1+</div></td>
+            <td class="hintcell">ayrıca 'abab' ve '123123' ile eşleşir</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(['"]?)(\d+)\1</div></td>
+            <td class="hintcell">eşleşir: '"13"' (çift tırnak içinde), ''4'' (tek tırnak içinde) veya 77 (tırnaksız) vb.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>6. <a name="modifiers">Değiştiriciler</a></h2>
+        <p>Değiştiriciler, düzenli ifadelerin davranışını değiştirmek içindir.</p>
+        <p>Bu değiştiricilerden herhangi biri, <a href="http://regexpstudio.com/en/regexp_syntax.html#inline_modifiers" target="_blank">(?...)</a> yapısı kullanılarak düzenli ifadenin içine yerleştirilebilir.</p>
+        <dl>
+          <dt><tt>i</tt></dt>
+          <dd>Büyük/küçük harfe duyarsız desen eşleştirmesi yapın (sisteminizin yerel ayarlarını kullanarak), ayrıca bkz. <a href="http://regexpstudio.com/en/tregexpr_interface.html#invertcase" target="_blank">InvertCase</a>.</dd>
+          <dt><tt>m</tt></dt>
+          <dd>Dizeyi çok satırlı olarak ele alın. Yani, "^'' ve "$'' karakterlerinin yalnızca dizenin en başında veya sonunda eşleşmesini, dizenin herhangi bir yerindeki herhangi bir satırın başına veya sonuna eşleşecek şekilde değiştirin, ayrıca bkz. <a href="http://regexpstudio.com/en/tregexpr_interface.html#line_separators" target="_blank">Satır ayırıcılar</a>.</dd>
+          <dt><tt>s</tt></dt>
+          <dd>Dizeyi tek satırlı olarak ele alın. Yani, ".'' karakterini, normalde eşleşmeyeceği bir satır ayırıcı (ayrıca <a href="http://regexpstudio.com/en/tregexpr_interface.html#line_separators" target="_blank">Satır ayırıcılar</a> bölümüne bakın) dahil olmak üzere herhangi bir karakterle eşleşecek şekilde değiştirin.</dd>
+          <dt><tt>g</tt></dt>
+          <dd>Standart olmayan değiştirici. Kapatıldığında, tüm sonraki operatörleri açgözlü olmayan (non-greedy) moda geçirirsiniz (varsayılan olarak bu değiştirici açıktır). Yani, eğer /g değiştiricisi kapalıysa, '+' '+?' olarak, '*' '*?' olarak ve benzeri şekilde çalışır. </dd>
+          <dt><tt>x</tt></dt>
+          <dd>Deseninizin okunabilirliğini, boşluk karakterlerine ve açıklamalara izin vererek artırın (açıklamaya aşağıdan bakabilirsiniz).</dd>
+          <dt><tt>r</tt></dt>
+          <dd>Standart dışı değiştirici. Ayarlıysa, 'а-я' aralığına ek olarak Rus harfi 'ё', 'А-Я' aralığına ek olarak 'Ё' ve 'а-Я' aralığına tüm Rusça sembolleri dahil edilir. Yabancı kullanıcılar için bu varsayılan olarak ayarlanmıştır. Varsayılan olarak kapatmak isterseniz, <a href="http://www.regexpstudio.com/TRegExpr/Help/tregexpr_interface.html#modifier_defs">RegExprModifierR</a> genel değişkenine 'false' değerini atayın.</dd>
+        </dl>
+        <p><a href="http://regexpstudio.com/en/tregexpr_interface.html#tregexpr.modifier_x" target="_blank">Değiştirici /x</a> biraz daha açıklama gerektiriyor.</p>
+        <p>Ters eğik çizgiyle belirtilmemiş veya bir karakter sınıfı içinde olmayan boşluk karakterlerini yok saymasını sağlar.</p>
+        <p>Bunu, düzenli ifadenizi (biraz) daha okunabilir parçalara bölmek için kullanabilirsiniz.</p>
+        <p># karakteri de bir açıklama başlatan meta karakter olarak kabul edilir, örneğin:</p>
+        <pre class="CODE">
+	  (
+		(abc) # açıklama 1  
+		  Biçimli bir düzenli ifade için boşluklar kullanılabilir, TRegExpr bunu saymaz  
+		(efg) # açıklama 2  
+	  )</pre>
+        <p>Bu aynı zamanda, desende (bir karakter sınıfı dışında, burada /x'ten etkilenmezler) gerçek boşluk karakterleri veya # karakterleri kullanmak isterseniz, bunları ya kaçış dizisiyle belirtmeniz ya da sekizlik veya onaltılık kaçış dizileri kullanarak kodlamanız gerekeceği anlamına gelir.</p>
+        <p>Birlikte ele alındığında, bu özellikler düzenli ifadeler metnini daha okunabilir hale getirmede büyük katkı sağlar.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>7. <a name="perl">Perl uzantıları</a></h2>
+        <p class="bold">(?imsxr-imsxr)</p>
+        <p>Bunu, düzenli ifade içinde değiştiricileri anında değiştirmek için kullanabilirsiniz.</p>
+        <p>Bu yapı bir alt ifadeye dahil edilirse, yalnızca bu alt ifadeyi etkiler.</p>
+        <p>İşte bazı örnekler:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Perl uzantıları örnekleri</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">İfade</th><th class="categorydesccolumn">Sonuç</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(?i)Saint-Petersburg</div></td>
+            <td class="hintcell">'Saint-petersburg' ve 'Saint-Petersburg' ile eşleşir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(?i)Saint-(?-i)Petersburg</div></td>
+            <td class="hintcell">'Saint-Petersburg' ile eşleşir ancak 'Saint-petersburg' ile eşleşmez.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">(?i)(Saint-)?Petersburg</div></td>
+            <td class="hintcell">'Saint-petersburg' ve 'saint-petersburg' ile eşleşir</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">((?i)Saint-)?Petersburg</div></td>
+            <td class="hintcell">'saint-Petersburg' ile eşleşir, ancak 'saint-petersburg' ile eşleşmez</td>
+          </tr>
+        </table>
+        <p class="bold">(?#Açıklama)</p>
+        <p>Bir açıklama, metin yok sayılır.</p>
+        <p>TRegExpr’nin, ")" karakterini görür görmez açıklamayı kapattığını unutmayın, bu nedenle açıklamaya gerçek bir ")" karakteri koymanın bir yolu yoktur.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+        <BR>
+      </div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="cmds.html">Önceki</a> | <a title="Sonraki Sayfa" href="lua.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli."></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

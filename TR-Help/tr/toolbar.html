@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Araç Çubukları</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"><img src="../../pixmaps/common/dclogo2017.png" alt="" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank"> Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="shortcuts.html">Önceki</a> | <a title="Sonraki Sayfa" href="variables.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.6. Araç çubuğu</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#toolbardefinition">Araç çubuğu nedir ve nasıl kullanılır?</a></dt>
+          <dt>2. <a href="#toolbarshowit">Nasıl görüntülenir?</a></dt>
+          <dt>3. <a href="#toolbarelementlist">Araç çubuğunun içerisinde neler olabilir?</a></dt>
+          <dt>4. <a href="#toolbarconfig">Araç çubuğu nasıl yapılandırılır?</a></dt>
+          <dt>5. <a href="#toolbardescription">Öge Açıklamaları</a></dt>
+          <dd>
+            <dl>
+              <dd>5.1. <a href="#catseparator">Ayırıcı</a></dd>
+              <dd>5.2. <a href="#catinternal">Dahili Komut</a></dd>
+              <dd>5.3. <a href="#catexternal">Harici Komut</a></dd>
+              <dd>5.4. <a href="#catmenu">Menü</a></dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+      <div>
+        <h2><a name="toolbardefinition">1. Araç çubuğu nedir ve nasıl kullanılır?</a></h2>
+        <p>Double Commander gibi iki panelli bir dosya yöneticisiyle yoğun bir şekilde çalışırken, kullandığımız uygulamayı masaüstündeki, görev çubuğundaki veya başlat menüsündeki bir kısayolla açmak yerine doğrudan yöneticimizden başlatmanın daha kullanışlı olduğu zamanlar gelir.</p>
+        <p>Bu durum, sıkça yaptığımız görevler için özellikle geçerlidir.</p>
+        <p>Araç çubuğunun amacı, herkesin sık sık yaptığı işlemler için çubuğun içindeki butonları özelleştirmesine olanak tanımaktır.</p>
+        <p>Double Commander ayrıca, mevcut görüntülenen/seçili dosyalara dayalı çok sayıda olası parametreyi kullanarak, bunları başlatılacak uygulamaya parametre olarak geçirmemize olanak tanır.</p>
+        <p>Varsayılan bir kurulumdan sonra dosya panellerinin üzerinde gösterilen Double Commander'ın varsayılan araç çubuğu aşağıdadır. Ancak endişelenmeyin: İhtiyaçlarınıza ve zevkinize uyacak şekilde istediğiniz gibi yapılandırabilirsiniz.</p>
+        <p class="figure"><img class="largeimage" title="Araç Çubuğu Örneği" alt="Araç Çubuğu Örneği" src="images/imgDC/toolbarsample.png" width="713" height="39"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="toolbarshowit">2. Nasıl görüntülenir</a></h2>
+        <p>Araç çubuğu, "Düzen" yapılandırma ayarlarında neyin belirlendiğine bağlı olarak görüntülenecek veya görüntülenmeyecektir.</p>
+        <p>Etkinleştirmek için, "Araç çubuğunu göster" seçeneğini ayarladığınızdan emin olunuz.</p>
+        <p class="figure"><img class="largeimage" title="Araç Çubuğu Örneği" alt="Araç Çubuğu Örneği" src="images/imgDC/toolbarshowit.png" width="692" height="182"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="toolbarelementlist">3. Araç çubuğunun içinde neler olabilir</a></h2>
+        <p>Aşağıda bir araç çubuğunda bulunabileceklerin bir tablosu bulunmaktadır.</p>
+        <table class="category">
+          <tr class="rowcategorytable"><th colspan="2">Araç çubuğu içindeki olası öge</th></tr>
+          <tr class="rowcategorysubtitle"><th class="categorynamecolumn">Ögeler</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catseparator">Ayırıcı</a></div></td>
+            <td class="categorydesc">Benzer işlevleri ve/veya benzer bağlamı bir araya getirmemize yardımcı olan dikey çubuk.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catinternal">Dahili komut</a></div></td>
+            <td class="categorydesc">Double Commander içinde bulunan dahili komutu çağırmak için.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catexternal">Harici komut</a></div></td>
+            <td class="categorydesc">Harici uygulamayı, çalıştırılabilir dosyayı ve benzerlerini başlatmak için.</td>
+          </tr>
+          <tr>
+            <td class="categorycell"><div class="categoryname"><a href="#catmenu">Menü</a></div></td>
+            <td class="categorydesc">Ana araç çubuğundan açılır menü olarak görüntülenecek diğer araç çubuğu öğesini yapılandırmak için.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="toolbarconfig">4. Araç çubuğu nasıl yapılandırılır</a></h2>
+        <p>Araç çubuğunuzda nelerin bulunacağını yapılandırmak için, onu yapılandırmanız gerekecek.</p>
+        <p>Double Commander'ın ana yapılandırmasına gidip, sol sütunda kaydırarak "Araç Çubuğu" seçeneğini seçebilir ve ona erişim sağlayabiliriz.</p>
+        <p class="figure"><img class="largeimage" title="Araç çubuğu yapılandırması" alt="Araç çubuğu yapılandırması" src="images\imgDC\toolbarconfig1.png" width="680" height="160"></p>
+        <p>Yapılandırmaya ulaşmanın diğer hızlı yolu, araç çubuğunun boş bir alanına doğrudan sağ tıklayıp "Düzenle" seçeneğini seçmektir.</p>
+        <p class="figure"><img class="largeimage" title="Araç çubuğu yapılandırması" alt="Araç çubuğu yapılandırması" src="images\imgDC\toolbarconfig2.png" width="250" height="80"></p>
+        <p>Araç çubuğuna alıştıkça, araç çubuğundaki bir butona doğrudan sağ tıklayarak sadece araç çubuğu düzenleyiciyi açmakla kalmayıp, aynı zamanda sağ tıkladığımız araç çubuğu butonunun ilişkilendirilmiş eylemini hemen düzenlemeye hazır olacağız.</p>
+        <p class="figure"><img class="largeimage" title="Araç çubuğu yapılandırması" alt="Araç çubuğu yapılandırması" src="images\imgDC\toolbarconfig3.png" width="730" height="230"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="catseparator">5.1. Ögelerin Açıklaması - Ayırıcı</a></h2>
+        <p>Ayırıcı, benzer ilgili eylemleri bir arada gruplandırmak için düğme gruplarını ayırmak amacıyla kullanılabilecek basit bir dikey çubuktur.</p>
+        <p>Gerçek aktif işlevleri yoktur, sadece hoş bir görünüm için dekoratiftir.</p>
+        <p>Aşağıdaki örnekte kullanıcı; karşılaştırma ve pano işlevlerini kendi aralarında gruplamak için ayırıcı kullanmıştır.</p>
+        <p class="figure"><img class="largeimage" title="Ayırıcı örneği" alt="Ayırıcı örneği" src="images/imgDC/toolbarseparator.png" width="430" height="220"></p>		
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="toolbarconfig">5.2. Ögelerin Açıklaması - Dahili Komut</a></h2>
+        <p>Dahili komutlar, harici bir uygulama çağırmayı gerektirmeyen, Double Commander'ın doğrudan gerçekleştirdiği eylemlerle ilgilidir.</p>
+        <p>Komutlar son derece çeşitlidir. Lütfen tüm dahili komutları açıklamaya ayrılmış olan <a href="cmds.html">bu sayfaya</a> bakınız.</p>
+        <p>Örneğin, bir arama başlatmaya izin veren bir araç çubuğu düğmesi istiyorsak, komut açılır kutusundan "cm_Search" komutunu seçmemiz yeterlidir.</p>
+        <p>Aşağıdaki görselde de gördüğünüz gibi bunun için özel bir simge seçebiliriz ancak genellikle komut açılır kutusundan komutu seçmek yeterlidir. Komutun zaten dahili ilişkilendirilmiş bir simgesi vardır.</p>
+        <p>Araç ipucu, imleci üzerine getirdiğimizde düğmenin görevini hatırlatacak, akılda kalıcı kısa kelimeler yazmamıza olanak tanır.</p>
+        <p>İşte o "<a href="cmds.html#cm_Search">cmSearch</a>" komutuyla ilgili bir örnek:</p>
+        <p class="figure"><img class="largeimage" title="Parametresiz dahili komut örneği" alt="Parametresiz dahili komut örneği" src="images/imgDC/toolbarinternal1.png" width="636" height="220"></p>		
+        <p>Bazı diğer komutlar, eylemlerini yapılandırmak için parametre kabul edebilir.</p>
+        <p>Bu gerektiğinde, parametreyi parametre kutusuna yazmamız yeterlidir.</p>
+        <p>Aşağıdaki örnekte, dahili komut "<a href="cmds.html#cm_ChangeDir">cm_ChangeDir</a>" kullanıyoruz ve her panelde hangi dizini yükleyeceğimizi ve göstereceğimizi belirtmek için iki parametre sağlıyoruz.</p>
+        <p class="figure"><img class="largeimage" title="Parametreli dahili komut örneği" alt="Parametreli dahili komut örneği" src="images/imgDC/toolbarinternal2.png" width="636" height="220"></p>		
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="toolbarconfig">5.3. Ögelerin Açıklaması - Harici Komut</a></h2>
+        <p>Harici komutlar, harici program çağırmayı gerektiren eylemlerle ilgilidir.</p>
+        <p>Harici komutlar için, başlatmak istediğimiz komutu, hangi dizinde başlatmak istediğimizi ve gerekirse komutlara parametre olarak ne sağlamak istediğimizi hassas bir şekilde yapılandırmamıza olanak tanıyan birkaç ek ayar yapma imkanımız vardır.</p>
+        <p>Parametrelere gelince, etkin panelin geçerli seçili dosyasına ve benzeri durumlara göre gerçek değerleriyle değiştirilecek kullanıcı değişkenleri seçebilirsiniz. Parametre olarak kullanılabilecek değişkenlerin özel sayfasına <a href="variables.html">bu bağlantı</a> üzerinden bakınız.</p>
+        <p>Aşağıdaki örnekte, "Gimp" uygulamasını başlatmak için bir araç çubuğu butonu ayarladık ve <code>%p</code> parametresi, "Gimp" uygulamasını başlatmak için butona tıkladığımızda, etkin paneldeki geçerli seçili dosyanın tam dosya adının parametre olarak iletileceği anlamına gelir, çünkü <code>%p</code> bunu temsil eder.</p>
+        <p class="figure"><img class="largeimage" title="Harici komut örneği" alt="Harici komut örneği" src="images/imgDC/toolbarexternal.png" width="636" height="236"></p>		
+      </div>
+      <BR>
+
+      <div>
+        <h2><a name="catmenu">5.4. Ögelerin Açıklaması - Menü</a></h2>
+        <p>Çok sayıda araç çubuğu düğmesi yapılandırıyorsak tüm butonların aynı yatay çizgide tutmak için yerimiz kalmayabilir.</p>
+        <p>Bu nedenle, daha fazla buton eklememize izin vermek için, butonun altında bir açılır menü görünmesini sağlayacak özel bir buton türü ekleyebiliriz; bu, bize bir buton araç çubuğuna benzer bir şeye erişim sağlar ancak açılır menü olarak sunulur.</p>
+        <p>Aşağıdaki örneğe bakınız, burada "Menü" türünde bir buton ekledik.</p>
+        <p>Bu, aşağıda, farklı görevlere işaret eden yeni araç butonu düğmeleriyle ihtiyaç duyduğumuz gibi doldurabileceğimiz yeni bir alt araç çubuğu görünmesini sağlayacaktır.</p>
+        <p>Bu örnek bize aynı projelerle, aynı alanlarla ilgili butonları bir araya getirmenin yardımcı olabileceğini de gösteriyor.</p>
+        <p>Bu örnekte, alt araç çubuğu sanal makinelerde yüklü farklı işletim sistemi türleriyle ilgili işlevlere sahiptir.</p>
+        <p class="figure"><img class="largeimage" title="Menü örneği" alt="Menü örneği" src="images/imgDC/toolbarmenu.png" width="636" height="336"></p>
+        <p>Yapılandırılmış alt araç çubuğunun uygulamada nasıl görüneceği aşağıda gösterilmiştir:</p>
+        <p class="figure"><img class="largeimage" title="Açılır menü örneği" alt="Açılır menü örneği" src="images/imgDC/toolbarmenudrop.png" width="250" height="350"></p>
+        <p>Bu şekilde yapılandırılan alt araç çubuğu, daha önce sunulan aynı buton türünü içerebilir.</p>
+        <p>Hatta bir alt araç çubuğunun içinde bir alt araç çubuğu olabilir ve bu böyle devam edebilir.</p>
+        <p>Bu, uygulamada bir menü ögesinden bir alt menü olarak basitçe görüntülenecektir.</p>
+        <p>Aşağıda bir örnek verilmiştir:</p>
+        <p class="figure"><img class="largeimage" title="Araç çubuğu içinde araç çubuğu örneği" alt="Araç çubuğu içinde araç çubuğu örneği" src="images/imgDC/toolbarinbar.png" width="782" height="648"></p>		
+      </div>
+
+      <div>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+      </div>
+    </div>	
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="shortcuts.html">Önceki</a> | <a title="Sonraki Sayfa" href="variables.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Valid HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valid!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

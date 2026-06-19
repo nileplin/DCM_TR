@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Komut Satırı</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="lua.html">Önceki</a> | <a title="Sonraki Sayfa" href="configxml.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.11. Komut satırı</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#presenta">Sunum</a></dt>
+          <dt>2. <a href="#tablepos">Olası parametreler</a></dt>
+          <dt>3. <a href="#examples">Örnekler</a></dt>
+        </dl>
+      </div>
+
+      <div>
+        <h2>1. <a name="presenta">Sunum</a></h2>
+        <p>Double Commander yürütülebilir dosyasını başlatırken, başlatmayı özelleştirmek için bazı komut satırı parametreleri belirleyebiliriz.</p>
+        <p>Örneğin, dosya panellerinde görüntülenecek dizinleri belirleyebiliriz.</p>
+        <p>Bazı anahtarlar da kullanılabilir.</p>
+        <p>Bu anahtarlar büyük/küçük harf duyarlı DEĞİLDİR.</p>
+        <BR>
+        <p>Komut satırında nelerin mümkün olduğuna dair sözdiziminin özet bir açıklaması aşağıdadır:<p>
+        <p><code>doublecmd.exe [-C] [-T] [-P L|R] [path1\subpath1] [path2\subpath2]</code></p>
+        <BR>
+        <p>Şunun gibi alternatif bir biçim de mümkündür:<p>
+        <p><code>doublecmd.exe [-C] [-T] [-P L|R] [-L path1\subpath1] [-R path2\subpath2]</code></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>2. <a name="tablepos">Olası parametreler</a></h2>
+        <p>Double Commander'ı başlatırken parametre olarak nelerin bulunabileceğine dair liste aşağıdadır.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Komut Satırı Parametreleri</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Parametre</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft"><var>path1\sub1 [path2\sub2]</var><BR><I><small class="firstcolumnaleft">(anahtar yok, doğrudan bir yol)</small></I></div></td><td class="hintcell">Sol panele ilk geçirilen dizini yükler.<BR>İkinci bir tane sağlanırsa, o da sağda olmak üzere açılır..<BR>Boşluk içeren dizin adları çift tırnak içine alınmalıdır.<BR>Tam yol adını her zaman belirtin.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">-C <I>veya</I> --client</div></td><td class="hintcell">Double Commander zaten çalışıyorsa, onu etkinleştirin ve komut satırındaki yol(lar)ı o örneğe geçirin.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">-L <I>dizin</I></div></td><td class="hintcell">Sol panelde gösterilecek dizini ayarlayın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">-R <I>dizin</I></div></td><td class="hintcell">Dizini sağ panelde gösterilmeye ayarla.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">-P L|R</div></td><td class="hintcell">Program başladığında etkin paneli ayarlar:<ul><li>-P L sol için</li><li>-P R sağ için</li></ul></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">-T</div></td><td class="hintcell">Geçirilen dizin(ler)i yeni sekme(ler)de açar.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">--no-console</div></td><td class="hintcell">Double Commander'ı konsol hata ayıklama penceresi olmadan çalıştırın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">--config-dir=yol</div></td><td class="hintcell">Double Commander yapılandırma dosyalarıyla özel dizin yolunu ayarlayın.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">--servername=x</div></td>
+            <td class="hintcell">
+              <p>Parametre geçirmek için kullanılabilecek Double Commander örneğinin (sunucusunun) adını ayarlar.</p>
+              <p>Zaten mevcut bir örnek yoksa, onu oluşturun.</p>
+              <p>Zaten mevcut bir örnek varsa ve mevcut olan bir istemciyse, parametreleri sunucuya (yani mevcut örneğe) gönderin.</p>
+              <p>Zaten mevcut bir örnek varsa ve mevcut olan bir istemci değilse (yani aynı anda yalnızca bir Double Commander kopyasına izin ver seçeneği yanlışsa ve <code>--client/-c</code> seçenekleri verilmemişse), kullanıcı tarafından sağlanan sunucu adı değiştirilir: öncelikle, sadece sonuna "2" sayısı eklenir.</p>
+              <p>Zaten sonunda bir sayı varsa, henüz meşgul olmayan bir sunucu adı bulana kadar 1 arttırmaya devam edin ve sonra bu sunucu adıyla örnek oluşturun.</p>
+            </td>
+          </tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">--no-splash</div></td><td class="hintcell">Double Commander başlangıçta açılış ekranını devre dışı bırakır.</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>3.1. <a name="examples">Örnekler</a></h2>
+        <p>Double Commander başlatılırken komut satırı parametreleri ile yapılabilecek istenilen davranışlara dair birkaç örnek aşağıdadır.</p>
+        <BR>
+        <p>Sol panelde <code>e:\Xilinx\ISE DS</code> dizinini ve sağ panelde <code>c:\temp</code> dizinini açın:</p>
+        <pre>doublecmd.exe "e:\Xilinx\ISE DS" c:\temp</pre>
+        <BR>
+        <p>Zaten çalışmakta olan bir Double Commander örneğinin etkin panelinde <code>c:\Logs</code> dizinini yeni bir sekmede açın:</p>
+        <pre>doublecmd.exe -c -t c:\Logs</pre>
+        <BR>
+        <p>Uygulamayı, <code>f:\Documents\DC\Job Settings</code> dizinindeki yapılandırma dosyalarıyla ve uygulamanın başlık çubuğunda <code>JOB</code> ibaresiyle başlatın:</p>
+        <pre>doublecmd.exe --config-dir="f:\Documents\DC\Job Settings" --servername="JOB"</pre>        
+        <p class="figure"><img class="largeimage" title="Komut satırı örneği" alt="Komut satırı örneği" src="images/imgDC/cmdline.png" width="234" height="102"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="lua.html">Önceki</a> | <a title="Sonraki Sayfa" href="configxml.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

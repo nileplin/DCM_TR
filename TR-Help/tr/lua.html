@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Lua Betikleme</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana Sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="regexp.html">Önceki</a> | <a title="Sonraki Sayfa" href="commandline.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.10. Lua Betikleme</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#preface">Giriş</a></dt>
+          <dt>2. <a href="#dllrequired">DLL Gerekli</a></dt>
+          <dt>3. <a href="#libraries">Double Commander işlev kütüphaneleri</a></dt>
+          <dd>
+            <dl>
+              <dt>3.1. <a href="#libdc">DC kütüphaneleri</a></dt>
+              <dd>
+                <dl>
+                  <dt>3.1.1. <a href="#exampleex">DC.ExecuteCommand ile örnek</a></dt>
+                </dl>
+              </dd>
+              <dt>3.2. <a href="#librarysystem">Sistem kütüphanesi</a></dt>
+              <dd>
+                <dl>
+                  <dt>3.2.1.<a href="#detailattr">SysUtils.FileGetAttr dönen değerinin ayrıntıları</a></dt>
+                  <dt>3.2.2.<a href="#exampleattr">SysUtils.FileGetAttr ile örnek</a></dt>
+                  <dt>3.2.3.<a href="#examplefind">FindFirst, FindNext ve FindClose kullanım örneği</a></dt>
+                </dl>
+              </dd>
+              <dt>3.3. <a href="#libraryclip">Pano kütüphanesi</a></dt>
+              <dd>
+                <dl>
+                  <dt>3.3.1.<a href="#exampleclip">Pano kütüphanesi kullanım örneği</a></dt>
+                </dl>
+              </dd>
+              <dt>3.4 <a href="#librarydialogs"> İletişim kutuları kütüphanesi</a></dt>
+              <dd>
+                <dl>
+                  <dt>3.4.1. <a href="#dlgbuts">Dialogs.MessageBox'ta görüntülenen düğmeler</a></dt>
+                  <dt>3.4.2. <a href="#dlgstyle">Dialogs.MessageBox kutu stili</a></dt>
+                  <dt>3.4.3. <a href="#dlgdefbut">Dialogs.MessageBox kutu stili</a></dt>
+                  <dt>3.4.4. <a href="#msgreturn">Dialogs.MessageBox dönen değeri</a></dt>
+                  <dt>3.4.5. <a href="#mesgboxsample">Dialogs.MessageBox kullanım örneği</a></dt>
+                  <dt>3.4.6. <a href="#querysample">Dialogs.InputQuery kullanım örneği</a></dt>
+                </dl>
+              </dd>
+              <dt>3.5 <a href="#libraryos">İşletim sistemi kütüphanesi</a></dt>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+      <div>
+        <h2>1. <a name="preface">Giriş</a></h2>
+        <p>Double Commander, Lua betiklerini <a href="cmds.html#cm_ExecuteScript">cm_ExecuteScript</a> komutu aracılığıyla çalıştırabilir.</p>
+        <p>Bu, Double Commander'ın 0.8 sürümüyle kullanıma sunuldu.</p>
+        <p>Lua betiği kullanarak içerik eklentileri (.wdx) yazmak da mümkündür.</p>
+        <p>Lua betik programlama dili hakkında daha fazla bilgiye web'de <a href="https://www.lua.org/" target="_blank">bu bağlantıdan</a> ulaşılabilir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>2. <a name="dllrequired">DLL Gerekli</a></h2>
+        <p>Windows ile çalışıyorsak, Lua betik dosyasını yorumlayabilmek için Double Commander'ın çalıştırılabilir dosyasıyla aynı klasörde 5.1 sürüm bir Lua DLL dosyasına sahip olmamız gerekir.</p>
+        <p>Bu dosyanın dosya adı <code>lua5.1.dll</code> olacaktır.</p>
+        <p>Ayrıca, eğer DC'nin 64 bit sürümünü kullanıyorsak, DLL de 64 bit sürümü olmalıdır.</p>
+        <p>Genellikle DLL, DC kurulumuyla birlikte gelir ancak herhangi bir nedenle orada değilse, <a href="http://luabinaries.sourceforge.net/" target="_blank">bu bağlantı</a> altında bulabiliriz.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3. <a name="libraries">Double Commander işlev kütüphaneleri</a></h2>
+        <p>Double Commander, Lua betiklerimiz için birkaç işlev kütüphanesi sunar.</p>
+        <p>İşte listesi.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="3">Kütüphane Listesi</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Kütüphane Adı</th><th class="namecolumn">Betik Adı</th><th class="categorydesccolumn">Kısa Açıklama</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft"><a href="#libdc">Double Commander kütüphanesi</a></div></td><td class="hintcell">DC</td><td class="hintcell">Double Commander'a özel işlevler.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft"><a href="#librarysystem">Sistem kütüphanesi</a></div></td><td class="hintcell">SysUtils</td><td class="hintcell">Çeşitli sistem işlevleri</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft"><a href="#libraryclip">Pano kütüphanesi</a></div></td><td class="hintcell">Clipbrd</td><td class="hintcell">Harici pano işlevselliği sağlar.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft"><a href="#librarydialogs">İletişim kutuları kütüphanesi</a></div></td><td class="hintcell">Dialogs</td><td class="hintcell">Kullanıcıyla etkileşime girer.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft"><a href="#libraryos">İşletim sistemi kütüphanesi</a></div></td><td class="hintcell">OS</td><td class="hintcell">İşletim sistemiyle ilgili işlevler</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>3.1. <a name="libdc">DC kütüphanesi</a></h2>
+        <p>Bu kütüphane, Double Commander'a özgü işlevler içerir.</p>
+        <p>Tüm işlevlerini <code>DC</code> tablosu içinde sağlar.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">DC kütüphanesi</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">İşlev adı</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">DC.ExecuteCommand</div></td>
+            <td class="hintcell">
+              <p class="definition">DC.ExecuteCommand(Command, Param1, Param2,...,ParamX)</p>
+              <p>Bu, betiğin DC'nin dahili komutlarını çağırmasına olanak tanır.</p>
+              <p><var>Komut</var>, gerçek dahili komut adını barındırır.</p>
+              <p>Komutun destekleyebileceği kadar <var>Parametre...</var> yazabiliriz.</p>
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.1.1. <a name="exampleex">DC.ExecuteCommand ile örnek</a></h2>
+        <p>Bu örnekte, aşağıdakileri yapacak basit bir betik yazdık:</p>
+        <ol>
+          <li>sağ panele odakla</li>
+          <li>tüm açık sekmeleri kapat</li>
+          <li>belirli bir klasöre geç</li>
+          <li>sol panele odakla</li>
+          <li>tüm açık sekmeleri kapat</li>
+          <li>belirli bir klasöre geç</li>
+          <li>yeni bir sekme aç</li>
+          <li>belirli bir klasöre geç</li>
+        </ol>
+
+        <pre>
+          -- 1. Sağ panele odakla.
+          <span class="mark">DC.ExecuteCommand</span>("cm_FocusSwap", "side=right")
+
+          -- 2. Tüm sekmeleri kapat.
+          <span class="mark">DC.ExecuteCommand</span>("cm_CloseAllTabs")
+
+          -- 3. Belirli bir dizine geç.
+          <span class="mark">DC.ExecuteCommand</span>("cm_ChangeDir", "e:\\FakeKey\\Documents\\Music")
+
+          -- 4. Sol panele odakla.
+          <span class="mark">DC.ExecuteCommand</span>("cm_FocusSwap", "side=left")
+
+          -- 5. Tüm sekmeleri kapat.
+          <span class="mark">DC.ExecuteCommand</span>("cm_CloseAllTabs")
+
+          -- 6. Belirli bir dizine geç.
+          <span class="mark">DC.ExecuteCommand</span>("cm_ChangeDir", "C:\\Users\\Public\\Music")
+
+          -- 7. Yeni bir sekme aç.
+          <span class="mark">DC.ExecuteCommand</span>("cm_NewTab")
+
+          -- 8. Belirli bir dizine geç.
+          <span class="mark">DC.ExecuteCommand</span>("cm_ChangeDir", "e:\\VirtualMachines\\ShareFolder")
+        </pre>
+
+        <p><a href="cmds.html#cm_ExecuteScript">cm_ExecuteScript</a> dahili komutunu kullanarak, komut dosyamızı çalıştıracak bir araç çubuğu butonu yapılandırabiliriz.</p>
+        <p>Bu komut dosyasının <code>e:\scripts\lua\music.lua</code> olduğunu varsayarsak, butonu şu şekilde yapılandırabiliriz:</p>
+        <p class="figure"><img class="largeimage" title="Araç çubuğundan bir Lua komut dosyası çağırma" alt="Araç çubuğundan bir Lua komut dosyası çağırma" src="images/imgDC/luaimg1.png" width="542" height="290"></p>
+
+        <p>Ayrıca, komut dosyalarımızı düzenlemek için dahili Double Commander Düzenleyicisini kullanabiliriz.</p>
+        <p>Dosya adı <code>.lua</code> dosya uzantısına sahipse, dahili düzenleyici onu tanıyacak ve bu Lua diline özel sözdizimi vurgulama sağlayacaktır:</p>
+        <p class="figure"><img class="largeimage" title="Dahili düzenleyici ile Lua sözdizimi vurgulama" alt="Dahili düzenleyici ile Lua sözdizimi vurgulama" src="images/imgDC/luaimg2.png" width="678" height="498"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.2. <a name="librarysystem">Sistem kütüphanesi</a></h2>
+        <p>Bu kütüphane çeşitli sistem fonksiyonları içerir.</p>
+        <p>Tüm fonksiyonlarını<code>SysUtils</code> tablosunun içinde sağlar.</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Sistem kütüphanesi</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">İşlev adı</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.Sleep</div></td>
+            <td class="hintcell">
+              <p class="definition">SysUtils.Sleep(Miliseconds)</p>			
+              <p>Betik yürütmesini belirtilen <var>Milliseconds</var> sayısı kadar duraklatır.<BR> Belirtilen süre dolduktan sonra betik yürütmesi devam eder.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.FileExists</div></td>
+            <td class="hintcell">
+              <p class="definition">bFlagExists = SysUtils.FileExists(FileName)</p>
+              <p>Belirli bir dosyanın dosya sisteminde var olup olmadığını kontrol eder.<p>
+              <p>Eğer <var>FileName</var> adlı dosya diskte varsa, <var>bFlagExists</var> içinde <code>true</code> değerini döndürür; aksi takdirde <code>false</code> değerini döndürür.
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.DirectoryExists</div></td>
+            <td class="hintcell">
+              <p class="definition">bFlagExists = SysUtils.DirectoryExists(Directory)</p>
+              <p><var>Directory</var>'in dosya sisteminde var olup olmadığını ve gerçekten bir dizin olup olmadığını kontrol eder.<p>
+              <p>Eğer durum buysa, fonksiyon <var>bFlagExists</var> içinde <code>true</code> değerini döndürür; aksi takdirde <code>false</code> döndürülür.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.FileGetAttr</div></td>
+            <td class="hintcell">
+              <p class="definition">Attr = SysUtils.FileGetAttr(FileName)</p>
+              <p><var>FileName</var> dosyasının öznitelik ayarlarını <var>Attr</var> içinde döndürür.</p>
+              <p>Döndürülen değerin ayrıntılı açıklamalarını <a href="#detailattr">burada</a> görebilirsiniz.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.FindFirst</div></td>
+            <td class="hintcell">
+              <p class="definition">Handle, FindData = SysUtils.FindFirst(Path)</p>
+              <p><var>Path</var> ile eşleşen dosyaları, genellikle joker karakterlerle arar.</p>
+              <p>Eğer dosya bulunamazsa, <var>Handle</var> nil olacaktır.</p>
+              <p>En az bir öğe bulunduğunda, döndürülen <var>Handle</var>, aynı desenin diğer oluşumlarını bulmak için sonraki <code>SysUtils.FindNext</code> çağrılarında kullanılabilir.</p>
+              <p><var>FindData</var> tablosu, bulunan dosya veya dizin hakkında bilgi içerir.</p>
+              <p><var>FindData</var> tablosunun alanları şunlardır: <code>Name</code>, <code>Attr</code>, <code>Size</code> ve <code>Time</code>.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.FindNext</div></td>
+            <td class="hintcell">
+              <p class="definition">Result, FindData = SysUtils.FindNext(Handle)</p>
+              <p><var>FindFirst</var> tarafından başlatılan bir arama dizisinin bir sonraki oluşumunu, daha önce döndürülen <var>Handle</var> yeniden kullanarak bulur.</p>
+              <p>Eğer bir dosya veya dizin bulunursa, döndürülen <var>Result</var> nil olmayacaktır; aksi takdirde nil olacaktır.<p>
+              <p><code>SysUtils.FindFirst</code> için belirtilen aynı notlar burada da geçerlidir.</p>
+              <p><B><U>Not:</U> Son <code>SysUtils.FindNext</code> çağrısının ardından her zaman aynı <var>Handle</var> ile bir <code>SysUtils.FindClose</code> çağrısı gelmelidir. Aksi takdirde bellek kaybına neden olacaktır.</b></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">SysUtils.FindClose</div></td>
+            <td class="hintcell">
+              <p class="definition">SysUtils.FindClose(Handle)</p>
+              <p><code>SysUtils.FindFirst</code>/<code>SysUtils.FindNext</code> çağrı dizisini sonlandırır.</p>
+              <p>Bu çağrıların kullandığı belleği temizler.</p>
+              <p>Bu çağrıyı yapmak <em>kesinlikle</em> gereklidir, aksi takdirde bellek kayıpları yaşanabilir.</p>
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.2.1.<a name="detailattr">SysUtils.FileGetAttr dönen değerinin ayrıntıları</a></h2>
+        <p><var>FileGetAttr</var>, <var>FileName</var> dosyasının öznitelik ayarlarını döndürür.</p>
+        <p>Öznitelik, aşağıdaki sabitlerin <var>OR</var>'lanmış birleşimidir: </p>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">SysUtils.FileGetAttr döndürülen değerinde kullanılan sabitler</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">Değer</th><th class="categorydesccolumn">Anlamı</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">0x00000001<BR><SMALL class="firstcolumnaleft">faReadOnly</SMALL></div></td><td class="hintcell">Dosya salt okunurdur.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">0x00000002<BR><SMALL class="firstcolumnaleft">faHidden</SMALL></div></td><td class="hintcell">Dosya gizlidir.<BR>Unix/Linux'ta bu, dosya adının bir nokta ile başladığı anlamına gelir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">0x00000004<BR><SMALL class="firstcolumnaleft">faSysFile</SMALL></div></td><td class="hintcell">Dosya bir sistem dosyasıdır.<BR>Unix/Linux'ta bu, dosyanın bir karakter, blok veya FIFO dosyası olduğu anlamına gelir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">0x00000008<BR><SMALL class="firstcolumnaleft">faVolumeId</SMALL></div></td><td class="hintcell">Birim etiketi.<BR>Yalnızca düz bir FAT (VFAT veya Fat32 olmayan) dosya sistemindeki DOS/Windows için.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">0x00000010<BR><SMALL class="firstcolumnaleft">faDirectory</SMALL></div></td><td class="hintcell">Dosya bir dizindir.</td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">0x00000020</div></td><td class="hintcell">Dosya arşivlenmiştir.<BR>Unix/Linux'ta mümkün değil.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><B>Not: Hata durumunda dönen değer -1’dir.</b>
+          </tr>
+        </table>
+        <p><a href="#exampleattr">Sonraki bölümde</a> bir örneğini görebilirsiniz.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.2.2.<a name="exampleattr">SysUtils.FileGetAttr ile örnek</a></h2>
+        <p>Aşağıdaki betik, SysUtils.FileGetAttr kullanımına bir örnektir.</p>
+        <p>Parametre bir dizin olarak algılandığında, etkin panelde yeni bir sekme açacak ve ona geçiş yapacaktır.</p>
+        <pre>
+            local params = {...}
+            local myfileattr
+
+            if #params == 1 then --En az bir parametre aldık mı?
+              myfileattr = <span class="mark">SysUtils.FileGetAttr</span>(params[1])
+              if myfileattr>0 then --Geçerli bir öznitelik aldık mı?                
+                if math.floor(myfileattr / 0x00000010) % 2 ~= 0  then
+                  --4. bit ayarlanmış halde mi? O zaman bu bir dizin.
+                  DC.ExecuteCommand("cm_NewTab")
+                  DC.ExecuteCommand("cm_ChangeDir", params[1])
+                end
+              end
+            end           
+        </pre>
+
+        <p>Yukarıdaki örnekte, <var>param[1]</var> betiğe iletilen 1. parametredir.</p>
+        <p><a href="cmds.html#cm_ExecuteScript">cm_ExecuteScript</a> dahili komutunu kullanırken, betik dosya adından sonra iletilen ilk parametre olacaktır.</p>
+        <p>Yani örneğimizde, aşağıdaki gibi örnek bir araç çubuğu düğmesi programlayabiliriz:</p>
+        <p class="figure"><img class="largeimage" title="cm_ExecuteScript ile Parametre" alt="cm_ExecuteScript ile Parametre" src="images/imgDC/luaimg3.png" width="562" height="298"></p>
+        <p>Bu örnekte, <var>%"0%p</var> parametresi betiğe iletilecektir. Bu, araç çubuğu düğmesine bastığımız anda etkin panelde seçili olan öğenin alıntısız dosya adını temsil edecektir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.2.3. <a name="examplefind">FindFirst, FindNext ve FindClose kullanım örneği</a></h2>
+        <p>Aşağıdaki betik örneğinde, parametre olarak aldığımız dizinin içeriğini tarayacak ve elde edilen verileri ikinci parametre olarak iletilen dosya adıyla bir metin dosyasına kaydedeceğiz.</p>
+        <p>Bu, FindFirst, FindNext ve FindClose kullanımına dair bize iyi bir fikir verecektir.</p>
+
+        <pre>
+          local params = {...}
+
+          if #params == 2 then --2 parametremizi aldık mı?
+            local Result = nil
+            local OutputFile = nil
+
+            OutputFile = io.output(params[2])
+
+            local Handle,FindData = <span class="mark">SysUtils.FindFirst</span>(params[1].."\\*")
+            if Handle ~= nil then
+              repeat
+                io.write(FindData.Name.."\r")
+                io.write(FindData.Size.."\r")
+                io.write("---------------\r")
+
+                Result,FindData = <span class="mark">SysUtils.FindNext</span>(Handle)
+              until Result == nil
+
+              <span class="mark">SysUtils.FindClose</span>(Handle)
+              io.close(OutputFile)
+            end
+          end
+        </pre>
+        <p>Yukarıdaki örnekte, betiğimize iki parametre iletmemiz gerekiyor:</p>
+        <ol>
+          <li><var>param[1]</var> - içeriğini istediğimiz dizin</li>
+          <li><var>param[2]</var> - sonucu kaydetmek için çıktı dosya adı</li>
+        </ol>
+        <p>Yani, <a href="cmds.html#cm_ExecuteScript">cm_ExecuteScript</a> dahili komutunu kullanarak bir araç çubuğu düğmesi yapılandırmak ve bunu başarmak için gerekli parametreyi iletmek kolaydır.</p>
+        <p class="figure"><img class="largeimage" title="cm_ExecuteScript ile Parametre" alt="cm_ExecuteScript ile Parametre" src="images/imgDC/luaimg4.png" width="558" height="260"></p>
+        <p>Bu örnekte, <var>%"0%Ds</var> parametresi betiğe ilk parametre olarak iletilecektir. Bu, tırnak işaretleri olmaksızın, etkin panelin gösterdiği dizini temsil edecektir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.3. <a name="libraryclip">Pano kütüphanesi</a></h2>
+        <p>Double Commander, Lua betiklerimize harici pano işlevselliği sağlayabilir.</p>
+        <p>Aşağıdaki tablo, ilgili işlevleri bize sunar:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Pano kütüphanesi</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">İşlev adı</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Clipbrd.Clear</div></td>
+            <td class="hintcell">
+              <p class="definition">Clipbrd.Clear()</p>
+              <p>Panonun içeriğini temizler.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Clipbrd.GetAsText</div></td>
+            <td class="hintcell">
+              <p class="definition">StringVar = Clipbrd.GetAsText()</p>
+              <p>Panonun mevcut metin içeriğini alır ve <var>StringVar</var> değişkenine atar.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Clipbrd.SetAsText</div></td>
+            <td class="hintcell">
+              <p class="definition">Clipbrd.SetAsText(StringVar)</p>
+              <p><var>StringVar</var> değişkeninin metin içeriğini panoya kaydeder.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Clipbrd.SetAsHtml</div></td>
+            <td class="hintcell">
+              <p class="definition">Clipbrd.SetAsHtml(Html)</p>
+              <p>HTML biçimli <var>Html</var> metnini panoya ekler (CF_HTML pano biçimi).</p>
+              <p>Bu içerik, MS Word, LO Writer vb. gibi bu pano biçimini destekleyen uygulamalara eklenecektir.<p>
+              <p>Verileri hem <code>Clipbrd.SetAsText</code> hem de <code>Clipbrd.SetAsHtml</code> ile depolamak doğrudur. Yapıştırdığımızda, uygulama desteklediği en iyi biçimi kullanacaktır.</p>
+              <p>Örneğin, elimizde şu olabilir:</p>
+              <ul>
+                <li><code>Clipbrd.SetAsText("Welcome to Double Commander.")</code></li>
+                <li><code>Clipbrd.SetAsHtml("Welcome to &lt;B>Double Commander&lt;/b>.")</code></li>
+              </ul>
+              <p>Notepad'e geçip bir şey yapıştırmaya çalışırsak, <code>Clipbrd.SetAsText</code> ile kopyaladığımız mesajı düz metin olarak yapıştıracaktır. Ancak Microsoft Word'e geçip bir şey yapıştırırsak, Microsoft Word bu pano içerik türünü tanıdığı ve desteklediği için <B>Double Commander</B> kalın yazılı olan ikinciyi yapıştıracaktır.</p>
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>  
+
+      <div>
+        <h2>3.3.1. <a name="exampleclip">Pano kütüphanesi kullanım örneği</a></h2>
+        <p>Aşağıdaki örnek, panoyla ilgili üç işlev kullanmaktadır: <code>Clear</code>, <code>GetAsText</code> ve <code>SetAsText</code>.</p>
+        <p>Nispeten uzun bir betik olsa da, yukarıda gördüğümüz birkaç işlevi bir araya getirmek için iyi bir örnektir.</p>
+        <p>Etkin panelimizin şu anda birçok kaynak metin dosyası içeren bir dizinde olduğu varsayılır.</p>
+        <p>Ayrıca, panoda şu anda tek bir kelime olduğu ve mevcut etkin klasörü tek bir parametre olarak alacağı varsayılır.</p>
+        <p>Betik, o dizin seviyesindeki dosyaları tarayacak ve panoda bulunan kelimeyi içeren metin satırlarını tespit etmek için içeriklerini tek tek okuyacaktır.</p>
+        <p>Ardından, o kelimeyi içeren en az bir satır barındıran dosyaların dosya adları panoya yerleştirilecektir.</p>
+        <p>Daha sonra betik, dahili komut <a href="cmds.html#cm_LoadSelectionFromClip">cm_LoadSelectionFromClip</a> komutunu kullanacak ve kelimeleri içeren dosyalar öyle seçilecektir.</p>
+        <p>Ayrıca, son olarak aranılması gereken orijinal kelimeyi panomuza geri koyarız.</p>
+        <pre>
+          local params = {...}
+          local Result = nil
+          local myfileattr
+          local bFound = false
+          local sCompleteFilename = ""
+          local InputFile = nil
+          local line = ""
+          local iPosS
+          local iPosE
+          local sFileToSelect = ""
+          local sSearchString = ""
+
+          if #params == 1 then --Parametremizi aldık mı?
+            sSearchString=<span class="mark">Clipbrd.GetAsText</span>() --Aranacak ifadeyi al.
+            <span class="mark">Clipbrd.Clear</span>() --Panoda hiçbir şey olmadığından emin olalım.
+            DC.ExecuteCommand("cm_MarkUnmarkAll") --Hiçbir şeyin seçili olmadığından emin olalım.
+
+            -- Dizinimizdeki tüm dosyaları tek tek tarayalım.
+            local Handle,FindData = SysUtils.FindFirst(params[1].."\\*")
+            if Handle ~= nil then
+              repeat
+                sCompleteFilename = params[1] .. "\\" .. FindData.Name
+                myfileattr = SysUtils.FileGetAttr(sCompleteFilename)
+                if myfileattr>0 then --Geçerli bir öznitelik mi aldık?
+                  --Dizin değil, dosya gerekiyor!
+                  if math.floor(myfileattr / 0x00000010) % 2 == 0  then
+
+                    --Şimdi dosyayı satır satır sonuna kadar VEYA bulduya kadar okuyalım.
+                    InputFile = io.open(sCompleteFilename, "r")
+                    bFound = false
+
+                    while bFound == false do
+                      line = InputFile:read()
+                      if line == nil then break end
+                      iPosS, iPosE = string.find(line, sSearchString)
+                      if iPosS ~= nil then bFound = true end
+                    end
+
+                    if bFound == true then
+                      sFileToSelect=sFileToSelect .. FindData.Name .. "\n"
+                    end
+
+                    io.close(InputFile)
+                  end
+                end
+                Result,FindData = SysUtils.FindNext(Handle)
+              until Result == nil
+
+              SysUtils.FindClose(Handle)
+            end
+
+            --Bir şey bulduysak, onu seçelim!
+            if sFileToSelect ~= "" then
+              <span class="mark">Clipbrd.SetAsText</span>(sFileToSelect)
+              DC.ExecuteCommand("cm_LoadSelectionFromClip")
+            end
+
+            <span class="mark">Clipbrd.SetAsText</span>(sSearchString) --Panoda olanı geri yükleyelim.
+          end
+        </pre>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4. <a name="librarydialogs">İletişim Kutuları kütüphanesi</a></h2>
+        <p>Bu kütüphane, komut dosyalarımızın kullanıcıyla etkileşim kurmasını, mesaj görüntülemesini, yanıt istemesini vb. sağlar.</p>
+        <p>Aşağıdaki tablo ilgili işlevleri göstermektedir:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Pano kütüphanesi</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">İşlev adı</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Dialogs.MessageBox</div></td>
+            <td class="hintcell">
+              <p class="definition">ButPressed = Dialogs.MessageBox(İleti, Başlık, ButFlags)</p>
+              <p>Kullanıcıdan bir düğmeyi seçmesini isteyen bir ileti kutusu görüntülenir ve tıklanan düğmeye işlem tarafından dönülecektir.</p>
+              <p>Her alanın açıklaması aşağıdadır:<p>
+              <ul>
+                <li><var>İleti</var>: Kutunun içindeki mesaj</li>
+                <li><var>Başlık</var>: Kutunun başlığı olarak görüntülenen metin</li>
+                <li><var>ButFlags</var>: Görüntülenecek düğmeleri, pencere stilini ve yanıt için seçilen varsayılan düğmeyi belirlemek üzere sabitlerin OR ile birleştirilmiş değeri. Görüntülenen <a href="#dlgbuts">düğmeler</a>, <a href="#dlgstyle">pencere stili</a> veya <a href="#dlgdefbut">varsayılan düğme</a> için aşağıdaki tabloya bakın.</li>
+                <li><var>ButPressed</var>: Kullanıcının bastığı düğmeyi gösteren döndürülen değer. (<a href="#msgreturn">Bu tabloya</a> bakın.)</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Dialogs.InputQuery</div></td>
+            <td class="hintcell">
+              <p class="definition">bAck, sAnswer = Dialogs.InputQuery(Başlık, İleti, bMask, sDefault)</p>
+              <p>Kullanıcının bir dize değeri girebileceği bir istemci kutusu görüntülenir.</p>
+              <p>Her alanın açıklaması aşağıdadır:<p>
+              <ul>
+                <li><var>Başlık</var>: Kutunun başlığı olarak görüntülenen metin</li>
+                <li><var>İleti</var>: Kutunun içindeki mesaj</li>
+                <li><var>bMask</var>: Doğru olduğunda, karakterleri gizlemek için "yıldızlar" görüntüleyen bir boolean.</li>
+                <li><var>sDefault</var>: Kullanıcının gerekirse üzerine yazabileceği varsayılan önerilen metin.</li>
+                <li><var>bAck</var>: Kullanıcının etkili bir şey girip girmediğini belirten dönen boolean.</li>
+                <li><var>sAnswer</var>: Kullanıcı bir şey girip Tamam'a tıkladığında dönen dize.</li>
+              </ul>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">Dialogs.InputListBox <sup><acronym title="Double Commander 0.9 gerektirir">[*]</acronym></sup></div></td>
+            <td class="hintcell">
+              <p class="definition">sAnswer = Dialogs.InputListBox(Başlık, İleti, Öğeler, sDefault)</p>
+              <p>Kullanıcının bir öğe listesinden seçim yapmasına olanak tanıyan bir iletişim kutusu görüntüler.</p>
+              <p>Her alanın açıklaması aşağıdadır:<p>
+              <ul>
+                <li><var>Başlık</var>: İletişim kutusunun başlığı olarak görüntülenen metin.</li>
+                <li><var>İleti</var>: İletişim kutusunun içindeki mesaj.</li>
+                <li><var>Öğeler</var>: Bir Lua tablosu, tablonun her öğesi bir dize olmalıdır.</li>
+                <li><var>sDefault</var>: Listedeki varsayılan seçili öğe.</li>
+                <li><var>sAnswer</var>: Seçilen öğeyi bir dize veya nil olarak iletişim kutusu kapatılırsa döndürür.</li>
+              </ul>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4.1. <a name="dlgbuts">Dialogs.MessageBox'ta görüntülenen düğmeler</a></h2>
+        <p><code>Dialogs.MessageBox</code> işlevinin görüntülediği kutudaki düğmeler, aşağıdakilerden biriyle OR'lanmış bir değerle kontrol edilir:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dialogs.MessageBox'ın görüntülediği düğmelerle ilgili ButFlags sabiti.</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">Sabit değer</th><th class="categorydesccolumn">Düğmeler soldan sağa doğru görüntülenir</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0000<BR><SMALL class="firstcolumnaleft">MB_OK</SMALL></td><td class="hintcell"><img class="largeimage" title="Tamam Butonu" alt="Tamam Butonu" src="images/imgDC/luaimg11.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0001<BR><SMALL class="firstcolumnaleft">MB_OKCANCEL</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Tamam Butonu" alt="Tamam Butonu" src="images/imgDC/luaimg11.png" width="66" height="21"><img class="largeimage" title="İptal Butonu" alt="İptal Butonu" src="images/imgDC/luaimg12.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0002<BR><SMALL class="firstcolumnaleft">MB_ABORTRETRYIGNORE</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Durdur Butonu" alt="Durdur Butonu" src="images/imgDC/luaimg15.png" width="66" height="21"><img class="largeimage" title="Yeniden Dene Butonu" alt="Yeniden Dene Butonu" src="images/imgDC/luaimg14.png" width="66" height="21"><img class="largeimage" title="Yoksay Butonu" alt="Yoksay Butonu" src="images/imgDC/luaimg13.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0003<BR><SMALL class="firstcolumnaleft">MB_YESNOCANCEL</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Evet Butonu" alt="Evet Butonu" src="images/imgDC/luaimg16.png" width="66" height="21"><img class="largeimage" title="Hayır Butonu" alt="Hayır Butonu" src="images/imgDC/luaimg17.png" width="66" height="21"><img class="largeimage" title="İptal Butonu" alt="İptal Butonu" src="images/imgDC/luaimg12.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0004<BR><SMALL class="firstcolumnaleft">MB_YESNO</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Evet Butonu" alt="Evet Butonu" src="images/imgDC/luaimg16.png" width="66" height="21"><img class="largeimage" title="Hayır Butonu" alt="Hayır Butonu" src="images/imgDC/luaimg17.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0005<BR><SMALL class="firstcolumnaleft">MB_RETRYCANCEL</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Yeniden Dene Butonu" alt="Yeniden Dene Butonu" src="images/imgDC/luaimg14.png" width="66" height="21"><img class="largeimage" title="İptal Butonu" alt="İptal Butonu" src="images/imgDC/luaimg12.png" width="66" height="21"></td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4.2. <a name="dlgstyle">Dialogs.MessageBox kutusunun stili</a></h2>
+        <p><code>Dialogs.MessageBox</code> işlevinin görüntülediği kutunun stili, aşağıdakilerden biriyle OR'lanmış bir değerle kontrol edilir:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dialogs.MessageBox'ın simgesi ve stiliyle ilgili ButFlags sabiti</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">Sabit değer</th><th class="categorydesccolumn">Pencere stili</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0040<BR><SMALL class="firstcolumnaleft">MB_ICONINFORMATION</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Bilgi Simgesi" alt="Bilgi Simgesi" src="images/imgDC/luaimg8.png" width="32" height="32"> Bilgilendirme penceresi.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0030<BR><SMALL class="firstcolumnaleft">MB_ICONWARNING</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Uyarı Simgesi" alt="Uyarı Simgesi" src="images/imgDC/luaimg9.png" width="32" height="32"> Uyarı penceresi.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0020<BR><SMALL class="firstcolumnaleft">MB_ICONQUESTION</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Soru Simgesi" alt="Soru Simgesi" src="images/imgDC/luaimg7.png" width="32" height="32"> Onay penceresi.</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0010<BR><SMALL class="firstcolumnaleft">MB_ICONERROR</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Hata Simgesi" alt="Hata Simgesi" src="images/imgDC/luaimg10.png" width="32" height="32"> Hata penceresi.</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4.3. <a name="dlgdefbut">Dialogs.MessageBox kutusunun stili</a></h2>
+        <p><code>Dialogs.MessageBox</code> işlevinin görüntülediği kutunun varsayılan etkin düğmesi, aşağıdaki değerlerden OR'lanmış bir değerle kontrol edilir:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dialogs.MessageBox'ın varsayılan düğmesiyle ilgili ButFlags sabiti</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">Sabit değer</th><th class="categorydesccolumn">Varsayılan Düğme</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0000<BR><SMALL class="firstcolumnaleft">MB_DEFBUTTON1</SMALL></div></td><td class="hintcell">Varsayılan, soldaki ilk düğme olacaktır</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0100<BR><SMALL class="firstcolumnaleft">MB_DEFBUTTON2</SMALL></div></td><td class="hintcell">Varsayılan, soldan ikinci düğme olacaktır</td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0200<BR><SMALL class="firstcolumnaleft">MB_DEFBUTTON3</SMALL></div></td><td class="hintcell">Varsayılan, soldan üçüncü düğme olacaktır</td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4.4. <a name="msgreturn">Dialogs.MessageBox'ın dönen değeri</a></h2>
+        <p><code>Dialogs.MessageBox</code> işlevinin döndürdüğü sayı, kullanıcının bastığı düğmeyi aşağıdakine göre temsil eder:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Dialogs.MessageBox'ın basılan düğmesine göre dönen ButPressed değeri</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">Sabit değer</th><th class="categorydesccolumn">Basılı Düğme</th></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0000<BR><SMALL class="firstcolumnaleft">mrNone</SMALL></div></td><td class="hintcell">Basılmamış Düğme<BR><I>Fakat Windows uygulamasında, sağ üstteki "x"e basarsak veya pencereyi kapatmak için <kbd>Esc</kbd> tuşuna basarsak, varsayılan düğmenin değeri yine de döndürülür.</I></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0001<BR><SMALL class="firstcolumnaleft">mrOK</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç Tamam" alt="Sonuç Tamam" src="images/imgDC/luaimg11.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0002<BR><SMALL class="firstcolumnaleft">mrCancel</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç İptal" alt="Sonuç İptal" src="images/imgDC/luaimg12.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0003<BR><SMALL class="firstcolumnaleft">mrAbort</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç Durdur" alt="Sonuç Durdur" src="images/imgDC/luaimg15.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0004<BR><SMALL class="firstcolumnaleft">mrRetry</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç Yeniden Dene" alt="Sonuç Yeniden Dene" src="images/imgDC/luaimg14.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0005<BR><SMALL class="firstcolumnaleft">mrIgnore</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç Yoksay" alt="Sonuç Yoksay" src="images/imgDC/luaimg13.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0006<BR><SMALL class="firstcolumnaleft">mrYes</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç Evet" alt="Sonuç Evet" src="images/imgDC/luaimg16.png" width="66" height="21"></td></tr>
+          <tr><td class="varcell"><div class="firstcolumnaleft">0x0007<BR><SMALL class="firstcolumnaleft">mrNo</SMALL></div></td><td class="hintcell"><img class="largeimage" title="Sonuç Hayır" alt="Sonuç Hayır" src="images/imgDC/luaimg17.png" width="66" height="21"></td></tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4.5. <a name="mesgboxsample">Dialogs.MessageBox kullanım örneği</a></h2>
+        <p><code>Dialogs.MessageBox</code> kullanan küçük bir betik ve görüntülenecek bir sonuç penceresi:</p>
+        <pre>
+Görüntülenen düğmeler
+MB_OK = 0x0000
+MB_OKCANCEL = 0x0001
+MB_ABORTRETRYIGNORE = 0x0002
+MB_YESNOCANCEL = 0x0003
+MB_YESNO = 0x0004
+MB_RETRYCANCEL = 0x0005
+
+Kutu stili
+MB_ICONINFORMATION = 0x0040
+MB_ICONWARNING = 0x0030
+MB_ICONQUESTION = 0x0020
+MB_ICONERROR = 0x0010
+
+Varsayılan düğme
+MB_DEFBUTTON1 = 0x0000
+MB_DEFBUTTON2 = 0x0100
+MB_DEFBUTTON3 = 0x0200
+
+Döndürülen basılı düğme
+mrNone = 0x0000
+mrOK = 0x0001
+mrCancel = 0x0002
+mrAbort = 0x0003
+mrRetry = 0x0004
+mrIgnore = 0x0005
+mrYes = 0x0006
+mrNo = 0x0007
+
+ButFlags = MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2;
+ButPressed = <span class="mark">Dialogs.MessageBox</span>("Çıkmak istiyor musunuz?", "Soru", ButFlags)
+
+if ButPressed == mrYes then
+  DC.ExecuteCommand("cm_Exit")
+end
+        </pre>
+        <p class="figure"><img class="largeimage" title="Dialogs.MessageBox kullanım örneği" alt="Dialogs.MessageBox kullanım örneği" src="images/imgDC/luaimg6.png" width="400" height="158"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.4.6. <a name="querysample">Dialogs.InputQuery kullanım örneği</a></h2>
+        <p>İşte <code>Dialogs.InputQuery</code> kullanan küçük bir betik ve görüntülenecek sonuç penceresi:</p>
+        <pre>
+bCancelOrNot, sAnswer = <span class="mark">Dialogs.InputQuery</span>("Tanımlama", "Adınızı girin:", false, "Ahmet")
+
+if bCancelOrNot == true then
+  Dialogs.MessageBox("Merhaba " .. sAnswer .. "!", "Hoş geldiniz!", 0x040)
+end  
+        </pre>
+        <p class="figure"><img class="largeimage" title="Dialogs.InputQuery kullanım örneği" alt="Dialogs.InputQuery kullanım örneği" src="images/imgDC/luaimg5.png" width="504" height="122"></p>
+
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3.5 <a name="libraryos">OS kütüphanesi</a></h2>
+        <p>Bu kütüphane, Double Commander'ın çalıştığı işletim sistemiyle ilgili işlevleri içerir.</p>
+        <p>Bu kütüphanedeki mevcut işlevlerin listesi aşağıdadır:</p>
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">OS kütüphanesi</th></tr>
+          <tr class="rowsubtitle"><th class="Plugin name">İşlev adı</th><th class="categorydesccolumn">Açıklama</th></tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">os.execute</div></td>
+            <td class="hintcell">
+              <p class="definition">resultcode = os.execute(command)</p>
+              <p><var>komutu</var> komut satırına yazıldığı gibi çalıştırır ve işlemin sonuç kodunu döndürür.</p>
+              <p><var>Komut</var> şunlardan biri olabilir:</p>
+              <ul>
+                <li><code>os.execute("dir >all.txt")</code> gibi bir terminal komutu</li>
+                <li><code>os.execute("C:\\Windows\\System32\\calc.exe")</code> gibi bir yürütülebilir dosya</li>
+                <li>Parametreleri olan yürütülebilir bir dosya:<BR><code>os.execute("C:\\Utils\\fsum.exe -md5 test.bin >md5.txt")</code></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">os.tmpname</div></td>
+            <td class="hintcell">
+              <p class="definition">tempfilename = os.tempname()</p>
+              <p>Geçici dosya adı olarak kullanılacak bir dosya adı döndürülür.</p>			  
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">os.remove</div></td>
+            <td class="hintcell">		      
+              <p class="definition">bresult, errorstr, errorno = os.remove(filename)</p>
+              <p><var>dosya adı</var> adlı dosyayı veya dizini siler.</p>
+              <p>Başarılı olursa, işlev <var>true</var> döndürür.</p>
+              <p>Başarısız olursa, işlev üç şey döndürür:<p>
+              <ol>
+                <li>Başarısız olduğunu belirtmek için <var>nil</var></li>
+                <li>Hata iletisinin açıklaması için <var>errorstr</var></li>
+                <li>Hata kodu numarası için <var>errorno</var></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">os.rename</div></td>
+            <td class="hintcell">
+              <p class="definition">bresult, errorstr, errorno = os.rename(adS, adD)</p>
+              <p><var>adS</var> dosyasını yeni <var>adD</var> adıyla yeniden adlandırır.</p>
+              <p>Başarılı olursa, işlev <var>true</var> döndürür.</p>
+              <p>Başarısız olursa, işlev üç şey döndürür:<p>
+              <ol>
+                <li>Başarısız olduğunu belirtmek için <var>nil</var></li>
+                <li>Hata iletisinin açıklaması için <var>errorstr</var></li>
+                <li>Hata kodu numarası için <var>errorno</var></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">os.getenv</div></td>
+            <td class="hintcell">
+              <p class="definition">value = os.getenv(değişkenadı)</p>
+              <p>Parametre olarak iletilen <var>değişkenadı</var> değişkeninin <var>değer</var>ini döndürür.<BR>O adda bir değişken yoksa, <var>nil</var> döndürür.</td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+        <BR>
+      </div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="regexp.html">Önceki</a> | <a title="Sonraki Sayfa" href="commandline.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

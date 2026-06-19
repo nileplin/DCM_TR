@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - doublecmd.xml</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="commandline.html">Önceki</a>              </div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.12. doublecmd.xml'deki Ayarlar</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#presenta">Sunum</a></dt>
+          <dt>2. <a href="#location">Konum</a></dt>
+          <dt>3. <a href="#manualed">Olası manuel düzenleme</a></dt>
+        </dl>
+      </div>
+
+      <div>
+        <h2>1. <a name="presenta">Sunum</a></h2>
+        <p>Double Commander'ın ana ayarları, <code>doublecmd.xml</code> adında bir <a href="https://en.wikipedia.org/wiki/XML" target="_blank">XML</a> dosyasına/dosyasından kaydedilir/geri yüklenir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>2. <a name="location">Konum</a></h2>
+        <p>Bu <code>doublecmd.xml</code> dosyasının konumu farklı yerlerde olabilir:<p>
+        <ul>
+          <li>Kullanıcının ana dizininde olacak şekilde yapılandırılabilir.</li>
+          <li>Program dizininin kendisinde olacak şekilde yapılandırılabilir; bu, taşınabilir bir bağlamda kullanıldığında genellikle böyledir.</li>
+          <li>Uygulamanın konumunu uygulamayı başlatırken bir komut satırı parametresi aracılığıyla belirleyebiliriz.</li>
+        </ul>
+        <p>Eğer onu <code>--config-dir</code> komut satırı parametresiyle belirlemek istersek, <a href="commandline.html">bu bağlantıyı</a> takip ederiz.</p>
+        <p>Bunun dışında, <code>Yapılandırma</code> > <code>Seçenekler</code> yolunu izler, ağaçta <img src="images/imgDC/optionconfiguration.png" alt="Double Commander" width="100" height="20" border="1px"> > <code>Yapılandırma dosyalarının konumu</code> seçeneğini ayarlarız.</p>
+        <p class="figure"><img class="largeimage" title="Yapılandırma dosyası konumu" alt="Yapılandırma dosyası konumu" src="images/imgDC/configlocation.png" width="719" height="174"></p>
+        <p>Double Commander'ın mevcut örneğinin kullandığı <code>doublecmd.xml</code>'in nerede bulunduğunu hızlıca öğrenmenin başka bir yolu, <a href="directoryhotlist.html">Sık Kullanılan Dizinlere</a> erişmektir. Bunun sonunda "Özel Dizinler" adlı bir alt bölüm bulunur. Sonra "Double Commander özel yoluna git" seçeneğini ve ardından "%DC_CONFIG_PATH%" seçeneğini seçeriz. Uygulamanın şu anda kullandığı <code>doublecmd.xml</code>'i orada buluruz.</p>
+        <p class="figure"><img class="largeimage" title="Yapılandırma konumuna git" alt="Yapılandırma konumuna git" src="images/imgDC/gotoconfiglocation.png" width="882" height="260"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>	  
+      </div>
+
+      <div>
+        <h2>3. <a name="manualed">Olası manuel düzenleme</a></h2>
+        <p>Double Commander'daki olası ayarların büyük çoğunluğu, uygulamanın kendisi aracılığıyla çeşitli seçenek kategorileri üzerinden ayarlanabilir.</p>
+        <p>Basitçe ana menü çubuğundan <code>Yapılandırma</code> > <code>Seçenekler</code> yolunu izleriz ve orada yapılandırdığımız çeşitli ayarlar, uygulamayı kapattığımızda <code>doublecmd.xml</code> dosyasına kaydedilecektir. Sonra, uygulamanın bir sonraki kullanımında geri yükleneceklerdir.</p>
+        <p><u>Yani genellikle yapılandırma dosyasının içeriğini manuel olarak düzenlememiz gerekmez</u>.</p>
+        <p>Ancak, uygulamada ince ayar yapmak istersek, yapılandırma dosyasından manuel olarak düzenlenmesi gereken bazı nadir ve özel ayarlar vardır.</p>
+        <BR>
+        <p><B>UYARI: </B>Double Commander ÇALIŞIRKEN o dosyayı düzenlemeyeceğiz! Bunun nedeni sadece uygulamayı başlatırken değerlerin salt okunur olması değil, aynı zamanda DC çalışırken dosyayı düzenlersek, uygulamayı kapattığımızda yazdığımız değerlerin, uygulamanın bir sonraki oturum için mevcut bağlamını yeniden kaydetmesiyle üzerine yazılacak olmasıdır. Eğer <code>doublecmd.xml</code> dosyasını düzenlememiz gerekirse, Double Commander'ı kapattığımızdan emin olmalı, ardından dosyayı düzenlemeli ve sonrasında uygulamayı yeniden başlatmalıyız.</p>
+        <BR>
+        <p>Aşağıdaki tablo, eğer dosyayı değiştirmemiz gerekirse kendimiz düzenlememiz gereken bu nadir özel ayarları bize sunar:</p>
+
+        <table>
+          <tr class="rowcategorytitle"><th colspan="2">Gerekirse elle değiştirilmesi gereken ayar</th></tr>
+          <tr class="rowsubtitle"><th class="namecolumn">Etiket</th><th class="categorydesccolumn">Açıklama</th></tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;SingleClickStart><BR><small>&lt;Behaviours>&lt;Mouse> bölümünden</small></div></td>
+            <td class="hintcell">
+              Bu ayar, bir panelde görüntülenen dosya listesinden bir öge üzerinde fare düğmesini kullandığımızda hangi eylemin başlatılacağını belirler.<BR>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0</td>
+                  <td class="innerdescdesccell">Eylemi başlatmak için çift tıklama gereklidir (varsayılan).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1</td>
+                  <td class="innerdescdesccell">Tek tıklama, dosyaları ve klasörleri açar.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">2</td>
+                  <td class="innerdescdesccell">Tek tıklama yalnızca klasörleri açar. Dosyalar için çift tıklama gereklidir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">4 yukarıdakine eklenir</td>
+                  <td class="innerdescdesccell">Metin imleci artık fare imlecini takip etmez.</td>
+                </tr>
+              </table>
+              <BR>
+              <I> Eğer istersek...<BR>
+                ...tek tıklama dosyaları ve klasörleri açar: 1 + 0 = 1 yani <code>&lt;SingleClickStart>1&lt;/SingleClickStart></code><BR>
+                ...tek tıklama yalnızca klasörleri açar, dosyalar için çift tıklama gereklidir: 2 + 0 = 2 yani <code>&lt;SingleClickStart>2&lt;/SingleClickStart></code><BR>
+                ...tek tıklama dosyaları ve klasörleri açar, metin imleci fare imlecini takip etmez: 1 + 4 = 5 yani <code>&lt;SingleClickStart>5&lt;/SingleClickStart></code><BR>
+                ...tek tıklama yalnızca klasörleri açar, metin imleci fare imlecini takip etmez: 2 + 4 = 6 yani <code>&lt;SingleClickStart>6&lt;/SingleClickStart></code><BR>
+              </I><BR>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;Quality><BR><small>birçok etiket arasından &lt;Font></small></div></td>
+            <td class="hintcell">
+              Ne tür bir <a href="https://en.wikipedia.org/wiki/Font_rasterization" target="_blank">yazı tipi rasterizasyonu</a> kullanılacağını belirler.<BR>Başka bir deyişle, yazı tipi kalitesini belirler.<BR>Tek başına uygulanabileceği birçok etiket vardır.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0</td>
+                  <td class="innerdescdesccell"><B>Varsayılan</B> Kaliteyi sistem ayarları belirler (varsayılan).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1</td>
+                  <td class="innerdescdesccell"><B>Taslak</B> Raster (Piksel tabanlı) yazı tipleri için ölçeklendirme etkindir. Yazı tipi boyutu artırılabilir ancak kalite daha düşük olabilir.<BR>Ayrıca yazı tipi, gerekirse Kalın, İtalik, Altı çizili veya Üstü çizili stillerini destekler.<BR>Kalite, Prova kullanıldığından daha az önemlidir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">2</td>
+                  <td class="innerdescdesccell"><B>Prova</B> Karakterlerin kalitesi önemlidir, bu nedenle raster (piksel tabanlı) yazı tipleri için ölçeklendirme devre dışıdır ve boyuta en yakın yazı tipi seçilir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">3</td>
+                  <td class="innerdescdesccell"><B>Kenar yumuşatmasız</B> Yazı tipine asla kenar yumuşatma uygulanmaz.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">4</td>
+                  <td class="innerdescdesccell"><B>Kenar yumuşatmalı</B> Yazı tipi destekliyorsa her zaman kenar yumuşatma uygulanır.<BR>Yazı tipinin boyutu çok küçük veya çok büyük olamaz.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">5</td>
+                  <td class="innerdescdesccell"><B>ClearType</B> Yazı tipi, <a href="https://en.wikipedia.org/wiki/ClearType" target="_blank">ClearType</a> kenar yumuşatma yöntemi kullanılarak işlenir.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">6</td>
+                  <td class="innerdescdesccell"><B>Doğal ClearType</B> Yazı tipi, Doğal ClearType kenar yumuşatma yöntemi kullanılarak işlenir.</td>
+                </tr>
+              </table>
+              <I>Örnek: </I><code>&lt;Quality>1&lt;/Quality></code>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;gBorderFrameWidth><BR><small>&lt;Colors> bölümünden</small></div></td>
+            <td class="hintcell">
+              DC'yi, bir panelde etkin girdiler arasında döngü yaparken onun etrafına bir dikdörtgen çizecek şekilde yapılandırabiliriz.<BR>
+              Bu &lt;gBorderFrameWidth> ayarı, mevcut etkin girdinin etrafına çizilen dikdörtgenin çizgilerinin genişliğini yapılandırmamızı sağlar.<BR>
+              Bu dikdörtgeni görmek için <code>Yapılandırma</code> ><code>Seçenekler</code> ><code>Renkler </code>><code> Dosya panelleri</code> yolunu izlemeli ve <code>Çerçeve imleci kullan</code> seçeneğini işaretlemeliyiz.<BR>
+              <I>Örnek: </I><code>&lt;gBorderFrameWidth>1&lt;/gBorderFrameWidth></code>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;ExtraLineSpan><BR><small>&lt;FilesViews> bölümünden</small></div></td>
+            <td class="hintcell">
+              Bu ayar, dosya panellerinde görüntülenen her ögenin izin verilen yüksekliğine fazladan piksel eklemeye olanak tanır.<BR>Değer doğrudan piksel üzerinden yorumlanır.<BR>Varsayılan değer 2'dir.<BR>              
+              <I>Örnek: </I><code>&lt;ExtraLineSpan>2&lt;/ExtraLineSpan></code>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;NtfsHourTimeDelay><BR><small>&lt;FileOperations> bölümünden</small></div></td>
+            <td class="hintcell">
+              Girdilerin tarih ve saatini karşılaştırırken tam olarak bir saatlik zaman farkını yoksay.<BR>
+              Bu, dahili komutlar <a href="cmds.html#cm_CompareDirectories">cm_CompareDirectories</a> veya <a href="cmds.html#cm_SyncDirs">cm_SyncDirs</a> kullanıldığında gerçekleşir.<BR>
+              Bir NTFS bölümünde bulunan ögeleri, böyle bir bölümde olmayan başka bir bölümle karşılaştırırken kullanışlıdır.<BR>
+              Bir dosyanın <a href="https://support.microsoft.com/en-us/help/129574/time-stamp-changes-with-daylight-savings" target="_blank">zaman damgası</a>, NTFS bölümünde yaz saati uygulaması döneminde değişirken, aynı dosya FAT32 üzerinde değişmez, bu nedenle iki dosya arasında görünürde bir saatlik fark görsek bile, iki dosyanın aynı kabul edilmesini isteriz.<BR>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Doğru</td>
+                  <td class="innerdescdesccell">Etkinleştir, tam olarak bir saatlik fark aynı zaman olarak kabul edilecektir</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Yanlış</td>
+                  <td class="innerdescdesccell">Devre dışı bırak (varsayılan)</td>
+                </tr>
+              </table>
+              <I>Örnek: </I><code>&lt;NtfsHourTimeDelay>True&lt;/NtfsHourTimeDelay></code>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;AutoExtractOpenMask><BR><small>&lt;FileOperations> bölümünden</small></div></td>
+            <td class="hintcell">Diyelim ki sıkıştırılmış bir dosyaya "girdik" ve etkin panelde içeriğini görüntülüyoruz. Bu ayarın belirtilen uzantısına sahip dosyalar, <kbd>GİRİŞ</kbd> tuşuna bastığımızda veya üzerlerine çift tıkladığımızda özellikler penceresini göstermek yerine arşivden otomatik olarak ayıklanacaktır.<BR>
+              <I>Örnek: </I><code>&lt;AutoExtractOpenMask>*.txt;*.mp3;*.mp4&lt;/AutoExtractOpenMask></code></td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;Mode><BR><small>&lt;AutoRefresh> bölümünden</small></div></td>
+            <td class="hintcell">
+              İzlenen dizinleri silme özelliği.<BR>"İzlenen dizin", Double Commander'ın içindeki herhangi bir değişikliği izleyebilmesi için bir tür kanca yerleştirdiği dizindir<BR>Bu şekilde, dizinin içeriği değişirse, görüntülenebilir içeriğini yenileyebilir.<BR>Bu ayar, bir panelde, etkin olmayan bir sekmede bile, görüntülenen bu "izlenen dizinlerden" birini silmeye çalıştığımızda Double Commander'ın nasıl tepki vereceğini kontrol etmemizi sağlar.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">0</td>
+                  <td class="innerdescdesccell">İzlenen dizinlerin silinmesini engeller.</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">1</td>
+                  <td class="innerdescdesccell">İzlenen dizinlerin silinmesini engellemez (varsayılan).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">2</td>
+                  <td class="innerdescdesccell">İzlenen dizinlerin silinmesiyle ilgili sorunları önlemek için tek dizinler yerine tüm sürücüleri izle.</td>
+                </tr>
+              </table>
+              <I>Örnek: </I><code>&lt;Mode>1&lt;/Mode></code>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;CustomIcons><BR><small>&lt;Icons> bölümünden</small></div></td>
+            <td class="hintcell">
+              <p>Bu seçenek, sürücüler, klasörler veya arşivler için kullanılan simgelerin sistemdeki varsayılan simgeler mi <I>(Yalnızca Windows)</I> YOKSA ayarlayabileceğimiz özel simgeler mi olacağını belirlemeye yardımcı olacaktır.</p>
+              <p><code>ÖzelSimgeler</code> seçeneği, tercihlerimize bağlı olarak aşağıdaki tablodaki sayıların toplamını temsil eden tek bir sayıya ayarlanacaktır.</p>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Öge</th>
+                  <th class="innerdescheader">Sistemden</th>
+                  <th class="innerdescheader">Özel</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sürücüler</td>
+                  <td class="innerdescdesccell">0</td>
+                  <td class="innerdescdesccell">1</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Klasörler</td>
+                  <td class="innerdescdesccell">0</td>
+                  <td class="innerdescdesccell">2</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Arşiv</td>
+                  <td class="innerdescdesccell">0</td>
+                  <td class="innerdescdesccell">4</td>
+                </tr>
+              </table>
+              <BR>
+              <I> Eğer istersek...<BR>
+                ...her şey sistemden: 0 + 0 + 0 = 0 yani <code>&lt;CustomIcons>0&lt;/CustomIcons></code><BR>
+                ...her şey özel: 1 + 2 + 4 = 7 yani <code>&lt;CustomIcons>7&lt;/CustomIcons></code><BR>
+                ...sürücü özel, diğer sistemden: 1 + 0 + 0 = 1 yani <code>&lt;CustomIcons>1&lt;/CustomIcons></code><BR>
+                vb... </i><BR><BR>
+              <p>Özel simgeler kullanmak istersek, her bir öge için konum buradadır:</p>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Öge</th>
+                  <th class="innerdescheader">Konum</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Sürücüler</td>
+                  <td class="innerdescdesccell">%commander_path%\pixmaps\theme\XxX\devices\</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Klasörler</td>
+                  <td class="innerdescdesccell">%commander_path%\pixmaps\theme\XxX\places\folder.png</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Arşivler</td>
+                  <td class="innerdescdesccell"><small>%commander_path%\pixmaps\theme\XxX\mimetypes\package-x-generic.png</small></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;ImageExifRotate><BR><small>&lt;Viewer> bölümünden</small></div></td>
+            <td class="hintcell">
+              Double Commander, bir JPG görüntü dosyasına kodlanmış olabilecek <a href="https://en.wikipedia.org/wiki/Exif" target="_blank">Exif</a> yapısındaki meta verileri tanıyabilir.<BR>
+              Bu yapının içinde, resmin çekildiği yönelimde (portre, yatay, baş aşağı, yansıma vb. gibi) görüntülenmesi için kullanılabilecek bir <a href="http://www.impulseadventure.com/photo/exif-orientation.html" target="_blank">yönelim bayrağı</a> bulunur.<BR>
+              <code>ImageExifRotate</code> etiketi, görüntüleyicinin bu bilgiyi kullanarak resmi gösterip göstermeyeceğimizi belirtmek için Double Commander'ı yapılandırır.<BR>
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Doğru</td>
+                  <td class="innerdescdesccell">Görüntü dosyasına gömülü yönelim bayrağını kullanın (varsayılan).</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Yanlış</td>
+                  <td class="innerdescdesccell">Yönelim bayrağını yok sayın.</td>
+                </tr>
+              </table>
+              <I>Örnek: </I><code>&lt;ImageExifRotate>True&lt;/ImageExifRotate></code>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;PathToLibrary><BR><small>&lt;Lua> bölümünden</small></div></td>
+            <td class="hintcell">Bu, Lua kütüphanesinin nerede olduğunu gösteren yoldur.<BR><a href="lua.html">Lua Betikleme</a> yapılırken gerekli <tt>lua5.1.dll</tt> dll dosyasının konumunu belirtecektir.<BR>Bu yol, Double Commander çalıştırılabilir dosyasına göreceli olabilir.<BR><I>Örnek: </I><code>&lt;PathToLibrary>..\..\Other\dll\lua5.1.dll&lt;/PathToLibrary></code></td>
+          </tr>
+
+          <tr>
+            <td class="varcell"><div class="firstcolumnaleft">&lt;UseShellForFileOperations></div></td>
+            <td class="hintcell">
+              Gezgin'deki gibi yeniden adlandırma işlevini kullanmak için.<BR><a href="https://en.wikipedia.org/wiki/User_Account_Control" target="_blank">UAC</a> ile doğru çalışır.
+              <table class="innercmddesc">
+                <tr class="rowinnerdesc">
+                  <th class="innerdescheader">Parametre</th>
+                  <th class="innerdescheader">Değer</th>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Doğru</td>
+                  <td class="innerdescdesccell">Etkinleştir (varsayılan)</td>
+                </tr>
+                <tr>
+                  <td class="innerdescvaluecell">Yanlış</td>
+                  <td class="innerdescdesccell">Devre dışı bırak</td>
+                </tr>
+              </table>
+              <I>Örnek: </I><code>&lt;UseShellForFileOperations>True&lt;/UseShellForFileOperations></code>
+            </td>
+          </tr>
+        </table>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+      </div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="commandline.html">Önceki</a>              </div></div>
+    <div class="checker">
+      <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional " height="31" width="88"></a><a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+    </div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>

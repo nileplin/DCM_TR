@@ -1,0 +1,872 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>DC - Temel Yardım</title>
+    <link rel="STYLESHEET" type="text/css" href="doublecmd.css">
+    <link rel="shortcut icon" href="../../pixmaps/common/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <a name="topofpage"></a>
+    <div class="header"><a href="index.html"><img src="../../pixmaps/common/dclogo2017.png" alt="Double Commander" height="48" width="374"></a>
+      <div id="global-nav" class="nav"><a title="Double Commander" href="http://doublecmd.sourceforge.net/" target="_blank">Ana sayfa</a></div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="faq.html">Önceki</a> | <a title="Sonraki Sayfa" href="findfiles.html">Sonraki</a></div></div>
+
+    <div class="dchelpage">
+      <div>
+        <h1>2.1. Temel Yardım</h1>
+      </div> 
+
+      <div>
+        <h2>İçerik</h2>
+        <dl>
+          <dt>1. <a href="#presentation">Sunum</a></dt>
+          <dd>
+            <dl>
+              <dt>1.1. <a href="#origin">Köken</a></dt>
+              <dt>1.2. <a href="#usage">Kullanım</a></dt>
+              <dt>1.3. <a href="#intro">Sunum</a><dt>
+            </dl>
+          </dd>  
+
+          <dt>2. <a href="#congif_files">Yapılandırma dosyaları</a></dt>
+
+          <dt>3. <a href="#iface">Arayüz</a></dt>
+          <dd>
+            <dl>
+              <dt>3.1. <a href="#iface_menu">Menü çubuğu</a></dt>
+              <dd>
+                <dl>
+                  <dt>3.1.1. <a href="#mnu_file">"Dosyalar"</a></dt>
+                  <dt>3.1.2. <a href="#mnu_select">"İşaretle"</a></dt>
+                  <dt>3.1.3. <a href="#mnu_commands">"Komutlar"</a></dt>
+                  <dt>3.1.4. <a href="#mnu_tabs">"Sekmeler"</a></dt>
+                  <dt>3.1.5. <a href="#mnu_view">"Göster"</a></dt>
+                  <dt>3.1.6. <a href="#mnu_config">"Yapılandırma"</a></dt>
+                  <dt>3.1.7. <a href="#mnu_help">"Yardım"</a></dt>
+                </dl>
+              </dd>
+              <dt>3.2. <a href="#iface_toolbar">Buton araç çubuğu</a></dt>
+              <dt>3.3. <a href="#iface_drive_pane">Sürücü buton çubuğu</a></dt>
+              <dt>3.4. <a href="#iface_drive_btn">Sürücü Listesi</a></dt>
+              <dt>3.5. <a href="#iface_tabs">Sekmeler çubuğu</a></dt>
+              <dt>3.6. <a href="#iface_dir">Geçerli dizin çubuğu</a></dt>
+              <dt>3.7. <a href="#iface_columns">Sekme durağı başlıkları çubuğu</a></dt>
+              <dt>3.8. <a href="#iface_status">Durum çubuğu</a></dt>
+              <dt>3.9. <a href="#iface_console">Terminal penceresi</a></dt>
+              <dt>3.10. <a href="#iface_path">Komut satırı</a></dt>
+              <dt>3.11. <a href="#iface_buttons">İşlev tuşları buton çubuğu</a></dt>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+      <div>
+        <h2>1. <a name="presentation">Sunum</a></h2>
+        <p>Double Commander'a hoş geldiniz!</p>
+      </div>
+
+      <div>
+        <h2>1.1. <a name="origin">Köken</a></h2>
+        <p>Double Commander — Rus programcı Alexander Koblov (Alexx2000@mail.ru) tarafından başlatılan, Sexi Commander'dan (yazar — Radek Cervinka, radek.cervinka@centrum.cz) çatallanmış bir projedir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2>1.1. <a name="usage">Kullanım</a></h2>
+        <p>Double Commander; WCX, WFX, WDX, WLX ve DSX eklenti türlerini destekleyen, çapraz platform (Windows, GNU/Linux, MacOS &amp; FreeBSD) çift panelli bir dosya yöneticisidir. Son tür (DSX), DC'nin kendi arama eklentisi türüdür.</p>
+        <p>Double Commander'ın Windows sürümü, Total Commander (TC) eklentilerinin yarısından fazlasıyla uyumludur.</p>
+        <p>Linux sürümünde böyle bir uyumluluk yoktur. DC; cpio, deb, rpm, bz2, rar, zip, tar, gz, tgz arşivleriyle dizinler (VFS) olarak çalışmak için bazı WCX-türü (arşivleyici) eklentileriyle, ayrıca bir arama eklentisi (DSX) ve Linux için bir listeleyici video oynatıcı eklentisi (WLX) ile önceden yüklenmiş olarak gelir. Diğer eklentiler manuel olarak kurulabilir.</p>
+        <p><img class="largeimage" title="Double Commander" alt="Double Commander" src="images/imgDC/pic05.png" width="884" height="548"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="intro">1.2. Sunum</a></h2>
+        <p><a href="http://sourceforge.net/projects/doublecmd/files/">Sourceforge indirme sayfasında</a> DC'nin indirilebilecek çeşitli sürümlerini görebilirsiniz.</p>
+        <p>Öncelikle işletim sistemini (Win, Lin, Mac, FreeBSD), 32 veya 64 bit olup olmadığını seçmelisiniz. Ardından indireceğiniz sürümü belirleyebilirsiniz.</p>
+        <p>Windows için bir çalıştırılabilir dosya <tt>.exe</tt> veya (taşınabilir sürüm olarak adlandırılan) bir arşiv <tt>.zip</tt> mevcuttur.</p>
+        <p>Linux için en popüler Linux dağıtımları ve masaüstü ortamları için sürümler mevcuttur.</p>
+        <p>Debian tabanlı dağıtımlar (örn. Ubuntu) için derlenmiş <tt>deb</tt> paketlerini ve/veya Linux Mandriva için <tt>rpm</tt> paketlerini indirebilirsiniz.</p>
+        <p>Ayrıca <tt>tar.bz2</tt> arşivinin taşınabilir sürümü de mevcuttur; bu, programı kendiniz derleyebileceğiniz aynı kaynaktır.</p>
+        <p>Çeşitli DE'ler için GTK2 araç setine dayalı sürümler ve Qt tabanlı KDE sürümleri mevcuttur. Şunu belirtmek gerekir ki program henüz depolardan edinilememektedir.</p>
+        <p>İlk başlatmada Double Commander, sistem dilini otomatik olarak algılar ve arayüz için ayarlar. DC birçok dile çevrilmiştir.</p>
+        <p>Dil, menüden "<a href="#5_1_1_yazik">Yapılandırma > Seçenekler > Dil</a>" yoluyla değiştirilebilir.
+        <p>Ayrıca Double Commander, mevcut sistem temasını belirler ve kullanır. Şöyle görünür (Ubuntu Linux'ta, varsayılan tema):</p>
+        <p><img class="largeimage" title="Ana program penceresi" alt="Ana pencere" src="images/imgDC/pic1.png" width="884" height="548"></p>
+        <p>Şekilden de görüldüğü gibi, iki dosya paneli, siyah bir terminal penceresi, bir komut satırı (TC'deki gibi) ve bir günlük görüntüleyici olan alt bir pencere (dosya yöneticisindeki tüm eylemleri gösterir) bulunmaktadır.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="config_files">2. Yapılandırma dosyaları</a></h2>
+        <p>Double Commander yapılandırma ayarlarını dosyalarda tutar. Bu yapılandırma dosyasının konumunu yapılandırma seçeneklerinden yapılandırabilirsiniz.</p>
+        <p>Ana dosyalar:</p>
+        <ul>
+          <li><tt>doublecmd.xml</tt> — tüm ana program ayarları</li>
+          <li><tt>extassoc.xml</tt> — dosya uzantısı ilişkilendirme yapılandırması</li>
+          <li><tt>highlighters.xml</tt> — düzenleyici renk ayarları</li>
+          <li><tt>shortcuts.scf</tt> — klavye düzeni ayarları</li>
+          <li><tt>history.xml</tt> — komut satırı ve dizin geçmişi</li>
+          <li><I>birkaç diğer...</I> — vb...</li>
+        </ul>
+        <p>Normalde bu dosyalarla doğrudan oynamamız gerekmez. Uygulama ile çalıştıkça ve seçeneklerde yapılandırdıkça, bilgiler onlara yazılacaktır. Ardından, bir sonraki oturumda değerleri geri yüklenecektir.</p>
+      </div>
+
+      <div>
+        <h2><a name="iface">3. Arayüz</a></h2>
+        <p>Double Commander'ın arayüzü</p>
+      </div>
+
+      <div>
+        <h2><a name="iface_menu">3.1. Menü çubuğu</a></h2>
+        <p class="figure"><img title="Menü çubuğu" alt="Menü çubuğu" src="images/imgDC/pic2.png" width="532" height="48"></p>
+        <p>Menü Çubuğu, Double Commander'ın tüm özelliklerine erişim sağlar. Ancak unutmayın ki eylemlerin çoğu kısayol tuşlarını veya araç çubuğundaki butonları kullanmak gibi başka yollarla gerçekleştirilebilir.</p>
+      </div>
+
+      <div>
+        <h2><a name="mnu_file">3.1.1. "Dosyalar"</a></h2>
+        <p>Bu menü, dosyalar üzerinde yapılabilecek neredeyse tüm eylemleri içerir. Lütfen tüm ögeleri dikkate alın:</p>
+
+        <p><a name="01_ssilka"><span class="bold">Bağlantı Oluştur</span></a> (dahili komut <tt><a name="cm_HardLink">cm_HardLink</a></tt>). Bu öge ile Double Commander, imlecin altındaki dosyaya <a href="http://en.wikipedia.org/wiki/Hard_link">sabit</a> bir bağlantı oluşturur ve onu bitişik panelde açık olan bir klasöre yerleştirir.</p>
+        <p class="figure"><img class="largeimage" alt="Sabit bağlantı" title="Sabit bağlantı" src="images/imgDC/pic10-5.png" width="347" height="161"></p>
+
+        <p><span class="italic">Bağlantı adı</span> — bağlantının yolu ve adı buradadır. Ad, satırdaki son eğik çizgiden sonraki son kelimedir.</p>
+        <p><span class="italic">Mevcut hedef</span> — bağlantının oluşturulduğu nesnedir.</p>
+        <p><a name="02_ssilka2"><span class="bold">Sembolik bağ oluştur</span></a> (dahili komut <tt><a name="cm_SymLink">cm_SymLink</a></tt>). Yukarıdaki sabit bağlantı gibi, ancak bağlantı <a href="http://en.wikipedia.org/wiki/Symlink">semboliktir</a>.</p>
+
+        <p><a name="03_svoistva"><span class="bold">Dosya özelliklerini göster...</span></a> (dahili komut <tt><a name="cm_FileProperties">cm_FileProperties</a></tt>) seçildiğinde şöyle bir pencere açılır:</p>
+        <p class="figure"><img class="largeimage" alt="Dosya Özelliklerini Göster" title="Dosya Özelliklerini Göster" src="images/imgDC/pic11.png" width="383" height="378"> <img class="largeimage" alt="Dosya Özelliklerini Göster" title="Dosya Özelliklerini Göster" src="images/imgDC/pic12.png" width="383" height="378"></p>
+
+        <p>Bu pencere, dosya veya klasör adını, boyutunu, yazma ve son erişim tarihini, ayrıca sahibini ve grubunu gösterir. "Özellikler" sekmesinde dosyaya erişimi değiştirebilirsiniz (eğer yetkiniz varsa). Ancak yalnızca imlecin altındaki bir dosya veya klasör için geçerlidir.</p>
+        <p><a name="04_redakt_comment"><span class="bold">Açıklamayı düzenle...</span></a> ögesini (dahili komut <tt><a name="cm_EditComment">cm_cm_EditComment</a></tt>) kullanarak UTF, ISO, KOI veya ANSI kodlamalarında yorumlar oluşturabilir veya değiştirebilirsiniz.</p>
+
+        <p><a name="05_rasschet_mesta"><span class="bold">Kaplanan alanı hesapla</span></a> (dahili komut <tt><a name="cm_CalculateSpace">cm_CalculateSpace</a></tt>) ögesi, seçili nesnelerin boyutunu yuvarlanmış birimler ve bayt cinsinden hesaplar.</p>
+        <p class="figure"><img class="largeimage" alt="Boyutu Hesapla" title="Boyutu Hesapla" src="images/imgDC/pic13.png" width="345" height="101"></p>
+
+        <p><a name="06_sravnit"><span class="bold">İçeriğe göre karşılaştır</span></a> (dahili komut <tt><a name="cm_CompareContents">cm_CompareContents</a></tt>) karşılaştırılacak dosyaları (genellikle metin) içeren iki panelli bir pencere gösterir.</p>
+        <p class="figure"><img class="largeimage" alt="Karşılaştırma iletişim kutusu" title="Karşılaştırma iletişim kutusu" src="images/imgDC/pic13-5.png" width="795" height="243"></p>
+
+        <p><span class="italic">Dosyaları Karşılaştır</span> — dosyaları karşılaştırma işlemini başlatır. Farklar varsayılan olarak kırmızı renkte vurgulanır. Herhangi bir dosya seçebilirsiniz. Dikey ve yatay kaydırma da mevcuttur.</p>
+        <p><span class="italic">Sonraki Fark</span> — sonraki farklı satırlara geçin.</p>
+        <p><span class="italic">Önceki Fark</span> — önceki farklı satırlara geçin.</p>
+        <p><span class="italic">İkili Mod</span> — sonuç ikili biçimde sunulur.</p>
+        <p><span class="italic">Kaydırmayı sürdür</span> — senkronize kaydırmaya izin verir.</p>
+        <p><span class="italic">Kapat</span> — karşılaştırma penceresini kapatır.</p>
+
+        <p><a name="07_mnog_imen"><span class="bold">Çoklu Yeniden Adlandırma Aracı</span></a> (dahili komut <tt><a name="cm_MultiRename">cm_MultiRename</a></tt>)</p>
+        <p class="figure"><img class="largeimage" alt="Çoklu Yeniden Adlandırma Aracı" title="Çoklu Yeniden Adlandırma Aracı" src="images/imgDC/pic14.png" width="524" height="300"></p>
+
+        <p>Tanımlı maskeye göre herhangi bir dosyayı yeniden adlandırmaya izin verir. Örneğin, farklı adlara sahip bazı dosyalar Resim1, Resim2, Resim3 vb. olarak yeniden adlandırılabilir. Önce yeniden adlandırılacak dosyaları seçin ve ardından bu aracı başlatın (yukarıdaki şekle bakın). Dosyalarınızın eski ve yeni adlarını görebilirsiniz.</p>
+        <p><span class="italic">Maske</span> panelinde yeniden adlandırmak için maske belirleyebilirsiniz. Aşağıdaki makrolar kullanılabilir:</p>
+        <ul>
+          <li><p><tt>[N]</tt> — kaynak dosya ile aynı addır.</p></li>
+          <li><p><tt>[Nx]</tt> — orijinal addan x karakter alır. Örn. kaynak dosya adı "Picture" ise, [N5] değeri 'u' karakterinin (orijinal adın beşinci karakteri) kullanılacağı anlamına gelir.</p></li>
+          <li><p><tt>[Nx:x]</tt> — x'ten x'e kadar karakterleri alır. Bu nedenle, kaynak dosya adı "Picture" ise, [N1:4] değeri "Pict"in kullanılacağı anlamına gelir.</p></li>
+          <li><p><tt>[C]</tt> — bir sayaçtır, parametreleri <span class="italic">Sayaç</span> panelinde listelenir.</p></li>
+          <li><p>Makro kullanımını ve kendi metninizi birleştirebilirsiniz (şekle bakın).</p></li>
+        </ul>
+
+        <p><span class="italic">Dosya Adı</span> alanının sağındaki açılır kutuyu kullanarak aşağıdakilerden seçim yapabilirsiniz:</p>
+        <ul>
+          <li><p>Değişiklik yok — yeni adlar eskileriyle aynı büyük/küçük harf düzeninde olacaktır.</p></li>
+          <li><p>BÜYÜK HARF — yeni adlar tamamen büyük harf olacaktır.</p></li>
+          <li><p>küçük harf — yeni adlar tamamen küçük harf olacaktır.</p></li>
+          <li><p>İlk harf büyük — yeni dosya adları büyük harfle başlayacaktır.</p></li>
+          <li><p>Her Kelimenin İlk Harfi Büyük — yeni dosya adlarının her kelimesi büyük harfle başlayacaktır.</p></li>
+        </ul>
+        <p><span class="italic">Uzantı</span> adı için de aynı şekildedir.
+
+        <p><span class="italic">Bul ve Değiştir</span> paneli, dosya adının bölümlerini değiştirmeniz gerektiğinde yardımcı olacaktır (örn. "a"yı "ı" ile değiştirerek kelimenin "sarma"dan "sırma"ya değişmesi gibi). <a href="regexp.html">Düzenli İfadeler</a> de kullanılabilir.</p>
+        <p><span class="italic">Sayaç</span> panelinde sayacın parametrelerini belirleyin: ilk sayı, sayı genişliği (1, 01, 001, 0001, vb.), aralık.</p>
+        <p><span class="italic">Sonucu Günlüğe Kaydet</span> panelinde bir günlük dosyası etkinleştirebilir ve ona giden yolu belirleyebilirsiniz.</p>
+        <p><span class="italic">Ön Ayarlar</span> panelinde tüm MultiRename ayarlarınızı gelecekte kullanmak üzere kaydedebilirsiniz. Kutucuğa bir ad yazın ve <span class="italic">Kaydet</span> butonuna tıklayın.
+        <p><span class="italic">Tümünü sıfırla</span> butonuna tıklarsanız, MultiRename aracının yapılandırması başlangıç ayarlarına geri dönecektir. Baştan başlamak isterseniz kullanışlıdır ;-).
+        <p>Son olarak, yeni dosya adlarının istediğiniz gibi olduğundan emin olduğunuzda, dosya yeniden adlandırma işlemini gerçekleştirmek için <span class="italic">Yeniden Adlandır</span> butonunu seçin.</p>
+
+        <p><a name="08_upakovat"><span class="bold">Dosyaları sıkıştır</span></a> seçeneğini seçerek (dahili komut <tt><a name="cm_PackFiles">cm_PackFiles</a></tt>) dosyaları zip, tar.gz, tgz ve rar arşiv biçimlerine sıkıştırmak için standart bir iletişim kutusu çağrılır.</p>
+        <p class="figure"><img class="largeimage" alt="Sıkıştır" title="Sıkıştır" src="images/imgDC/pic14-5.png" width="368" height="183"></p>
+
+        <p>Ayrıca dosyalar <a name="09_raspakovat"><span class="bold">Dosyaları Ayıkla</span></a> (dahili komut <tt><a name="cm_ExtractFiles">cm_ExtractFiles</a></tt>) aracılığıyla ayıklanabilir. Arşivden dosya kopyaladığınızda aynı iletişim kutusu çağrılır.</p>
+        <p class="figure"><img class="largeimage" alt="Ayıkla" title="Ayıkla" src="images/imgDC/pic14-6.png" width="368" height="173"></p>
+
+        <p>İlk satır, hedef dizini (arşivin ayıklanacağı yeri) belirtir. Manuel olarak veya en sağdaki gözat butonuna tıklayarak değiştirilebilir. <span class="italic">Ayıklanacak dosyalar</span> satırında, hangi dosyaların ayıklanacağını belirleyen bir maske belirleyebilirsiniz. Maske geçmişi açılan listede bulunabilir. Onay kutusu <span class="italic">Her arşivi ayrı bir alt dizine (arşivin adı) çıkar</span>, hedefte arşivle aynı ada sahip bir klasör oluşturur ve dosyaları o klasöre ayıklar. Bu seçenekle aynı anda birkaç arşivi ayıklayabilirsiniz. Her biri hedefte kendi klasörüne ayıklanacaktır.</p>
+
+        <p>Ögeler <a name="010_11_razrezat_sobrat"><span class="bold">Dosyayı böl</span> ve <span class="bold">Dosyaları Birleştir</span></a> (dahili komutlar <tt><a name="cm_FileSpliter">cm_FileSpliter</a></tt> ve <tt>cm_FileLinker</tt>)</p>
+        <p class="figure"><img class="largeimage" alt="Dosyayı Böl" title="Dosyayı Böl" src="images/imgDC/pic14-7.png" width="331" height="232"></p>
+
+        <p><span class="italic">Dosya kaynağı</span> — bölünecek bir dosyayı belirtir.</p>
+        <p><span class="italic">Dizin hedefi</span> — bölünmüş dosyalar için hedef klasörü belirtir.</p>
+        <p><span class="italic">Dosya boyutu</span> — bölünmüş parçaların boyutunu seçin. Kendi belirlediğiniz değerinizi de girebilirsiniz. Ön ayarlar şunlardır:</p>
+        <ul>
+          <li><p>1.457.664 B — 3.5" — 3.5 inç Disket sürücüsü</p></li>
+          <li><p>98.078 KB - ZIP 100 MB — ZIP sürücüsü</p></li>
+          <li><p>650 MB - CD 650 MB — CD sürücüsü boyutu</p></li>
+          <li><p>700 MB - CD 700 MB — CD sürücüsü boyutu</p></li>
+        </ul>
+        <p>Tamam butonuna tıkladığınızda, hedef dizinde ".split" uzantılı birkaç dosya elde edersiniz. Dosyayı tekrar birleştirmek için, tüm ".split" parçalarını seçin ve <span class="bold">Dosyaları Birleştir</span>(<tt><a name="cm_FileLinker">cm_FileLinker</a></tt>) seçeneğini seçin. Birleştirmek için bölünmüş parçaların sırasını da belirlemeniz gerekir.</p>
+        <p class="figure"><img class="largeimage" alt="Dosyaları Birleştir" title="Dosyaları Birleştir" src="images/imgDC/pic14-8.png" width="258" height="275"></p>
+
+        <p>Küçük sürücüleriniz ve büyük dosyalarınız varsa bu işlev çok kullanışlıdır. Dosya parçalarını taşımak mümkündür. (TC'de olduğu gibi).</p>
+
+        <p><a name="012_controlnaya_summa"><span class="bold">Sağlama Toplamını Hesapla...</span></a> (dahili komut <tt><a name="cm_CheckSumCalc">cm_CheckSumCalc</a></tt>), seçeneği dosya bütünlüğünü kontrol etmek için <a href="http://en.wikipedia.org/wiki/Checksum">sağlama toplamını</a> hesaplamada kullanılır. Aşağıdaki sağlama toplamları mevcuttur:
+        <pre>
+      HAVAL, MD4, MD5, RIPEMD128, RIPEMD160, 
+      SFV, SHA, SHA256, SHA384, SHA512, TIGER </pre>
+        <p class="figure"><img class="largeimage" alt="Sağlama Toplamını Hesapla" title="Sağlama Toplamını Hesapla" src="images/imgDC/pic14-8-1.png" width="370" height="135"></p>
+
+        <p><span class="italic">Sağlama toplamı dosyasını/dosyalarını kaydet:</span> — satırı, hesaplanan sağlama toplamının adını ve yolunu belirtir. 
+        <p><span class="italic">Her dosya için ayrı sağlama toplamı dosyaları oluştur</span> — eğer sağlama toplamı birden fazla dosya için hesaplanıyorsa, bu seçenek her hedef dosya için ayrı sağlama toplamı dosyaları oluşturmanıza olanak tanır.
+        <p><span class="italic">Tercih ettiğiniz sağlama toplamını seçin ve</span> — <a href="http://en.wikipedia.org/wiki/Checksum">sağlama toplamlarını</a> hesaplayacak algoritmayı seçin.
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="mnu_select">3.1.2."İşaretle"</a></h2>
+        <p>Bu grupta dosyaları farklı şekillerde seçebileceğiniz bazı komutlar bulunmaktadır.</p>
+
+        <p>Birinci ve ikinci komutlar <span class="bold"><a name="11_videlit_gruppu">Grup seç</a></span> ve <span class="bold">Grubun seçimini kaldır</span> (dahili komutlar <tt><a name="cm_MarkPlus">cm_MarkPlus</a></tt> ve <tt><a name="cm_MarkMinus">cm_MarkMinus</a></tt>). Bu komutlar, bir maske ile dosya gruplarını seçer. Bu maske ile dosya adlarını veya uzantılarını belirleyebilirsiniz.</p>
+        <p class="figure"><img class="largeimage" alt="Grup seç" title="Grup seç" src="images/imgDC/pic14-9.png" width="350" height="115"></p>
+
+        <p>Örneğin, uzantısı <tt>.png</tt> olan tüm dosyaları seçin. Ayrıca, maske geçmişi içeren bir açılır liste de bulunmaktadır.</p>
+
+        <p>Üçüncü ve dördüncü komutlar <span class="bold"><a name="12_videlit_vse">Tümünü Seç</a></span> (dahili komut <tt><a name="cm_MarkMarkAll">cm_MarkMarkAll</a></tt>) ve <span class="bold">Seçimi tamamen kaldır</span> (dahili komut <tt><a name="cm_MarkUnmarkAll">cm_MarkUnmarkAll</a></tt>). Bunlar, paneldeki tüm ögeleri hızlıca seçmeyi veya seçimini kaldırmayı mümkün kılar.</p>
+
+        <p>Beşinci komut <span class="bold"><a name="13_inversia">Seçimleri tersine çevir</a></span> (dahili komut <tt><a name="cm_MarkInvert">cm_MarkInvert</a></tt>). Bu komut, anlık seçili olan ve olmayan dosyaların seçim durumunu tersine çevirir.</p>
+
+        <p>Altıncı ve yedinci komutlar <span class="bold"><a name="14_videlit_po_rash">Aynı uzantılıların tümünü seç</a></span> (dahili komut <tt><a name="cm_MarkCurrentExtension">cm_MarkCurrentExtension</a></tt>) ve <span class="bold">Aynı uzantılıların seçimini kaldır</span> (dahili komut <tt><a name="cm_UnmarkCurrentExtension">cm_UnmarkCurrentExtension</a></tt>). Bu işlevler, imlecin altındaki dosya ile aynı uzantıya sahip dosyaları seçmeye ve seçimini kaldırmaya yardımcı olur.</p>
+
+        <p>Sekizinci ve dokuzuncu komutlar <span class="bold"><a name="15_kopir_imena">Dosya Ad(lar)ını Panoya Kopyala</a></span> (dahili komut <tt><a name="cm_CopyNamesToClip">cm_CopyNamesToClip</a></tt>) ve <span class="bold">Dosya Ad(lar)ını tam yol ile kopyala</span> (dahili komut <tt><a name="cm_CopyFullNamesToClip">cm_CopyFullNamesToClip</a></tt>). İlk komut seçili dosya listesini panoya kopyalar. İkinci komut ise dosyaları tam dosya yolları ile birlikte kopyalar.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="mnu_commands">3.1.3. "Komutlar"</a></h2>
+        <p>İlk komut <span class="bold"><a name="21_poisk">Ara</a></span> (dahili komut <tt><a name="cm_Search">cm_Search</a></tt>).</p>
+        <p class="figure"><img class="largeimage" alt="Ara" title="Ara" src="images/imgDC/pic15.png"></p>
+
+        <p><span class="italic">Dosya maskesi</span> satırı, aranacak maskeyi ayarlar.</p>
+        <p>Sonraki satır <span class="italic">Dizin</span>, aramayı başlatmak için dizini belirtir, varsayılan hali "/" şeklindedir.</p>
+        <p><span class="italic">Alt Dizinlerde Ara</span> şunları içerebilir: </p>
+        <ul>
+          <li><p>Sadece geçerli dizin</p></li>
+          <li><p>seviye sayısını seçin (1'den 100'e kadar)</p></li>
+          <li><p>Tümü (sınırsız derinlik)</p></li>
+        </ul>
+        <p>Bu ayar, dosya sistemi ağacının arama derinliğini kontrol eder. "Yalnızca geçerli dizin" olarak ayarlandığında, sadece belirtilen "Dizin" içinde arama yapılır. (alt dizinler dahil değil).</p>
+        <p>Ayrıca <a href="regexp.html">düzenli ifadeler</a> kullanabilirsiniz.</p>
+        <p>Eğer <span class="italic">Dosya İçinde Metin Bul</span> onay kutusu etkinleştirilirse, süreç, <span class="italic">Veri Bul</span> satırında belirtilen metni dosyaların içinde arayacaktır. Bu metni, onay kutusunu etkinleştirerek <span class="italic">Metni değiştir</span> satırında belirtilen başka bir metinle de değiştirebilirsiniz.</p>
+        <p><span class="italic">Büyük/küçük harf duyarlı</span> — büyük harflerin küçük harflerden ayırt edilmesi gerektiğini belirtir, örneğin: "Fallout" ve "fallout" farklı olacaktır.</p>
+        <p><span class="italic">Metni içermeyen dosyaları bul</span>, <span class="italic">Veri Bul</span> alanında belirtilen metni içermeyen dosyaları gösterir. Ayrıca burada kodlamayı (UTF, ISO, KOI, DOS, ANSI vb.) ayarlayabilirsiniz.</p>
+        <p><span class="italic">Arama eklentisini kullanın</span>: Aramayı yapmak için Locate eklentisini kullanın.</p>
+        <p><span class="italic">Gelişmiş</span> sekmesi ek koşullar belirtmenize olanak tanır: Tarih (başlangıç .. bitiş), Saat (başlangıç .. bitiş), Boyut (başlangıç .. bitiş), ayrıca öznitelikler ve dosya yaşı.</p>
+        <p><span class="italic">Yükle/Kaydet</span> sekmesi, arama parametrelerini kaydetmenize olanak tanır. Böylece daha sonra tekrar kullanılabilirler.
+        <p><span class="italic">Sonuçlar</span> sekmesi, aramanın sonuçlarını içerir ve aşağıdaki butonlara sahiptir:</p>
+        <p><span class="italic">Görüntüle</span> — seçili dosyayı görüntüleyici ile açar (<kbd>F3</kbd>).</p>
+        <p><span class="italic">Yeni Arama</span> — eski sonuçları temizler ve yeniden arama yapılmasına olanak tanır (yeni koşullar içerebilir).</p>
+        <p><span class="italic">Dosyaya git</span> — arama penceresini kapatır ve imleci paneldeki seçili dosya üzerine getirir.</p>
+        <p><span class="italic">Liste Kutusuna Aktar</span> — Dosyaları tam yollarıyla birlikte dosya panelinde listeler.</p>
+        <p>Alt+1...Alt+4 tuş kombinasyonlarıyla sekmeler arasında geçiş yapabilirsiniz.</p>
+
+        <br>
+        <p>İkinci komut: <span class="bold"><a name="22_lichnue_catalogi">Sık Kullanılan Dizinler</a></span> (dahili komut <tt><a name="cm_DirHotList">cm_DirHotlist</a></tt>). Bu komut, <a href="#btn_dirlist">"*"</a> butonuna basmakla aynıdır.</p>
+        <p>Bu komut seçildiğinde, <a href="directoryhotlist.html">Sık Kullanılan Dizinler listesi</a> ile çıkan açılır menüden aşağıdakiler seçilebilir: <BR>
+        <ul>
+          <li>etkin çerçevenin geçerli yolunu, oluşturduğunuz bir listeden önceden yapılandırılmış bir dizine değiştir</li>
+          <li>şu anda seçili dizini yeni bir yer imi olarak ekle</li>
+          <li>mevcut yer imlerini yapılandır</li>
+        </ul>
+
+        <p>Lütfen nasıl kullanılacağı ve yapılandırılacağı hakkında bu <a href="directoryhotlist.html">"Sık kullanılan Dizinler" özel yardım sayfasına</a> bakın.</p>
+
+        <p>Üçüncü komut <span class="bold"><a name="23_pusk_term">Terminali çalıştır</a></span> (dahili komut <tt><a name="cm_RunTerm">cm_RunTerm</a></tt>) — geçerli dizinde bir terminal açar (<a href="#5_1_2_2_pusk_terminala">Terminali Çalıştır</a> ayarları).</p>
+
+        <p>Dördüncü komut<span class="bold"><a name="24_otkr_VFS">VFS listesini aç</a></span> (sanal dosya sistemi), kendi dosya sistemlerine ihtiyaç duyan eklentiler (WFX, WCX vb.) tarafından kullanılır. İlgili eklentileri eklemek ve yapılandırmak, komut listeyi açarak onlarla çalışmanıza fırsat sunacaktır.</p>
+
+        <p>Beşinci komut <span class="bold"><a name="25_pomenyat_mestami">Panelleri Yer Değiştir</a></span> (dahili komut <tt><a name="cm_Exchange">cm_Exchange</a></tt>), sol ve sağ panelleri yer değiştirir.</p>
+
+        <p>Altıncı komut <span class="bold"><a name="26_dve_paneli">Hedef = Kaynak</a></span> (dahili komut <tt><a name="cm_TargetEqualSource">cm_TargetEqualSource</a></tt>}) — etkin olmayan panelde aynı dizini açar. Bu komut, <a href="#btn_dirlist">"="</a> tuşuna basmakla aynıdır.</p>
+        <p>Yedinci komut <span class="bold"><a name="27_dve_paneli">Kaplanan alanı göster</a></span> — geçerli klasörün alt klasörlerindeki tüm dosyaların toplam boyutunu hesaplar ve gösterir. Etkin panelin Boyut sütunundaki &lt;DIR> metni toplam ile değiştirilir.
+
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="mnu_tabs">3.1.4. "Sekmeler"</a></h2>
+        <p>Bu grup, sekmeli dosya panellerini yönetir.</p>
+
+        <p>İlk komut <span class="bold"><a name="31_new_tab">Yeni Sekme</a></span> (dahili komut <tt><a name="cm_NewTab">cm_NewTab</a></tt>}) — panele yeni bir sekme ekler ve bu sekmeyi seçer.</p>
+
+        <p>İkinci komut <span class="bold"><a name="32_otkr_vkladka">Klasörü yeni sekmede aç</a></span> (dahili komut <tt><a name="cm_OpenDirInNewTab">cm_OpenDirInNewTab</a></tt>}) — imlecin altındaki dizin için yeni bir sekme açar, ancak bu sekmeyi seçmez.</p>
+
+        <p>Üçüncü komut <span class="bold"><a name="33_del_vkladka">Sekmeyi kaldır</a></span> (dahili komut <tt><a name="cm_RemoveTab">cm_RemoveTab</a></tt>}) — etkin sekmeyi kapatır ve paneli sonraki sekmeye (veya son sekmeyi kapatırsanız önceki sekmeye) geçirir.</p>
+
+        <p>Dördüncü komut <span class="bold"><a name="34_delalltabs">Tüm sekmeleri kaldır</a></span> (dahili komut <tt><a name="cm_RemoveAllTabs">cm_RemoveAllTabs</a></tt>}) — tüm etkin olmayan sekmeleri kapatır. Kilitli sekmelerden oluşuyorsa, <a href="#5_1_11_0_vopros">onay</a> isteyecektir.</p>
+
+        <p>Beşinci komut <span class="bold"><a name="35_blok_smena">Kilitli, ancak dizin değişimine izin verilir</a></span> (dahili komut <tt><a name="cm_ToggleLockDcaTab">cm_ToggleLockDcaTab</a></tt>}) — bu yöntemle bir sekmeyi kilitlerseniz, bu sekme içinde başka bir dizine geçebilirsiniz, ancak başka bir sekmeye geçtikten sonra (veya DC yeniden başlatıldığında) sekme, kilitli sekmelerin orijinal dizinine geri dönecektir.</p>
+
+        <p>Altıncı komut <span class="bold"><a name="36_block_bezsmena">Bu sekmeyi kilitle</a></span> (dahili komut <tt><a name="cm_ToggleLockTab">cm_ToggleLockTab</a></tt>}) — sekmeyi kilitler, bu sekme içinde başka bir dizine geçmeye çalışmak yeni bir sekme açacaktır.</p>
+
+        <p>Yedinci ve sekizinci komutlar olan <span class="bold"><a name="37_perekluch_tab">Sonraki sekmeye geç</a></span> (dahili komut <tt><a name="cm_NextTab">cm_NextTab</a></tt>) ve <span class="bold">Önceki sekmeye geç</span> (dahili komut <tt><a name="cm_PrevTab">cm_PrevTab</a></tt>) — sırasıyla sağdaki (sonraki) ve soldaki (önceki) sekmeye geçişi sağlar.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="mnu_view">3.1.5. "Göster"</a></h2>
+        <p>Dosya panellerinde görüntülenen içeriği yönetir.</p>
+
+        <p>İlk beş seçenek: İsme göre sırala (dahili komut cm_SortByName), Uzantıya göre sırala (dahili komut cm_SortByExt), Boyuta göre sırala (dahili komut cm_SortBySize), Tarihe göre sırala (dahili komut cm_SortByDate), Özniteliğe göre sırala (dahili komut cm_SortByAttr) — dosyalar için farklı sıralama düzenleri seçmenize olanak tanır. Ayrıca sıralama düzenini değiştirmek için <a href="#iface_columns">sütun başlıklarına</a> sol fareyle tıklayabilirsiniz.</p>
+
+        <p>Altıncı seçenek <span class="bold"><a name="42_obr_porr">Sıralamayı tersine çevir</a></span> (dahili komut <tt><a name="cm_ReverseOrder">cm_ReverseOrder</a></tt>) — etkin panel için sıralama düzenini tersine çevirir.</p>
+
+        <p>Yedinci seçenek <span class="bold"><a name="43_obnovit">Yenile</a></span> (dahili komut <tt><a name="cm_Refresh">cm_Refresh</a></tt>) — Double Commander'ın panelleri yenilemesini sağlar.</p>
+
+        <p>Sekizinci seçenek <span class="bold"><a name="44_sysfiles">Gizli/sistem dosyalarını göster</a></span>  (dahili komut <tt><a name="cm_ShowSysFiles">cm_ShowSysFiles</a></tt>) gizli dosyaların ve dizinlerin görüntülenmesini denetler. Linux'ta bunlar "noktalı" dosyalardır. Yapılandırmadaki ayarla aynıdır — <a href="#5_1_2_10_skritie_faily">Gizli/sistem dosyalarını göster</a>.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <br>
+      <div>
+        <h2><a name="mnu_config">3.1.6. "Yapılandırma"</a></h2>
+        <p>İlk seçenek olan <span class="bold"><a name="5_1_parametry">"Seçenekler"</a></span> (dahili komut <tt><a name="cm_Options">cm_Options</a></tt>), "Seçenekler" penceresini açar. Double Commander'daki neredeyse tüm seçenekleri buradan ayarlayabilirsiniz. Lütfen bu pencerenin tüm bölümlerini inceleyin.</p>
+
+        <p>İlk bölüm <span class="bold"><a name="5_1_1_yazik">Dil</a></span>'dir. Double Commander için mevcut çeşitli çeviriler bunlardır. Tercih ettiğiniz dili seçebilirsiniz.</p>
+        <p class="figure"><img class="largeimage" alt="Dil" title="Dil" src="images/imgDC/pic16.png" width="312" height="284"></p>
+
+        <br>
+        <p>Sonraki bölüm <span class="bold"><a name="5_1_2_povedenie">Davranışlar</a></span>'dır.</p>
+        <!--	  <p class="figure"><img class="largeimage" alt="Behaviors" title="Behaviors"
+            src="images/imgDC/pic17.png" width="517" height="382"></p>
+        -->
+
+        <p>Double Commander'ın belirli davranışlarını etkileyen 4 onay kutusu ve 1 liste bulunmaktadır:
+        <ul>
+          <li>[ ] Aynı anda <span class="italic">yalnızca 1 DC kopyasına</span> izin ver</li>
+          <li>[ ] Küçültüldüğünde <span class="italic">simgeyi sistem tepsisine</span> taşı</li>
+          <li>[ ] <span class="italic">Tepsi simgesini her zaman göster</span></li>
+          <li><span class="italic">Sürücü engelleme listesi</span>: Gerektiğinde bir düzenleme satırı ile birlikte</li>
+          <li>[ ] <span class="italic">Bağlanmamış aygıtları otomatik olarak gizle</span></li>
+        </ul>
+
+        <!--
+            <p>Line <span class="italic">Run in terminal</span>: The default setting is  <tt>xterm -e sh -c</tt>. But you can change it to <tt>gnome-terminal
+            -e sh -c</tt>, if you are using Gnome. Also, you can set any other program here. Note, that keys <tt>-e sh -c</tt> are needed for launching console programs from Double Commander (<kbd>Shift+Enter</kbd> by default).</p>
+            <p><span class="italic"><a name="5_1_2_2_pusk_terminala">Run terminal</a></span>&nbsp;&mdash; program that will run on pressing
+             <kbd>F9</kbd> or command <a href="#23_pusk_term">Run terminal</a> (other programs, not just terminal programs can be run from here).</p>
+            <p><span class="italic">Select directory with keypad</span>&nbsp;&nbsp; Obsolete. Not working.</p>
+            <p><span class="italic">Lynx like movement</span>&nbsp;&mdash; <tt>right arrow</tt> opens directory or runs a program under cursor, <tt>left arrow</tt> opens parent directory.</p>
+            <p><span class="italic">Case sensitive sorting</span>&nbsp;&mdash;if this option is enabled, files/folders will be sorted thus: Filenames starting with [A-Z] will appear before filenames starting with [a-z], 
+                   e.g.: "Zilog.txt" will appear before "anacron.txt".</p>
+            <p><span class="italic">Short Filesize format</span>&nbsp;&mdash; file sizes will be rounded before display in column "Size" variously: Kb, Mb, Gb, Tb, etc. If this option is unselected the sizes will appear in bytes.</p>
+            <p><span class="italic">Move icon to system tray when minimized</span>&nbsp;&mdash;  When minimized Double Commander will display its icon in the system tray rather than the panel (or Windows taskbar).</p>
+            <p><span class="italic">Date and time format</span>&nbsp;&mdash; can vary from "day.month.year" to "day.month.year hour:minute:second". Date will be displayed at column <a href="#5_1_15_2_data">Date</a> on panels.</p>
+            <p><span class="italic">Cut text to column width</span>&nbsp;&mdash; sometimes column text can overlap into other columns. This option truncates any extra text at the column boundary.</p>
+            <p><span class="italic"><a name="5_1_2_10_skritie_faily">Show hidden/system files</a></span>&nbsp;&mdash; to display "dotted" files (in Linux). This can also can be changed from the main menu.</p>
+            <p><span class="italic">Show icons, Icons Size</span>&nbsp;&mdash; to display the icons of files and folders on the file panels. Three sizes are available: 16x16, 22x22 and 32x32 pixels.</p>
+            <p><span class="italic">Selection by mouse, Mode</span>&nbsp;&mdash; ability to select and unselect files and folders with the mouse. Mode is set for <tt>left button</tt> or <tt>right button</tt>.</p>
+            <p><span class="italic">Scrolling</span>&nbsp;&mdash; ability to use mouse wheel to list files at panels.</p>
+            <ul>
+            <li><p>Line by line with cursor movement&nbsp;&mdash; cursor will move up or down the panel before scrolling takes place.</p></li>
+            <li><p>Line by line&nbsp;&mdash; the cursor remains on the file and scrolling takes place immediately.</p></li>
+            <li><p>Page by page&nbsp;&mdash; the same as previous, but scrolling is by pages rather than by lines (much faster scrolling).</p></li>
+            </ul>
+            <p><span class="italic">Drive black list</span>&nbsp;&mdash; use this to hide certain drives in the drives panel menu bar. Each item must contain the full path to the drive/mount point. Separate multiple drives with semicolons ";". Examples: /media/cdrom;/mnt/win_c (Linux) &nbsp;&nbsp a:\;b:\;d:\ (Windows).</p>
+        -->	  
+        <br>
+        <p>Bölüm <span class="bold"><a name="5_1_3_instruments">Araçlar</a></span>. Düzenleme (<kbd>F4</kbd>), görüntüleme (<kbd>F3</kbd>) ve farkları bulma işlemleri için harici programlar belirleyebilirsiniz. Bu harici programlar, dahili araçlar yerine kullanılacaktır.</p>
+
+        <br>
+        <p>Bölüm <span class="bold"><a name="5_1_4_shrifty">Yazı tipleri</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Yazı tipleri" title="Yazı tipleri" src="images/imgDC/pic18.png" width="449" height="339"></p>
+
+        <p>Düzenleyici (<kbd>F4</kbd>), görüntüleyici (<kbd>F3</kbd>) ve program için ana yazı tipini ve ayrıca boyutlarını seçebilirsiniz. Her biri için alt satır, seçilen yazı tipinin nasıl göründüğünü görmenizi sağlar. Önemli bir not: düzenleyici ve görüntüleyici için yazı tipleri <span class="red">EŞ ARALIKLI (MONOSPACE)</span> olmalıdır. Aşağıdaki şekil; yukarıdaki pencerede orantılı aralıklı bir yazı tipini (tuhaf boşluklara dikkat edin), aşağıdaki pencerede ise doğru aralıklandırılmış gibi görünen eş aralıklı (monospace) bir yazı tipini göstermektedir. Ayrıca, bazı orantılı yazı tipleriyle karakterler birbirinin üzerine yazabilir ve oldukça garip görünebilir.</p>
+        <p class="figure"><img class="largeimage" alt="Yazı Tipi Farkları" title="Yazı Tipi Farkları" src="images/imgDC/pic19.png" width="570" height="368"></p>
+
+        <p>Yukarıda normal (orantılı) yazı tipi, aşağıda eş aralıklı.</p>
+
+        <br>	  
+        <p>Bölüm <span class="bold"><a name="5_1_5_cveta_panelei">Renkler, Dosya panelleri</a></span>.</p>
+        <p class="figure"><img class="largeimage" alt="Renk ayarları" title="Renk ayarları" src="images/imgDC/pic20.png" width="449" height="339"></p>
+
+        <p>Buradaki renk ayarları, her iki panel için de genel ayarlardır. Bu ayarlar, paneldeki her sekme için kendi renk ayarlarına ve daha fazlasına sahip olabilen özelleştirilmiş bir sütun stili oluşturularak geçersiz kılınabilir. Bunu nasıl yapacağınızla ilgili ayrıntılar için <a href="#5_1_15_colonki">Sütunlar</a> bölümüne bakın. Mevcut sütun stilini ayarlamanız gerekir (iki varsayılan sütun stili vardır: Varsayılan ve Özet) veya kendi stilinizi oluşturup herhangi bir sekmeye uygulayın.</p>
+        <p>Burada dosya panellerini işlemek için kullanılacak renkleri seçebilirsiniz: <span class="italic">Metin Rengi, Arka Plan, Arka Plan2, İşaret Rengi, İmleç Rengi</span> ve ayrıca <span class="italic">İmleç Metni</span>. İki arka plan seçeneğiyle panellerde ardışık bir şerit oluşturabilirsiniz. Panel ekran görüntülerinde de görebileceğiniz gibi, bunu kendim yaptım.</p>
+
+        <p><span class="italic">Tersine Çevrilmiş Seçim</span> — işaretli metnin ve imleç altındaki işaretli metnin renklerini tersine çevirir. Renk ayarları hakkında daha fazla ayrıntı <a href="#5_1_15_colonki">Sütunlar</a> bölümündedir.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_6_cveta_failov">Renkler, Dosya Türleri</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Renge göre dosya türleri" title="Renge göre dosya türleri" src="images/imgDC/pic21.png" width="527" height="387"></p>
+
+        <p>Burada farklı bir renkle gösterilmesi gereken dosya türlerini belirleyebilirsiniz.</p>
+        <p><span class="italic">Kategori adı</span> satırına dosyanın bir açıklamasını, ne işe yaradığını veya hangi programı açtığını yazabilirsiniz.</p>
+        <p><span class="italic">Kategori maskesi</span> satırına dosya türlerini eşleştirmek için bir joker karakter maskesi girin. Buraya, aralarında boşluk bırakmadan noktalı virgül ";" kullanarak birden fazla dosya türü girebilirsiniz. "*" sembolü, herhangi sayıda karakteri eşleştir anlamına gelir.</p>
+        <p><span class="italic">Kategori öznitelikleri</span> satırına dosya öznitelikleri girebilirsiniz ve DC, eşleşen özniteliklere sahip tüm dosyaları eşleştirecektir. Öznitelikleri şu şekilde ayarlayın: <tt>drwxrwxrwx</tt> (Linux) <tt>drahs</tt> (Windows). Özniteliklerde joker karakterler de kullanabilirsiniz: <tt>?r-*</tt> (Linux) veya <tt>?r*</tt> (Windows) tüm salt okunur dosya ve klasörleri bulacaktır.</p>
+        <p>Özelleştirmeden sonra "Uygula" düğmesine tıklamayı unutmayın.</p>
+
+        <br>	  	  
+        <p>Bölüm <span class="bold"><a name="5_1_7_hotKeys">Kısayol tuşları</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Kısayol tuşları" title="Kısayol tuşları" src="images/imgDC/pic22.png" width="527" height="387"></p>
+
+        <p>Bu bölümde, komutları başlatmak için tuşları ayarlayabilir ve ayrıca bu komutlar için parametreleri belirleyebilirsiniz.</p>
+        <p><span class="italic">Kategoriler</span> — kısayol tuşu kombinasyonlarının kategorisini gösterir. Ana - ana kategori (gelecekte başka kategoriler olacağı anlaşılıyor). </p>
+        <p><span class="italic">Komutlar</span> — Double Commander'daki mevcut <a href="cmds.html">kısayolların</a> listesi. Liste, üç sütunlu bir tablo olarak gösterilir:</p>
+        <ul>
+          <li><p>Komutlar (dahili komut adları)</p></li>
+          <li><p>Açıklamalar (kısa bir açıklama)</p></li>
+          <li><p>Kısayol Tuşları (atanmış kısayollar)</p></li>
+        </ul>
+        <p><span class="italic">Filtrele</span> — dahili komutları daha hızlı aramanızı sağlar.</p>
+        <p><span class="italic">Kısayol Tuşu</span> — yeni kısayol burada görüntülenir. Kutuya tıklayın ve yeni kısayol tuşunu girmek için klavyeden bir kombinasyona basın.</p>
+        <p><span class="italic">Kısayol Tuşları</span> — bu kutu, seçilen komut için atanmış kısayolları gösterir. Ayrıca, zaten atanmış bir kısayolu ayarlamaya çalışırsanız bir uyarı görüntülenecektir.</p>
+        <p><span class="italic">Parametre</span> — komut için bazı parametreler ayarlamanıza olanak tanır.</p>
+        <p><span class="italic">Kısayol Tuşu Ayarla</span> — yeni kısayolu ayarlar. Bu, "Kısayol Tuşu" kutusundan "Kısayol Tuşları" kutusuna taşınacaktır. Ayrıca, "Komutlar" tablosunun üçüncü sütununa eklenecektir.</p>
+        <p><span class="italic">Kısayol Tuşunu Temizle</span> — "Kısayol Tuşları" kutusundan mevcut kısayolu temizler.</p>
+        <p>Örn. sürücü açılır menüsünü <kbd>Alt+F1</kbd> ve <kbd>Alt+F2</kbd>'den <kbd>Ctrl+F1</kbd> ve <kbd>Ctrl+F2</kbd>'ye (Linux'ta) yeniden atamak için, <tt>cm_RightOpenDrives</tt> komutunu seçmeli, "Kısayol Tuşu" kutusuna tıklamalı ve <kbd>Ctrl+F2</kbd>'ye basmalısınız. Ardından "Kısayol Tuşu Ayarla" düğmesine basın. <tt>cm_LeftOpenDrives</tt> komutu ve <kbd>Ctrl+F1</kbd> kısayolu için aynı adımları uygulayın.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_8_plaginy">Eklentiler</a></span> Bilgisi daha sonra eklenecektir...</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_9_vidOkna">Düzen</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Düzen" title="Düzen" src="images/imgDC/pic23.png" width="527" height="387"></p>
+
+        <p>Ana pencerenin düzenini burada değiştirebilirsiniz. Sanırım, mevcut tüm seçenekler yukarıdaki ekran görüntüsünde (Düzen) açıklanmıştır. Aşağıdaki ekran görüntüsü, tüm düzen seçenekleri seçili değilken Double Commander'ın nasıl göründüğünü göstermektedir.</p>
+        <p class="figure"><img class="largeimage" alt="DC Düzeni" title="DC Düzeni" src="images/imgDC/pic24.png" width="730" height="458"></p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_10_fileOper">Dosya işlemleri</a></span></p>
+        <p class="figure"><img class="largeimage" alt="" src="images/imgDC/pic25.png" width="527" height="387"></p>
+
+        <p>Arabellek Boyutu (Kb) — dosya işlemleri için bellek arabellek boyutunu ayarlar.</p>
+        <p>Dosyalardaki metin araması için bellek eşleme kullan. — aramayı gerçekleştirmeden önce dosyayı sanal belleğe kopyalar. Bu daha hızlıdır, ancak daha güçlü bir bilgisayar gerektirir.</p>
+        <p><span class="italic">Metin dosyalarında arama için akış kullan</span> — dosyayı parçalara böler, ardından arama başlar (daha yavaştır ancak daha az kaynak gerektirir)</p>
+        <p><span class="italic">Güvenli silme geçişi sayısı</span> (dahili komut <tt><a name="cm_Wipe">cm_Wipe</a></tt>) — bu işlev, dosyaların sabit diskinizden tamamen yok edilmesi içindir (varsayılan olarak <kbd>Alt+Del</kbd> kısayolu). Silme işlemi, dosyanın birkaç kez üzerine yazılmasını kullanır. Burada yeniden yazma sayısını belirleyebilirsiniz.</p>
+        <p><span class="italic">Salt Okunur İşaretini Kaldır</span> — Etkinleştirilirse, Double Commander bu işareti Windows'ta kaldırır ve Linux'ta "w" özniteliğini ekler. Bu, dosyaların varsayılan olarak salt okunur özniteliğini koruyacağı CD/DVD ortamından dosya kopyalarken kullanışlıdır.</p>
+        <p><span class="italic">Dosyalar/klasörlerle açıklamaları işle</span> — Etkinleştirilirse ve ekli bir açıklaması olan bir dosya/klasörünüz varsa ve onu başka bir klasöre kopyalar veya taşırsanız, açıklama dosya/klasörle birlikte hedefe kopyalanır veya taşınır.</p>
+        <p><span class="italic">Yeniden adlandırırken yalnızca adı seç (uzantıyı değil)</span> — Yeniden adlandırırken yalnızca "." işaretinden önceki dosya adı kısmını seçer.</p>
+        <p><span class="italic">Kopyala/Taşı iletişim kutusunda sekme seçimini göster</span> — Bir panelin birden fazla sekmesi varsa kopyalama/taşıma sırasında hedef sekmeyi seçebilirsiniz</p>
+        <p class="figure"><img class="largeimage" alt="Kopyala/taşı iletişim kutusunda sekme seçimi etkin" title="Kopyala/taşı iletişim kutusunda sekme seçimi etkin" src="images/imgDC/pic25-1.png" width="285" height="174"> <img class="largeimage" alt="Kopyala/taşı iletişim kutusunda sekme seçimi devre dışı" title="Kopyala/taşı iletişim kutusunda sekme seçimi devre dışı" src="images/imgDC/pic25-2.png" width="285" height="174"></p>
+
+        <!-- Sash0k: I notice that on my pics the left one shows only small buttons instead of buttons with the tab name in it. Even when I reduced the number of tabs
+             to only two the buttons were still small like this. Maybe a bug or maybe you changed it deliberately?</p>
+        -->
+        <p><span class="italic">Dosya işlemleri hatalarını atla ve günlük penceresine yaz</span> — Bir dosya işlemi hatası oluştuğunda, hata iletisi açılır bir iletişim kutusunda belirmek yerine panellerin altındaki günlük penceresinde görüntülenir.</p>
+        <p><span class="italic">Sürükle ve bırak işlemlerinde onay iletişim kutusunu göster</span> — Seçilirse, dosyaları/klasörleri diğer panele sürüklediğinizde açılır bir iletişim kutusu eylemi onaylamanızı ister.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_11_vkladki">Klasör Sekmeleri</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Klasör Sekmeleri" title="Klasör Sekmeleri" src="images/imgDC/pic26.png" width="527" height="387"></p>
+
+        <p><span class="italic">Yalnızca bir sekme olduğunda da sekme başlığını göster</span> — Bu seçenek devre dışı bırakılırsa ve panelde yalnızca bir sekme varsa, bir sekme başlığı görünmez (genellikle bu görsel olarak daha çekicidir).</p>
+        <!-- не нашел в установленной версии этой опции
+            <p><span class="italic">Размещать вкладки в несколько рядов</span>&nbsp;&mdash; когда открыто
+            большое количество вкладок, и они не умещаются в одну строчку, то по умолчанию по бокам появляются
+            стрелки, за которые и уходят заголовки вкладок. А если отмечена эта опция, то заголовки вкладок
+            выстраиваются в два или три ряда.</p>
+        -->
+        <p><span class="italic">Sekme başlığı uzunluğunu sınırla</span> — Uzun adlara sahip sekmeler bu uzunlukla sınırlanır ve görüntülenen ad bu değerden uzunsa kesilir.</p>
+        <p><span class="italic"><a name="5_1_11_0_vopros">Tüm sekmeleri kapatmayı onayla</a></span> — Seçilirse ve bir <a href="#34_delalltabs">Tüm sekmeleri kaldır</a> komutu çalıştırılırsa, bu seçenek tüm etkin olmayan sekmeleri kaldırmak istediğinizi onaylamanızı ister.</p>
+        <p><span class="italic"><a name="5_1_11_2_vopros">Ctrl+Yukarı, ön planda yeni sekme açar</a></span> — Görünüşe göre henüz çalışmıyor.
+        <p><span class="italic"><a name="5_1_11_3_vopros">Sekme kapatma butonunu göster</a></span> — Seçilirse, sekmelerde küçük bir "x" butonu görünür ve üzerine tıklayarak onları kapatmanızı sağlar.
+        <p><span class="italic"><a name="5_1_12_1_zvezda">Kilitli sekmeleri yıldızla (*) göster</a></span> — Kilitli ve kilidi açık sekmeleri ayırt etmeyi sağlar. Kilitli sekmeler * ile işaretlenir.</p>
+        <p class="figure"><img class="largeimage" alt="Sekmeler" title="Sekmeler" src="images/imgDC/pic6.png" width="445" height="33"></p>
+
+        <p>Sekme <tt>Belgelerim</tt> burada kilitlidir ve <tt>imgDC</tt> ile <tt>temp</tt> sekmeleri kilitli değildir.</p>
+        <p><span class="italic">Sekmelerinden birine tıklandığında hedef paneli etkinleştir</span> — Etkinleştirilirse, diğer paneldeki bir sekmeye fare ile tıkladığınızda, odak otomatik olarak ona aktarılır (etkin panel haline gelir). Ayrıca bu şekilde paneller arasında geçiş yaparken imleç konumu korunur.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_12_protokol">Günlük</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Günlük" title="Günlük" src="images/imgDC/pic26-3.png" width="475" height="289"></p>
+
+        <p>Burada Double Commander'ın işlemlerini günlüğe kaydetmek için dosya adını seçebilirsiniz. Ayrıca hangi işlemlerin günlüğe kaydedileceğini de seçebilirsiniz.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_13_Configur">Yapılandırma</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Yapılandırma" title="Yapılandırma" src="images/imgDC/pic26-4.png" width="475" height="289"></p>
+
+        <p>Burada tüm yapılandırma dosyalarını nerede saklayacağınızı seçebilirsiniz.</p>
+        <p><span class="italic">Düzenle</span> — doublecmd.ini yapılandırma dosyasını sizin kendiniz düzenlemenize sağlayan buton.</p>
+        <p>Double Commander'da hangi geçmiş ögelerinin günlüğe kaydedileceğini de özelleştirebilirsiniz. Bu günlükler, gezinmeyi hızlandırmak için kullanışlıdır.</p>
+        <p><span class="italic">Dizin Geçmişi</span> — ziyaret edilen tüm dizinlerin geçmişini kaydeder.</p>
+        <p><span class="italic">Komut Satırı Geçmişi</span> — komut satırına girilen komutların geçmişini kaydeder.</p>
+        <p><span class="italic">Dosya Maskesi Geçmişi</span> — daha önce hangi dosyaları aradığınızı ve genel olarak kullandığınız maske dosyalarının neler olduğunu hatırlamanıza yardımcı olur.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_14_bystrPoisk">Hızlı Arama</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Hızlı Arama" title="Hızlı Arama" src="images/imgDC/pic26-5.png" width="475" height="289"></p>
+
+        <p>Hızlı arama, panelde dosya adlarını aramak için kullanılır. Burada bunun için bir klavye kısayolu, ayrıca bazı parametreler ayarlayabilirsiniz.</p>
+        <p><span class="italic">Tam ad eşleşmesi: Başlangıç </span>  — aranacak dosyanın yazılan ilk harfle başlaması gerektiği anlamına gelir.</p>
+        <p><span class="italic">Tam ad eşleşmesi: Bitiş</span>  — dosya adının yalnızca sonunu biliyorsanız, örn. <tt>...us.ext</tt> gibi, bu dosyayı <tt>*us.ext</tt> maskesini kullanarak bulmanıza yardımcı olur.</p>
+        <p>Biz <span class="italic">Tam ad eşleşmesi kullanmaktan yanayız: Başlangıç </span> seçili olduğunda, aradığımız dosya adının ilk karakterini, ardından ikinci karakterini vb. yazabiliriz. Dosya bu şekilde hızlıca bulunur.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_15_colonki">Sütunlar</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Sütunlar" title="Sütunlar" src="images/imgDC/pic27.png" width="498" height="285"></p>
+
+        <p>Bu bölümde panel görünümünü, sütunları, renkleri, yazı tiplerini vb. özelleştirebilirsiniz. Double Commander bu konuda oldukça yapılandırılabilirdir.</p>
+        <p><span class="italic">Dosya sistemi için sütunları yapılandır</span> — yüklü WFX eklentilerinden herhangi birinin standart dosya sisteminden farklı bir dosya sistemi varsa, bu seçenek özellikle bu dosya sistemi için bir stil kümesi oluşturmanıza olanak tanır.
+        <P>Ana pencere, mevcut sütun stillerinin bir listesini görüntüler. İki varsayılan stil vardır: Varsayılan ve Özet (bu ekran görüntüsünde "my_style" adlı sütun stilimizi de görebilirsiniz).</p>
+        <p><span class="italic">Yeni</span> — yeni bir sütun kümesi oluşturur. Sütun düzenleyici penceresini açar; burada bir ad girebilir ve yeni stilinizi özelleştirebilirsiniz.</p>
+        <p><span class="italic">Sil</span> — seçili sütun kümesini siler.</p>
+        <p><span class="italic">Kopyala</span> — sütun kümesini kopyalar. Yeni küme, hedef küme ile aynı şekilde adlandırılır + <tt>_Kopya</tt> eklenir. Tek bir ana kümeden farklı kümeler oluşturmak iyi bir fikirdir.</p>
+        <p><span class="italic">Düzenle</span> — sütun düzenleyici penceresini açar.</p>
+        <p class="figure"><img class="largeimage" alt="Sütun kümesi özelleştirme penceresi" title="Sütun kümesi özelleştirme penceresi" src="images/imgDC/pic28.png" width="719" height="407"></p>
+
+        <p><span class="italic"><a name="5_1_15_1_nastroika_nabora">Görünüm no yapılandır: 1 Ad</a></span> — sütun kümesinin adı. Kümenin numarası listede <a href="#5_1_15_colonki">Sütunlar</a> bölümünde sıralanır.</p>
+        <p><span class="italic">İmleç kenarlığı</span> —imleç kenarlığı için bir renk özelleştirmek veya onu devre dışı bırakmak mümkündür.
+        <p>Özelleştirme tablosu — sütunların numarasını, adını, içeriğini, yerini ve boyutunu ayarlamanıza olanak tanır.</p>
+        <p><span class="italic">Sütunu özelleştir 1: 'Ad'</span> — buradaki butonlar hangi sütunun düzenleneceğini seçer. Ayrıca yazı tipleri ve renkler özelleştirme bölmesini genişletecektir.</p>
+        <p><span class="italic">Önizleme</span> — uygulamadan önce paneldeki yeni stili görmenizi sağlar.</p>
+        <p>İşte özelleştirme tablosu</p>
+        <p class="figure"><img class="largeimage" alt="Özelleştirme tablosu" title="Özelleştirme tablosu" src="images/imgDC/pic28-1.png" width="737" height="47"></p>
+
+        <p>Özelleştirme tablosundaki satır sayısı, kümedeki sütun sayısına eşittir.</p>
+        <p>Bunlar, sütun için tabloyu belirleyen parametrelerdir (düzenlemek için kutuları seçin):</p>
+        <p><span class="italic">Sil</span> — herhangi bir satırı kaldırmanıza olanak tanır. Silmek için: satırın Sil kutusuna tıklayın. Ardından tekrar tıklayın, bu kez bir silme sembolü belirir. Üçüncü kez tıklarsanız satır tablodan silinecektir.</p>
+        <p><span class="italic">Başlık</span> — <a href="#iface_columns">sekme durağı başlıkları çubuğu</a> içinde görüntülenecek sütunun adını belirtir. İstediğiniz herhangi bir adı ayarlayabilirsiniz.</p>
+        <p><span class="italic">Genişlik</span> — programı başlatma sırasında ayarlanacak sütun genişliği (piksel). Not: Genişlik sütun içeriğine bağlıdır, örn. dosya uzantısı sütunu küçük bir genişliğe sahip olacaktır.</p>
+        <p><span class="italic">Hizala</span> — sütun adının hizalamasını ayarlar. Değişkenler şunlardır:</p>
+        <ul>
+          <li><p><tt>(&lt;--)</tt> sola hizalar</p></li>
+          <li><p><tt>(-->)</tt> sağa hizalar</p></li>
+          <li><p><tt>( = )</tt> ortaya hizalar</p></li>
+        </ul>
+        <p><span class="italic">Alan içeriği</span> — sütunun temel içeriğini ayarlar. Aşağıdaki değişkenlerden seçim yapabilirsiniz:</p>
+        <ul>
+          <li><p><tt>GETFILENAME</tt> — dosya adı ve uzantısı (<tt>text.txt</tt>).</p></li>
+          <li><p><tt>GETFILENAMENOEXT</tt> — dosya adı ve uzantısız (<tt>text</tt>).</p></li>
+          <li><p><tt>GETFILEEXT</tt> — dosya uzantısı (noktadan sona kadar, örn. <tt>.txt</tt> veya <tt>.example</tt>).</p></li>
+          <li><p><tt>GETFILESIZE</tt> — dosya veya dizin boyutu. Görünüm, <a href="#5_1_2_povedenie">Davranışlar</a> bölümünde seçilen seçeneğe bağlı olacaktır.</p></li>
+          <li><p><tt><a name="5_1_15_2_data">GETFILETIME</a></tt> — dosya veya dizin tarihi. Görünüm, <a href="#5_1_2_povedenie">Davranışlar</a> bölümünde seçilen seçeneğe bağlı olacaktır.</p></li>
+          <li><p><tt>GETFILEATTR</tt> — dosya veya dizin öznitelikleri.</p></li>
+          <li><p><tt>GETFILEPATH</tt> — mevcut öğenin yolu. Kullanım: genellikle, arama sonuçları için.</p></li>
+          <li><p><tt>GETFILEGROUP</tt> — dosyanın grubunu görüntüler.</p></li>
+          <li><p><tt>GETFILEOWNER</tt> — dosyanın sahibini görüntüler.</p></li>
+          <li><p><tt>GETFILELINKTO</tt> — yolu ve dosyayı (varsa) görüntüler, yani bu sembolik bağlantı ile neyin bağlantılı olduğunu gösterir.</p></li>
+        </ul>
+        <p><span class="italic">Taşı</span> — satırları taşımanıza olanak tanır (bu da sütunları yeniden sıralamak anlamına gelir). Taşı kutusuna iki kez tıklayın ve bir tür döndürücü belirecektir, üst kısmına tıklamak satırı yukarı taşır (sütun sola kayar).</p>
+        <p><span class="italic">Renkler</span> — sütunun rengini ve yazı tipini özelleştirmenizi sağlar. Bireysel sütunlar farklı renklere sahip olabilir. Renkleri düzenleme penceresini aşağıda görebilirsiniz.</p>
+        <p class="figure"><img class="largeimage" alt="Sütunun renk düzenleyicisi" title="Sütunun renk düzenleyicisi" src="images/imgDC/pic29.png" width="719" height="485"></p>
+
+        <p>Bu bölmeyi almak için, <span class="italic">Sütunu özelleştir</span> :'in her iki tarafındaki düğmelerden birine tıklamanız gerekir: 'Ad'</span> satırı.</p>
+        <p><span class="italic">Yazı tipi</span> — bu sütun için yazı tipini seçebilirsiniz. Sistem yazı tipleri listesini kullanmak için, sağdaki " <tt>...</tt> " düğmesine tıklayın.</p>
+        <p><span class="italic">Boyut</span> — burada yazı tipi boyutunu ayarlayabilirsiniz.</p>
+        <p><span class="italic">R</span> — Varsayılan yazı tipi ayarlarını geri yükler.</p>
+        <p><span class="italic">Tümü</span> — Ayarları diğer tüm sütunlara uygular.</p>
+        <p><span class="italic">Üst renklendirmeye izin ver</span> — bu seçenek, dosyaların adlarını farklı bir renkte görüntüleme yeteneğini etkinleştirir ( <a href="#5_1_6_cveta_failov">Renkler, Dosya Türleri</a> bölümünde seçilir).</p>
+        <p>Aşağıdaki öğeler için renk seçmek mümkündür: Metin Rengi, Arka Plan, Arka Plan 2, İşaret Rengi, İmleç Rengi, İmleç Metni.</p>
+        <p class="bold"><span class="italic">Renk hakkında bir takım bilgiler</span></p>
+        <p>22 önceden ayarlanmış renk bulunmaktadır. Sistem tema renk ayarlarını belirlemek için <span class="bold">güzel bir özellik</span> bulunmaktadır. Böylece, <span class="red">program görünümü sistem temalarına göre değişecektir.</span> Ayrıca, sistem temalarındaki dokular <span class="bold">sütun kümeleri için kullanılabilir</span>.</p>
+        <p><span class="italic">>></span> — paletten renk seçme butonu.</p>
+        <p><span class="italic">R</span> — <a
+            href="#5_1_5_cveta_panelei">Renkler, Dosya Türleri</a> bölümündeki varsayılan ayarları geri yükler.</p>
+        <p><span class="italic">Tümü</span> — Ayarları diğer tüm sütunlara uygular.</p>
+
+        <!-- Shash0k: I just used Rustem's original screenshots here because I had some difficulty reproducing what he had done, especially in column3.png.
+        -->
+        <p>DC için sistem sütunlarını kullanma örneği (sağ panel).</p>
+
+        <p class="figure"><img class="largeimage" alt="Renk Örneği 1" title="Renk Örneği 1" src="images/imgDC/column1.png" width="884" height="264"></p>
+
+        <p>Sütunlar için bağımsız ayarlar kullanma örneği.</p>
+        <p class="figure"><img class="largeimage" alt="Renk Örneği 2" title="Renk Örneği 2" src="images/imgDC/column2.png" width="884" height="290"></p>
+
+        <p>Dokular kullanma örneği.</p>
+        <p class="figure"><img class="largeimage" alt="Renk Örneği 3" title="Renk Örneği 3" src="images/imgDC/column3.png" width="884" height="258"></p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_16_raznoe">Çeşitli</a></span></p>
+        <p class="figure"><img class="largeimage" alt="Çeşitli" title="Çeşitli" src="images/imgDC/pic30.png" width="498" height="285"></p>
+
+        <p><span class="italic">Dikey çizgiler</span> — panellerde dikey ızgara çizgilerini etkinleştirir.</p>
+        <p><span class="italic">Yatay çizgiler</span> — panellerde yatay ızgara çizgilerini etkinleştirir.</p>
+        <p>Aşağıdaki ekran görüntüleri bu ince ızgara efektini göstermektedir. Soldaki ekran görüntüsünde dikey ve yatay çizgiler etkinleştirilmişken, sağdaki ekran görüntüsünde etkin değildir.</p>
+        <p class="figure"><img class="largeimage" alt="çizgili" title="çizgili" src="images/imgDC/pic31-5.png" width="423" height="151">  <img class="largeimage" alt="çizgisiz" title="çizgisiz" src="images/imgDC/pic31-6.png" width="423" height="151"></p>
+
+        <p><span class="italic">Uyarı mesajlarını göster ("Tamam" düğmesiyle)</span> — etkinleştirilirse uyarı mesajlarını gösterir.</p>
+        <p><span class="italic">Ara Çubuğu ile dosya seçerken, bir sonraki dosyaya inilir</span>  — Ara Çubuğu ile seçim yapıldığında imleci aşağı taşır. Varsayılan tuşlar <kbd>Shift+Aşağı</kbd> veya <kbd>Shift+Yukarı</kbd>dır.</p>
+        <p><span class="italic">Dizinlerin etrafında köşeli parantez göster</span> — simgeler devre dışı bırakıldığında dizinleri dosyalardan görsel olarak ayırmaya yardımcı olur.</p>
+
+        <p>Bölüm <span class="bold"><a name="5_1_17_avtoobnov">Otomatik yenile</a></span></p>
+        <p>Double Commander'ın panelleri otomatik olarak yenilemesini sağlar, tıpkı <kbd>Ctrl+R</kbd> yenileme komutunun yaptığı gibi.</p>
+
+        <!-- Shash0k: I thought about adding this comment here but I'm not sure I'm correct in saying this:
+                   <span class="bold">Note:</span> There are some cases where you would not want Double Commander to automatically refresh all the time:
+                   If your computer is slow or the drives are very slow (e.g. floppy disks) or with very large directories.</p>
+        -->
+        <p class="figure"><img class="largeimage" alt="Otomatik yenile" title="Otomatik yenile" src="images/imgDC/pic32.png" width="442" height="286"></p>
+
+        <p>Bu bölümde bazı seçenekler bulunmaktadır:</p>
+        <p><span class="italic">Dosyalar oluşturulduğunda, silindiğinde ve yeniden adlandırıldığında yenile</span>.</p>
+        <p><span class="italic">Boyut, tarih veya öznitelikler değiştiğinde de</span>.</p>
+        <p><span class="italic">Arka plandayken güncellemelere tepki verme</span> — Double Commander penceresi simge durumuna küçültüldüğünde veya arka plandayken otomatik yenileme gerçekleşmez.</p>
+        <p><span class="italic">Altbilgiyi güncelle (toplam dosya sayısı)</span> — yalnızca panelleri değil, durum çubuğunu da günceller.</p>
+        <p><span class="italic">Üstbilgiyi güncelle (boş disk alanı)</span>.</p>
+        <p><span class="italic">Bu sürücüler için yenileme yapma</span> — otomatik yenilemenin devre dışı bırakılacağı disk(ler)i ayarlayabilirsiniz. Tam yolu belirleyin, değerleri noktalı virgül ";" ile boşluksuz ayırın (örn. <tt>/home;/media/cdrom</tt>).</p>
+
+        <p>Öğe <span class="bold"><a name="5_2_fileAssoc">Dosya ilişkilendirmeleri</a></span> (dahili komut <tt><a name="cm_FileAssoc">cm_FileAssoc</a></tt>)<p>
+        <p>Bu seçenek, yapılandırma dosya ilişkilendirme yapılarını açar. Tüm ilişkilendirme kümeleri <tt>doublecmd.ext</tt> dosyasında bulunur. <tt>doublecmd.ext.example</tt> adlı bir ilişkilendirme kümeleri örneği program dizininde bulunur.</p>
+        <p>Burada dosya ilişkilendirmelerini özelleştirebilir ve bazı dosya türleri için komutlar veya betikler ayarlayabilirsiniz. Komutlar, paneldeki bir dosyaya sağ fare tıklamasıyla bağlam menüsünde (dahili komut <tt><a name="cm_ContextMenu">cm_ContextMenu</a></tt>) görüntülenecektir.</p>
+        <p><span class="italic">Dosya Türleri</span> — bir uzantı listesi içerir. Her grup birçok dosya uzantısı içerebilir ve böyle bir grup çeşitli programlarla ilişkilendirilebilir.</p>
+        <p><span class="italic">Ekle</span> — yeni bir grup ekler. Bir grup adı girmelisiniz, örn. <tt>Sound</tt>.</p>
+        <p><span class="italic">Kaldır</span> — bir grubu siler.</p>
+        <p><span class="italic">Yeniden adlandır</span> — gruba yeni bir ad belirlemenizi sağlar.</p>
+        <p class="figure"><img class="largeimage" alt="Dosya ilişkilendirmeleri" title="Dosya ilişkilendirmeleri"
+                               src="images/imgDC/pic33.png"></p>
+        <p><span class="italic">Simge</span> — bu grup için bir simge yolu belirleyebilirsiniz.</p>
+        <p><span class="italic">Uzantılar</span> — burada seçilen grup için uzantıları ayarlayabilirsiniz, örn. mp3, wma, ogg vb. Özel değerler:</p>
+        <ul>
+          <li><p><tt>dosya</tt> — herhangi bir dosya</p></li>
+          <li><p><tt>klasör</tt> — herhangi bir dizin</p></li>
+        </ul>
+        <p><span class="italic">Ekle</span> — gruba bir uzantı ekler.</p>
+        <p><span class="italic">Kaldır</span> — gruptan bir uzantıyı siler.</p>
+        <p><span class="italic">Eylemler</span> — burada grup için komutları ayarlayabilirsiniz.</p>
+        <p><span class="italic">Ekle</span> — listeye bir eylem ekler.</p>
+        <p><span class="italic">Kaldır </span>— listeden bir eylemi siler.</p>
+        <p><span class="italic">Yukarı, Aşağı</span> — eylemi taşır. Eylemler (birden fazla ise) yeniden sıralanabilir.</p>
+        <p><span class="italic">Eylem adı:</span> — eylem türünü ayarlar. Varyantlar:</p>
+        <ul>
+          <li><p>Açılır menüden<p>
+            <ul>
+              <li><p>Aç — eylem, <kbd>Giriş</kbd> tuşuna basıldıktan veya çift tıklama yapıldıktan sonra çalıştırılır.</p></li>
+              <li><p>Görüntüle — eylem, (<kbd>F3</kbd>) tuşuna basıldıktan sonra çalıştırılır.</p></li>
+              <li><p>Düzenle — eylem, (<kbd>F4</kbd>) tuşuna basıldıktan sonra çalıştırılır.</p></li>
+            </ul>
+          </li>
+          <li><p>Diğer eylemler, dosya bağlam menüsünde ("Eylemler" alt menüsü) görüntülenir.<p></li>
+        </ul>
+        <p><span class="italic">Komut</span>— Masaüstü Ortamından herhangi bir komut, burada makro komutları ayarlayabilirsiniz (sağ tuş). Makrolar büyük/küçük harf duyarlıdır:</p>
+        <ul>
+          <li><p><tt>{!DC-EDITOR}</tt> — dahili düzenleyiciyi çağırır</p></li>
+          <li><p><tt>{!DC-VIEWER}</tt> — dahili görüntüleyiciyi çağırır</p></li>
+          <li><p><tt>{!EDITOR}</tt> — düzenleyiciyi çağırır (dahili veya harici, yapılandırmaya bağlıdır)</p></li>
+          <li><p><tt>{!VIEWER}</tt> — görüntüleyiciyi çağırır (dahili veya harici, yapılandırmaya bağlıdır)</p></li>
+          <li><p><tt>{!SHELL}</tt> — programı çalıştırmak için bir terminal kullanır</p></li>
+        </ul>
+        <p><span class="italic">Parametreler</span> — değişkenler dahil komut parametreleri:</p>
+        <ul>
+          <li><p><a href="variables.html">"yüzde" değişkenlerinden</a> herhangi bir değişken</p></li>
+          <li><p><tt>&lt;?command?></tt> — 'komut'u sistem kabuğunda çalıştırır ve çıktıyı yukarıdaki komuta besler</p></li>
+        </ul>
+        <p><span class="italic">Başlangıç yolu</span> — komut başlangıç yolu</p>
+        <p>Örnekler:</p>
+        <p>Üst — <tt>totem '%p'</tt> — dosyayı totem medya oynatıcı ile açar.</p>
+        <p>Alt — <tt>genisoimage -o %p.iso -r -J %p</tt> — dizinden bir ISO görüntüsü oluşturur (yalnızca dizinler için).</p>
+        <p class="figure"><img class="largeimage" alt="Bağlam Menüsü" title="Bağlam Menüsü" src="images/imgDC/pic34.png" width="510" height="262">
+          <br>
+          <img class="largeimage" alt="Dizinler İçin" title="Dizinler İçin" src="images/imgDC/pic35.png" width="510" height="261"></p>
+
+        <p>Mevcut tüm eylemler, bağlam menüsündeki 'Eylemler' menüsünde görüntülenecektir. Örn. Ubuntu'da bir dizini root ayrıcalıklarıyla açmak için: <tt>Root olarak aç</tt> eylemi, <tt>gksu nautilus '%p'</tt> komutu ayarlanır.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="mnu_help">3.1.7. "Yardım"</a></h2>
+        <p>Burada yardım bilgilerine (bu belgelere) ve program hakkındaki bilgilere ulaşabilirsiniz:</p>
+        <ul>
+          <li><p><span class="bold">İçindekiler</span> — yardım dizini sayfasını açar.</p></li>
+          <li><p><span class="bold">Klavye</span> — klavye kısayolları sayfasını açar.</p></li>
+          <li><p><span class="bold">Double Commander Web Sayfası</span> — çevrim içiyseniz proje ana sayfasına gider.</p></li>
+          <li><p><span class="bold">Hakkında</span> — program sürümü ve geliştiriciler hakkında bilgi gösterir.</p></li>
+        </ul>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_toolbar">3.2. Düğme araç çubuğu</a></h2>
+        <p class="figure"><img class="largeimage" title="Araç çubuğu örneği" alt="Araç çubuğu örneği" src="images/imgDC/toolbarsample.png" width="713" height="39"></p>
+        <p>Araç çubuğu, dahili komutları çalıştırmak ve uygulamalarımızı başlatmak için düğmeler içerir.</p>
+        <p>Varsayılan bir yapılandırma sunulsa da Double Commander'ın muhtemelen en çok özelleştirilebilen bölümü burası olduğu için bunu kesinlikle kendi ihtiyaçlarımıza göre şekillendireceğiz.</p>
+        <p>Bu nedenle, sadece bunun için özel bir sayfa <a href="toolbar.html">bu bağlantı</a> altında oluşturulmuştur.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_drive_pane">3.3. Sürücü düğme çubuğu</a></h2>
+        <p class="figure"><img title="Sürücü düğme çubuğu" alt="Sürücü düğme çubuğu"
+                               src="images/imgDC/pic4.png" width="564" height="32"></p>
+
+        <p>Sürücü düğme çubuğu, tek bir fare tıklamasıyla sürücüyü hızlıca değiştirmenize yardımcı olur. Sağ tıklama, bağla/bağlantıyı kes, biçimlendir vb. işlemleri içeren bağlam menüsünü gösterir (işletim sistemine ve sürücü türüne bağlıdır).</p>
+        <p class="figure"><img class="largeimage" alt="Sürücü Bağlam Menüsü" title="Sürücü Bağlam Menüsü"
+                               src="images/imgDC/pic4-1.png" width="229" height="117"></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_drive_btn">3.4. </a>Sürücü Listesi</a></h2>
+        <p class="figure"><img class="largeimage" alt="Sürücü Listesi" title="Sürücü Listesi"
+                               src="images/imgDC/pic5.png" width="642" height="25"></p>
+
+        <p>Sürücüyü değiştirmenize yardımcı olur, ayrıca ek bilgi içerir: boyut, boş alan ve gezinme düğmeleri— <tt>« * / .. ~ = »</tt>.</p>
+
+        <p>Dahili komutlar sol panel için <tt><a name="cm_LeftOpenDrives">cm_LeftOpenDrives</a></tt> ve sağ panel için <tt><a name="cm_RightOpenDrives">cm_RightOpenDrives</a></tt>. Varsayılan kısayollar: (<kbd>Alt+F1</kbd> ve <kbd>Alt+F2</kbd>) ancak çoğu Linux Masaüstü Ortamında çalışmazlar.</p>
+        <p class="figure"><img class="largeimage" alt="Sürücü Listesi" title="Sürücü Listesi"
+                               src="images/imgDC/pic5-0.png" width="101" height="96"></p>
+
+        <p>Ek gezinme düğmeleri:</p>
+        <p><tt>«/»</tt> — dosya sistemi köküne git</p>
+        <p><tt>«..»</tt> — üst dizine git</p>
+        <p><tt><a name="btn_dirlist">«*»</a></tt> — sık kullanılan dizinler listesini gösterir. Ayrıntılar için <a href="directoryhotlist.html">Sık Kullanılan Dizinler sayfasına</a> bakın.</p>
+        <p class="figure"><img class="largeimage" alt="Sık Kullanılan Dizinler" title="Sık Kullanılan Dizinler" src="images/imgDC/pic5-1.png" width="210" height="247"></p>
+
+        <p><tt>«~»</tt> — ana dizininize gidin</p>
+        <p><tt><a name="btn_eq">«=»</a></tt> — <a href="#26_dve_paneli">Hedef = Kaynak</a> komutuna bakın (<kbd>Alt+Z</kbd> varsayılan olarak).</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_tabs">3.5. Sekmeler çubuğu</a></h2>
+        <p class="figure"><img class="largeimage" alt="Sekmeler çubuğu" title="Sekmeler çubuğu"
+                               src="images/imgDC/pic6.png" width="445" height="33"></p>
+
+        <p>Sekmeleri görüntüler. Sekmelere sol fare tuşuyla tıklayın veya sekmelerde gezinmek için klavyeyi kullanabilirsiniz (<kbd>Ctrl+Tab</kbd> ve <kbd>Ctrl+Shift+Tab</kbd> varsayılan olarak). Kilitli sekmeler bir yıldızla işaretlenir (<a href="#5_1_12_1_zvezda">Kilitli sekmeleri yıldızla (*) göster</a> etkinse).</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_dir">3.6. Geçerli dizin çubuğu</a></h2>
+        <p class="figure"><img class="largeimage" alt="Geçerli dizin çubuğu" title="Geçerli dizin çubuğu" src="images/imgDC/pic7.png" width="634" height="20"></p>
+
+        <p>Geçerli dizinin adını görüntüler. Bu dizin çubuğuna sol fare tıklaması, önceki dizinlere hızla geri dönmenizi sağlayan bir dizin geçmişi (dahili komut <tt><a name="cm_DirHistory">cm_DirHistory</a></tt>) açar.</p>
+        <p class="figure"><img class="largeimage" alt="Dizin geçmişi" title="Dizin geçmişi"
+                               src="images/imgDC/pic7-4.png" width="508" height="185"></p>
+        <p>Dizin çubuğuna sağ fare tıklaması, yol adını panoya kopyalamanıza veya yeni bir yolu kendiniz girmenize olanak tanır.</p>
+
+        <p>Dizin yapısında hızla geri gezinmek için dizin çubuğunun bölümlerine tıklamak da artık mümkün. Birçok seviye geriye, üst dizine gitmek isterseniz çok kullanışlıdır. Bu, bir "breadcrumb" gezinme özelliği olarak bilinir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+
+      </div>
+
+      <div>
+        <h2><a name="iface_columns">3.7. Sekme durağı başlıkları çubuğu</a></h2>
+        <p class="figure"><img class="largeimage" alt="Sekme durağı başlıkları çubuğu" title="Sekme durağı başlıkları çubuğu"
+                               src="images/imgDC/pic7-5.png" width="609" height="22"></p>
+
+        <p>Sütun adlarını gösterir. Sol tıklamada <a href="#41_imya_attr">dosyaları sütuna göre sıralar</a>. Sağ tıklamada özel sütun stili kümesini değiştirmek ve düzenlemek için bir menü gösterir.</p>
+        <p class="figure"><img class="largeimage" alt="sütun kümesi stili iletişim kutusu" title="sütun kümesi stili iletişim kutusu"
+                               src="images/imgDC/pic7-6.png" width="299" height="153"></p>
+
+        <p><span class="italic">Varsayılan, Kısa, my_style</span> — mevcut stiller</p>
+        <p><span class="italic">Bu özel sütunlar görünümünü yapılandır</span> — sütun kümesi özelleştirme penceresini açar. Buraya <a href="#5_1_15_1_nastroika_nabora">bakın</a>.</p>
+        <p><span class="italic">Özel Sütunları Yapılandır</span> — <a href="#5_1_15_colonki">Sütunlar</a> bölümünü açar.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_status">3.8. Durum çubuğu</a></h2>
+        <p class="figure"><img class="largeimage" alt="Durum çubuğu" title="Durum çubuğu" src="images/imgDC/pic8.png" width="370" height="26"></p>
+
+        <p>Seçili öğelerin boyutunu (toplam boyuttan) ve paneldeki seçili öğe sayısını (toplam öğe sayısından) gösterir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_console">3.9. Terminal penceresi</a></h2>
+        <p class="figure"><img class="largeimage" alt="Terminal penceresi" title="Terminal penceresi" src="images/imgDC/pic9-1.png" width="687" height="135"></p>
+
+        <p>Konsol komutlarının çıktısını gösterir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_path">3.10. Komut satırı</a></h2>
+        <p class="figure"><img class="largeimage" alt="Komut satırı" title="Komut satırı" src="images/imgDC/pic9-2.png" width="691" height="27"></p>
+
+        <p>Komutları kendiniz girmek için kullanılır. Etkin dizinin yolu satır başında gösterilir (ekran görüntüsünde <tt>/home/rod/</tt>). Sağ düğme komut geçmişini açar.</p>
+        <p>Sağ tıklamada bağlam menüsü şunları gösterir:</p>
+        <p class="figure"><img class="largeimage" alt="Girdi yöntemleri" title="Girdi yöntemleri" src="images/imgDC/pic9-3.png" width="383" height="253">  <img class="largeimage" src="images/imgDC/pic9-4.png" title="Unicode karakterleri" alt="Unicode karakterleri" width="393" height="193"></p>
+
+        <p>Standart komutları <span class="italic">Kes, Kopyala, Yapıştır, Sil, Tümünü Seç</span> ve ayrıca <span class="italic">Girdi Yöntemleri</span> ile <span class="italic">Unicode Denetim Karakteri Ekle</span> alt menülerini içerir.</p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+      </div>
+
+      <div>
+        <h2><a name="iface_buttons">3.11. İşlev tuşları düğme çubuğu</a></h2>
+        <p class="figure"><img class="largeimage" alt="İşlev tuşları düğme çubuğu" title="İşlev tuşları düğme çubuğu" src="images/imgDC/pic9.png" width="884" height="31"></p>
+        <p>F3 - F9 kısayol tuşlarını görüntüler. Fare tıklamasıyla komutları seçmenizi sağlar.</p>
+      </div>
+
+      <div>
+        <BR>
+        <p><small>Oluşturan: Rustem (dok_rust@bk.ru)</small></p>
+        <p><small>İngilizce versiyonu: Rod J (rodmac_shiels@hotmail.com)</small></p>
+        <p class="navback"><a href="#topofpage">(başa dön)</a></p>
+        <BR>
+      </div>
+    </div>
+    <div class="footer"><div class="nav"><a title="Dizin" href="index.html">Dizin</a> | <a title="Önceki Sayfa" href="faq.html">Önceki</a> | <a title="Sonraki Sayfa" href="findfiles.html">Sonraki</a></div></div>
+    <div class="checker">
+	  <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html40" alt="Geçerli HTML 4.0 Transitional" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Geçerli!"></a>
+	</div>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+  </body>
+</html>
