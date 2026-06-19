@@ -1,0 +1,42 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tdialogbox.caption
+msgid "Options"
+msgstr "Seçenekler"
+
+#: tdialogbox.lblpath.caption
+msgid "Path to Win&RAR executable"
+msgstr "Win&RAR çalıştırılabilir dosya yolu"
+
+#: tdialogbox.gboptions.caption
+msgid "Archiving options"
+msgstr "Arşivleme seçenekleri"
+
+#: tdialogbox.gboptions.chkrecovery.caption
+msgid "Add r&ecovery record"
+msgstr "K&urtarma kaydı ekle"
+
+#: tdialogbox.gboptions.chkencrypt.caption
+msgid "Encrypt file &names"
+msgstr "Dosya adları&nı şifrele"
+
+#: tdialogbox.gboptions.chksolid.caption
+msgid "Create &solid archive"
+msgstr "&Katı arşiv oluştur"
+
+#: tdialogbox.lblmethod.caption
+msgid "&Compression method"
+msgstr "&Sıkıştırma yöntemi"
+
+#: tdialogbox.brncancel.caption
+msgid "Cancel"
+msgstr "İptal"
+
+#: tdialogbox.btnsave.caption
+msgid "OK"
+msgstr "Tamam"
+
+#: tdialogbox.lblargs.caption
+msgid "Additional parameters"
+msgstr "Ek parametreler"

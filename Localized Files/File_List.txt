@@ -1,0 +1,5 @@
+doublecmd.po --> doublecmd-0.9.10.x86_64-win64\doublecmd\language
+ftp.po --> doublecmd-0.9.10.x86_64-win64\doublecmd\plugins\wfx\ftp\language
+lclstrconsts.po --> doublecmd-0.9.10.x86_64-win64\doublecmd\language\lcl
+unrar.po --> doublecmd-0.9.10.x86_64-win64\doublecmd\plugins\wcx\unrar\language
+zip.po --> doublecmd-0.9.10.x86_64-win64\doublecmd\plugins\wcx\zip\language

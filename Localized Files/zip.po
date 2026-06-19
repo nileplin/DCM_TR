@@ -1,0 +1,36 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tdialogbox.caption
+msgid "Zip plugin configuration"
+msgstr "Zip eklentisi yapılandırması"
+
+#: tdialogbox.lblAbout.caption
+msgid "Zip plugin supports PKZIP-compatible, TAR, GZip and BZip2 data compression and archiving.\n\n'Copyright (C) 2006-2020 Alexander Koblov (alexx2000@mail.ru)"
+msgstr "Zip eklentisi; PKZIP uyumlu, TAR, GZip ve BZip2 veri sıkıştırma ve arşivlemeyi destekler.\n"
+"\n"
+"'Telif Hakkı (C) 2006-2020 Alexander Koblov (alexx2000@mail.ru)"
+
+#: tdialogbox.gbCompression.caption
+msgid "Compression"
+msgstr "Sıkıştırma"
+
+#: tdialogbox.gbCompression.lblCompressionMethodToUse.caption
+msgid "Compression method:"
+msgstr "Sıkıştırma yöntemi:"
+
+#: tdialogbox.gbCompression.lblDeflationOption.caption
+msgid "Compression level:"
+msgstr "Sıkıştırma seviyesi:"
+
+#: tdialogbox.chkTarAutoHandle.caption
+msgid "Open *.tar.xyz archives at one step (slowly with big archives)"
+msgstr "*.tar.xyz arşivlerini tek seferde aç (büyük arşivlerde yavaş açılır)"
+
+#: tdialogbox.btnCancel.caption
+msgid "Cancel"
+msgstr "İptal"
+
+#: tdialogbox.btnOK.caption
+msgid "OK"
+msgstr "Tamam"
