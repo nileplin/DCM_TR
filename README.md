@@ -2,7 +2,7 @@
 
 A complete Turkish (TR) localization of [Double Commander](https://doublecmd.sourceforge.io/), an open-source dual-panel file manager. This project was completed as part of **TR48A**, a university-level localization project course at Boğaziçi University, by a team of 22 members across four departments.
 
-I served as **Project Manager Lead**, responsible for Phrase TMS setup and workflow configuration, MT pipeline development, QA automation, terminology and style guide oversight, and delivery coordination.
+I served as the **Project Manager Lead**, responsible for Phrase TMS setup and workflow configuration, MT pipeline development, translation tooling, and delivery coordination.
 
 ---
 
@@ -23,7 +23,7 @@ Translated `.po` and `.html` files covering the full Double Commander UI and hel
 ### `tools/`
 **`mxliff-concordance.html`** — A self-contained browser tool for searching across MXLIFF files. Drag-and-drop file loading, regex support, segment state filtering, and CSV export. No dependencies, fully local.
 
-**`tracking_sheet.xlsx`** — Project management template with anonymized placeholder data. Covers budget planning, work logs per department (PM, Language Analysts, Terminologists, Eng & Testing), translation and LQA logs, testing log, and a SUMMARY sheet that auto-aggregates hours and costs via SUMIF formulas pulling from named ranges on the Rates sheet.
+**`tracking_sheet.xlsx`** — Project management template with anonymized placeholder data, designed to track budget, hours, and costs across a multi-department localization team. Covers budget planning, work logs per department (PM, Language Analysts, Terminologists, Eng & Testing), translation and LQA logs, testing log, and a SUMMARY sheet that auto-aggregates hours and costs via SUMIF formulas pulling from named ranges on the Rates sheet.
 
 ---
 
