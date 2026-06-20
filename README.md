@@ -12,7 +12,8 @@ I served as **Project Manager Lead**, responsible for Phrase TMS setup and workf
 Translated `.po` and `.html` files covering the full Double Commander UI and help documentation (~49,000 words total). Files were processed through Phrase TMS using MXLIFF format and post-edited by the team.
 
 ### `scripts/`
-**`MT.ipynb`** — A Jupyter notebook (Google Colab) implementing an end-to-end MT pipeline using the Gemini API. Key features:
+**`MT.ipynb`** — A Jupyter notebook (Google Colab) implementing an end-to-end MT pipeline using the Gemini API. 
+Key features:
 - Parses Phrase TMS `.mxliff` files and extracts source segments
 - Dynamically injects relevant termbase entries per chunk via SUMIF-style lookup
 - Embeds a condensed, LLM-optimized Turkish style guide into every prompt
