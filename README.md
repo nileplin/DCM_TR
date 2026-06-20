@@ -6,29 +6,28 @@ I served as **Project Manager Lead**, responsible for Phrase TMS setup and workf
 
 ---
 
-## 📁 Repository Contents
+## Repository Contents
 
 ### `translation/`
 Translated `.po` and `.html` files covering the full Double Commander UI and help documentation (~49,000 words total). Files were processed through Phrase TMS using MXLIFF format and post-edited by the team.
 
 ### `scripts/`
 **`MT.ipynb`** — A Jupyter notebook (Google Colab) implementing an end-to-end MT pipeline using the Gemini API. 
-Key features:
+ Key features:
 - Parses Phrase TMS `.mxliff` files and extracts source segments
 - Dynamically injects relevant termbase entries per chunk via SUMIF-style lookup
 - Embeds a condensed, LLM-optimized Turkish style guide into every prompt
-- Handles API quota limits gracefully — retries with exponential backoff and prompts for a new API key on daily limit exhaustion
+- Handles API quota limits, it retries with exponential backoff and prompts for a new API key after hitting the daily limit 
 - Injects translations back into the MXLIFF structure and exports a ready-to-import file
 
 ### `tools/`
 **`mxliff-concordance.html`** — A self-contained browser tool for searching across MXLIFF files. Drag-and-drop file loading, regex support, segment state filtering, and CSV export. No dependencies, fully local.
 
-### `templates/`
-**`tracking_sheet.xlsx`** — Project management template with anonymized dummy data. Covers budget planning, work logs per department (PM, Language Analysts, Terminologists, Eng & Testing), translation and LQA logs, testing log, and a SUMMARY sheet that auto-aggregates hours and costs via SUMIF formulas pulling from named ranges on the Rates sheet.
+**`tracking_sheet.xlsx`** — Project management template with anonymized placeholder data. Covers budget planning, work logs per department (PM, Language Analysts, Terminologists, Eng & Testing), translation and LQA logs, testing log, and a SUMMARY sheet that auto-aggregates hours and costs via SUMIF formulas pulling from named ranges on the Rates sheet.
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 | Area | Tools / Technologies |
 |---|---|
@@ -40,7 +39,7 @@ Key features:
 
 ---
 
-## 🔧 Using the MT Pipeline
+## Using the MT Pipeline
 
 1. Open `scripts/MT.ipynb` in Google Colab
 2. Add your Gemini API key when prompted
@@ -48,25 +47,25 @@ Key features:
 4. Upload your Phrase TMS file (`.mxliff`)
 5. The script processes segments in chunks of 30, injects relevant glossary terms per chunk, and downloads the translated MXLIFF on completion
 
-> The style guide embedded in the pipeline (`CONDENSED_STYLE_GUIDE`) follows Turkish localization conventions including formal address (`Siz`), imperative UI verbs, singular nouns with numeric placeholders, and Turkish number/date formatting.
+> The style guide embedded in the pipeline (`CONDENSED_STYLE_GUIDE`) follows Turkish localization conventions including formal address, imperative UI verbs, singular nouns with numeric placeholders, and Turkish number/date formatting.
 
 ---
 
-## 📊 Project Scope
+## Project Scope
 
 | Metric | Value |
 |---|---|
-| Total word count | ~49,500 words |
-| UI strings (`.po`) | ~11,800 words |
-| Help documentation (`.html`) | ~37,700 words |
+| Total word count | 49,487 words |
+| UI strings (`.po`) | 11,804 words |
+| Help documentation (`.html`) | 37,683 words |
 | Team size | 22 members |
 | TMS | Phrase TMS |
 | Language pair | EN → TR |
-| Duration | ~4 weeks |
+| Duration | 4 weeks |
 
 ---
 
-## 📝 Notes
+## Notes
 
 - UI screenshots bundled with the help documentation are excluded from this repository as they are unmodified assets from the original application.
 - The tracking sheet contains anonymized dummy data to demonstrate formula structure; no real team data is included.
